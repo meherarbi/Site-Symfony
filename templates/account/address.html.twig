@@ -1,0 +1,232 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Folio Shop{% endblock %}
+
+{% block container %}
+    <div class="ogami-breadcrumb">
+    <div class="container">
+        <ul>
+            <li> <a class="breadcrumb-link" href="index.html"> <i class="fas fa-home"></i>Accueil</a></li>
+            <li> <a class="breadcrumb-link" href="index.html">Magasin</a></li>
+            <!--            Accueil Magasin Panier d'achat-->
+            <li> <a class="breadcrumb-link active" href="index.html">Panier d'achat</a></li>
+        </ul>
+    </div>
+    </div>
+    <!-- End breadcrumb-->
+    <div class="order-step">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="order-step_block">
+                        <div class="row no-gutters">
+                            <div class="col-12 col-md-4">
+                                <div class="step-block step-block--1">
+                                    <div class="step">
+                                        <h2>Panier</h2><span>01</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="step-block active">
+                                    <div class="step">
+                                        <h2>Check Out</h2><span>02</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="step-block">
+                                    <div class="step">
+                                        <h2>Commande terminée</h2><span>03</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End order step-->
+    <div class="shop-checkout">
+        <div class="container">
+            <form action="" method="post">
+                <div class="row">
+                    <div class="col-12 col-lg-8">
+                        <h2 class="form-title">Détails de la facturation</h2>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputFirstName">Prénom* </label>
+                                <input class="no-round-input-bg" id="inputFirstName" type="text" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputLastName">Nom de famille*</label>
+                                <input class="no-round-input-bg" id="inputLastName" type="text" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputCompanyName">Nom de l'entreprise (facultatif)</label>
+                            <input class="no-round-input-bg" id="inputCompanyName" type="text">
+                        </div>
+                        <div class="form-group">
+                            {{ form_start(form) }}
+                            <div class="row">
+                            <label for="inputCountry">Pays*</label>
+                                {{ form_row(form.country) }}
+                            </div>
+                            {{ form_end(form) }}
+
+                        </div>
+                        <div class="form-group">
+                            <label for="inputStreet">Adresse de rue*</label>
+                            <input class="no-round-input-bg" id="inputStreet" type="text" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputZip">Code postal / ZIP (facultatif)</label>
+                            <input class="no-round-input-bg" id="inputZip" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputCity">Ville / Ville *</label>
+                            <input class="no-round-input-bg" id="inputCity" type="text" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPhone">Téléphone*</label>
+                            <input class="no-round-input-bg" id="inputPhone" type="text" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail">Adresse e-mail *</label>
+                            <input class="no-round-input-bg" id="inputEmail" type="email" required>
+                        </div>
+                        <h2 class="form-title">Adresse de livraison</h2>
+                        <div class="form-group">
+                            <input id="differentAddress" type="checkbox">
+                            <label for="differentAddress">Livrer à une adresse différente?</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputNote">Notes de commande (facultatif)</label>
+                            <textarea class="textarea-form-bg" id="inputNote" name="" cols="30" rows="7"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <h2 class="form-title">Votre commande</h2>
+                        <div class="shopping-cart">
+                            <div class="cart-total_block">
+                                <table class="table">
+                                    <colgroup>
+                                        <col span="1" style="width: 50%">
+                                        <col span="1" style="width: 50%">
+                                    </colgroup>
+                                    <tbody>
+                                    <tr>
+                                        <th class="name">Dorate × <span>12</span></th>
+                                        <td class="price black" style="border-top: 0">€168.00</td>
+                                    </tr>
+                                    <tr>
+                                        <th>SUBTOTAL</th>
+                                        <td class="price">€169.00</td>
+                                    </tr>
+                                    <tr>
+                                        <th>LIVRAISON</th>
+                                        <td>
+                                            <p>livraison gratuit</p>
+                                            <p>Calculer Frais de port</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>TOTAL</th>
+                                        <td class="total">€169.00</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="form-group">
+                                <input type="radio" name="paymethod" id="shipping" value="option1" checked>
+                                <label for="shipping">Paiement à la livraison</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="radio" name="paymethod" id="CP" value="option2">
+                                <label for="CP">CP</label>
+                            </div>
+                            <button class="normal-btn submit-btn">Passer la commande</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="partner">
+        <div class="container">
+            <div class="partner_block d-flex justify-content-between" data-slick="{&quot;slidesToShow&quot;: 6}">
+                <div class="partner--logo" href=""> <a href="#"><img src="assets/images/partner/partner_01.png" alt="partner logo"></a></div>
+                <div class="partner--logo" href=""> <a href="#"><img src="assets/images/partner/partner_02.png" alt="partner logo"></a></div>
+                <div class="partner--logo" href=""> <a href="#"><img src="assets/images/partner/partner_01.png" alt="partner logo"></a></div>
+                <div class="partner--logo" href=""> <a href="#"><img src="assets/images/partner/partner_02.png" alt="partner logo"></a></div>
+                <div class="partner--logo" href=""> <a href="#"><img src="assets/images/partner/partner_01.png" alt="partner logo"></a></div>
+                <div class="partner--logo" href=""> <a href="#"><img src="assets/images/partner/partner_02.png" alt="partner logo"></a></div>
+                <div class="partner--logo" href=""> <a href=""><img src="assets/images/partner/partner_01.png" alt="partner logo"></a></div>
+            </div>
+        </div>
+    </div>
+    <!-- End partner-->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-4 text-sm-center text-md-left">
+                    <div class="footer-logo"><img src="assets/images/logo.png" alt=""></div>
+                    <div class="footer-contact">
+                        <p>Address: 20 Passage de la bonne Graine</p>
+                        <p>Phone: +65 11.188.888</p>
+                        <p>Email: contact@operam.fr</p>
+                    </div>
+                    <div class="footer-social"><a class="round-icon-btn" href=""><i class="fab fa-facebook-f"> </i></a><a class="round-icon-btn" href=""><i class="fab fa-twitter"></i></a><a class="round-icon-btn" href=""><i class="fab fa-invision"> </i></a><a class="round-icon-btn" href=""><i class="fab fa-pinterest-p"></i></a></div>
+                </div>
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-12 col-sm-4 text-sm-center text-md-left">
+                            <div class="footer-quicklink">
+                                <h5>Infomation</h5><a href="about_us.html">About us</a><a href="checkout.html">Check out</a><a href="contact.html">Contact</a><a href="about_us.html">Service</a>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-4 text-sm-center text-md-left">
+                            <div class="footer-quicklink">
+                                <h5>My Account</h5><a href="login.html">My Account</a><a href="contact.html">Contact</a><a href="shop_cart.html">Shopping cart</a><a href="shop_grid+list_3col.html">Shop</a>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-4 text-sm-center text-md-left">
+                            <div class="footer-quicklink">
+                                <h5>Quick Shop</h5><a href="about_us.html">About us</a><a href="checkout.html">Check out</a><a href="contact.html">Contact</a><a href="about_us.html">Service</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="newletter">
+            <div class="container">
+                <div class="row justify-content-between align-items-center">
+                    <div class="col-12 col-md-7">
+                        <div class="newletter_text text-center text-md-left">
+                            <h5>Join Our Newsletter Now</h5>
+                            <p>Get E-mail updates about our latest shop and special offers.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-5">
+                        <div class="newletter_input">
+                            <input class="round-input" type="text" placeholder="Enter your email">
+                            <button>Subcribe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-credit">
+            <div class="container">
+                <div class="footer-creadit_block d-flex flex-column flex-md-row justify-content-start justify-content-md-between align-items-baseline align-items-md-center">
+                    <p class="author">Copyright © 2021 OPERAM - All Rights Reserved.</p><img class="payment-method" src="assets/images/payment.png" alt="">
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End footer-->
+    </div>
+{% endblock %}

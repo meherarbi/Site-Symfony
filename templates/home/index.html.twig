@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/icomoon.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/jquery.fancybox.min.css') }}">
     <link rel="shortcut icon" href="{{ asset('assets/images/shortcut_logo.png') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/mystore.css') }}">
 </head>
 <body>
 <div id="main">
@@ -34,6 +35,8 @@
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
+                        <a href="{{ path('cart') }}">
+                            <img src="{{ asset ('assets/images/shopping-cart.png') }}" class="cart-icon"></a>
                         <div class="header-right d-flex flex-column flex-md-row justify-content-md-end justify-content-center align-items-center">
                             <div class="social-link d-flex"><a href=""><i class="fab fa-facebook-f"> </i></a><a href=""><i class="fab fa-twitter"></i></a><a href=""><i class="fab fa-invision"> </i></a><a href=""><i class="fab fa-pinterest-p"> </i></a></div>
                             <div class="language">
