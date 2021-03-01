@@ -69,12 +69,9 @@
                             <input class="no-round-input-bg" id="inputCompanyName" type="text">
                         </div>
                         <div class="form-group">
-                            {{ form_start(form) }}
-                            <div class="row">
+
                             <label for="inputCountry">Pays*</label>
-                                {{ form_row(form.country) }}
-                            </div>
-                            {{ form_end(form) }}
+
 
                         </div>
                         <div class="form-group">
@@ -97,11 +94,7 @@
                             <label for="inputEmail">Adresse e-mail *</label>
                             <input class="no-round-input-bg" id="inputEmail" type="email" required>
                         </div>
-                        <h2 class="form-title">Adresse de livraison</h2>
-                        <div class="form-group">
-                            <input id="differentAddress" type="checkbox">
-                            <label for="differentAddress">Livrer à une adresse différente?</label>
-                        </div>
+
                         <div class="form-group">
                             <label for="inputNote">Notes de commande (facultatif)</label>
                             <textarea class="textarea-form-bg" id="inputNote" name="" cols="30" rows="7"></textarea>
@@ -154,79 +147,10 @@
             </form>
         </div>
     </div>
-    <div class="partner">
-        <div class="container">
-            <div class="partner_block d-flex justify-content-between" data-slick="{&quot;slidesToShow&quot;: 6}">
-                <div class="partner--logo" href=""> <a href="#"><img src="assets/images/partner/partner_01.png" alt="partner logo"></a></div>
-                <div class="partner--logo" href=""> <a href="#"><img src="assets/images/partner/partner_02.png" alt="partner logo"></a></div>
-                <div class="partner--logo" href=""> <a href="#"><img src="assets/images/partner/partner_01.png" alt="partner logo"></a></div>
-                <div class="partner--logo" href=""> <a href="#"><img src="assets/images/partner/partner_02.png" alt="partner logo"></a></div>
-                <div class="partner--logo" href=""> <a href="#"><img src="assets/images/partner/partner_01.png" alt="partner logo"></a></div>
-                <div class="partner--logo" href=""> <a href="#"><img src="assets/images/partner/partner_02.png" alt="partner logo"></a></div>
-                <div class="partner--logo" href=""> <a href=""><img src="assets/images/partner/partner_01.png" alt="partner logo"></a></div>
-            </div>
-        </div>
-    </div>
+
+
     <!-- End partner-->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-sm-12 col-md-4 text-sm-center text-md-left">
-                    <div class="footer-logo"><img src="assets/images/logo.png" alt=""></div>
-                    <div class="footer-contact">
-                        <p>Address: 20 Passage de la bonne Graine</p>
-                        <p>Phone: +65 11.188.888</p>
-                        <p>Email: contact@operam.fr</p>
-                    </div>
-                    <div class="footer-social"><a class="round-icon-btn" href=""><i class="fab fa-facebook-f"> </i></a><a class="round-icon-btn" href=""><i class="fab fa-twitter"></i></a><a class="round-icon-btn" href=""><i class="fab fa-invision"> </i></a><a class="round-icon-btn" href=""><i class="fab fa-pinterest-p"></i></a></div>
-                </div>
-                <div class="col-md-8">
-                    <div class="row">
-                        <div class="col-12 col-sm-4 text-sm-center text-md-left">
-                            <div class="footer-quicklink">
-                                <h5>Infomation</h5><a href="about_us.html">About us</a><a href="checkout.html">Check out</a><a href="contact.html">Contact</a><a href="about_us.html">Service</a>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-4 text-sm-center text-md-left">
-                            <div class="footer-quicklink">
-                                <h5>My Account</h5><a href="login.html">My Account</a><a href="contact.html">Contact</a><a href="shop_cart.html">Shopping cart</a><a href="shop_grid+list_3col.html">Shop</a>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-4 text-sm-center text-md-left">
-                            <div class="footer-quicklink">
-                                <h5>Quick Shop</h5><a href="about_us.html">About us</a><a href="checkout.html">Check out</a><a href="contact.html">Contact</a><a href="about_us.html">Service</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="newletter">
-            <div class="container">
-                <div class="row justify-content-between align-items-center">
-                    <div class="col-12 col-md-7">
-                        <div class="newletter_text text-center text-md-left">
-                            <h5>Join Our Newsletter Now</h5>
-                            <p>Get E-mail updates about our latest shop and special offers.</p>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-5">
-                        <div class="newletter_input">
-                            <input class="round-input" type="text" placeholder="Enter your email">
-                            <button>Subcribe</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="footer-credit">
-            <div class="container">
-                <div class="footer-creadit_block d-flex flex-column flex-md-row justify-content-start justify-content-md-between align-items-baseline align-items-md-center">
-                    <p class="author">Copyright © 2021 OPERAM - All Rights Reserved.</p><img class="payment-method" src="assets/images/payment.png" alt="">
-                </div>
-            </div>
-        </div>
-    </footer>
+
     <!-- End footer-->
     </div>
 {% endblock %}

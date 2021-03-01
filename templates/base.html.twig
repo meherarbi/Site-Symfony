@@ -18,6 +18,9 @@
     <link rel="stylesheet" href="{{ asset('assets/css/jquery.fancybox.min.css') }}">
     <link rel="shortcut icon" href="{{ asset('assets/images/shortcut_logo.png') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/mystore.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/css/intlTelInput.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/css/demo.css') }}">
+
 </head>
 <body>
 <div id="main">
@@ -304,5 +307,35 @@
     <script src="{{ asset('assets/js/numscroller-1.0.js') }}"></script>
     <script src="{{ asset('assets/js/vanilla-tilt.min.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script src="{{ asset('build/js/intlTelInput.min.js') }}"></script>
+    <script src="{{ asset('https://code.jquery.com/jquery-latest.min.js') }}"></script>
+    <script src="{{ asset('build/js/intlTelInput-jquery.min.js') }}"></script>
+    <script src="{{ asset('build/js/intlTelInput.js') }}"></script>
+    <script>
+        var input = document.querySelector("#inputPhone");
+        window.intlTelInput(input, {
+            // allowDropdown: false,
+            // autoHideDialCode: false,
+            // autoPlaceholder: "off",
+            // dropdownContainer: document.body,
+            // excludeCountries: ["us"],
+            // formatOnDisplay: false,
+            // geoIpLookup: function(callback) {
+            //   $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+            //     var countryCode = (resp && resp.country) ? resp.country : "";
+            //     callback(countryCode);
+            //   });
+            // },
+            // hiddenInput: "full_number",
+            // initialCountry: "auto",
+            // localizedCountries: { 'de': 'Deutschland' },
+            // nationalMode: false,
+            // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+            // placeholderNumberType: "MOBILE",
+            // preferredCountries: ['cn', 'jp'],
+            // separateDialCode: true,
+            utilsScript: "build/js/utils.js",
+        });
+    </script>
 </body>
 </html>
