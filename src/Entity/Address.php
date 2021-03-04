@@ -3,13 +3,16 @@
 namespace App\Entity;
 
 use App\Repository\AddressRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping as ORM;
+
 
 /**
  * @ORM\Entity(repositoryClass=AddressRepository::class)
  */
 class Address
 {
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -31,7 +34,9 @@ class Address
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $fistname;
+
+    private $firstname;
+
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -97,14 +102,14 @@ class Address
         return $this;
     }
 
-    public function getFistname(): ?string
+    public function getFirstname(): ?string
     {
-        return $this->fistname;
+        return $this->firstname;
     }
 
-    public function setFistname(string $fistname): self
+    public function setFirstname(string $firstname): self
     {
-        $this->fistname = $fistname;
+        $this->firstname = $firstname;
 
         return $this;
     }

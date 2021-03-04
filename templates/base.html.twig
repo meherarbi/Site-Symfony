@@ -165,6 +165,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-12 col-md-8 col-lg-8 col-xl-9 order-1 order-md-2">
                         <div class="row">
                             <div class="col-12 col-xl-8">
@@ -210,6 +211,7 @@
 
     <!-- End header-->
     {% block container %}
+
     {% endblock %}
 
 
@@ -219,6 +221,7 @@
         {% endblock %}
         <div class="newletter">
         </div>
+
         <div class="partner">
             <div class="container">
                 <div class="partner_block d-flex justify-content-between" data-slick="{&quot;slidesToShow&quot;: 6}">
@@ -293,6 +296,7 @@
             </div>
         </footer>
     </div>
+</div>
     <!-- End footer-->
 
     <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js') }}"></script>
@@ -307,10 +311,10 @@
     <script src="{{ asset('assets/js/numscroller-1.0.js') }}"></script>
     <script src="{{ asset('assets/js/vanilla-tilt.min.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
-    <script src="{{ asset('build/js/intlTelInput.min.js') }}"></script>
-    <script src="{{ asset('https://code.jquery.com/jquery-latest.min.js') }}"></script>
-    <script src="{{ asset('build/js/intlTelInput-jquery.min.js') }}"></script>
-    <script src="{{ asset('build/js/intlTelInput.js') }}"></script>
+<script src="{{ asset('build/js/intlTelInput.min.js') }}"></script>
+<script src="{{ asset('build/js/intlTelInput-jquery.min.js') }}"></script>
+<script src="{{ asset('build/js/intlTelInput.js') }}"></script>
+
     <script>
         var input = document.querySelector("#inputPhone");
         window.intlTelInput(input, {

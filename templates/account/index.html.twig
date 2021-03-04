@@ -3,6 +3,12 @@
 {% block title %}Folio Shop{% endblock %}
 
 {% block container %}
+    <br>
+    <hr>
+    <div class="text-center">
 Bienvenue {{ app.user.firstname }} in your account
     <a href="{{ path('account_password') }}">Change My password </a>
+    <p>-ajouter mes adresses</p>
+    <p>-Mes Commandes</p>
+    </div>
 {% endblock %}

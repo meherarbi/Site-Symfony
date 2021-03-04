@@ -3,154 +3,33 @@
 {% block title %}Folio Shop{% endblock %}
 
 {% block container %}
-    <div class="ogami-breadcrumb">
-    <div class="container">
-        <ul>
-            <li> <a class="breadcrumb-link" href="index.html"> <i class="fas fa-home"></i>Accueil</a></li>
-            <li> <a class="breadcrumb-link" href="index.html">Magasin</a></li>
-            <!--            Accueil Magasin Panier d'achat-->
-            <li> <a class="breadcrumb-link active" href="index.html">Panier d'achat</a></li>
-        </ul>
-    </div>
-    </div>
-    <!-- End breadcrumb-->
-    <div class="order-step">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="order-step_block">
-                        <div class="row no-gutters">
-                            <div class="col-12 col-md-4">
-                                <div class="step-block step-block--1">
-                                    <div class="step">
-                                        <h2>Panier</h2><span>01</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <div class="step-block active">
-                                    <div class="step">
-                                        <h2>Check Out</h2><span>02</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <div class="step-block">
-                                    <div class="step">
-                                        <h2>Commande terminée</h2><span>03</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End order step-->
-    <div class="shop-checkout">
-        <div class="container">
-            <form action="" method="post">
-                <div class="row">
-                    <div class="col-12 col-lg-8">
-                        <h2 class="form-title">Détails de la facturation</h2>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="inputFirstName">Prénom* </label>
-                                <input class="no-round-input-bg" id="inputFirstName" type="text" required>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="inputLastName">Nom de famille*</label>
-                                <input class="no-round-input-bg" id="inputLastName" type="text" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputCompanyName">Nom de l'entreprise (facultatif)</label>
-                            <input class="no-round-input-bg" id="inputCompanyName" type="text">
-                        </div>
-                        <div class="form-group">
-
-                            <label for="inputCountry">Pays*</label>
+    <a href="{{ path('account_address_add') }}" class="btn btn-info btn-sm float-right">Ajouter une Adresse </a>
+    <h1>Mes Adresses</h1>
+    <a href ="{{ path('account_address') }}">Retour</a>
+    <hr>
+{% if app.user.addresses | length == 0 %}
+    <p class="text-center">
+        vous n'avez pas encore ajouté d'adresse dans votr compte clientpour ajouter une veuillez<a href="">cliquer ici </a>
+    </p>
+    {% else %}
+       <div class="row">
+           {% for address in app.user.addresses %}
+               <div class="col-md-4">
+                   <div class="card" style="width: 18rem;">
+                       <div class="card-body">
+                           <h5 class="card-title">{{ address.name }}</h5>
+                           <p class="card-text">
+                               {{ address.address }},<br/>
+                               {{ address.postal }} - {{ address.city }} - {{ address.country }}
+                           </p>
+                           <a href="{{path('account_address_edit',{'id':address.id }) }}">Modifier</a> <a href="{{path('account_address_delete', {'id': address.id})}}">supprimer</a>
+                       </div>
+                   </div>
+               </div>
+           {% endfor %}
 
 
-                        </div>
-                        <div class="form-group">
-                            <label for="inputStreet">Adresse de rue*</label>
-                            <input class="no-round-input-bg" id="inputStreet" type="text" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputZip">Code postal / ZIP (facultatif)</label>
-                            <input class="no-round-input-bg" id="inputZip" type="text">
-                        </div>
-                        <div class="form-group">
-                            <label for="inputCity">Ville / Ville *</label>
-                            <input class="no-round-input-bg" id="inputCity" type="text" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputPhone">Téléphone*</label>
-                            <input class="no-round-input-bg" id="inputPhone" type="text" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputEmail">Adresse e-mail *</label>
-                            <input class="no-round-input-bg" id="inputEmail" type="email" required>
-                        </div>
+       </div>
+    {% endif %}
 
-                        <div class="form-group">
-                            <label for="inputNote">Notes de commande (facultatif)</label>
-                            <textarea class="textarea-form-bg" id="inputNote" name="" cols="30" rows="7"></textarea>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <h2 class="form-title">Votre commande</h2>
-                        <div class="shopping-cart">
-                            <div class="cart-total_block">
-                                <table class="table">
-                                    <colgroup>
-                                        <col span="1" style="width: 50%">
-                                        <col span="1" style="width: 50%">
-                                    </colgroup>
-                                    <tbody>
-                                    <tr>
-                                        <th class="name">Dorate × <span>12</span></th>
-                                        <td class="price black" style="border-top: 0">€168.00</td>
-                                    </tr>
-                                    <tr>
-                                        <th>SUBTOTAL</th>
-                                        <td class="price">€169.00</td>
-                                    </tr>
-                                    <tr>
-                                        <th>LIVRAISON</th>
-                                        <td>
-                                            <p>livraison gratuit</p>
-                                            <p>Calculer Frais de port</p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>TOTAL</th>
-                                        <td class="total">€169.00</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="form-group">
-                                <input type="radio" name="paymethod" id="shipping" value="option1" checked>
-                                <label for="shipping">Paiement à la livraison</label>
-                            </div>
-                            <div class="form-group">
-                                <input type="radio" name="paymethod" id="CP" value="option2">
-                                <label for="CP">CP</label>
-                            </div>
-                            <button class="normal-btn submit-btn">Passer la commande</button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-
-
-    <!-- End partner-->
-
-    <!-- End footer-->
-    </div>
 {% endblock %}
