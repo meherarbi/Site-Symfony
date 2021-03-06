@@ -79,6 +79,14 @@
   animation: mymove 1s infinite;
   -webkit-transform-origin: center bottom;
   transform-origin: center bottom;
+  position: absolute;
+  right: 50%;
+  width:500px;
+
+
+
+
+
 }
 
 @-webkit-keyframes mymove {

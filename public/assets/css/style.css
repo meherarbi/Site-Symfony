@@ -3647,7 +3647,7 @@ header.coffee-2 .navigation-filter .website-search .filter-search .categories-se
   margin-top: 30px; }
   .banner_v2 .banner-block, .banner_v3 .banner-block {
     padding: 70px 0;
-    background-image: url(../images/homepage03/banner_bg.jpg);
+    background-image: url(../images/homepage03/hh.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover; }
@@ -4883,7 +4883,7 @@ footer.coffee .newletter {
 	Quick banner
 *************************************/
 .quick-banner {
-  background-image: url(../images/homepage03/quick_banner_1_bg.jpg);
+  background-image: url(../images/homepage03/cv.jpg);
   background-repeat: no-peat;
   background-position: center;
   background-size: cover;
