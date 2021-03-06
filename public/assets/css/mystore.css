@@ -89,3 +89,18 @@ P.login-box-msg {
     border: 2px solid #fd5f5c;
     text-decoration: none;
 }
+.form-check{
+    background-color:wheat ;
+    padding: 20px 65px;
+    margin-top: 7px;
+}
+#order_addresses_1.form-check{
+    padding-left: 1px;
+    padding-top: 50%;
+}
+.order-summary{
+    background-color:wheat ;
+    padding: 20px;
+    margin-top:20px;
+
+}

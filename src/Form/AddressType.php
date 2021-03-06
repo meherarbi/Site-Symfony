@@ -19,7 +19,9 @@ class AddressType extends AbstractType
                 'label'=>'Donnez un titre pour votre adresse'])
             ->add('firstname',TextType::class)
             ->add('lastname',TextType::class)
-            ->add('company',TextType::class)
+            ->add('company',TextType::class,[
+                'required'=>false
+            ])
             ->add('address',TextType::class)
             ->add('postal',TextType::class)
             ->add('city',TextType::class)
