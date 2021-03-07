@@ -24,11 +24,6 @@ class OrderDetails
     private $myOrder;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $product;
-
-    /**
      * @ORM\Column(type="integer")
      */
     private $quantity;
@@ -42,6 +37,12 @@ class OrderDetails
      * @ORM\Column(type="float")
      */
     private $total;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Product::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $product;
 
     public function getId(): ?int
     {
@@ -60,17 +61,6 @@ class OrderDetails
         return $this;
     }
 
-    public function getProduct(): ?string
-    {
-        return $this->product;
-    }
-
-    public function setProduct(string $product): self
-    {
-        $this->product = $product;
-
-        return $this;
-    }
 
     public function getQuantity(): ?int
     {
@@ -104,6 +94,18 @@ class OrderDetails
     public function setTotal(float $total): self
     {
         $this->total = $total;
+
+        return $this;
+    }
+
+    public function getProduct(): ?Product
+    {
+        return $this->product;
+    }
+
+    public function setProduct(?Product $product): self
+    {
+        $this->product = $product;
 
         return $this;
     }

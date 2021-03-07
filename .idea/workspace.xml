@@ -11,10 +11,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f70be937-0256-4def-a8da-3bb2207b00aa" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/templates/home/categorie_menu.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/order/recap.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/animate.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/animate.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/OrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/OrderDetails.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/OrderDetails.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/OrderType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/OrderType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/home/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/order/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +151,7 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/order" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -155,6 +161,11 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.smartKeys" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\site\templates\order" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -185,7 +196,7 @@
       <workItem from="1614700258349" duration="7956000" />
       <workItem from="1614784716496" duration="3449000" />
       <workItem from="1614790005135" duration="51140000" />
-      <workItem from="1614981550954" duration="24554000" />
+      <workItem from="1614981550954" duration="45252000" />
     </task>
     <servers />
   </component>
@@ -217,29 +228,29 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="396" y="86" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.768@0.0.1366.768" timestamp="1613856019448" />
-    <state x="413" y="139" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1614811652382">
+    <state x="413" y="139" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1615152379011">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="413" y="139" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.768@0.0.1366.768" timestamp="1614811652382" />
+    <state x="413" y="139" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.768@0.0.1366.768" timestamp="1615152379011" />
     <state x="517" y="303" key="NewPhpFileDialog" timestamp="1614161035149">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="517" y="303" key="NewPhpFileDialog/0.0.1366.768@0.0.1366.768" timestamp="1614161035149" />
-    <state x="184" y="29" key="SettingsEditor" timestamp="1613660457758">
+    <state x="184" y="29" key="SettingsEditor" timestamp="1615145684781">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="184" y="29" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1613660457758" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1613519049529">
+    <state x="184" y="29" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1615145684781" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1615149120657">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="498" height="446" key="SwitcherDM/0.0.1366.768@0.0.1366.768" timestamp="1613519049529" />
+    <state width="498" height="446" key="SwitcherDM/0.0.1366.768@0.0.1366.768" timestamp="1615149120657" />
     <state x="339" y="172" key="run.anything.popup" timestamp="1614810626224">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="339" y="172" key="run.anything.popup/0.0.1366.768@0.0.1366.768" timestamp="1614810626224" />
-    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1614989188630">
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1615144362019">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.0.1366.768@0.0.1366.768" timestamp="1614989188630" />
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.0.1366.768@0.0.1366.768" timestamp="1615144362019" />
   </component>
 </project>

@@ -161,13 +161,7 @@
                                                 <div class="categories-select d-flex align-items-center justify-content-around"><span>All Categories</span><i class="arrow_carrot-down"></i></div>
                                                 <div class="categories-select_box">
 
-                                                    <ul>
-                                                        <li>Mode Homme</li>
-                                                        <li>Mode Femme</li>
-                                                        <li>Sacs et chaussures</li>
-                                                        <li>Bijoux & Montres</li>
-                                                        <li>Beauté, santé et cheveux</li>
-                                                    </ul>
+                                                    {{ render(controller('App\\Controller\\HomeController::categorieMenu')) }}
                                                 </div>
                                             </div>
                                         </div>
