@@ -78,7 +78,9 @@ class OrderController extends AbstractController
 
         return $this->render('order/index.html.twig',[
             'form'=> $form->createView(),
-            'cart'=>$cart->getFull()
+            'cart'=>$cart->getFull(),
+//            'carrier'=>$carriers,
+//            'delivery'=>$delivery_content
         ]);
     }
 
@@ -89,6 +91,7 @@ class OrderController extends AbstractController
     {
         return $this->render('order/recap.html.twig',[
             'order'=> $order
+
         ]);
     }
 }

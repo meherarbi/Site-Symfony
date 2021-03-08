@@ -7,8 +7,13 @@
     <hr>
     <div class="row">
         <div class="col-md-6">
-            Mon adresse de livraison <br/>
-            Mon Transporteur
+            <strong>Mon adresse de livraison</strong> <br/>
+            <div class="form-check"> </div>
+            <hr>
+           <strong>Mon Transporteur</strong><br/>
+{#            {{ carrier.name }}<br/>#}
+{#            {{ carrier.description }}<br/>#}
+{#            {{ carrier.price |number_format(2,',','.') }}$<br/>#}
         </div>
         <div class="col-md-6">
             <div class="text-center"> <b>Mes Commandes</b><br/></div>
@@ -33,15 +38,18 @@
                 {% endfor %}
             </div>
 
+
             <hr>
-            <strong>sous-Total: </strong>{{ (total/100)|number_format(2,',','.') }} $
-            <strong>Livraison: </strong>
+            <strong>sous-Total: </strong>{{ order.orderDetails|length }}<br/>
+            <strong>Livraison: </strong>7$
+            <hr>
+            <strong>Total: </strong>{{ (total/100)|number_format(2,',','.') }} $
 
 
 
 
             <a href="" class="btn btn-success btn-block">Payer</a>
-            {{ order.orderDetails|length }}
+
         </div>
     </div>
 

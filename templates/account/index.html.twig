@@ -6,9 +6,12 @@
     <br>
     <hr>
     <div class="text-center">
-Bienvenue {{ app.user.firstname }} in your account
+Bienvenue {{ app.user.firstname }} in your account <br/>
+        <hr>
     <a href="{{ path('account_password') }}">Change My password </a>
-    <p>-ajouter mes adresses</p>
-    <p>-Mes Commandes</p>
+        <hr>
+        <a href="{{ path('account_address') }}"><p>- Mes adresses</p></a>
+        <hr>
+        <a href="{{ path('cart') }}"><p>-Mes Commandes</p></a>
     </div>
 {% endblock %}
