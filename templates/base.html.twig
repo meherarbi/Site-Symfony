@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/mystore.css') }}">
     <link rel="stylesheet" href="{{ asset('build/css/intlTelInput.css') }}">
     <link rel="stylesheet" href="{{ asset('build/css/demo.css') }}">
+    {% block javascript %}
+    {% endblock %}
 
 </head>
 <body>
@@ -55,7 +57,7 @@
                                 </div>
                             </div>
                             {% if app.user %}
-                                <div class="login d-flex"><a href="{{ path('account') }}"><i class="fas fa-user"></i>My Account</a></div>&nbsp;&nbsp;&nbsp;
+                                <div class="login d-flex"><a href="{{ path('account') }}"><i class="fas fa-user"></i>My Account {{ app.user.firstname }}</a></div>&nbsp;&nbsp;&nbsp;
                                 <div class="login d-flex"><a href="{{ path('app_logout') }}"><i class="fas fa-user"></i>Logout</a></div>
                             {% else %}
                                 <div class="login d-flex"><a href="{{ path('app_login') }}"><i class="fas fa-user"></i>Login</a></div>&nbsp;&nbsp;&nbsp;

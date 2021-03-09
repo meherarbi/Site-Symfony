@@ -8,12 +8,13 @@
     <div class="row">
         <div class="col-md-6">
             <strong>Mon adresse de livraison</strong> <br/>
+            {{ delivery|raw }}
             <div class="form-check"> </div>
             <hr>
-           <strong>Mon Transporteur</strong><br/>
-{#            {{ carrier.name }}<br/>#}
-{#            {{ carrier.description }}<br/>#}
-{#            {{ carrier.price |number_format(2,',','.') }}$<br/>#}
+            <strong>Mon Transporteur</strong><br/>
+                       {{ carrier.name }}<br/>
+                       {{ carrier.description }}<br/>
+                      {{ carrier.price |number_format(2,',','.') }}$<br/>
         </div>
         <div class="col-md-6">
             <div class="text-center"> <b>Mes Commandes</b><br/></div>
@@ -21,29 +22,29 @@
 
             <div class="order-summary">
                 {% set total=null %}
-                {% for key, item in order.orderDetails %}
+                {% for key, item in cart %}
                     <div class="row {% if key > 0 %}mt-2{% endif %}">
                         <div class="col-2 my-auto"><img src="/uploads/{{ item.product.illustration }}" alt="{{ item.product.name }}" class="img-fluid"></div>
                         <div class="col-8 my-auto">
                             {{ item.product.name }}<br/>
                             <small>{{ item.product.subtitle }}
-                            <br/>
-                        x {{ item.quantity }}</small>
+                                <br/>
+                                x {{ item.quantity }}</small>
                         </div>
                         <div class="col-2 my-auto">
                             {{ ((item.product.price*item.quantity)/100)|number_format(2) }} $
                         </div>
                     </div>
-                {% set total=total+(item.product.price*item.quantity) %}
+                    {% set total=total+(item.product.price*item.quantity) %}
                 {% endfor %}
             </div>
 
 
             <hr>
-            <strong>sous-Total: </strong>{{ order.orderDetails|length }}<br/>
-            <strong>Livraison: </strong>7$
+            <strong>sous-Total: </strong>{{ cart|length }}<br/>
+            <strong>Livraison: </strong>{{ (carrier.price)|number_format(2,',','.') }} $
             <hr>
-            <strong>Total: </strong>{{ (total/100)|number_format(2,',','.') }} $
+            <strong>Total: </strong>{{ ((total/100)+carrier.price)|number_format(2,',','.') }} $
 
 
 

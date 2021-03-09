@@ -3,10 +3,13 @@
 namespace App\Controller;
 
 use App\Classe\Cart;
+use App\Entity\Carrier;
 use App\Entity\Order;
 use App\Entity\OrderDetails;
 use App\Form\OrderType;
 use Doctrine\ORM\EntityManagerInterface;
+use Stripe\Checkout\Session;
+use Stripe\Stripe;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,6 +30,25 @@ class OrderController extends AbstractController
         if (!$this->getUser()->getAddresses()->getValues()){
             return $this->redirectToRoute('account_address_add');
         }
+
+        $form = $this->createForm(OrderType::class, null, [
+            'user'=>$this->getUser()
+        ]);
+
+
+
+        return $this->render('order/index.html.twig',[
+            'form'=>$form->createView(),
+            'cart'=>$cart->getFull(),
+
+        ]);
+    }
+
+    /**
+     * @Route("/commande/recap", name="order_recap" )
+     */
+    public function recap( Cart $cart, request $request)
+    {
         $form = $this->createForm(OrderType::class, null, [
             'method' => 'POST',
             'user'=>$this->getUser()
@@ -41,6 +63,7 @@ class OrderController extends AbstractController
             $delivery_content = $delivery->getFirstname().' '.$delivery->getLastname();
             $delivery_content .= '<br/>'.$delivery->getPhone();
 
+
             if ($delivery->getCompany()){
                 $delivery_content .='<br/>'.$delivery->getCompany();
             }
@@ -48,7 +71,9 @@ class OrderController extends AbstractController
             $delivery_content .='<br/>'.$delivery->getPostal().''.$delivery->getCity();
             $delivery_content .='<br/>'.$delivery->getCountry();
 
+
             //enregistrer ma commande
+
             $order = new Order();
             $order->setUser($this->getUser());
             $order->setCreatedAt($date);
@@ -59,39 +84,33 @@ class OrderController extends AbstractController
 
             $this->entityManager->persist($order);
 
+
+           // enregistre les details de produits
             foreach ($cart->getFull() as $product){
                 $orderDetails = new OrderDetails();
                 $orderDetails->setMyOrder($order);
-                $orderDetails->setProduct($product['product']); // enregistre le produit pas le nom change la relation dans t entité
+                $orderDetails->setProduct($product['product']);
                 $orderDetails->setQuantity($product['quantity']);
                 $orderDetails->setPrice($product['product']->getPrice());
                 $orderDetails->setTotal($product['product']->getPrice() * $product['quantity']);
 
                 $this->entityManager->persist($orderDetails);
-            }
 
-            $this->entityManager->flush();
+                $this->entityManager->flush();
 
-            return $this->redirectToRoute('order_recap', ['id' => $order->getId()]);
+            return $this->render('order/recap.html.twig',[
+                'cart'=> $cart->getFull(),
+                'carrier'=>$carriers,
+                'delivery'=>$delivery_content
+            ]);
 
         }
-
-        return $this->render('order/index.html.twig',[
-            'form'=> $form->createView(),
-            'cart'=>$cart->getFull(),
-//            'carrier'=>$carriers,
-//            'delivery'=>$delivery_content
-        ]);
-    }
-
-    /**
-     * @Route("/commande/recap/{id}", name="order_recap" )
-     */
-    public function recap(Order $order)
-    {
-        return $this->render('order/recap.html.twig',[
-            'order'=> $order
-
-        ]);
+        //return $this->redirectToRoute('order_recap', ['id' => $order->getId()]);
+//        return $this->render('order/recap.html.twig',[
+//            'cart'=> $cart->getFull(),
+//            'form'=>$form,
+//
+//        ]);
+        }
     }
 }

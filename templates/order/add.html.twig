@@ -1,14 +1,24 @@
 {% extends 'base.html.twig' %}
+{% block javascript %}
+<script src="https://js.stripe.com/v3/"></script>
+{% endblock %}
 
 {% block title %}Valider Mes commande{% endblock %}
+
+
 
 {% block content %}
     <h2>Mon Recap </h2>
     <hr>
     <div class="row">
         <div class="col-md-6">
-            Mon adresse de livraison <br/>
-            Mon Transporteur
+            <strong>Mon adresse de livraison</strong> <br/>
+            <div class="form-check"> </div>
+            <hr>
+            <strong>Mon Transporteur</strong><br/>
+            {#            {{ carrier.name }}<br/>#}
+            {#            {{ carrier.description }}<br/>#}
+            {#            {{ carrier.price |number_format(2,',','.') }}$<br/>#}
         </div>
         <div class="col-md-6">
             <div class="text-center"> <b>Mes Commandes</b><br/></div>
@@ -16,32 +26,35 @@
 
             <div class="order-summary">
                 {% set total=null %}
-                {% for key,product in cart %}
+                {% for key, item in order.orderDetails %}
                     <div class="row {% if key > 0 %}mt-2{% endif %}">
-                        <div class="col-2 my-auto"><img src="/uploads/{{ product.product.illustration }}" alt="{{ product.product.name }}" class="img-fluid"></div>
+                        <div class="col-2 my-auto"><img src="/uploads/{{ item.product.illustration }}" alt="{{ item.product.name }}" class="img-fluid"></div>
                         <div class="col-8 my-auto">
-                            {{ product.product.name }}<br/>
-                            <small>{{ product.product.subtitle }}
-                            <br/>
-                        x {{ product.quantity }}</small>
+                            {{ item.product.name }}<br/>
+                            <small>{{ item.product.subtitle }}
+                                <br/>
+                                x {{ item.quantity }}</small>
                         </div>
                         <div class="col-2 my-auto">
-                            {{ ((product.product.price*product.quantity)/100)|number_format(2) }} $
+                            {{ ((item.product.price*item.quantity)/100)|number_format(2) }} $
                         </div>
                     </div>
-                {% set total=total+(product.product.price*product.quantity) %}
+                    {% set total=total+(item.product.price*item.quantity) %}
                 {% endfor %}
             </div>
 
+
             <hr>
-            <strong>sous-Total: </strong>{{ (total/100)|number_format(2,',','.') }} $
-            <strong>Livraison: </strong>
+            <strong>sous-Total: </strong>{{ order.orderDetails|length }}<br/>
+            <strong>Livraison: </strong>7$
+            <hr>
+            <strong>Total: </strong>{{ (total/100)|number_format(2,',','.') }} $
 
 
 
 
             <a href="" class="btn btn-success btn-block">Payer</a>
-            {{ cart |length }}
+
         </div>
     </div>
 
