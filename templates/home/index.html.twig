@@ -21,45 +21,44 @@
 </head>
 <body>
 <div id="main">
+
     <header class="pink">
-        <div class="header-block d-flex align-items-center">
 
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-md-6">
-
-                        <div class="header-left d-flex flex-column flex-md-row align-items-center">
-                            <a class="logo" href="index.html"><img src="{{ asset('assets/images/logosh.png') }}" alt=""></a>
-                            <p class="d-flex align-items-center"><i class="fas fa-envelope"></i>meher.arbi@folio.com</p>
-                            <p class="d-flex align-items-center"><i class="fas fa-phone"></i>+216 58 58 83 43</p>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <a href="{{ path('cart') }}">
-                            <img src="{{ asset ('assets/images/shopping-cart.png') }}" class="cart-icon"></a>
-                        <div class="header-right d-flex flex-column flex-md-row justify-content-md-end justify-content-center align-items-center">
-                            <div class="social-link d-flex"><a href=""><i class="fab fa-facebook-f"> </i></a><a href=""><i class="fab fa-twitter"></i></a><a href=""><i class="fab fa-invision"> </i></a><a href=""><i class="fab fa-pinterest-p"> </i></a></div>
-                            <div class="language">
-                                <div class="selected-language"><img src="assets/images/homepage01/usa.jpg" alt="">English<i class="arrow_carrot-down"></i>
-                                    <ul class="list-language">
-                                        <li><img src="assets/images/homepage01/usa.jpg" alt="">English</li>
-                                        <li><img src="assets/images/homepage01/usa.jpg" alt="">Spain</li>
-                                        <li><img src="assets/images/homepage01/usa.jpg" alt="">Japan</li>
-                                    </ul>
-                                </div>
+            <div class="header-block d-flex align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="header-left d-flex flex-column flex-md-row align-items-center">
+                                <p class="d-flex align-items-center"><i class="fas fa-envelope"></i>contact@gmail.com</p>
+                                <p class="d-flex align-items-center"><i class="fas fa-phone"></i>+216 58 58 83 58</p>
                             </div>
-                            {% if app.user %}
-                                <div class="login d-flex"><a href="{{ path('account') }}"><i class="fas fa-user"></i>My Account</a></div>&nbsp;&nbsp;&nbsp;
-                                <div class="login d-flex"><a href="{{ path('app_logout') }}"><i class="fas fa-user"></i>Logout</a></div>
-                            {% else %}
-                                <div class="login d-flex"><a href="{{ path('app_login') }}"><i class="fas fa-user"></i>Login</a></div>&nbsp;&nbsp;&nbsp;
-                                <div class="login d-flex"><a href="{{ path('register') }}"><i class="fas fa-user"></i>Register</a></div>
-                            {% endif %}
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="header-right d-flex flex-column flex-md-row justify-content-md-end justify-content-center align-items-center">
+                                <div class="social-link d-flex"><a href=""><i class="fab fa-facebook-f"> </i></a><a href=""><i class="fab fa-twitter"></i></a><a href=""><i class="fab fa-invision"> </i></a><a href=""><i class="fab fa-pinterest-p"> </i></a></div>
+                                <div class="language">
+                                    <div class="selected-language"><img src="assets/images/homepage01/usa.jpg" alt="">English<i class="arrow_carrot-down"></i>
+                                        <ul class="list-language">
+                                            <li><img src="assets/images/homepage01/usa.jpg" alt="">English</li>
+                                            <li><img src="assets/images/homepage01/usa.jpg" alt="">Spain</li>
+                                            <li><img src="assets/images/homepage01/usa.jpg" alt="">Japan</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                {% if app.user %}
+                                    <div class="login d-flex"><a href="{{ path('account') }}"><i class="fas fa-user ">&nbsp;&nbsp;{{ app.user.firstname }}</i>Account</a></div>&nbsp;&nbsp;&nbsp;
+                                    <div class="login d-flex"><a href="{{ path('app_logout') }}"><i class="fas fa-user"></i>Logout</a></div>
+                                {% else %}
+                                    <div class="login d-flex"><a href="{{ path('app_login') }}"><i class="fas fa-user"></i>Login</a></div>&nbsp;&nbsp;&nbsp;
+                                    <div class="login d-flex"><a href="{{ path('register') }}"><i class="fas fa-user"></i>Register</a></div>
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+
+
 
         <div id="mobile-menu">
             <div class="container">

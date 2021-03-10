@@ -5,12 +5,12 @@
 
 
 {% block content %}
-    <div class="row product-container">
+    <div class="row product-container ">
         {% for product in products  %}
-            <div class="col-md-4">
+            <div class="col-md-3 ">
                 <div class="products-item text-center">
                     <a href="{{ path('product',{'slug':product.slug}) }}" ><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="img-fluid" height="90px"></a>
-                    <h5>{{ product.name }}</h5>
+                    <figcaption><h5>{{ product.name }}</h5></figcaption>
                     <span class="products-subtitle">{{ product.subtitle }}</span>
                     <span class="products-price">{{ (product.price/100)|number_format(2) }} $</span>
                 </div>

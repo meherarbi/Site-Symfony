@@ -19,45 +19,31 @@
     <link rel="shortcut icon" href="{{ asset('assets/images/shortcut_logo.png') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/mystore.css') }}">
     <link rel="stylesheet" href="{{ asset('build/css/intlTelInput.css') }}">
-    <link rel="stylesheet" href="{{ asset('build/css/demo.css') }}">
+{#    <link rel="stylesheet" href="{{ asset('build/css/demo.css') }}">#}
     {% block javascript %}
     {% endblock %}
-
 </head>
 <body>
 <div id="main">
-
     <header class="pink">
-        <div class="header-block d-flex align-items-center">
+        <div class="topimg"> <a href=""><img src="{{ asset('assets/images/homepage03/as7.webp') }}"  alt=""></a></div>
 
+
+        <div class="header-block d-flex align-items-center">
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-md-6">
-
                         <div class="header-left d-flex flex-column flex-md-row align-items-center">
-                            <a class="logo" href="{{ path('home')}}"><img src="{{ asset('assets/images/logosh.png') }}" alt=""></a>
-                            <p class="d-flex align-items-center"><i class="fas fa-envelope"></i>meher.arbi@folio.com</p>
-                            <p class="d-flex align-items-center"><i class="fas fa-phone"></i>+216 58 58 83 43 </p>
+                            <p class="d-flex align-items-center"><i class="fas fa-envelope"></i>contact@gmail.com</p>
+                            <p class="d-flex align-items-center"><i class="fas fa-phone"></i>+216 58 58 83 58</p>
                         </div>
-
                     </div>
                     <div class="col-12 col-md-6">
-                        <a href="{{ path('cart') }}">
-                            <img src="{{ asset ('assets/images/shopping-cart.png') }}" class="cart-icon"></a>
-
                         <div class="header-right d-flex flex-column flex-md-row justify-content-md-end justify-content-center align-items-center">
                             <div class="social-link d-flex"><a href=""><i class="fab fa-facebook-f"> </i></a><a href=""><i class="fab fa-twitter"></i></a><a href=""><i class="fab fa-invision"> </i></a><a href=""><i class="fab fa-pinterest-p"> </i></a></div>
-                            <div class="language">
-                                <div class="selected-language"><img src="assets/images/homepage01/usa.jpg" alt="">English<i class="arrow_carrot-down"></i>
-                                    <ul class="list-language">
-                                        <li><img src="assets/images/homepage01/usa.jpg" alt="">English</li>
-                                        <li><img src="assets/images/homepage01/usa.jpg" alt="">Spain</li>
-                                        <li><img src="assets/images/homepage01/usa.jpg" alt="">Japan</li>
-                                    </ul>
-                                </div>
-                            </div>
+
                             {% if app.user %}
-                                <div class="login d-flex"><a href="{{ path('account') }}"><i class="fas fa-user"></i>My Account {{ app.user.firstname }}</a></div>&nbsp;&nbsp;&nbsp;
+                                <div class="login d-flex"><a href="{{ path('account') }}"><i class="fas fa-user ">&nbsp;&nbsp;{{ app.user.firstname }}</i>Account</a></div>&nbsp;&nbsp;&nbsp;
                                 <div class="login d-flex"><a href="{{ path('app_logout') }}"><i class="fas fa-user"></i>Logout</a></div>
                             {% else %}
                                 <div class="login d-flex"><a href="{{ path('app_login') }}"><i class="fas fa-user"></i>Login</a></div>&nbsp;&nbsp;&nbsp;
@@ -68,7 +54,6 @@
                 </div>
             </div>
         </div>
-
 
         <div id="mobile-menu">
             <div class="container">
@@ -218,17 +203,18 @@
         {% endblock %}
         <div class="newletter">
         </div>
-
+</br>
+        <hr>
         <div class="partner">
             <div class="container">
                 <div class="partner_block d-flex justify-content-between" data-slick="{&quot;slidesToShow&quot;: 6}">
-                    <div class="partner--logo" href=""> <a href="#"><img src="assets/images/partner/partner_01.png" alt="partner" title="partner logo"></a></div>
-                    <div class="partner--logo" href=""> <a href="#"><img src="assets/images/partner/partner_02.png" alt="partner" title="partner logo"></a></div>
-                    <div class="partner--logo" href=""> <a href="#"><img src="assets/images/partner/partner_01.png" alt="partner" title="partner logo"></a></div>
-                    <div class="partner--logo" href=""> <a href="#"><img src="assets/images/partner/partner_02.png" alt="partner" title="partner logo"></a></div>
-                    <div class="partner--logo" href=""> <a href="#"><img src="assets/images/partner/partner_01.png" alt="partner" title="partner logo"></a></div>
-                    <div class="partner--logo" href=""> <a href="#"><img src="assets/images/partner/partner_02.png" alt="partner" title="partner logo"></a></div>
-                    <div class="partner--logo" href=""> <a href=""><img src="assets/images/partner/partner_01.png" alt="partner" title="partner logo"></a></div>
+                    <div class="partner--logo" href=""> <a href="#"><img src="assets/images/partner/a1.webp" alt="partner" title="partner logo"></a></div>
+                    <div class="partner--logo" href=""> <a href="#"><img src="assets/images/partner/a2.webp" alt="partner" title="partner logo"></a></div>
+                    <div class="partner--logo" href=""> <a href="#"><img src="assets/images/partner/a3.webp" alt="partner" title="partner logo"></a></div>
+                    <div class="partner--logo" href=""> <a href="#"><img src="assets/images/partner/a4.webp" alt="partner" title="partner logo"></a></div>
+                    <div class="partner--logo" href=""> <a href="#"><img src="assets/images/partner/a5.webp" alt="partner" title="partner logo"></a></div>
+                    <div class="partner--logo" href=""> <a href="#"><img src="assets/images/partner/a6.webp" alt="partner" title="partner logo"></a></div>
+                    <div class="partner--logo" href=""> <a href=""><img src="assets/images/partner/a7.webp" alt="partner" title="partner logo"></a></div>
                 </div>
             </div>
         </div>
@@ -339,4 +325,6 @@
         });
     </script>
 </body>
+{% block script %}
+{% endblock %}
 </html>

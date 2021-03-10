@@ -3,13 +3,10 @@
 namespace App\Controller;
 
 use App\Classe\Cart;
-use App\Entity\Carrier;
 use App\Entity\Order;
 use App\Entity\OrderDetails;
 use App\Form\OrderType;
 use Doctrine\ORM\EntityManagerInterface;
-use Stripe\Checkout\Session;
-use Stripe\Stripe;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -84,9 +81,8 @@ class OrderController extends AbstractController
 
             $this->entityManager->persist($order);
 
-
            // enregistre les details de produits
-            foreach ($cart->getFull() as $product){
+            foreach ($cart->getFull() as $product) {
                 $orderDetails = new OrderDetails();
                 $orderDetails->setMyOrder($order);
                 $orderDetails->setProduct($product['product']);
@@ -96,7 +92,9 @@ class OrderController extends AbstractController
 
                 $this->entityManager->persist($orderDetails);
 
-                $this->entityManager->flush();
+            }
+
+                //$this->entityManager->flush();
 
             return $this->render('order/recap.html.twig',[
                 'cart'=> $cart->getFull(),
@@ -106,7 +104,6 @@ class OrderController extends AbstractController
 
         }
 
-        }
         return $this->redirectToRoute('cart');
     }
 }

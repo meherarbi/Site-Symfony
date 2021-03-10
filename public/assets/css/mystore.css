@@ -90,7 +90,7 @@ P.login-box-msg {
     text-decoration: none;
 }
 .form-check{
-    background-color:wheat ;
+    background-color:#FFF0F5 ;
     padding: 20px 65px;
     margin-top: 7px;
 }
@@ -99,7 +99,7 @@ P.login-box-msg {
     padding-top: 50%;
 }
 .order-summary{
-    background-color:wheat ;
+    background-color:#FFF0F5 ;
     padding: 20px;
     margin-top:20px;
 
@@ -110,4 +110,49 @@ input[type="checkbox"] {
     padding: 0;
     position: absolute;
     right: 75%;
+}
+a:not([href]):not([tabindex]) {
+    color: white;
+    text-decoration: none;
+}
+
+div.col-md-4{
+    margin: auto;
+}
+div.row.product-container{
+
+    width: 100%;
+    margin: 5px;
+}
+i.fas.fa-user{
+    text-transform: capitalize;
+}
+
+element.style {
+    background-image: url(https://ae01.alicdn.com/kf/H98166ca…u.png_.webp);
+}
+.top-banner-container a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-indent: -9999rem;
+    background-repeat: no-repeat;
+    background-position: top;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+    margin-bottom:10%;
+
+}
+
+img {
+    border-style: none;
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-indent: -9999rem;
+    background-repeat: no-repeat;
+    background-position: top;
 }
