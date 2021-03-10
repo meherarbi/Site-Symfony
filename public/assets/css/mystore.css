@@ -104,3 +104,10 @@ P.login-box-msg {
     margin-top:20px;
 
 }
+input[type="radio"],
+input[type="checkbox"] {
+    box-sizing: border-box;
+    padding: 0;
+    position: absolute;
+    right: 75%;
+}

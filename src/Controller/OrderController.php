@@ -105,12 +105,8 @@ class OrderController extends AbstractController
             ]);
 
         }
-        //return $this->redirectToRoute('order_recap', ['id' => $order->getId()]);
-//        return $this->render('order/recap.html.twig',[
-//            'cart'=> $cart->getFull(),
-//            'form'=>$form,
-//
-//        ]);
+
         }
+        return $this->redirectToRoute('cart');
     }
 }

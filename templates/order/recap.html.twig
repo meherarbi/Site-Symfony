@@ -3,18 +3,24 @@
 {% block title %}Valider Mes commande{% endblock %}
 
 {% block content %}
-    <h2>Mon Recap </h2>
+
     <hr>
     <div class="row">
         <div class="col-md-6">
             <strong>Mon adresse de livraison</strong> <br/>
-            {{ delivery|raw }}
-            <div class="form-check"> </div>
+
+            <div class="form-check mt-4">
+
+                {{ delivery|raw }}
+
+            </div>
             <hr>
             <strong>Mon Transporteur</strong><br/>
+            <div class="form-check mt-4">
                        {{ carrier.name }}<br/>
                        {{ carrier.description }}<br/>
                       {{ carrier.price |number_format(2,',','.') }}$<br/>
+            </div>
         </div>
         <div class="col-md-6">
             <div class="text-center"> <b>Mes Commandes</b><br/></div>
@@ -49,7 +55,7 @@
 
 
 
-            <a href="" class="btn btn-success btn-block">Payer</a>
+            <a href="" class="btn btn-success btn-block">Payer |   {{ ((total/100)+carrier.price)|number_format(2,',','.') }} $</a>
 
         </div>
     </div>
