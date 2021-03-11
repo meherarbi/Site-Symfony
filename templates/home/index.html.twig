@@ -23,7 +23,7 @@
 <div id="main">
 
     <header class="pink">
-
+        <div class="topimg"><img src="{{ asset('assets/images/homepage03/as7.webp') }}" id="mk" alt=""></div>
             <div class="header-block d-flex align-items-center">
                 <div class="container">
                     <div class="row">
@@ -36,15 +36,7 @@
                         <div class="col-12 col-md-6">
                             <div class="header-right d-flex flex-column flex-md-row justify-content-md-end justify-content-center align-items-center">
                                 <div class="social-link d-flex"><a href=""><i class="fab fa-facebook-f"> </i></a><a href=""><i class="fab fa-twitter"></i></a><a href=""><i class="fab fa-invision"> </i></a><a href=""><i class="fab fa-pinterest-p"> </i></a></div>
-                                <div class="language">
-                                    <div class="selected-language"><img src="assets/images/homepage01/usa.jpg" alt="">English<i class="arrow_carrot-down"></i>
-                                        <ul class="list-language">
-                                            <li><img src="assets/images/homepage01/usa.jpg" alt="">English</li>
-                                            <li><img src="assets/images/homepage01/usa.jpg" alt="">Spain</li>
-                                            <li><img src="assets/images/homepage01/usa.jpg" alt="">Japan</li>
-                                        </ul>
-                                    </div>
-                                </div>
+
                                 {% if app.user %}
                                     <div class="login d-flex"><a href="{{ path('account') }}"><i class="fas fa-user ">&nbsp;&nbsp;{{ app.user.firstname }}</i>Account</a></div>&nbsp;&nbsp;&nbsp;
                                     <div class="login d-flex"><a href="{{ path('app_logout') }}"><i class="fas fa-user"></i>Logout</a></div>
@@ -141,11 +133,12 @@
                             <div class="department-menu d-flex justify-content-between align-items-center"><i class="fas fa-bars"></i>All departments<span><i class="arrow_carrot-up"></i></span></div>
                             <div class="department-dropdown-menu down">
                                 <ul>
-                                    <li><a href="shop_grid+list_3col.html"> <i class="icon-1"></i>Mode Homme</a></li>
-                                    <li><a href="shop_grid+list_3col.html"> <i class="icon-2"></i>Mode Femme</a></li>
-                                    <li><a href="shop_grid+list_3col.html"> <i class="icon-3"></i>Sacs et chaussures</a></li>
-                                    <li><a href="shop_grid+list_3col.html"> <i class="icon-4"></i>Bijoux & Montres</a></li>
-                                    <li><a href="shop_grid+list_3col.html"> <i class="icon-5"></i>Beauté, santé et cheveux</a></li>
+                                    <li><a href="shop_grid+list_3col.html"> <i class="cate-name"></i>Mode Homme</a></li>
+                                    <li><a href="shop_grid+list_3col.html"> <i class="cate-name"></i>Mode Femme</a></li>
+                                    <li><a href="shop_grid+list_3col.html"> <i class="cate-name"></i>Sacs et chaussures</a></li>
+                                    <li><a href="shop_grid+list_3col.html"> <i class="cate-name"></i>Bijoux & Montres</a></li>
+                                    <li><a href="shop_grid+list_3col.html"> <i class="cate-name"></i>Beauté, santé et cheveux</a></li>
+                                    <li><a href="shop_grid+list_3col.html"> <i class="cate-name"></i>Technologie</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -287,27 +280,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="deal-block">
-                                <div class="deal-block_detail">
-                                    <h5 class="deal-discount">-34</h5>
-                                    <div class="deal-img"><a href="shop_detail.html"><img src="assets/images/product/s.webp" alt="product image"></a></div>
-                                    <div class="deal-countdown">
-                                        <div class="event-countdown" id="event-countdown-4"></div>
-                                    </div>
-                                    <div class="deal-info text-center">
-                                        <h5 class="color-type pink deal-type">Oranges</h5><a class="deal-name" href="shop_detail.html">Pure Pinapple</a>
-                                        <h3 class="deal-price">$14.00
-                                            <del>$35.00 </del>
-                                        </h3>
-                                    </div>
-                                    <div class="deal-select text-center">
-                                        <button class="add-to-wishlist round-icon-btn pink"> <i class="icon_heart_alt"></i></button>
-                                        <button class="add-to-cart round-icon-btn pink pink">  <i class="icon_bag_alt"></i></button>
-                                        <button class="add-to-compare round-icon-btn pink"> <i class="fas fa-random"></i></button>
-                                        <button class="quickview round-icon-btn pink"><i class="far fa-eye"></i></button>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                     <div class="sidebar-benefit">
@@ -358,8 +331,8 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="mini-product column">
-                                        <div class="mini-product_img"><a href="shop_detail.html"><img src="assets/images/product/product13.png" alt=""></a></div>
-                                        <div class="mini-product_info"> <a href="shop_detail.html">Fresh Met</a>
+                                        <div class="mini-product_img"><a href="shop_detail.html"><img src="assets/images/product/q4.webp" alt=""></a></div>
+                                        <div class="mini-product_info"> <a href="shop_detail.html">Coffret</a>
                                             <p>$37.00
                                                 <del>$45.00</del>
                                             </p>
@@ -368,30 +341,30 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="mini-product column">
-                                        <div class="mini-product_img"><a href="shop_detail.html"><img src="assets/images/product/product14.png" alt=""></a></div>
-                                        <div class="mini-product_info"> <a href="shop_detail.html">Coconut</a>
-                                            <p>$37.00
-                                                <del>$45.00</del>
+                                        <div class="mini-product_img"><a href="shop_detail.html"><img src="assets/images/product/q5.webp" alt=""></a></div>
+                                        <div class="mini-product_info"> <a href="shop_detail.html">Ecouteur</a>
+                                            <p>$17.00
+                                                <del>$25.00</del>
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="mini-product column">
-                                        <div class="mini-product_img"><a href="shop_detail.html"><img src="assets/images/product/product15.png" alt=""></a></div>
-                                        <div class="mini-product_info"> <a href="shop_detail.html">Venion</a>
-                                            <p>$37.00
-                                                <del>$45.00</del>
+                                        <div class="mini-product_img"><a href="shop_detail.html"><img src="assets/images/product/q6.webp" alt=""></a></div>
+                                        <div class="mini-product_info"> <a href="shop_detail.html">Robe</a>
+                                            <p>$35.00
+                                                <del>$55.00</del>
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="mini-product column">
-                                        <div class="mini-product_img"><a href="shop_detail.html"><img src="assets/images/product/product16.png" alt=""></a></div>
-                                        <div class="mini-product_info"> <a href="shop_detail.html">Coconut</a>
-                                            <p>$37.00
-                                                <del>$45.00</del>
+                                        <div class="mini-product_img"><a href="shop_detail.html"><img src="assets/images/product/re.webp" alt=""></a></div>
+                                        <div class="mini-product_info"> <a href="shop_detail.html">Montre chro</a>
+                                            <p>$137.00
+                                                <del>$145.00</del>
                                             </p>
                                         </div>
                                     </div>
@@ -403,7 +376,7 @@
                         <div class="customer-satisfied_border">
                             <div class="customer-satisfied_wrapper">
                                 <div class="customer-satisfied_block">
-                                    <div class="customer-img mx-auto"><img src="assets/images/homepage03/customer_img_1.png" alt="customer"></div>
+                                    <div class="customer-img mx-auto"><img src="assets/images/homepage03/ac.png" alt="customer"></div>
                                     <div class="customer-info">
                                         <h5 class="customer-name">Steven Ady</h5>
                                         <p class="customer-comment">Lorem ipsum dolor sit amet consectetur adipisicing elit, sed do accusantium </p>
@@ -411,7 +384,7 @@
                                     </div>
                                 </div>
                                 <div class="customer-satisfied_block">
-                                    <div class="customer-img mx-auto"><img src="assets/images/homepage03/customer_img_1.png" alt="customer"></div>
+                                    <div class="customer-img mx-auto"><img src="assets/images/homepage03/avatar.png" alt="customer"></div>
                                     <div class="customer-info">
                                         <h5 class="customer-name">Steven Ady</h5>
                                         <p class="customer-comment">Lorem ipsum dolor sit amet consectetur adipisicing elit, sed do accusantium </p>
@@ -419,7 +392,7 @@
                                     </div>
                                 </div>
                                 <div class="customer-satisfied_block">
-                                    <div class="customer-img mx-auto"><img src="assets/images/homepage03/customer_img_1.png" alt="customer"></div>
+                                    <div class="customer-img mx-auto"><img src="assets/images/homepage03/ac.png" alt="customer"></div>
                                     <div class="customer-info">
                                         <h5 class="customer-name">Steven Ady</h5>
                                         <p class="customer-comment">Lorem ipsum dolor sit amet consectetur adipisicing elit, sed do accusantium </p>
@@ -441,10 +414,10 @@
                                 <div class="col-12 col-md-8 text-lg-right">
                                     <ul class="tab-control text-md-right">
                                         <li><a class="active" href="#tab1">All</a></li>
-                                        <li><a href="#tab2">Oranges</a></li>
-                                        <li> <a href="#tab3">Fresh Meat</a></li>
-                                        <li><a href="#tab4">Vegetables</a></li>
-                                        <li><a href="#tab5">Fastfood</a></li>
+                                        <li><a href="#tab2">Technologie</a></li>
+                                        <li> <a href="#tab3">Accessoire</a></li>
+                                        <li><a href="#tab4">Beauté et santé</a></li>
+                                        <li><a href="#tab5">Bijoux & Montres</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -607,7 +580,7 @@
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-4">
-                                        <div class="product"><a class="product-img" href="shop_detail.html"><img src="assets/images/product/product05.png" alt=""></a>
+                                        <div class="product"><a class="product-img" href="shop_detail.html"><img src="assets/images/product/q2.webp" alt=""></a>
                                             <h5 class="product-type">Oranges</h5>
                                             <h3 class="product-name">Pure Pineapple</h3>
                                             <h3 class="product-price">$14.00
@@ -701,7 +674,7 @@
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-4">
-                                        <div class="product"><a class="product-img" href="shop_detail.html"><img src="assets/images/product/product01.png" alt=""></a>
+                                        <div class="product"><a class="product-img" href="shop_detail.html"><img src="assets/images/product/q1.webp" alt=""></a>
                                             <h5 class="product-type">Oranges</h5>
                                             <h3 class="product-name">Pure Pineapple</h3>
                                             <h3 class="product-price">$14.00
@@ -947,10 +920,10 @@
                                 <div class="col-12 col-md-8 text-lg-right">
                                     <ul class="tab-control text-md-right">
                                         <li><a class="active" href="#tab1">All</a></li>
-                                        <li><a href="#tab2">Oranges</a></li>
-                                        <li> <a href="#tab3">Fresh Meat</a></li>
-                                        <li><a href="#tab4">Vegetables</a></li>
-                                        <li><a href="#tab5">Fastfood</a></li>
+                                        <li><a href="#tab2">Technologie</a></li>
+                                        <li> <a href="#tab3">Accessoire</a></li>
+                                        <li><a href="#tab4">Beauté et santé</a></li>
+                                        <li><a href="#tab5">Bijoux & Montres</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -959,11 +932,11 @@
                             <div id="tab1">
                                 <div class="row no-gutters-sm">
                                     <div class="col-6 col-md-4">
-                                        <div class="product pink"><a class="product-img" href="shop_detail.html"><img src="assets/images/product/product01.png" alt="product image"></a>
-                                            <h5 class="product-type">Oranges</h5>
-                                            <h3 class="product-name">Pure Pineapple</h3>
-                                            <h3 class="product-price">$14.00
-                                                <del>$35.00</del>
+                                        <div class="product pink"><a class="product-img" href="shop_detail.html"><img src="assets/images/product/q1.webp" width="200px" height="140px" alt="product image"></a>
+                                            <h5 class="product-type">Technologie</h5>
+                                            <h3 class="product-name">Clavier de Projection </h3>
+                                            <h3 class="product-price">$47.00
+                                                <del>$75.00</del>
                                             </h3>
                                             <div class="product-select">
                                                 <button class="add-to-wishlist round-icon-btn pink"><i class="icon_heart_alt"></i></button>
@@ -974,11 +947,11 @@
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-4">
-                                        <div class="product pink"><a class="product-img" href="shop_detail.html"><img src="assets/images/product/product02.png" alt="product image"></a>
-                                            <h5 class="product-type">Oranges</h5>
-                                            <h3 class="product-name">Pure Pineapple</h3>
+                                        <div class="product pink"><a class="product-img" href="shop_detail.html"><img src="assets/images/product/q2.webp" width="200px" height="140px" alt="product image"></a>
+                                            <h5 class="product-type">Accessoire</h5>
+                                            <h3 class="product-name">Nid de fourmis </h3>
                                             <h3 class="product-price">$14.00
-                                                <del>$35.00</del>
+                                                <del>$25.00</del>
                                             </h3>
                                             <div class="product-select">
                                                 <button class="add-to-wishlist round-icon-btn pink"><i class="icon_heart_alt"></i></button>
@@ -989,10 +962,10 @@
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-4">
-                                        <div class="product pink"><a class="product-img" href="shop_detail.html"><img src="assets/images/product/product03.png" alt="product image"></a>
-                                            <h5 class="product-type">Oranges</h5>
-                                            <h3 class="product-name">Apple</h3>
-                                            <h3 class="product-price">$30.00
+                                        <div class="product pink"><a class="product-img" href="shop_detail.html"><img src="assets/images/product/q3.webp" width="200px" height="140px" alt="product image"></a>
+                                            <h5 class="product-type">Mode Homme</h5>
+                                            <h3 class="product-name">2 pièces ensembles survêtement</h3>
+                                            <h3 class="product-price">$22.00
                                                 <del>$45.00</del>
                                             </h3>
                                             <div class="product-select">
@@ -1008,9 +981,9 @@
                             <div id="tab2">
                                 <div class="row no-gutters-sm">
                                     <div class="col-6 col-md-4">
-                                        <div class="product pink"><a class="product-img" href="shop_detail.html"><img src="assets/images/product/product04.png" alt="product image"></a>
-                                            <h5 class="product-type">Oranges</h5>
-                                            <h3 class="product-name">Pure Pineapple</h3>
+                                        <div class="product pink"><a class="product-img" href="shop_detail.html"><img src="assets/images/product/q5.webp" width="200px" height="140px"  alt="product image"></a>
+                                            <h5 class="product-type">Technologie</h5>
+                                            <h3 class="product-name">ecouteur</h3>
                                             <h3 class="product-price">$14.00
                                                 <del>$35.00</del>
                                             </h3>
@@ -1023,11 +996,11 @@
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-4">
-                                        <div class="product pink"><a class="product-img" href="shop_detail.html"><img src="assets/images/product/product05.png" alt="product image"></a>
-                                            <h5 class="product-type">Oranges</h5>
-                                            <h3 class="product-name">Pure Pineapple</h3>
-                                            <h3 class="product-price">$14.00
-                                                <del>$35.00</del>
+                                        <div class="product pink"><a class="product-img" href="shop_detail.html"><img src="assets/images/product/t1.webp" alt="product image"></a>
+                                            <h5 class="product-type">Technologie</h5>
+                                            <h3 class="product-name">Chargeur sans fil </h3>
+                                            <h3 class="product-price">$24.00
+                                                <del>$45.00</del>
                                             </h3>
                                             <div class="product-select">
                                                 <button class="add-to-wishlist round-icon-btn pink"><i class="icon_heart_alt"></i></button>
@@ -1038,9 +1011,9 @@
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-4">
-                                        <div class="product pink"><a class="product-img" href="shop_detail.html"><img src="assets/images/product/product02.png" alt="product image"></a>
-                                            <h5 class="product-type">Oranges</h5>
-                                            <h3 class="product-name">Apple</h3>
+                                        <div class="product pink"><a class="product-img" href="shop_detail.html"><img src="assets/images/product/t2.webp" alt="product image"></a>
+                                            <h5 class="product-type">Technologie</h5>
+                                            <h3 class="product-name">Sonoff 1080P HD </h3>
                                             <h3 class="product-price">$30.00
                                                 <del>$45.00</del>
                                             </h3>
@@ -1212,10 +1185,10 @@
                                 <div class="col-12 col-md-8 text-lg-right">
                                     <ul class="tab-control text-md-right">
                                         <li><a class="active" href="#tab1">All</a></li>
-                                        <li><a href="#tab2">Oranges</a></li>
-                                        <li> <a href="#tab3">Fresh Meat</a></li>
-                                        <li><a href="#tab4">Vegetables</a></li>
-                                        <li><a href="#tab5">Fastfood</a></li>
+                                        <li><a href="#tab2">Technologie</a></li>
+                                        <li> <a href="#tab3">Accessoire</a></li>
+                                        <li><a href="#tab4">Beauté et santé</a></li>
+                                        <li><a href="#tab5">Bijoux & Montres</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -1224,11 +1197,11 @@
                             <div id="tab1">
                                 <div class="row no-gutters-sm">
                                     <div class="col-6 col-md-4">
-                                        <div class="product pink"><a class="product-img" href="shop_detail.html"><img src="assets/images/product/product01.png" alt="product image"></a>
-                                            <h5 class="product-type">Oranges</h5>
-                                            <h3 class="product-name">Pure Pineapple</h3>
-                                            <h3 class="product-price">$14.00
-                                                <del>$35.00</del>
+                                        <div class="product pink"><a class="product-img" href="shop_detail.html"><img src="assets/images/product/w1.webp" width="200px" height="140px" alt="product image"></a>
+                                            <h5 class="product-type">Technologie</h5>
+                                            <h3 class="product-name">Chargeur sans fil de voiture</h3>
+                                            <h3 class="product-price">$11.00
+                                                <del>$25.00</del>
                                             </h3>
                                             <div class="product-select">
                                                 <button class="add-to-wishlist round-icon-btn pink"><i class="icon_heart_alt"></i></button>
@@ -1239,11 +1212,11 @@
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-4">
-                                        <div class="product pink"><a class="product-img" href="shop_detail.html"><img src="assets/images/product/product02.png" alt="product image"></a>
-                                            <h5 class="product-type">Oranges</h5>
-                                            <h3 class="product-name">Pure Pineapple</h3>
-                                            <h3 class="product-price">$14.00
-                                                <del>$35.00</del>
+                                        <div class="product pink"><a class="product-img" href="shop_detail.html"><img src="assets/images/product/w2.webp" width="200px" height="140px" alt="product image"></a>
+                                            <h5 class="product-type">Technologie</h5>
+                                            <h3 class="product-name">Garas Power Bank 1000mAh</h3>
+                                            <h3 class="product-price">$12.00
+                                                <del>$25.00</del>
                                             </h3>
                                             <div class="product-select">
                                                 <button class="add-to-wishlist round-icon-btn pink"><i class="icon_heart_alt"></i></button>
@@ -1254,9 +1227,9 @@
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-4">
-                                        <div class="product pink"><a class="product-img" href="shop_detail.html"><img src="assets/images/product/product03.png" alt="product image"></a>
-                                            <h5 class="product-type">Oranges</h5>
-                                            <h3 class="product-name">Apple</h3>
+                                        <div class="product pink"><a class="product-img" href="shop_detail.html"><img src="assets/images/product/w3.webp" width="200px" height="140px" alt="product image"></a>
+                                            <h5 class="product-type">Technologie</h5>
+                                            <h3 class="product-name">gee CS06 Signature tablette</h3>
                                             <h3 class="product-price">$30.00
                                                 <del>$45.00</del>
                                             </h3>
@@ -1473,7 +1446,7 @@
                             <div class="quick-banner quick-banner-2">
                                 <div class="row justify-content-center align-items-center">
                                     <div class="col-6 col-md-5">
-                                        <div class="bannner-img text-center"><img class="img-fluid" src="assets/images/homepage03/quick_banner_2_img.png" alt=""></div>
+                                        <div class="bannner-img text-center"><img class="img-fluid" src="assets/images/homepage03/v1.jpg" width="123px" height="114px" alt=""></div>
                                     </div>
                                     <div class="col-6 col-md-5">
                                         <div class="banner-text text-center text-md-left">
@@ -1488,7 +1461,7 @@
                             <div class="quick-banner quick-banner-3">
                                 <div class="row justify-content-center align-items-center">
                                     <div class="col-6 col-md-5">
-                                        <div class="bannner-img text-center"><img class="img-fluid" src="assets/images/homepage03/quick_banner_3_img.png" alt=""></div>
+                                        <div class="bannner-img text-center"><img class="img-fluid" src="assets/images/homepage03/v2.webp" alt=""></div>
                                     </div>
                                     <div class="col-6 col-md-5">
                                         <div class="banner-text text-center text-md-left">
@@ -1508,13 +1481,13 @@
     <div class="partner">
         <div class="container">
             <div class="partner_block d-flex justify-content-between" data-slick="{&quot;slidesToShow&quot;: 6}">
-                <div class="partner--logo" href=""> <a href="#"><img src="assets/images/partner/partner_01.png" alt="partner" title="partner logo"></a></div>
-                <div class="partner--logo" href=""> <a href="#"><img src="assets/images/partner/partner_02.png" alt="partner" title="partner logo"></a></div>
-                <div class="partner--logo" href=""> <a href="#"><img src="assets/images/partner/partner_01.png" alt="partner" title="partner logo"></a></div>
-                <div class="partner--logo" href=""> <a href="#"><img src="assets/images/partner/partner_02.png" alt="partner" title="partner logo"></a></div>
-                <div class="partner--logo" href=""> <a href="#"><img src="assets/images/partner/partner_01.png" alt="partner" title="partner logo"></a></div>
-                <div class="partner--logo" href=""> <a href="#"><img src="assets/images/partner/partner_02.png" alt="partner" title="partner logo"></a></div>
-                <div class="partner--logo" href=""> <a href=""><img src="assets/images/partner/partner_01.png" alt="partner" title="partner logo"></a></div>
+                <div class="partner--logo" href=""> <a href="#"><img src="{{ asset('assets/images/partner/a1.webp') }}" alt="partner" title="partner logo"></a></div>
+                <div class="partner--logo" href=""> <a href="#"><img src="{{ asset('assets/images/partner/a2.webp') }}" alt="partner" title="partner logo"></a></div>
+                <div class="partner--logo" href=""> <a href="#"><img src="{{ asset('assets/images/partner/a3.webp') }}" alt="partner" title="partner logo"></a></div>
+                <div class="partner--logo" href=""> <a href="#"><img src="{{ asset('assets/images/partner/a4.webp') }}" alt="partner" title="partner logo"></a></div>
+                <div class="partner--logo" href=""> <a href="#"><img src="{{ asset('assets/images/partner/a5.webp') }}" alt="partner" title="partner logo"></a></div>
+                <div class="partner--logo" href=""> <a href="#"><img src="{{ asset('assets/images/partner/a6.webp') }}" alt="partner" title="partner logo"></a></div>
+                <div class="partner--logo" href=""> <a href=""><img src="{{ asset('assets/images/partner/a7.webp') }}" alt="partner" title="partner logo"></a></div>
             </div>
         </div>
     </div>

@@ -13,13 +13,17 @@
     <list default="true" id="f70be937-0256-4def-a8da-3bb2207b00aa" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/mystore.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/mystore.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/images/partner/partner_01.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/images/partner/partner_02.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/OrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/product/as.webp" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/product/as.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/product/d.webp" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/product/d.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/product/e.webp" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/product/e.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/product/ff.webp" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/product/ff.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/product/gf.webp" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/product/gf.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/product/q.webp" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/product/q.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/product/re.webp" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/product/re.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Product.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/home/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/order/recap.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/order/recap.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/product/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/product/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -197,7 +201,7 @@
       <workItem from="1614784716496" duration="3449000" />
       <workItem from="1614790005135" duration="51140000" />
       <workItem from="1614981550954" duration="90445000" />
-      <workItem from="1615299493248" duration="43065000" />
+      <workItem from="1615299493248" duration="67371000" />
     </task>
     <servers />
   </component>

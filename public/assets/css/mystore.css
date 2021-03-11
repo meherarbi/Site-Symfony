@@ -109,7 +109,7 @@ input[type="checkbox"] {
     box-sizing: border-box;
     padding: 0;
     position: absolute;
-    right: 75%;
+    right: 95%;
 }
 a:not([href]):not([tabindex]) {
     color: white;
@@ -128,9 +128,7 @@ i.fas.fa-user{
     text-transform: capitalize;
 }
 
-element.style {
-    background-image: url(https://ae01.alicdn.com/kf/H98166ca…u.png_.webp);
-}
+
 .top-banner-container a {
     display: block;
     width: 100%;
@@ -140,14 +138,10 @@ element.style {
     background-position: top;
 }
 
-.img-fluid {
-    max-width: 100%;
-    height: auto;
-    margin-bottom:10%;
 
-}
 
-img {
+
+#mk{
     border-style: none;
     display: block;
     width: 100%;
@@ -155,4 +149,20 @@ img {
     text-indent: -9999rem;
     background-repeat: no-repeat;
     background-position: top;
+}
+
+.shop-detail .shop-detail_img .big-img .big-img_block img, #quickview .quickview-box .shop-detail_img .big-img .big-img_block img {
+    width: 100%;
+    height: 100%;
+}
+
+.img-fluid{
+    width: 100%;
+    height: 100%;
+    margin-bottom:10%;
+}
+
+.partner .partner_block .partner--logo img{
+    width: 100%;
+    height: 100%;
 }

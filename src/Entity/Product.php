@@ -38,7 +38,7 @@ class Product
     private $subtitle;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=5000)
      */
     private $description;
 
