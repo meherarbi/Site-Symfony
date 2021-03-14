@@ -1,16 +1,1 @@
-voila apres faut creé une page categorie avec un entret id de la categorie je te laisse voir cela
-c bon
-merci  bcp
-je fais une autre page twig categorie ?
 
-
-un controller categorie action inddex avec une route qui attend l id de la categorie
-
-et la t affiche que les produit de cette categorie
-
-
-ok j'ai compris merci bcp , rabi ya7fdhek w ybereklk , nchallah nrajaalk chwaya un peu melli 3maltou m3aya
-
-t inquite ton dou3a me suffit
-
-salam , fi amen allah , je vais t"envoyer une invite de mon compte meher meher et on reste en contact ok
