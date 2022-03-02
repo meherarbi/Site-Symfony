@@ -9,32 +9,45 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Route("/my-cart", name="cart_")
+ */
 class CartController extends AbstractController
 {
-    private $entityManager;
+    private $em;
     public function __construct(EntityManagerInterface $entityManager)
     {
-        $this->entityManager=$entityManager;
+        $this->em = $entityManager;
     }
     /**
-     * @Route("/my-cart", name="cart")
+     * @Route("/", name="index")
      */
     public function index(Cart $cart)
     {
 
-        return $this->render('cart/index.html.twig',[
-            'cart'=>$cart->getFull()
+        $cartcomplete = [];
+        foreach ($cart->get() as $id => $quantity) {
+
+            $cartcomplete[] = [
+                'product' => $this->em->getRepository(Product::class)->find($id),
+                'quantity' => $quantity
+            ];
+        }
+
+
+        return $this->render('cart/index.html.twig', [
+            'cart' => $cartcomplete,
         ]);
     }
 
     /**
      * @Route("/cart/add/{id}", name="add_to_cart")
      */
-    public function add(Cart  $cart,$id)
+    public function add(Cart  $cart, $id)
     {
         $cart->add($id);
 
-        return $this->redirectToRoute('cart');
+        return $this->redirectToRoute('cart_index');
     }
 
     /**
@@ -50,20 +63,20 @@ class CartController extends AbstractController
     /**
      * @Route("/cart/delete/{id}", name="delete_my_cart")
      */
-    public function delete(Cart  $cart,$id)
+    public function delete(Cart  $cart, $id)
     {
         $cart->delete($id);
 
-        return $this->redirectToRoute('cart');
+        return $this->redirectToRoute('cart_index');
     }
 
     /**
      * @Route("/cart/decrease/{id}", name="decrease_my_cart")
      */
-    public function decrease(Cart  $cart,$id)
+    public function decrease(Cart  $cart, $id)
     {
         $cart->decrease($id);
 
-        return $this->redirectToRoute('cart');
+        return $this->redirectToRoute('cart_index');
     }
 }

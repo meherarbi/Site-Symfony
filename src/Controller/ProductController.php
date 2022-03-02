@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Classe\Search;
+use App\Entity\Category;
 use App\Entity\Product;
 use App\Form\SearchType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -44,6 +45,26 @@ class ProductController extends AbstractController
         }
         return $this->render( 'product/show.html.twig',[
             'product'=>$product
+
+        ]);
+    }
+
+     /**
+     * @Route("/productsCategory/{id}", name="product_category")
+     */
+    public function showCategory(Category $category): Response
+    {
+        if ($category){
+            $products=$category->getProducts()->getValues();
+        }
+        else {
+            return $this->redirectToRoute( 'home') ;
+        }
+        
+        
+      
+        return $this->render( 'product/showCategory.html.twig',[
+            'products'=>$products
 
         ]);
     }

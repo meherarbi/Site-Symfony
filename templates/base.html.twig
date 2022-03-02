@@ -1,330 +1,639 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>Index</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-    <meta name="keywords" content="blog, business, clean, clear, cooporate, creative, design web, flat, marketing, minimal, portfolio, shop, shopping, unique">
-    <meta name="author" content="MARTECH | Deer Creative Theme">
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/custom_bootstrap.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/normalize.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/fontawesome.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/elegant.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/slick.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/scroll.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/icomoon.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/jquery.fancybox.min.css') }}">
-    <link rel="shortcut icon" href="{{ asset('assets/images/shortcut_logo.png') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/mystore.css') }}">
-    <link rel="stylesheet" href="{{ asset('build/css/intlTelInput.css') }}">
-{#    <link rel="stylesheet" href="{{ asset('build/css/demo.css') }}">#}
-    {% block javascript %}
-    {% endblock %}
-</head>
-<body>
-<div id="main">
-    <header class="pink">
-        <div class="topimg"><img src="{{ asset('assets/images/homepage03/as7.webp') }}" id="mk" alt=""></div>
-
-
-        <div class="header-block d-flex align-items-center">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-md-6">
+   <head>
+      <title>
+         Index       
+      </title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+      <meta name="keywords" content="blog, business, clean, clear, cooporate, creative, design web, flat, marketing, minimal, portfolio, shop, shopping, unique">
+      <meta name="author" content="MARTECH | Deer Creative Theme">
+      <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+      <link rel="stylesheet" href="{{ asset('assets/css/custom_bootstrap.css') }}">
+      <link rel="stylesheet" href="{{ asset('assets/css/normalize.css') }}">
+      <link rel="stylesheet" href="{{ asset('assets/css/fontawesome.css') }}">
+      <link rel="stylesheet" href="{{ asset('assets/css/elegant.css') }}">
+      <link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}">
+      <link rel="stylesheet" href="{{ asset('assets/css/slick.css') }}">
+      <link rel="stylesheet" href="{{ asset('assets/css/scroll.css') }}">
+      <link rel="stylesheet" href="{{ asset('assets/css/icomoon.css') }}">
+      <link rel="stylesheet" href="{{ asset('assets/css/jquery.fancybox.min.css') }}">
+      <link rel="shortcut icon" href="{{ asset('assets/images/shortcut_logo.png') }}">
+      <link rel="stylesheet" href="{{ asset('assets/css/mystore.css') }}">
+      <link rel="stylesheet" href="{{ asset('build/css/intlTelInput.css') }}">
+      {#    
+      <link rel="stylesheet" href="{{ asset('build/css/demo.css') }}">
+      #}
+      {% block javascript %}{% endblock %}
+   </head>
+   <body>
+      <div id="main">
+         <header class="pink">
+            <div class="topimg">
+               <img src="{{ asset('assets/images/homepage03/as7.webp') }}" id="mk" alt="">
+            </div>
+            <div class="header-block d-flex align-items-center">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-12 col-md-6">
                         <div class="header-left d-flex flex-column flex-md-row align-items-center">
-                            <p class="d-flex align-items-center"><i class="fas fa-envelope"></i>contact@gmail.com</p>
-                            <p class="d-flex align-items-center"><i class="fas fa-phone"></i>+216 58 58 83 58</p>
+                           <p class="d-flex align-items-center">
+                              <i class="fas fa-envelope"></i>
+                              contact@gmail.com
+                           </p>
+                           <p class="d-flex align-items-center">
+                              <i class="fas fa-phone"></i>
+                              +216 58 58 83 58
+                           </p>
                         </div>
-                    </div>
-                    <div class="col-12 col-md-6">
+                     </div>
+                     <div class="col-12 col-md-6">
                         <div class="header-right d-flex flex-column flex-md-row justify-content-md-end justify-content-center align-items-center">
-                            <div class="social-link d-flex"><a href=""><i class="fab fa-facebook-f"> </i></a><a href=""><i class="fab fa-twitter"></i></a><a href=""><i class="fab fa-invision"> </i></a><a href=""><i class="fab fa-pinterest-p"> </i></a></div>
-
-                            {% if app.user %}
-                                <div class="login d-flex"><a href="{{ path('account') }}"><i class="fas fa-user ">&nbsp;&nbsp;{{ app.user.firstname }}</i>Account</a></div>&nbsp;&nbsp;&nbsp;
-                                <div class="login d-flex"><a href="{{ path('app_logout') }}"><i class="fas fa-user"></i>Logout</a></div>
-                            {% else %}
-                                <div class="login d-flex"><a href="{{ path('app_login') }}"><i class="fas fa-user"></i>Login</a></div>&nbsp;&nbsp;&nbsp;
-                                <div class="login d-flex"><a href="{{ path('register') }}"><i class="fas fa-user"></i>Register</a></div>
-                            {% endif %}
+                           <div class="social-link d-flex">
+                              <a href="{{ path('cart_index') }}">
+                              <img src="
+                                 {{ asset('assets/images/panier.png') }}
+                                 " height="30px" alt="Panier">
+                              </a>
+                              {{ "" }}
+                              {#  <a href="">
+                              <i class="fab fa-facebook-f"></i>
+                              </a> #}
+                           </div>
+                           {% if app.user %}
+                           <div class="login d-flex">
+                              <a href="{{ path('account') }}">
+                              <i class="fas fa-user ">
+                              &nbsp;&nbsp;
+                              {{ app.user.firstname }}
+                              </i>
+                              Account
+                              </a>
+                           </div>
+                           &nbsp;&nbsp;&nbsp;
+                           <div class="login d-flex">
+                              <a href="{{ path('app_logout') }}">
+                              <i class="fas fa-user"></i>
+                              Logout
+                              </a>
+                           </div>
+                           {% else %}
+                           <div class="login d-flex">
+                              <a href="{{ path('app_login') }}">
+                              <i class="fas fa-user"></i>
+                              Login
+                              </a>
+                           </div>
+                           &nbsp;&nbsp;&nbsp;
+                           <div class="login d-flex">
+                              <a href="{{ path('register') }}">
+                              <i class="fas fa-user"></i>
+                              Register
+                              </a>
+                           </div>
+                           {% endif %}
                         </div>
-                    </div>
-                </div>
+                     </div>
+                  </div>
+               </div>
             </div>
-        </div>
-
-        <div id="mobile-menu">
-            <div class="container">
-                <div class="row">
-                    <div class="col-3">
-                        <div class="mobile-menu_block d-flex align-items-center"><a class="mobile-menu--control" href="#"><i class="fas fa-bars"></i></a>
-                            <div id="ogami-mobile-menu">
-                                <button class="no-round-btn" id="mobile-menu--closebtn">Close menu</button>
-                                <div class="mobile-menu_items">
-                                    <ul class="mb-0 d-flex flex-column">
-                                        <li class="toggleable"> <a class="menu-item active" href="index.html">Home</a><span class="sub-menu--expander"><i class="icon_plus"></i></span>
-                                            <ul class="sub-menu">
-                                                <li><a href="index.html">Homepage 1</a></li>
-                                                <li><a href="homepage02.html">Homepage 2</a></li>
-                                                <li><a href="homepage03.html">Homepage 3</a></li>
-                                                <li><a href="homepage04.html">Homepage 4</a></li>
-                                                <li><a href="homepage05.html">Homepage 5</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="toggleable"><a class="menu-item" href="shop_grid+list_3col.html">Shop</a><span class="sub-menu--expander"><i class="icon_plus"></i></span>
-                                            <ul class="sub-menu">
-                                                <li><a href="shop_grid+list_fullwidth.html">Shop grid fullwidth</a></li>
-                                                <li><a href="shop_grid+list_fullwidth.html">Shop list fullwidth</a></li>
-                                                <li><a href="shop_grid+list_3col.html">shop grid 3 column</a></li>
-                                                <li><a href="shop_grid+list_3col.html">shop list 3 column</a></li>
-                                                <li><a href="shop_detail.html">shop detail</a></li>
-                                                <li><a href="shop_detail_fullwidth.html">shop detail fullwidth</a></li>
-                                                <li><a href="shop_checkout.html">checkout</a></li>
-                                                <li><a href="shop_order_complete.html">order complete</a></li>
-                                                <li><a href="shop_wishlist.html">wishlist</a></li>
-                                                <li><a href="shop_compare.html">compare</a></li>
-                                                <li><a href="shop_cart.html">cart</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="toggleable"> <a class="menu-item" href="blog_list_sidebar.html">Blog</a><span class="sub-menu--expander"><i class="icon_plus"></i></span>
-                                            <ul class="sub-menu">
-                                                <li><a href="blog_list_sidebar.html">Blog List Sidebar</a></li>
-                                                <li><a href="blog_grid_2col.html">Blog Grid 2 column</a></li>
-                                                <li><a href="blog_grid_sidebar.html">Blog Grid sidebar</a></li>
-                                                <li><a href="blog_masonry.html">Blog masonry</a></li>
-                                                <li><a href="blog_grid_1col.html">Blog Grid 1 column sidebar</a></li>
-                                                <li><a href="blog_detail_sidebar.html">Blog detail sidebar</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="toggleable"><a class="menu-item" href="#">Pages</a><span class="sub-menu--expander"><i class="icon_plus"></i></span>
-                                            <ul class="sub-menu">
-                                                <li><a href="login.html">login</a></li>
-                                                <li><a href="register.html">register</a></li>
-                                                <li><a href="faq.html">FAQ</a></li>
-                                                <li><a href="coming_soon.html">coming soon</a></li>
-                                                <li><a href="about_us.html">about us</a></li>
-                                                <li><a href="contact_us.html">contact us</a></li>
-                                                <li><a href="404_error.html">404 error</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="mobile-login">
-                                    <h2>My account</h2><a href="login.html">Login</a><a href="register.html">Register</a>
-                                </div>
-                                <div class="mobile-social"><a href=""><i class="fab fa-facebook-f"> </i></a><a href=""><i class="fab fa-twitter"></i></a><a href=""><i class="fab fa-invision"> </i></a><a href=""><i class="fab fa-pinterest-p"> </i></a></div>
-                            </div>
-                            <div class="ogamin-mobile-menu_bg"></div>
+            <div id="mobile-menu">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-3">
+                        <div class="mobile-menu_block d-flex align-items-center">
+                           <a class="mobile-menu--control" href="#">
+                           <i class="fas fa-bars"></i>
+                           </a>
+                           <div id="ogami-mobile-menu">
+                              <button class="no-round-btn" id="mobile-menu--closebtn">
+                              Close menu
+                              </button>
+                              <div class="mobile-menu_items">
+                                 <ul class="mb-0 d-flex flex-column">
+                                    <li class="toggleable">
+                                       <a class="menu-item active" href="index.html">
+                                       Home
+                                       </a>
+                                       <span class="sub-menu--expander">
+                                       <i class="icon_plus"></i>
+                                       </span>
+                                       <ul class="sub-menu">
+                                          <li>
+                                             <a href="index.html">
+                                             Homepage 1
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="homepage02.html">
+                                             Homepage 2
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="homepage03.html">
+                                             Homepage 3
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="homepage04.html">
+                                             Homepage 4
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="homepage05.html">
+                                             Homepage 5
+                                             </a>
+                                          </li>
+                                       </ul>
+                                    </li>
+                                    <li class="toggleable">
+                                       <a class="menu-item" href="shop_grid+list_3col.html">
+                                       Shop
+                                       </a>
+                                       <span class="sub-menu--expander">
+                                       <i class="icon_plus"></i>
+                                       </span>
+                                       <ul class="sub-menu">
+                                          <li>
+                                             <a href="shop_grid+list_fullwidth.html">
+                                             Shop grid fullwidth
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="shop_grid+list_fullwidth.html">
+                                             Shop list fullwidth
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="shop_grid+list_3col.html">
+                                             shop grid 3 column
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="shop_grid+list_3col.html">
+                                             shop list 3 column
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="shop_detail.html">
+                                             shop detail
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="shop_detail_fullwidth.html">
+                                             shop detail fullwidth
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="shop_checkout.html">
+                                             checkout
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="shop_order_complete.html">
+                                             order complete
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="shop_wishlist.html">
+                                             wishlist
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="shop_compare.html">
+                                             compare
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="shop_cart.html">
+                                             cart
+                                             </a>
+                                          </li>
+                                       </ul>
+                                    </li>
+                                    <li class="toggleable">
+                                       <a class="menu-item" href="blog_list_sidebar.html">
+                                       Blog
+                                       </a>
+                                       <span class="sub-menu--expander">
+                                       <i class="icon_plus"></i>
+                                       </span>
+                                       <ul class="sub-menu">
+                                          <li>
+                                             <a href="blog_list_sidebar.html">
+                                             Blog List Sidebar
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="blog_grid_2col.html">
+                                             Blog Grid 2 column
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="blog_grid_sidebar.html">
+                                             Blog Grid sidebar
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="blog_masonry.html">
+                                             Blog masonry
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="blog_grid_1col.html">
+                                             Blog Grid 1 column sidebar
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="blog_detail_sidebar.html">
+                                             Blog detail sidebar
+                                             </a>
+                                          </li>
+                                       </ul>
+                                    </li>
+                                    <li class="toggleable">
+                                       <a class="menu-item" href="#">
+                                       Pages
+                                       </a>
+                                       <span class="sub-menu--expander">
+                                       <i class="icon_plus"></i>
+                                       </span>
+                                       <ul class="sub-menu">
+                                          <li>
+                                             <a href="login.html">
+                                             login
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="register.html">
+                                             register
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="faq.html">
+                                             FAQ
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="coming_soon.html">
+                                             coming soon
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="about_us.html">
+                                             about us
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="contact_us.html">
+                                             contact us
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="404_error.html">
+                                             404 error
+                                             </a>
+                                          </li>
+                                       </ul>
+                                    </li>
+                                 </ul>
+                              </div>
+                              <div class="mobile-login">
+                                 <h2>
+                                    My account                   
+                                 </h2>
+                                 <a href="login.html">
+                                 Login
+                                 </a>
+                                 <a href="register.html">
+                                 Register          
+                                 </a>
+                              </div>
+                              <div class="mobile-social">
+                                 <a href="">
+                                 <i class="fab fa-facebook-f"></i>
+                                 </a>
+                                 <a href="">
+                                 <i class="fab fa-twitter"></i>
+                                 </a>
+                                 <a href="">
+                                 <i class="fab fa-invision"></i>
+                                 </a>
+                                 <a href="">
+                                 <i class="fab fa-pinterest-p"></i>
+                                 </a>
+                              </div>
+                           </div>
+                           <div class="ogamin-mobile-menu_bg"></div>
                         </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="mobile-menu_logo text-center d-flex justify-content-center align-items-center"><a href=""><img src="assets/images/logo.png" alt=""></a></div>
-                    </div>
-                    <div class="col-3">
-                        <div class="mobile-product_function d-flex align-items-center justify-content-end"><a class="function-icon icon_heart_alt" href="wishlist.html"></a><a class="function-icon icon_bag_alt" href="shop_cart.html"></a></div>
-                    </div>
-                </div>
+                     </div>
+                     <div class="col-6">
+                        <div class="mobile-menu_logo text-center d-flex justify-content-center align-items-center">
+                           <a href="">
+                           <img src="assets/images/logo.png" alt="">
+                           </a>
+                        </div>
+                     </div>
+                     <div class="col-3">
+                        <div class="mobile-product_function d-flex align-items-center justify-content-end">
+                           <a class="function-icon icon_heart_alt" href="wishlist.html"></a>
+                           <a class="function-icon icon_bag_alt" href="shop_cart.html"></a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
             </div>
-        </div>
-
-        <div class="navigation-filter">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-md-4 col-lg-4 col-xl-3 order-2 order-md-1">
+            <div class="navigation-filter">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-12 col-md-4 col-lg-4 col-xl-3 order-2 order-md-1">
                         <div class="department-menu_block down">
-                            <div class="department-menu d-flex justify-content-between align-items-center"><i class="fas fa-bars"></i>All departments<span><i class="arrow_carrot-up"></i></span></div>
-                            <div class="department-dropdown-menu down">
-                                <ul>
-                                    <li><a href="shop_grid+list_3col.html"> <i class="icon-1"></i>Mode Homme</a></li>
-                                    <li><a href="shop_grid+list_3col.html"> <i class="icon-2"></i>Mode Femme</a></li>
-                                    <li><a href="shop_grid+list_3col.html"> <i class="icon-3"></i>Sacs et chaussures</a></li>
-                                    <li><a href="shop_grid+list_3col.html"> <i class="icon-4"></i>Bijoux & Montres</a></li>
-                                    <li><a href="shop_grid+list_3col.html"> <i class="icon-5"></i>Beauté, santé et cheveux</a></li>
-
-                                </ul>
-                            </div>
+                           <div class="department-menu d-flex justify-content-between align-items-center">
+                              <i class="fas fa-bars"></i>
+                              All departments
+                              <span>
+                              <i class="arrow_carrot-up"></i>
+                              </span>
+                           </div>
+                           <div class="department-dropdown-menu down">
+                              <ul>
+                                 {% for categorie in cat.getCategories %}
+                                 <li><a href=" {{path('product_category',{'id':categorie.id})}} "><i class="cate-name"></i>{{ categorie.name }}</a></li>
+                                 {% endfor %}
+         
+                              </ul>
+                           </div>
                         </div>
-                    </div>
-
-                    <div class="col-12 col-md-8 col-lg-8 col-xl-9 order-1 order-md-2">
+                     </div>
+                     <div class="col-12 col-md-8 col-lg-8 col-xl-9 order-1 order-md-2">
                         <div class="row">
-                            <div class="col-12 col-xl-8">
-                                <div class="website-search">
-                                    <div class="row no-gutters">
-                                        <div class="col-0 col-md-0 col-lg-4 col-xl-4">
-                                            <div class="filter-search">
-                                                <div class="categories-select d-flex align-items-center justify-content-around"><span>All Categories</span><i class="arrow_carrot-down"></i></div>
-                                                <div class="categories-select_box">
-                                                    <ul>
-                                                        <li>Mode Homme</li>
-                                                        <li>Mode Femme</li>
-                                                        <li>Sacs et chaussures</li>
-                                                        <li>Bijoux & Montres</li>
-                                                        <li>Beauté, santé et cheveux</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-10 col-md-10 col-lg-6 col-xl-7">
-                                            <div class="search-input">
-                                                <input class="no-round-input no-border" type="text" placeholder="What do you need">
-                                            </div>
-                                        </div>
-                                        <div class="col-2 col-md-2 col-lg-2 col-xl-1">
-                                            <button class="no-round-btn black"><i class="icon_search"></i></button>
-                                        </div>
+                           <div class="col-12 col-xl-8">
+                              <div class="website-search">
+                                 <div class="row no-gutters">
+                                    <div class="col-0 col-md-0 col-lg-4 col-xl-4">
+                                       <div class="filter-search">
+                                          <div class="categories-select d-flex align-items-center justify-content-around">
+                                             <span>
+                                             All Categories
+                                             </span>
+                                             <i class="arrow_carrot-down"></i>
+                                          </div>
+                                          <div class="categories-select_box">
+                                             <ul>
+                                                <li>
+                                                   Mode Homme
+                                                </li>
+                                                <li>
+                                                   Mode Femme
+                                                </li>
+                                                <li>
+                                                   Sacs et chaussures
+                                                </li>
+                                                <li>
+                                                   Bijoux & Montres
+                                                </li>
+                                                <li>
+                                                   Beauté, santé et cheveux
+                                                </li>
+                                             </ul>
+                                          </div>
+                                       </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-0 col-xl-4">
-                                <div class="phone-number">
-                                    <div class="phone-number_icon"><i class="icon_phone"></i></div>
-                                    <h2>+216 58 58 83 43</h2>
-                                </div>
-                            </div>
+                                    <div class="col-10 col-md-10 col-lg-6 col-xl-7">
+                                       <div class="search-input">
+                                          <input class="no-round-input no-border" type="text" placeholder="What do you need">
+                                       </div>
+                                    </div>
+                                    <div class="col-2 col-md-2 col-lg-2 col-xl-1">
+                                       <button class="no-round-btn black">
+                                       <i class="icon_search"></i>
+                                       </button>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-0 col-xl-4">
+                              <div class="phone-number">
+                                 <div class="phone-number_icon">
+                                    <i class="icon_phone"></i>
+                                 </div>
+                                 <h2>
+                                    +216 58 58 83 43
+                                 </h2>
+                              </div>
+                           </div>
                         </div>
-                    </div>
-                </div>
+                     </div>
+                  </div>
+               </div>
             </div>
-        </div>
-    </header>
-
-    <!-- End header-->
-    {% block container %}
-
-    {% endblock %}
-
-
-    <!-- End banner v2-->
-    <div class="home3-product-block">
-        {% block content %}
-        {% endblock %}
-        <div class="newletter">
-        </div>
-</br>
-        <hr>
-        <div class="partner">
-            <div class="container">
-                <div class="partner_block d-flex justify-content-between" data-slick="{&quot;slidesToShow&quot;: 6}">
-                    <div class="partner--logo" href=""> <a href="#"><img src="{{ asset('assets/images/partner/a1.webp') }}" alt="partner" title="partner logo"></a></div>
-                    <div class="partner--logo" href=""> <a href="#"><img src="{{ asset('assets/images/partner/a2.webp') }}" alt="partner" title="partner logo"></a></div>
-                    <div class="partner--logo" href=""> <a href="#"><img src="{{ asset('assets/images/partner/a3.webp') }}" alt="partner" title="partner logo"></a></div>
-                    <div class="partner--logo" href=""> <a href="#"><img src="{{ asset('assets/images/partner/a4.webp') }}" alt="partner" title="partner logo"></a></div>
-                    <div class="partner--logo" href=""> <a href="#"><img src="{{ asset('assets/images/partner/a5.webp') }}" alt="partner" title="partner logo"></a></div>
-                    <div class="partner--logo" href=""> <a href="#"><img src="{{ asset('assets/images/partner/a6.webp') }}" alt="partner" title="partner logo"></a></div>
-                    <div class="partner--logo" href=""> <a href=""><img src="{{ asset('assets/images/partner/a7.webp') }}" alt="partner" title="partner logo"></a></div>
-                </div>
+         </header>
+         <!-- End header-->
+         {% block container %}{% endblock %}
+         <!-- End banner v2-->
+         <div class="home3-product-block">
+            {% block content %}{% endblock %}
+            <div class="newletter"></div>
+            </br>
+            <hr>
+            <div class="partner">
+               <div class="container">
+                  <div class="partner_block d-flex justify-content-between" data-slick="{&quot;slidesToShow&quot;: 6}">
+                     <div class="partner--logo" href="">
+                        <a href="#">
+                        <img src="{{ asset('assets/images/partner/a1.webp') }}" alt="partner" title="partner logo">
+                        </a>
+                     </div>
+                     <div class="partner--logo" href="">
+                        <a href="#">
+                        <img src="{{ asset('assets/images/partner/a2.webp') }}" alt="partner" title="partner logo">
+                        </a>
+                     </div>
+                     <div class="partner--logo" href="">
+                        <a href="#">
+                        <img src="{{ asset('assets/images/partner/a3.webp') }}" alt="partner" title="partner logo">
+                        </a>
+                     </div>
+                     <div class="partner--logo" href="">
+                        <a href="#">
+                        <img src="{{ asset('assets/images/partner/a4.webp') }}" alt="partner" title="partner logo">
+                        </a>
+                     </div>
+                     <div class="partner--logo" href="">
+                        <a href="#">
+                        <img src="{{ asset('assets/images/partner/a5.webp') }}" alt="partner" title="partner logo">
+                        </a>
+                     </div>
+                     <div class="partner--logo" href="">
+                        <a href="#">
+                        <img src="{{ asset('assets/images/partner/a6.webp') }}" alt="partner" title="partner logo">
+                        </a>
+                     </div>
+                     <div class="partner--logo" href="">
+                        <a href="">
+                        <img src="{{ asset('assets/images/partner/a7.webp') }}" alt="partner" title="partner logo">
+                        </a>
+                     </div>
+                  </div>
+               </div>
             </div>
-        </div>
-
-        <footer class="pink">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-sm-12 col-md-4 text-sm-center text-md-left">
-                        <div class="footer-logo"><img src="assets/images/logo.png" alt=""></div>
+            <footer class="pink">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-12 col-sm-12 col-md-4 text-sm-center text-md-left">
+                        <div class="footer-logo">
+                           <img src="assets/images/logo.png" alt="">
+                        </div>
                         <div class="footer-contact">
-                            <p>Address: Avenue habib bourguiba 1000 Tunis</p>
-                            <p>Phone: +216 58 58 83 58</p>
-                            <p>Email: info.deercreative@gmail.com</p>
+                           <p>
+                              Address: Avenue habib bourguiba 1000 Tunis
+                           </p>
+                           <p>
+                              Phone: +216 58 58 83 58
+                           </p>
+                           <p>
+                              Email: info.deercreative@gmail.com
+                           </p>
                         </div>
-                        <div class="footer-social"><a class="round-icon-btn pink" href=""><i class="fab fa-facebook-f"> </i></a><a class="round-icon-btn pink" href=""><i class="fab fa-twitter"></i></a><a class="round-icon-btn pink" href=""><i class="fab fa-invision"> </i></a><a class="round-icon-btn pink" href=""><i class="fab fa-pinterest-p"></i></a></div>
-                    </div>
-                    <div class="col-md-8">
+                        <div class="footer-social">
+                           <a class="round-icon-btn pink" href="">
+                           <i class="fab fa-facebook-f"></i>
+                           </a>
+                           <a class="round-icon-btn pink" href="">
+                           <i class="fab fa-twitter"></i>
+                           </a>
+                           <a class="round-icon-btn pink" href="">
+                           <i class="fab fa-invision"></i>
+                           </a>
+                           <a class="round-icon-btn pink" href="">
+                           <i class="fab fa-pinterest-p"></i>
+                           </a>
+                        </div>
+                     </div>
+                     <div class="col-md-8">
                         <div class="row">
-                            <div class="col-12 col-sm-4 text-sm-center text-md-left">
-                                <div class="footer-quicklink">
-                                    <h5>Infomation</h5><a href="about_us.html">About us</a><a href="checkout.html">Check out</a><a href="contact.html">Contact</a><a href="about_us.html">Service</a>
-                                </div>
-                            </div>
-                            <div class="col-12 col-sm-4 text-sm-center text-md-left">
-                                <div class="footer-quicklink">
-                                    <h5>My Account</h5><a href="login.html">My Account</a><a href="contact.html">Contact</a><a href="shop_cart.html">Shopping cart</a><a href="shop_grid+list_3col.html">Shop</a>
-                                </div>
-                            </div>
-                            <div class="col-12 col-sm-4 text-sm-center text-md-left">
-                                <div class="footer-quicklink">
-                                    <h5>Quick Shop</h5><a href="about_us.html">About us</a><a href="checkout.html">Check out</a><a href="contact.html">Contact</a><a href="about_us.html">Service</a>
-                                </div>
-                            </div>
+                           <div class="col-12 col-sm-4 text-sm-center text-md-left">
+                              <div class="footer-quicklink">
+                                 <h5>
+                                    Infomation
+                                 </h5>
+                                 <a href="about_us.html">
+                                 About us
+                                 </a>
+                                 <a href="checkout.html">
+                                 Check out
+                                 </a>
+                                 <a href="contact.html">
+                                 Contact
+                                 </a>
+                                 <a href="about_us.html">
+                                 Service
+                                 </a>
+                              </div>
+                           </div>
+                           <div class="col-12 col-sm-4 text-sm-center text-md-left">
+                              <div class="footer-quicklink">
+                                 <h5>
+                                    My Account
+                                 </h5>
+                                 <a href="login.html">
+                                 My Account
+                                 </a>
+                                 <a href="contact.html">
+                                 Contact
+                                 </a>
+                                 <a href="shop_cart.html">
+                                 Shopping cart
+                                 </a>
+                                 <a href="shop_grid+list_3col.html">
+                                 Shop
+                                 </a>
+                              </div>
+                           </div>
+                           <div class="col-12 col-sm-4 text-sm-center text-md-left">
+                              <div class="footer-quicklink">
+                                 <h5>
+                                    Quick Shop
+                                 </h5>
+                                 <a href="about_us.html">
+                                 About us
+                                 </a>
+                                 <a href="checkout.html">
+                                 Check out
+                                 </a>
+                                 <a href="contact.html">
+                                 Contact
+                                 </a>
+                                 <a href="about_us.html">
+                                 Service
+                                 </a>
+                              </div>
+                           </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="newletter">
-                <div class="container">
-                    <div class="row justify-content-between align-items-center">
+                     </div>
+                  </div>
+               </div>
+               <div class="newletter">
+                  <div class="container">
+                     <div class="row justify-content-between align-items-center">
                         <div class="col-12 col-md-7">
-                            <div class="newletter_text text-center text-md-left">
-                                <h5>Join Our Newsletter Now</h5>
-                                <p>Get E-mail updates about our latest shop and special offers.</p>
-                            </div>
+                           <div class="newletter_text text-center text-md-left">
+                              <h5>
+                                 Join Our Newsletter Now
+                              </h5>
+                              <p>
+                                 Get E-mail updates about our latest shop and special offers.
+                              </p>
+                           </div>
                         </div>
                         <div class="col-12 col-md-5">
-                            <div class="newletter_input">
-                                <input class="round-input" type="text" placeholder="Enter your email">
-                                <button>Subcribe</button>
-                            </div>
+                           <div class="newletter_input">
+                              <input class="round-input" type="text" placeholder="Enter your email">
+                              <button>
+                              Subcribe
+                              </button>
+                           </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-credit">
-                <div class="container">
-                    <div class="footer-creadit_block d-flex flex-column flex-md-row justify-content-start justify-content-md-between align-items-baseline align-items-md-center">
-                        <p class="author">Copyright © 2019 Ogami - All Rights Reserved.</p><img class="payment-method" src="assets/images/payment.png" alt="">
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
-</div>
-    <!-- End footer-->
-
-    <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery-ui.min.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.countdown.min.js') }}"></script>
-    <script src="{{ asset('assets/js/slick.min.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.easing.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.scrollUp.min.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.zoom.min.js') }}"></script>
-    <script src="{{ asset('assets/js/parallax.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.fancybox.js') }}"></script>
-    <script src="{{ asset('assets/js/numscroller-1.0.js') }}"></script>
-    <script src="{{ asset('assets/js/vanilla-tilt.min.js') }}"></script>
-    <script src="{{ asset('assets/js/main.js') }}"></script>
-<script src="{{ asset('build/js/intlTelInput.min.js') }}"></script>
-<script src="{{ asset('build/js/intlTelInput-jquery.min.js') }}"></script>
-<script src="{{ asset('build/js/intlTelInput.js') }}"></script>
-
-    <script>
-        var input = document.querySelector("#inputPhone");
-        window.intlTelInput(input, {
-            // allowDropdown: false,
-            // autoHideDialCode: false,
-            // autoPlaceholder: "off",
-            // dropdownContainer: document.body,
-            // excludeCountries: ["us"],
-            // formatOnDisplay: false,
-            // geoIpLookup: function(callback) {
-            //   $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
-            //     var countryCode = (resp && resp.country) ? resp.country : "";
-            //     callback(countryCode);
-            //   });
-            // },
-            // hiddenInput: "full_number",
-            // initialCountry: "auto",
-            // localizedCountries: { 'de': 'Deutschland' },
-            // nationalMode: false,
-            // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
-            // placeholderNumberType: "MOBILE",
-            // preferredCountries: ['cn', 'jp'],
-            // separateDialCode: true,
-            utilsScript: "build/js/utils.js",
-        });
-    </script>
-</body>
-{% block script %}
-{% endblock %}
+                     </div>
+                  </div>
+               </div>
+               <div class="footer-credit">
+                  <div class="container">
+                     <div class="footer-creadit_block d-flex flex-column flex-md-row justify-content-start justify-content-md-between align-items-baseline align-items-md-center">
+                        <p class="author">
+                           Copyright © 2019 Ogami - All Rights Reserved.
+                        </p>
+                        <img class="payment-method" src="assets/images/payment.png" alt="">
+                     </div>
+                  </div>
+               </div>
+            </footer>
+         </div>
+   </body>
 </html>
+</div><!-- End footer--><script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js') }}"></script><script src="{{ asset('assets/js/jquery-ui.min.js') }}"></script><script src="{{ asset('assets/js/jquery.countdown.min.js') }}"></script><script src="{{ asset('assets/js/slick.min.js') }}"></script><script src="{{ asset('assets/js/jquery.easing.js') }}"></script><script src="{{ asset('assets/js/jquery.scrollUp.min.js') }}"></script><script src="{{ asset('assets/js/jquery.zoom.min.js') }}"></script><script src="{{ asset('assets/js/parallax.js') }}"></script><script src="{{ asset('assets/js/jquery.fancybox.js') }}"></script><script src="{{ asset('assets/js/numscroller-1.0.js') }}"></script><script src="{{ asset('assets/js/vanilla-tilt.min.js') }}"></script><script src="{{ asset('assets/js/main.js') }}"></script><script src="{{ asset('build/js/intlTelInput.min.js') }}"></script><script src="{{ asset('build/js/intlTelInput-jquery.min.js') }}"></script><script src="{{ asset('build/js/intlTelInput.js') }}"></script><script>
+   var input = document.querySelector("#inputPhone");
+   window.intlTelInput(input, {
+       // allowDropdown: false,
+       // autoHideDialCode: false,
+       // autoPlaceholder: "off",
+       // dropdownContainer: document.body,
+       // excludeCountries: ["us"],
+       // formatOnDisplay: false,
+       // geoIpLookup: function(callback) {
+       //   $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+       //     var countryCode = (resp && resp.country) ? resp.country : "";
+       //     callback(countryCode);
+       //   });
+       // },
+       // hiddenInput: "full_number",
+       // initialCountry: "auto",
+       // localizedCountries: { 'de': 'Deutschland' },
+       // nationalMode: false,
+       // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+       // placeholderNumberType: "MOBILE",
+       // preferredCountries: ['cn', 'jp'],
+       // separateDialCode: true,
+       utilsScript: "build/js/utils.js",
+   });
+</script></body>{% block script %}{% endblock %}</html>

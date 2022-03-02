@@ -259,14 +259,13 @@
 										</span>
 									</div>
 									<div class="department-dropdown-menu down">
+									
 										<ul>
-											<li><a href="shop_grid+list_3col.html"><i class="cate-name"></i>Mode Homme</a></li>
-											<li><a href="shop_grid+list_3col.html"><i class="cate-name"></i>Mode Femme</a></li>
-											<li><a href="shop_grid+list_3col.html"><i class="cate-name"></i>Sacs et chaussures</a></li>
-											<li><a href="shop_grid+list_3col.html"><i class="cate-name"></i>Bijoux & Montres</a></li>
-											<li><a href="shop_grid+list_3col.html"><i class="cate-name"></i>Beauté, santé et cheveux</a></li>
-											<li><a href="shop_grid+list_3col.html"><i class="cate-name"></i>Technologie</a></li>
+										{% for categorie in categorie %}
+											<li><a href=" {{path('product_category',{'id':categorie.id})}} "><i class="cate-name"></i>{{ categorie.name }}</a></li>
+										{% endfor %}	
 										</ul>
+									
 									</div>
 								</div>
 							</div>
@@ -1845,20 +1844,11 @@
 
 								{% for product in products  %}
 									<div class="boxes">
-
-
 										<div class="best-seller_bottom">
-
-
 											<div id="tab1">
-
-
 												<div class="row no-gutters-sm">
 													<div class="col-6 col-md-4">
-
-
 														<div class="product pink ">
-
 															<div class="products-item text-center">
 																<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
 
@@ -1872,19 +1862,10 @@
 
 																	$</span>
 															</div>
-
-
 														</div>
-
-
 													</div>
-
 												</div>
-
-
 											</div>
-
-
 										</div>
 									</div>
 								{% endfor %}

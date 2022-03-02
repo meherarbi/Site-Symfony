@@ -38,8 +38,6 @@ class AccountPasswordController extends AbstractController
                 $notification="Your Password is not valid ";
 
 
-
-
         }
         return $this->render('account/password.html.twig',[
             'form'=>$form->createView(),

@@ -89,15 +89,15 @@
                                 <td class="product-name">{{ product.product.name }}</td>
                                 <td class="product-price">{{ (product.product.price/100)|number_format(2) }} $</td>
                                 <td class="product-quantity">
-                                    <a href="{{ path('decrease_my_cart',{'id':product.product.id} ) }}"><button class="btn btn-secondary" >
+                                    <a href="{{ path('cart_decrease_my_cart',{'id':product.product.id} ) }}"><button class="btn btn-secondary" >
                                             <img src="{{ asset('assets/images/minus.png') }}" alt="ajouter" height="11px"></button></a>
                                     <input class="quantity no-round-input"  min="1" value="{{ product.quantity }}">
-                                    <a href="{{ path('add_to_cart',{'id':product.product.id} ) }}"><button class="btn btn-secondary">
+                                    <a href="{{ path('cart_add_to_cart',{'id':product.product.id} ) }}"><button class="btn btn-secondary">
                                         <img src="{{ asset('assets/images/add.png') }}" alt="ajouter" height="11px"></button></a>
                                 </td>
                                 <td class="product-total">{{ ((product.product.price*product.quantity)/100)|number_format(2) }} $</td>
                                 <td class="product-clear">
-                                    <a href="{{ path('delete_my_cart',{'id':product.product.id}) }}" <button class="btn btn-outline-danger"><img src="{{asset('assets/images/trash.png')}}" height="25px" > </button>
+                                    <a href="{{ path('cart_delete_my_cart',{'id':product.product.id}) }}" <button class="btn btn-outline-danger"><img src="{{asset('assets/images/trash.png')}}" height="25px" > </button>
                                 </td>
 
                             </tr>
