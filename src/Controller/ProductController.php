@@ -2,21 +2,23 @@
 
 namespace App\Controller;
 
-use App\Classe\Search;
 use App\Entity\Category;
 use App\Entity\Product;
-use App\Form\SearchType;
+use App\Entity\SearchProduct;
+use App\Form\SearchProductsType;
+use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ProductController extends AbstractController
 {
     private $entityManager;
-    public function  __construct(EntityManagerInterface $entityManager)
+    public function __construct(EntityManagerInterface $entityManager)
     {
-        $this->entityManager= $entityManager;
+        $this->entityManager = $entityManager;
 
     }
     /**
@@ -24,12 +26,12 @@ class ProductController extends AbstractController
      */
     public function index()
     {
-        $products=$this->entityManager->getRepository(Product::class)->findAll();
-        $search=new Search();
-        $form=$this->createForm(SearchType::class,$search);
-        return $this->render( 'product/index.html.twig',[
-            'products'=>$products,
-            'form'=>$form->createView()
+        $products = $this->entityManager->getRepository(Product::class)->findAll();
+        /*  $search = new Search(); */
+        /* $form = $this->createForm(SearchType::class, $search); */
+        return $this->render('product/index.html.twig', [
+            'products' => $products,
+            /*  'form' => $form->createView(), */
 
         ]);
     }
@@ -39,32 +41,40 @@ class ProductController extends AbstractController
      */
     public function show($slug): Response
     {
-        $product=$this->entityManager->getRepository(Product::class)->findOneBySlug($slug);
-        if(!$product){
+        $product = $this->entityManager->getRepository(Product::class)->findOneBySlug($slug);
+        if (!$product) {
             return $this->redirectToRoute('products');
         }
-        return $this->render( 'product/show.html.twig',[
-            'product'=>$product
+        return $this->render('product/show.html.twig', [
+            'product' => $product,
 
         ]);
     }
 
-     /**
+    /**
      * @Route("/productsCategory/{id}", name="product_category")
      */
-    public function showCategory(Category $category): Response
+    public function showCategory(Category $category, Request $request, ProductRepository $repProduct): Response
     {
-        if ($category){
-            $products=$category->getProducts()->getValues();
+        if ($category) {
+            $products = $category->getProducts()->getValues();
+        } else {
+            return $this->redirectToRoute('home');
         }
-        else {
-            return $this->redirectToRoute( 'home') ;
+        $search = new SearchProduct();
+
+        $form = $this->createForm(SearchProductsType::class, $search);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $products = $repProduct->findWithSearch($search);
+
         }
-        
-        
-      
-        return $this->render( 'product/showCategory.html.twig',[
-            'products'=>$products
+
+        return $this->render('product/showCategory.html.twig', [
+            'products' => $products,
+            'search' => $form->createView(),
 
         ]);
     }
