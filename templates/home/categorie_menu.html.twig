@@ -1,7 +1,7 @@
 <ul>
     {% for categorie in categories %}
 
-        <li><a href="#">{{ categorie.name }}</a></li>
+        <li><a href="{{path('product_category',{'id':categorie.id})}}">{{ categorie.name }}</a></li>
 
     {% endfor %}
 </ul>

@@ -6,6 +6,9 @@
 
 {% block content %}
     <div class="row product-container ">
+    <div class="count">
+    {{ products.getTotalItemCount }} Produit(s)
+</div>
         {% for product in products  %}
             <div class="col-md-3 ">
                 <div class="products-item text-center">
@@ -15,9 +18,14 @@
                     <span class="products-price">{{ (product.price/100)|number_format(2) }} $</span>
                 </div>
             </div>
+ 
 
         {% endfor %}
+   
     </div>
+                    <div class="navigation d-flex justify-content-center">
+    {{ knp_pagination_render(products) }}
+</div>
 
 
 {% endblock %}

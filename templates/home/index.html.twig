@@ -636,15 +636,20 @@
 										</div>
 									</div>
 								</div>
+								
 								<div class="best-seller_bottom">
+								
 									<div id="tab1">
+									
 										<div class="row no-gutters-sm">
+										{% for product in products %}
 											<div class="col-6 col-md-4">
+											
 												<div class="product pink">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/as.webp" alt=""></a>
-													<h5 class="product-type">femme</h5>
-													<h3 class="product-name">Survetement</h3>
-													<h3 class="product-price">$14.00
+													<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
+													<h5 class="product-type">{{product.category.name}}</h5>
+													<h3 class="product-name">{{product.name}}</h3>
+													<h3 class="product-price">{{ (product.price/100)|number_format(2) }}</h3>
 														<del>$35.00</del>
 													</h3>
 													<div class="product-select">
@@ -662,137 +667,23 @@
 														</button>
 													</div>
 												</div>
+											
 											</div>
-											<div class="col-6 col-md-4">
-												<div class="product pink">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/d.webp" alt=""></a>
-													<h5 class="product-type">Mode Homme</h5>
-													<h3 class="product-name">joggeurs tactiques</h3>
-													<h3 class="product-price">$24.00
-														<del>$35.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
-											<div class="col-6 col-md-4">
-												<div class="product pink">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/e.webp" alt=""></a>
-													<h5 class="product-type">Bijoux</h5>
-													<h3 class="product-name">wjx</h3>
-													<h3 class="product-price">$3.00
-														<del>$5.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
-											<div class="col-6 col-md-4">
-												<div class="product pink">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/ff.webp" alt=""></a>
-													<h5 class="product-type">Mode Femme</h5>
-													<h3 class="product-name">T-Shirt</h3>
-													<h3 class="product-price">$14.00
-														<del>$35.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
-											<div class="col-6 col-md-4">
-												<div class="product pink">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/fr.jpg" alt=""></a>
-													<h5 class="product-type">Mode Femme</h5>
-													<h3 class="product-name">Survetemnt</h3>
-													<h3 class="product-price">$24.00
-														<del>$35.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
-											<div class="col-6 col-md-4">
-												<div class="product pink">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/gf.webp" alt=""></a>
-													<h5 class="product-type">Mode Homme</h5>
-													<h3 class="product-name">doudoun</h3>
-													<h3 class="product-price">$21.00
-														<del>$35.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
+										{% endfor %}
 										</div>
+                                    
 									</div>
+									
+								
 									<div id="tab2">
 										<div class="row no-gutters-sm">
+										{% for product in products %}
 											<div class="col-6 col-md-4">
 												<div class="product">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/q.webp" alt=""></a>
-													<h5 class="product-type">Mode Homme</h5>
-													<h3 class="product-name">douodun</h3>
-													<h3 class="product-price">$54.00
+													<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
+													<h5 class="product-type">{{product.category.name}}</h5>
+													<h3 class="product-name">{{product.name}}</h3>
+													<h3 class="product-price">{{ (product.price/100)|number_format(2) }}</h3>
 														<del>$35.00</del>
 													</h3>
 													<div class="product-select">
@@ -811,137 +702,19 @@
 													</div>
 												</div>
 											</div>
-											<div class="col-6 col-md-4">
-												<div class="product">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/re.webp" alt=""></a>
-													<h5 class="product-type">Oranges</h5>
-													<h3 class="product-name">Pure Pineapple</h3>
-													<h3 class="product-price">$14.00
-														<del>$35.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
-											<div class="col-6 col-md-4">
-												<div class="product">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/s.jpg" alt=""></a>
-													<h5 class="product-type">Oranges</h5>
-													<h3 class="product-name">Apple</h3>
-													<h3 class="product-price">$30.00
-														<del>$45.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
-											<div class="col-6 col-md-4">
-												<div class="product">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/z.webp" alt="">
-													</a>
-													<h5 class="product-type">Oranges</h5>
-													<h3 class="product-name">Pure Pineapple</h3>
-													<h3 class="product-price">$14.00
-														<del>$35.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
-											<div class="col-6 col-md-4">
-												<div class="product">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/q2.webp" alt=""></a>
-													<h5 class="product-type">Oranges</h5>
-													<h3 class="product-name">Pure Pineapple</h3>
-													<h3 class="product-price">$14.00
-														<del>$35.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
-											<div class="col-6 col-md-4">
-												<div class="product">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/product08.png" alt=""></a>
-													<h5 class="product-type">Oranges</h5>
-													<h3 class="product-name">Pure Pineapple</h3>
-													<h3 class="product-price">$14.00
-														<del>$35.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
+										{% endfor %}
 										</div>
 									</div>
+									
 									<div id="tab3">
 										<div class="row no-gutters-sm">
+										{% for product in products %}
 											<div class="col-6 col-md-4">
 												<div class="product">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/product03.png" alt=""></a>
-													<h5 class="product-type">Oranges</h5>
-													<h3 class="product-name">Pure Pineapple</h3>
-													<h3 class="product-price">$14.00
+													<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
+													<h5 class="product-type">{{product.category.name}}</h5>
+													<h3 class="product-name">{{product.name}}</h3>
+													<h3 class="product-price">{{ (product.price/100)|number_format(2) }}</h3>
 														<del>$35.00</del>
 													</h3>
 													<div class="product-select">
@@ -959,137 +732,19 @@
 														</button>
 													</div>
 												</div>
-											</div>
-											<div class="col-6 col-md-4">
-												<div class="product">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/product02.png" alt=""></a>
-													<h5 class="product-type">Oranges</h5>
-													<h3 class="product-name">Pure Pineapple</h3>
-													<h3 class="product-price">$14.00
-														<del>$35.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
-											<div class="col-6 col-md-4">
-												<div class="product">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/product05.png" alt=""></a>
-													<h5 class="product-type">Oranges</h5>
-													<h3 class="product-name">Apple</h3>
-													<h3 class="product-price">$30.00
-														<del>$45.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
-											<div class="col-6 col-md-4">
-												<div class="product">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/product04.png" alt=""></a>
-													<h5 class="product-type">Oranges</h5>
-													<h3 class="product-name">Pure Pineapple</h3>
-													<h3 class="product-price">$14.00
-														<del>$35.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
-											<div class="col-6 col-md-4">
-												<div class="product">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/q1.webp" alt=""></a>
-													<h5 class="product-type">Oranges</h5>
-													<h3 class="product-name">Pure Pineapple</h3>
-													<h3 class="product-price">$14.00
-														<del>$35.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
-											<div class="col-6 col-md-4">
-												<div class="product">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/product06.png" alt=""></a>
-													<h5 class="product-type">Oranges</h5>
-													<h3 class="product-name">Pure Pineapple</h3>
-													<h3 class="product-price">$14.00
-														<del>$35.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
+											</div>	
+										{% endfor %}
 										</div>
 									</div>
 									<div id="tab4">
 										<div class="row no-gutters-sm">
+										{% for product in products %}
 											<div class="col-6 col-md-4">
 												<div class="product">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/product01.png" alt=""></a>
-													<h5 class="product-type">Oranges</h5>
-													<h3 class="product-name">Pure Pineapple</h3>
-													<h3 class="product-price">$14.00
+													<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
+													<h5 class="product-type">{{product.category.name}}</h5>
+													<h3 class="product-name">{{product.name}}</h3>
+													<h3 class="product-price">{{ (product.price/100)|number_format(2) }}</h3>
 														<del>$35.00</del>
 													</h3>
 													<div class="product-select">
@@ -1108,136 +763,19 @@
 													</div>
 												</div>
 											</div>
-											<div class="col-6 col-md-4">
-												<div class="product">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/product02.png" alt=""></a>
-													<h5 class="product-type">Oranges</h5>
-													<h3 class="product-name">Pure Pineapple</h3>
-													<h3 class="product-price">$14.00
-														<del>$35.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
-											<div class="col-6 col-md-4">
-												<div class="product">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/product03.png" alt=""></a>
-													<h5 class="product-type">Oranges</h5>
-													<h3 class="product-name">Apple</h3>
-													<h3 class="product-price">$30.00
-														<del>$45.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
-											<div class="col-6 col-md-4">
-												<div class="product">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/product04.png" alt=""></a>
-													<h5 class="product-type">Oranges</h5>
-													<h3 class="product-name">Pure Pineapple</h3>
-													<h3 class="product-price">$14.00
-														<del>$35.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
-											<div class="col-6 col-md-4">
-												<div class="product">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/product05.png" alt=""></a>
-													<h5 class="product-type">Oranges</h5>
-													<h3 class="product-name">Pure Pineapple</h3>
-													<h3 class="product-price">$14.00
-														<del>$35.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
-											<div class="col-6 col-md-4">
-												<div class="product">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/product06.png" alt=""></a>
-													<h5 class="product-type">Oranges</h5>
-													<h3 class="product-name">Pure Pineapple</h3>
-													<h3 class="product-price">$14.00
-														<del>$35.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
+										{% endfor %}
+										
 										</div>
 									</div>
 									<div id="tab5">
 										<div class="row no-gutters-sm">
+										{% for product in products %}
 											<div class="col-6 col-md-4">
 												<div class="product">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/product04.png" alt=""></a>
-													<h5 class="product-type">Oranges</h5>
-													<h3 class="product-name">Pure Pineapple</h3>
-													<h3 class="product-price">$14.00
+													<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
+													<h5 class="product-type">{{product.category.name}}</h5>
+													<h3 class="product-name">{{product.name}}</h3>
+													<h3 class="product-price">{{ (product.price/100)|number_format(2) }}</h3>
 														<del>$35.00</del>
 													</h3>
 													<div class="product-select">
@@ -1256,130 +794,14 @@
 													</div>
 												</div>
 											</div>
-											<div class="col-6 col-md-4">
-												<div class="product">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/product05.png" alt=""></a>
-													<h5 class="product-type">Oranges</h5>
-													<h3 class="product-name">Pure Pineapple</h3>
-													<h3 class="product-price">$14.00
-														<del>$35.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
-											<div class="col-6 col-md-4">
-												<div class="product">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/product02.png" alt=""></a>
-													<h5 class="product-type">Oranges</h5>
-													<h3 class="product-name">Apple</h3>
-													<h3 class="product-price">$30.00
-														<del>$45.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
-											<div class="col-6 col-md-4">
-												<div class="product">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/product01.png" alt=""></a>
-													<h5 class="product-type">Oranges</h5>
-													<h3 class="product-name">Pure Pineapple</h3>
-													<h3 class="product-price">$14.00
-														<del>$35.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
-											<div class="col-6 col-md-4">
-												<div class="product">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/product05.png" alt=""></a>
-													<h5 class="product-type">Oranges</h5>
-													<h3 class="product-name">Pure Pineapple</h3>
-													<h3 class="product-price">$14.00
-														<del>$35.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
-											<div class="col-6 col-md-4">
-												<div class="product">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/product08.png" alt=""></a>
-													<h5 class="product-type">Oranges</h5>
-													<h3 class="product-name">Pure Pineapple</h3>
-													<h3 class="product-price">$14.00
-														<del>$35.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
+										{% endfor %}
 										</div>
 									</div>
+								
 								</div>
+								
 							</div>
+							
 							<div class="quick-banner">
 								<div class="row justify-content-center align-items-center flex-column flex-md-row">
 									<div class="col-12 col-md-5">
@@ -1430,13 +852,13 @@
 								<div class="best-seller_bottom">
 									<div id="tab1">
 										<div class="row no-gutters-sm">
+										{% for product in products %}
 											<div class="col-6 col-md-4">
 												<div class="product pink">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/q1.webp" width="200px" height="140px" alt="product image"></a>
-													<h5 class="product-type">Technologie</h5>
-													<h3 class="product-name">Clavier de Projection
-													</h3>
-													<h3 class="product-price">$47.00
+													<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
+													<h5 class="product-type">{{product.category.name}}</h5>
+													<h3 class="product-name">{{product.name}}</h3>
+													<h3 class="product-price">{{ (product.price/100)|number_format(2) }}</h3>
 														<del>$75.00</del>
 													</h3>
 													<div class="product-select">
@@ -1455,66 +877,19 @@
 													</div>
 												</div>
 											</div>
-											<div class="col-6 col-md-4">
-												<div class="product pink">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/q2.webp" width="200px" height="140px" alt="product image"></a>
-													<h5 class="product-type">Accessoire</h5>
-													<h3 class="product-name">Nid de fourmis
-													</h3>
-													<h3 class="product-price">$14.00
-														<del>$25.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
-											<div class="col-6 col-md-4">
-												<div class="product pink">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/q3.webp" width="200px" height="140px" alt="product image"></a>
-													<h5 class="product-type">Mode Homme</h5>
-													<h3 class="product-name">2 pièces ensembles survêtement</h3>
-													<h3 class="product-price">$22.00
-														<del>$45.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
+										{% endfor %}
 										</div>
 									</div>
 									<div id="tab2">
 										<div class="row no-gutters-sm">
+										{% for product in products %}
 											<div class="col-6 col-md-4">
 												<div class="product pink">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/q5.webp" width="200px" height="140px" alt="product image"></a>
-													<h5 class="product-type">Technologie</h5>
-													<h3 class="product-name">ecouteur</h3>
-													<h3 class="product-price">$14.00
-														<del>$35.00</del>
+													<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
+													<h5 class="product-type">{{product.category.name}}</h5>
+													<h3 class="product-name">{{product.name}}</h3>
+													<h3 class="product-price">{{ (product.price/100)|number_format(2) }}</h3>
+														<del>$75.00</del>
 													</h3>
 													<div class="product-select">
 														<button class="add-to-wishlist round-icon-btn pink">
@@ -1532,67 +907,20 @@
 													</div>
 												</div>
 											</div>
-											<div class="col-6 col-md-4">
-												<div class="product pink">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/t1.webp" alt="product image"></a>
-													<h5 class="product-type">Technologie</h5>
-													<h3 class="product-name">Chargeur sans fil
-													</h3>
-													<h3 class="product-price">$24.00
-														<del>$45.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
-											<div class="col-6 col-md-4">
-												<div class="product pink">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/t2.webp" alt="product image"></a>
-													<h5 class="product-type">Technologie</h5>
-													<h3 class="product-name">Sonoff 1080P HD
-													</h3>
-													<h3 class="product-price">$30.00
-														<del>$45.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
+										{% endfor %}	
+											
 										</div>
 									</div>
 									<div id="tab3">
 										<div class="row no-gutters-sm">
+										{% for product in products %}
 											<div class="col-6 col-md-4">
 												<div class="product pink">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/product03.png" alt="product image"></a>
-													<h5 class="product-type">Oranges</h5>
-													<h3 class="product-name">Pure Pineapple</h3>
-													<h3 class="product-price">$14.00
-														<del>$35.00</del>
+													<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
+													<h5 class="product-type">{{product.category.name}}</h5>
+													<h3 class="product-name">{{product.name}}</h3>
+													<h3 class="product-price">{{ (product.price/100)|number_format(2) }}</h3>
+														<del>$75.00</del>
 													</h3>
 													<div class="product-select">
 														<button class="add-to-wishlist round-icon-btn pink">
@@ -1610,65 +938,19 @@
 													</div>
 												</div>
 											</div>
-											<div class="col-6 col-md-4">
-												<div class="product pink">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/product02.png" alt="product image"></a>
-													<h5 class="product-type">Oranges</h5>
-													<h3 class="product-name">Pure Pineapple</h3>
-													<h3 class="product-price">$14.00
-														<del>$35.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
-											<div class="col-6 col-md-4">
-												<div class="product pink">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/product05.png" alt="product image"></a>
-													<h5 class="product-type">Oranges</h5>
-													<h3 class="product-name">Apple</h3>
-													<h3 class="product-price">$30.00
-														<del>$45.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
+										{% endfor %}		
 										</div>
 									</div>
 									<div id="tab4">
 										<div class="row no-gutters-sm">
+										{% for product in products %}
 											<div class="col-6 col-md-4">
 												<div class="product pink">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/product01.png" alt="product image"></a>
-													<h5 class="product-type">Oranges</h5>
-													<h3 class="product-name">Pure Pineapple</h3>
-													<h3 class="product-price">$14.00
-														<del>$35.00</del>
+													<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
+													<h5 class="product-type">{{product.category.name}}</h5>
+													<h3 class="product-name">{{product.name}}</h3>
+													<h3 class="product-price">{{ (product.price/100)|number_format(2) }}</h3>
+														<del>$75.00</del>
 													</h3>
 													<div class="product-select">
 														<button class="add-to-wishlist round-icon-btn pink">
@@ -1686,65 +968,20 @@
 													</div>
 												</div>
 											</div>
-											<div class="col-6 col-md-4">
-												<div class="product pink">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/product02.png" alt="product image"></a>
-													<h5 class="product-type">Oranges</h5>
-													<h3 class="product-name">Pure Pineapple</h3>
-													<h3 class="product-price">$14.00
-														<del>$35.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
-											<div class="col-6 col-md-4">
-												<div class="product pink">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/product03.png" alt="product image"></a>
-													<h5 class="product-type">Oranges</h5>
-													<h3 class="product-name">Apple</h3>
-													<h3 class="product-price">$30.00
-														<del>$45.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
+										{% endfor %}
+											
 										</div>
 									</div>
 									<div id="tab5">
 										<div class="row no-gutters-sm">
+										  {% for product in products %}
 											<div class="col-6 col-md-4">
 												<div class="product pink">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/product04.png" alt="product image"></a>
-													<h5 class="product-type">Oranges</h5>
-													<h3 class="product-name">Pure Pineapple</h3>
-													<h3 class="product-price">$14.00
-														<del>$35.00</del>
+													<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
+													<h5 class="product-type">{{product.category.name}}</h5>
+													<h3 class="product-name">{{product.name}}</h3>
+													<h3 class="product-price">{{ (product.price/100)|number_format(2) }}</h3>
+														<del>$75.00</del>
 													</h3>
 													<div class="product-select">
 														<button class="add-to-wishlist round-icon-btn pink">
@@ -1762,421 +999,184 @@
 													</div>
 												</div>
 											</div>
-											<div class="col-6 col-md-4">
-												<div class="product pink">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/product05.png" alt="product image"></a>
-													<h5 class="product-type">Oranges</h5>
-													<h3 class="product-name">Pure Pineapple</h3>
-													<h3 class="product-price">$14.00
-														<del>$35.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
-											<div class="col-6 col-md-4">
-												<div class="product pink">
-													<a class="product-img" href="shop_detail.html"><img src="assets/images/product/product02.png" alt="product image"></a>
-													<h5 class="product-type">Oranges</h5>
-													<h3 class="product-name">Apple</h3>
-													<h3 class="product-price">$30.00
-														<del>$45.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
+										  {% endfor %}
 										</div>
 									</div>
 								</div>
 							</div>
-							<div id="tab-so2">
-								<div class="best-seller_top mini-tab-title underline pink">
-									<div class="row align-items-md-center">
-										<div class="col-12 col-md-4">
-											<h2 class="title">Latest Products</h2>
-										</div>
-										<div class="col-12 col-md-8 text-lg-right">
-											<ul class="tab-control text-md-right">
-												<li>
-													<a class="active" href="#tab1">All</a>
-												</li>
-												<li>
-													<a href="#tab2">Technologie</a>
-												</li>
-												<li>
-													<a href="#tab3">Accessoire</a>
-												</li>
-												<li>
-													<a href="#tab4">Beauté et santé</a>
-												</li>
-												<li>
-													<a href="#tab5">Bijoux & Montres</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-
-								{% for product in products  %}
-									<div class="boxes">
-										<div class="best-seller_bottom">
-											<div id="tab1">
-												<div class="row no-gutters-sm">
-													<div class="col-6 col-md-4">
-														<div class="product pink ">
-															<div class="products-item text-center">
-																<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
-
-																<figcaption>
-																	<h5 class="product-name">{{ product.name }}</h5>
-
-																</figcaption>
-																<span class="product-type">{{ product.subtitle }}</span>
-
-																<span class="product-price">{{ (product.price/100)|number_format(2) }}
-
-																	$</span>
-															</div>
-														</div>
+							 <div id="tab-so2">
+                <div class="best-seller_top mini-tab-title underline pink">
+                  <div class="row align-items-md-center">
+                    <div class="col-12 col-md-4">
+                      <h2 class="title">Latest Products</h2>
+                    </div>
+                    <div class="col-12 col-md-8 text-lg-right">
+                      <ul class="tab-control text-md-right">
+                        <li><a class="active" href="#tab1">All</a></li>
+                        <li><a href="#tab2">Oranges</a></li>
+                        <li> <a href="#tab3">Fresh Meat</a></li>
+                        <li><a href="#tab4">Vegetables</a></li>
+                        <li><a href="#tab5">Fastfood</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="best-seller_bottom">
+                  <div id="tab1">
+                    <div class="row no-gutters-sm">
+                      {% for product in products %}
+											<div class="col-6 col-md-4">
+												<div class="product pink">
+													<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
+													<h5 class="product-type">{{product.category.name}}</h5>
+													<h3 class="product-name">{{product.name}}</h3>
+													<h3 class="product-price">{{ (product.price/100)|number_format(2) }}</h3>
+														<del>$75.00</del>
+													</h3>
+													<div class="product-select">
+														<button class="add-to-wishlist round-icon-btn pink">
+															<i class="icon_heart_alt"></i>
+														</button>
+														<button class="add-to-cart round-icon-btn pink">
+															<i class="icon_bag_alt"></i>
+														</button>
+														<button class="add-to-compare round-icon-btn pink">
+															<i class="fas fa-random"></i>
+														</button>
+														<button class="quickview round-icon-btn pink">
+															<i class="far fa-eye"></i>
+														</button>
 													</div>
 												</div>
 											</div>
-										</div>
-									</div>
-								{% endfor %}
-
-
-								<div id="tab2">
-									<div class="row no-gutters-sm">
-										<div class="col-6 col-md-4">
-											<div class="product pink">
-												<a class="product-img" href="shop_detail.html"><img src="assets/images/product/product04.png" alt="product image"></a>
-												<h5 class="product-type">Oranges</h5>
-												<h3 class="product-name">Pure Pineapple</h3>
-												<h3 class="product-price">$14.00
-													<del>$35.00</del>
-												</h3>
-												<div class="product-select">
-													<button class="add-to-wishlist round-icon-btn pink">
-														<i class="icon_heart_alt"></i>
-													</button>
-													<button class="add-to-cart round-icon-btn pink">
-														<i class="icon_bag_alt"></i>
-													</button>
-													<button class="add-to-compare round-icon-btn pink">
-														<i class="fas fa-random"></i>
-													</button>
-													<button class="quickview round-icon-btn pink">
-														<i class="far fa-eye"></i>
-													</button>
+										  {% endfor %}
+                    </div>
+                  </div>
+                  <div id="tab2">
+                      <div class="row no-gutters-sm">
+                      {% for product in products %}
+											<div class="col-6 col-md-4">
+												<div class="product pink">
+													<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
+													<h5 class="product-type">{{product.category.name}}</h5>
+													<h3 class="product-name">{{product.name}}</h3>
+													<h3 class="product-price">{{ (product.price/100)|number_format(2) }}</h3>
+														<del>$75.00</del>
+													</h3>
+													<div class="product-select">
+														<button class="add-to-wishlist round-icon-btn pink">
+															<i class="icon_heart_alt"></i>
+														</button>
+														<button class="add-to-cart round-icon-btn pink">
+															<i class="icon_bag_alt"></i>
+														</button>
+														<button class="add-to-compare round-icon-btn pink">
+															<i class="fas fa-random"></i>
+														</button>
+														<button class="quickview round-icon-btn pink">
+															<i class="far fa-eye"></i>
+														</button>
+													</div>
 												</div>
 											</div>
-										</div>
-										<div class="col-6 col-md-4">
-											<div class="product pink">
-												<a class="product-img" href="shop_detail.html"><img src="assets/images/product/product05.png" alt="product image"></a>
-												<h5 class="product-type">Oranges</h5>
-												<h3 class="product-name">Pure Pineapple</h3>
-												<h3 class="product-price">$14.00
-													<del>$35.00</del>
-												</h3>
-												<div class="product-select">
-													<button class="add-to-wishlist round-icon-btn pink">
-														<i class="icon_heart_alt"></i>
-													</button>
-													<button class="add-to-cart round-icon-btn pink">
-														<i class="icon_bag_alt"></i>
-													</button>
-													<button class="add-to-compare round-icon-btn pink">
-														<i class="fas fa-random"></i>
-													</button>
-													<button class="quickview round-icon-btn pink">
-														<i class="far fa-eye"></i>
-													</button>
+										  {% endfor %}
+                    </div>
+                    </div>
+                  <div id="tab3"> 
+                    <div class="row no-gutters-sm">
+                        
+                      {% for product in products %}
+											<div class="col-6 col-md-4">
+												<div class="product pink">
+													<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
+													<h5 class="product-type">{{product.category.name}}</h5>
+													<h3 class="product-name">{{product.name}}</h3>
+													<h3 class="product-price">{{ (product.price/100)|number_format(2) }}</h3>
+														<del>$75.00</del>
+													</h3>
+													<div class="product-select">
+														<button class="add-to-wishlist round-icon-btn pink">
+															<i class="icon_heart_alt"></i>
+														</button>
+														<button class="add-to-cart round-icon-btn pink">
+															<i class="icon_bag_alt"></i>
+														</button>
+														<button class="add-to-compare round-icon-btn pink">
+															<i class="fas fa-random"></i>
+														</button>
+														<button class="quickview round-icon-btn pink">
+															<i class="far fa-eye"></i>
+														</button>
+													</div>
 												</div>
 											</div>
-										</div>
-										<div class="col-6 col-md-4">
-											<div class="product pink">
-												<a class="product-img" href="shop_detail.html"><img src="assets/images/product/product02.png" alt="product image"></a>
-												<h5 class="product-type">Oranges</h5>
-												<h3 class="product-name">Apple</h3>
-												<h3 class="product-price">$30.00
-													<del>$45.00</del>
-												</h3>
-												<div class="product-select">
-													<button class="add-to-wishlist round-icon-btn pink">
-														<i class="icon_heart_alt"></i>
-													</button>
-													<button class="add-to-cart round-icon-btn pink">
-														<i class="icon_bag_alt"></i>
-													</button>
-													<button class="add-to-compare round-icon-btn pink">
-														<i class="fas fa-random"></i>
-													</button>
-													<button class="quickview round-icon-btn pink">
-														<i class="far fa-eye"></i>
-													</button>
+										  {% endfor %}
+                    
+                    </div>
+                  </div>
+                  <div id="tab4">
+                    <div class="row no-gutters-sm">
+                    {% for product in products %}
+											<div class="col-6 col-md-4">
+												<div class="product pink">
+													<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
+													<h5 class="product-type">{{product.category.name}}</h5>
+													<h3 class="product-name">{{product.name}}</h3>
+													<h3 class="product-price">{{ (product.price/100)|number_format(2) }}</h3>
+														<del>$75.00</del>
+													</h3>
+													<div class="product-select">
+														<button class="add-to-wishlist round-icon-btn pink">
+															<i class="icon_heart_alt"></i>
+														</button>
+														<button class="add-to-cart round-icon-btn pink">
+															<i class="icon_bag_alt"></i>
+														</button>
+														<button class="add-to-compare round-icon-btn pink">
+															<i class="fas fa-random"></i>
+														</button>
+														<button class="quickview round-icon-btn pink">
+															<i class="far fa-eye"></i>
+														</button>
+													</div>
 												</div>
 											</div>
-										</div>
-									</div>
-								</div>
-								<div id="tab3">
-									<div class="row no-gutters-sm">
-										<div class="col-6 col-md-4">
-											<div class="product pink">
-												<a class="product-img" href="shop_detail.html"><img src="assets/images/product/product03.png" alt="product image"></a>
-												<h5 class="product-type">Oranges</h5>
-												<h3 class="product-name">Pure Pineapple</h3>
-												<h3 class="product-price">$14.00
-													<del>$35.00</del>
-												</h3>
-												<div class="product-select">
-													<button class="add-to-wishlist round-icon-btn pink">
-														<i class="icon_heart_alt"></i>
-													</button>
-													<button class="add-to-cart round-icon-btn pink">
-														<i class="icon_bag_alt"></i>
-													</button>
-													<button class="add-to-compare round-icon-btn pink">
-														<i class="fas fa-random"></i>
-													</button>
-													<button class="quickview round-icon-btn pink">
-														<i class="far fa-eye"></i>
-													</button>
+										  {% endfor %}
+                    </div>
+                  </div>
+                  <div id="tab5">
+                    <div class="row no-gutters-sm">
+                     {% for product in products %}
+											<div class="col-6 col-md-4">
+												<div class="product pink">
+													<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
+													<h5 class="product-type">{{product.category.name}}</h5>
+													<h3 class="product-name">{{product.name}}</h3>
+													<h3 class="product-price">{{ (product.price/100)|number_format(2) }}</h3>
+														<del>$75.00</del>
+													</h3>
+													<div class="product-select">
+														<button class="add-to-wishlist round-icon-btn pink">
+															<i class="icon_heart_alt"></i>
+														</button>
+														<button class="add-to-cart round-icon-btn pink">
+															<i class="icon_bag_alt"></i>
+														</button>
+														<button class="add-to-compare round-icon-btn pink">
+															<i class="fas fa-random"></i>
+														</button>
+														<button class="quickview round-icon-btn pink">
+															<i class="far fa-eye"></i>
+														</button>
+													</div>
 												</div>
 											</div>
-										</div>
-										<div class="col-6 col-md-4">
-											<div class="product pink">
-												<a class="product-img" href="shop_detail.html"><img src="assets/images/product/product02.png" alt="product image"></a>
-												<h5 class="product-type">Oranges</h5>
-												<h3 class="product-name">Pure Pineapple</h3>
-												<h3 class="product-price">$14.00
-													<del>$35.00</del>
-												</h3>
-												<div class="product-select">
-													<button class="add-to-wishlist round-icon-btn pink">
-														<i class="icon_heart_alt"></i>
-													</button>
-													<button class="add-to-cart round-icon-btn pink">
-														<i class="icon_bag_alt"></i>
-													</button>
-													<button class="add-to-compare round-icon-btn pink">
-														<i class="fas fa-random"></i>
-													</button>
-													<button class="quickview round-icon-btn pink">
-														<i class="far fa-eye"></i>
-													</button>
-												</div>
-											</div>
-										</div>
-										<div class="col-6 col-md-4">
-											<div class="product pink">
-												<a class="product-img" href="shop_detail.html"><img src="assets/images/product/product05.png" alt="product image"></a>
-												<h5 class="product-type">Oranges</h5>
-												<h3 class="product-name">Apple</h3>
-												<h3 class="product-price">$30.00
-													<del>$45.00</del>
-												</h3>
-												<div class="product-select">
-													<button class="add-to-wishlist round-icon-btn pink">
-														<i class="icon_heart_alt"></i>
-													</button>
-													<button class="add-to-cart round-icon-btn pink">
-														<i class="icon_bag_alt"></i>
-													</button>
-													<button class="add-to-compare round-icon-btn pink">
-														<i class="fas fa-random"></i>
-													</button>
-													<button class="quickview round-icon-btn pink">
-														<i class="far fa-eye"></i>
-													</button>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div id="tab4">
-									<div class="row no-gutters-sm">
-										<div class="col-6 col-md-4">
-											<div class="product pink">
-												<a class="product-img" href="shop_detail.html"><img src="assets/images/product/product01.png" alt="product image"></a>
-												<h5 class="product-type">Oranges</h5>
-												<h3 class="product-name">Pure Pineapple</h3>
-												<h3 class="product-price">$14.00
-													<del>$35.00</del>
-												</h3>
-												<div class="product-select">
-													<button class="add-to-wishlist round-icon-btn pink">
-														<i class="icon_heart_alt"></i>
-													</button>
-													<button class="add-to-cart round-icon-btn pink">
-														<i class="icon_bag_alt"></i>
-													</button>
-													<button class="add-to-compare round-icon-btn pink">
-														<i class="fas fa-random"></i>
-													</button>
-													<button class="quickview round-icon-btn pink">
-														<i class="far fa-eye"></i>
-													</button>
-												</div>
-											</div>
-										</div>
-										<div class="col-6 col-md-4">
-											<div class="product pink">
-												<a class="product-img" href="shop_detail.html"><img src="assets/images/product/product02.png" alt="product image"></a>
-												<h5 class="product-type">Oranges</h5>
-												<h3 class="product-name">Pure Pineapple</h3>
-												<h3 class="product-price">$14.00
-													<del>$35.00</del>
-												</h3>
-												<div class="product-select">
-													<button class="add-to-wishlist round-icon-btn pink">
-														<i class="icon_heart_alt"></i>
-													</button>
-													<button class="add-to-cart round-icon-btn pink">
-														<i class="icon_bag_alt"></i>
-													</button>
-													<button class="add-to-compare round-icon-btn pink">
-														<i class="fas fa-random"></i>
-													</button>
-													<button class="quickview round-icon-btn pink">
-														<i class="far fa-eye"></i>
-													</button>
-												</div>
-											</div>
-										</div>
-										<div class="col-6 col-md-4">
-											<div class="product pink">
-												<a class="product-img" href="shop_detail.html"><img src="assets/images/product/product03.png" alt="product image"></a>
-												<h5 class="product-type">Oranges</h5>
-												<h3 class="product-name">Apple</h3>
-												<h3 class="product-price">$30.00
-													<del>$45.00</del>
-												</h3>
-												<div class="product-select">
-													<button class="add-to-wishlist round-icon-btn pink">
-														<i class="icon_heart_alt"></i>
-													</button>
-													<button class="add-to-cart round-icon-btn pink">
-														<i class="icon_bag_alt"></i>
-													</button>
-													<button class="add-to-compare round-icon-btn pink">
-														<i class="fas fa-random"></i>
-													</button>
-													<button class="quickview round-icon-btn pink">
-														<i class="far fa-eye"></i>
-													</button>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div id="tab5">
-									<div class="row no-gutters-sm">
-										<div class="col-6 col-md-4">
-											<div class="product pink">
-												<a class="product-img" href="shop_detail.html"><img src="assets/images/product/product04.png" alt="product image"></a>
-												<h5 class="product-type">Oranges</h5>
-												<h3 class="product-name">Pure Pineapple</h3>
-												<h3 class="product-price">$14.00
-													<del>$35.00</del>
-												</h3>
-												<div class="product-select">
-													<button class="add-to-wishlist round-icon-btn pink">
-														<i class="icon_heart_alt"></i>
-													</button>
-													<button class="add-to-cart round-icon-btn pink">
-														<i class="icon_bag_alt"></i>
-													</button>
-													<button class="add-to-compare round-icon-btn pink">
-														<i class="fas fa-random"></i>
-													</button>
-													<button class="quickview round-icon-btn pink">
-														<i class="far fa-eye"></i>
-													</button>
-												</div>
-											</div>
-										</div>
-										<div class="col-6 col-md-4">
-											<div class="product pink">
-												<a class="product-img" href="shop_detail.html"><img src="assets/images/product/product05.png" alt="product image"></a>
-												<h5 class="product-type">Oranges</h5>
-												<h3 class="product-name">Pure Pineapple</h3>
-												<h3 class="product-price">$14.00
-													<del>$35.00</del>
-												</h3>
-												<div class="product-select">
-													<button class="add-to-wishlist round-icon-btn pink">
-														<i class="icon_heart_alt"></i>
-													</button>
-													<button class="add-to-cart round-icon-btn pink">
-														<i class="icon_bag_alt"></i>
-													</button>
-													<button class="add-to-compare round-icon-btn pink">
-														<i class="fas fa-random"></i>
-													</button>
-													<button class="quickview round-icon-btn pink">
-														<i class="far fa-eye"></i>
-													</button>
-												</div>
-											</div>
-										</div>
-										<div class="col-6 col-md-4">
-											<div class="product pink">
-												<a class="product-img" href="shop_detail.html"><img src="assets/images/product/product02.png" alt="product image"></a>
-												<h5 class="product-type">Oranges</h5>
-												<h3 class="product-name">Apple</h3>
-												<h3 class="product-price">$30.00
-													<del>$45.00</del>
-												</h3>
-												<div class="product-select">
-													<button class="add-to-wishlist round-icon-btn pink">
-														<i class="icon_heart_alt"></i>
-													</button>
-													<button class="add-to-cart round-icon-btn pink">
-														<i class="icon_bag_alt"></i>
-													</button>
-													<button class="add-to-compare round-icon-btn pink">
-														<i class="fas fa-random"></i>
-													</button>
-													<button class="quickview round-icon-btn pink">
-														<i class="far fa-eye"></i>
-													</button>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+										  {% endfor %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+						
 						<div class="row">
 							<div class="col-12 col-md-6">
 								<div class="quick-banner quick-banner-2">
@@ -2257,7 +1257,7 @@
 						<div class="footer-contact">
 							<p>Address: 20 avenue habib bourguiba Tunis</p>
 							<p>Phone: +216 58 58 83 43</p>
-							<p>Email: meher.arbi@folio.com/p></p>
+							<p>Email: meher.arbi@folio.com</p>
 						</div>
 						<div class="footer-social">
 							<a class="round-icon-btn pink" href="">

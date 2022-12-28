@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Category;
+use App\Entity\Product;
 use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
@@ -21,14 +22,17 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(SessionInterface $session)
+    public function index(SessionInterface $session )
     {
         $categorie = $this->categoryRepository->findAll();
+       // $products=$this->productRepository->findProduct();
 
         return $this->render('home/index.html.twig',
         [
+            
             'products'=>$this->productRepository->findProduct(),
-            'categorie' => $categorie 
+            'categorie' => $categorie ,
+            
         ]);
     }
 
@@ -43,4 +47,6 @@ class HomeController extends AbstractController
 
         ['categories' => $categories]);
     }
+
+   
 }
