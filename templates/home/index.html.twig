@@ -637,169 +637,138 @@
 									</div>
 								</div>
 								
-								<div class="best-seller_bottom">
-								
-									<div id="tab1">
-									
-										<div class="row no-gutters-sm">
-										{% for product in products %}
-											<div class="col-6 col-md-4">
-											
-												<div class="product pink">
-													<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
-													<h5 class="product-type">{{product.category.name}}</h5>
-													<h3 class="product-name">{{product.name}}</h3>
-													<h3 class="product-price">{{ (product.price/100)|number_format(2) }}</h3>
-														<del>$35.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											
-											</div>
-										{% endfor %}
-										</div>
-                                    
-									</div>
-									
-								
-									<div id="tab2">
-										<div class="row no-gutters-sm">
-										{% for product in products %}
-											<div class="col-6 col-md-4">
-												<div class="product">
-													<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
-													<h5 class="product-type">{{product.category.name}}</h5>
-													<h3 class="product-name">{{product.name}}</h3>
-													<h3 class="product-price">{{ (product.price/100)|number_format(2) }}</h3>
-														<del>$35.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
-										{% endfor %}
-										</div>
-									</div>
-									
-									<div id="tab3">
-										<div class="row no-gutters-sm">
-										{% for product in products %}
-											<div class="col-6 col-md-4">
-												<div class="product">
-													<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
-													<h5 class="product-type">{{product.category.name}}</h5>
-													<h3 class="product-name">{{product.name}}</h3>
-													<h3 class="product-price">{{ (product.price/100)|number_format(2) }}</h3>
-														<del>$35.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>	
-										{% endfor %}
-										</div>
-									</div>
-									<div id="tab4">
-										<div class="row no-gutters-sm">
-										{% for product in products %}
-											<div class="col-6 col-md-4">
-												<div class="product">
-													<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
-													<h5 class="product-type">{{product.category.name}}</h5>
-													<h3 class="product-name">{{product.name}}</h3>
-													<h3 class="product-price">{{ (product.price/100)|number_format(2) }}</h3>
-														<del>$35.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
-										{% endfor %}
-										
-										</div>
-									</div>
-									<div id="tab5">
-										<div class="row no-gutters-sm">
-										{% for product in products %}
-											<div class="col-6 col-md-4">
-												<div class="product">
-													<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
-													<h5 class="product-type">{{product.category.name}}</h5>
-													<h3 class="product-name">{{product.name}}</h3>
-													<h3 class="product-price">{{ (product.price/100)|number_format(2) }}</h3>
-														<del>$35.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
-										{% endfor %}
-										</div>
-									</div>
-								
-								</div>
-								
+
+
+								 <div class="best-seller_bottom">
+                  <div id="tab1">
+                    <div class="row no-gutters-sm">
+					{% for product in products %}
+                      <div class="col-6 col-md-4">
+                        <div class="product pink"><a class="product-img" href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}"  ></a>
+							<h5 class="product-type">{{product.category.name}}</h5>
+							{% if product.name|length > 10 %}
+    						<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
+							{% else %}
+    						<h3 class="product-name">{{ product.name }}</h3>
+							{% endif %}
+							<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
+                            <del>$35.00</del>
+                          </h3>
+                          <div class="product-select">
+                            <button class="add-to-wishlist round-icon-btn pink"><i class="icon_heart_alt"></i></button>
+                            <button class="add-to-cart round-icon-btn pink">  <i class="icon_bag_alt"></i></button>
+                            <button class="add-to-compare round-icon-btn pink"><i class="fas fa-random"></i></button>
+                            <button class="quickview round-icon-btn pink"><i class="far fa-eye"></i></button>
+                          </div>
+                        </div>
+                      </div>
+               {% endfor %}
+                    </div>
+                  </div>
+                  <div id="tab2">
+                    <div class="row no-gutters-sm">
+					{% for product in products %}
+                      <div class="col-6 col-md-4">
+                        <div class="product"><a class="product-img" href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}"  ></a>
+                          <h5 class="product-type">{{product.category.name}}</h5>
+							{% if product.name|length > 10 %}
+    						<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
+							{% else %}
+    						<h3 class="product-name">{{ product.name }}</h3>
+							{% endif %}
+							<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
+                            <del>$35.00</del>
+                          </h3>
+                          <div class="product-select">
+                            <button class="add-to-wishlist round-icon-btn pink"><i class="icon_heart_alt"></i></button>
+                            <button class="add-to-cart round-icon-btn pink">  <i class="icon_bag_alt"></i></button>
+                            <button class="add-to-compare round-icon-btn pink"><i class="fas fa-random"></i></button>
+                            <button class="quickview round-icon-btn pink"><i class="far fa-eye"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                  {% endfor %}
+                    </div>
+                  </div>
+                  <div id="tab3"> 
+                    <div class="row no-gutters-sm">
+                     	{% for product in products %}
+                      <div class="col-6 col-md-4">
+                        <div class="product"><a class="product-img" href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}"  ></a>
+                          <h5 class="product-type">{{product.category.name}}</h5>
+							{% if product.name|length > 10 %}
+    						<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
+							{% else %}
+    						<h3 class="product-name">{{ product.name }}</h3>
+							{% endif %}
+							<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
+                            <del>$35.00</del>
+                          </h3>
+                          <div class="product-select">
+                            <button class="add-to-wishlist round-icon-btn pink"><i class="icon_heart_alt"></i></button>
+                            <button class="add-to-cart round-icon-btn pink">  <i class="icon_bag_alt"></i></button>
+                            <button class="add-to-compare round-icon-btn pink"><i class="fas fa-random"></i></button>
+                            <button class="quickview round-icon-btn pink"><i class="far fa-eye"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                  {% endfor %}
+                    </div>
+                  </div>
+                  <div id="tab4">
+                    <div class="row no-gutters-sm">
+                      	{% for product in products %}
+                      <div class="col-6 col-md-4">
+                        <div class="product"><a class="product-img" href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}"  ></a>
+                          <h5 class="product-type">{{product.category.name}}</h5>
+							{% if product.name|length > 10 %}
+    						<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
+							{% else %}
+    						<h3 class="product-name">{{ product.name }}</h3>
+							{% endif %}
+							<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
+                            <del>$35.00</del>
+                          </h3>
+                          <div class="product-select">
+                            <button class="add-to-wishlist round-icon-btn pink"><i class="icon_heart_alt"></i></button>
+                            <button class="add-to-cart round-icon-btn pink">  <i class="icon_bag_alt"></i></button>
+                            <button class="add-to-compare round-icon-btn pink"><i class="fas fa-random"></i></button>
+                            <button class="quickview round-icon-btn pink"><i class="far fa-eye"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                  {% endfor %}
+                    </div>
+                  </div>
+                  <div id="tab5">
+                    <div class="row no-gutters-sm">
+                    	{% for product in products %}
+                      <div class="col-6 col-md-4">
+                        <div class="product"><a class="product-img" href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}"  ></a>
+                          <h5 class="product-type">{{product.category.name}}</h5>
+							{% if product.name|length > 10 %}
+    						<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
+							{% else %}
+    						<h3 class="product-name">{{ product.name }}</h3>
+							{% endif %}
+							<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
+                            <del>$35.00</del>
+                          </h3>
+                          <div class="product-select">
+                            <button class="add-to-wishlist round-icon-btn pink"><i class="icon_heart_alt"></i></button>
+                            <button class="add-to-cart round-icon-btn pink">  <i class="icon_bag_alt"></i></button>
+                            <button class="add-to-compare round-icon-btn pink"><i class="fas fa-random"></i></button>
+                            <button class="quickview round-icon-btn pink"><i class="far fa-eye"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                  {% endfor %}
+                    </div>
+                  </div>
+                </div>	
+
+
+
 							</div>
 							
 							<div class="quick-banner">
@@ -857,8 +826,12 @@
 												<div class="product pink">
 													<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
 													<h5 class="product-type">{{product.category.name}}</h5>
-													<h3 class="product-name">{{product.name}}</h3>
-													<h3 class="product-price">{{ (product.price/100)|number_format(2) }}</h3>
+													{% if product.name|length > 10 %}
+    						<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
+							{% else %}
+    						<h3 class="product-name">{{ product.name }}</h3>
+							{% endif %}
+							<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
 														<del>$75.00</del>
 													</h3>
 													<div class="product-select">
@@ -887,8 +860,12 @@
 												<div class="product pink">
 													<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
 													<h5 class="product-type">{{product.category.name}}</h5>
-													<h3 class="product-name">{{product.name}}</h3>
-													<h3 class="product-price">{{ (product.price/100)|number_format(2) }}</h3>
+													{% if product.name|length > 10 %}
+    						<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
+							{% else %}
+    						<h3 class="product-name">{{ product.name }}</h3>
+							{% endif %}
+							<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
 														<del>$75.00</del>
 													</h3>
 													<div class="product-select">
@@ -918,8 +895,12 @@
 												<div class="product pink">
 													<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
 													<h5 class="product-type">{{product.category.name}}</h5>
-													<h3 class="product-name">{{product.name}}</h3>
-													<h3 class="product-price">{{ (product.price/100)|number_format(2) }}</h3>
+													{% if product.name|length > 10 %}
+    						<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
+							{% else %}
+    						<h3 class="product-name">{{ product.name }}</h3>
+							{% endif %}
+							<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
 														<del>$75.00</del>
 													</h3>
 													<div class="product-select">
@@ -948,8 +929,12 @@
 												<div class="product pink">
 													<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
 													<h5 class="product-type">{{product.category.name}}</h5>
-													<h3 class="product-name">{{product.name}}</h3>
-													<h3 class="product-price">{{ (product.price/100)|number_format(2) }}</h3>
+													{% if product.name|length > 10 %}
+    						<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
+							{% else %}
+    						<h3 class="product-name">{{ product.name }}</h3>
+							{% endif %}
+							<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
 														<del>$75.00</del>
 													</h3>
 													<div class="product-select">
@@ -979,8 +964,12 @@
 												<div class="product pink">
 													<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
 													<h5 class="product-type">{{product.category.name}}</h5>
-													<h3 class="product-name">{{product.name}}</h3>
-													<h3 class="product-price">{{ (product.price/100)|number_format(2) }}</h3>
+													{% if product.name|length > 10 %}
+    						<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
+							{% else %}
+    						<h3 class="product-name">{{ product.name }}</h3>
+							{% endif %}
+							<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
 														<del>$75.00</del>
 													</h3>
 													<div class="product-select">
@@ -1029,8 +1018,12 @@
 												<div class="product pink">
 													<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
 													<h5 class="product-type">{{product.category.name}}</h5>
-													<h3 class="product-name">{{product.name}}</h3>
-													<h3 class="product-price">{{ (product.price/100)|number_format(2) }}</h3>
+													{% if product.name|length > 10 %}
+    						<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
+							{% else %}
+    						<h3 class="product-name">{{ product.name }}</h3>
+							{% endif %}
+							<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
 														<del>$75.00</del>
 													</h3>
 													<div class="product-select">
@@ -1059,8 +1052,12 @@
 												<div class="product pink">
 													<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
 													<h5 class="product-type">{{product.category.name}}</h5>
-													<h3 class="product-name">{{product.name}}</h3>
-													<h3 class="product-price">{{ (product.price/100)|number_format(2) }}</h3>
+													{% if product.name|length > 10 %}
+    						<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
+							{% else %}
+    						<h3 class="product-name">{{ product.name }}</h3>
+							{% endif %}
+							<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
 														<del>$75.00</del>
 													</h3>
 													<div class="product-select">
@@ -1090,8 +1087,12 @@
 												<div class="product pink">
 													<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
 													<h5 class="product-type">{{product.category.name}}</h5>
-													<h3 class="product-name">{{product.name}}</h3>
-													<h3 class="product-price">{{ (product.price/100)|number_format(2) }}</h3>
+													{% if product.name|length > 10 %}
+    						<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
+							{% else %}
+    						<h3 class="product-name">{{ product.name }}</h3>
+							{% endif %}
+							<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
 														<del>$75.00</del>
 													</h3>
 													<div class="product-select">
@@ -1121,8 +1122,12 @@
 												<div class="product pink">
 													<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
 													<h5 class="product-type">{{product.category.name}}</h5>
-													<h3 class="product-name">{{product.name}}</h3>
-													<h3 class="product-price">{{ (product.price/100)|number_format(2) }}</h3>
+													{% if product.name|length > 10 %}
+    						<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
+							{% else %}
+    						<h3 class="product-name">{{ product.name }}</h3>
+							{% endif %}
+							<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
 														<del>$75.00</del>
 													</h3>
 													<div class="product-select">
@@ -1151,8 +1156,12 @@
 												<div class="product pink">
 													<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
 													<h5 class="product-type">{{product.category.name}}</h5>
-													<h3 class="product-name">{{product.name}}</h3>
-													<h3 class="product-price">{{ (product.price/100)|number_format(2) }}</h3>
+													{% if product.name|length > 10 %}
+    						<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
+							{% else %}
+    						<h3 class="product-name">{{ product.name }}</h3>
+							{% endif %}
+							<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
 														<del>$75.00</del>
 													</h3>
 													<div class="product-select">

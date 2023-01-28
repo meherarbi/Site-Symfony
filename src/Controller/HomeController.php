@@ -12,7 +12,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\ProductRepository;
-
+use Doctrine\ORM\Query\Expr\Func;
+use Symfony\Component\Stopwatch\Stopwatch;
+use Symfony\Contracts\Cache\CacheInterface;
 
 class HomeController extends AbstractController
 {
@@ -22,8 +24,15 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(SessionInterface $session )
+    public function index(SessionInterface $session , Stopwatch $stopwatch , CacheInterface $cache )
     {
+     /*    $stopwatch->start('calcul-long');
+        $resultatCalculCache = $cache->get('calcul-long', function () {
+            return $this->categorieMenu();
+         });
+         
+         $stopwatch->stop('calcul-long'); */
+
         $categorie = $this->categoryRepository->findAll();
        // $products=$this->productRepository->findProduct();
 
@@ -34,18 +43,23 @@ class HomeController extends AbstractController
             'categorie' => $categorie ,
             
         ]);
+
     }
+
 
     /**
      * @Route("/categoriemenu", name="categorie_menu")
      */
     public function categorieMenu()
     {
+        
         $categories = $this->categoryRepository->findAll();
+       
 
         return $this->render('home/categorie_menu.html.twig', 
 
         ['categories' => $categories]);
+        
     }
 
    
