@@ -35,7 +35,7 @@ class ProductController extends AbstractController
             
             $productrepository->findAll(),
             $request->query->getInt('page', 1), /*page number*/
-            6/*limit per page*/
+            8/*limit per page*/
         );
        
         return $this->render('product/index.html.twig', [
@@ -46,11 +46,11 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/products/{slug}", name="product")
+     * @Route("/products/{id}", name="product")
      */
-    public function show($slug): Response
+    public function show($id): Response
     {
-        $product = $this->entityManager->getRepository(Product::class)->findOneBySlug($slug);
+        $product = $this->entityManager->getRepository(Product::class)->find($id);
         if (!$product) {
             return $this->redirectToRoute('products');
         }
@@ -63,10 +63,18 @@ class ProductController extends AbstractController
     /**
      * @Route("/productsCategory/{id}", name="product_category")
      */
-    public function showCategory(Category $category, Request $request, ProductRepository $repProduct): Response
+    public function showCategory(PaginatorInterface $paginator,Category $category, Request $request, ProductRepository $repProduct): Response
     {
         if ($category) {
-            $products = $category->getProducts()->getValues();
+            /* $products = $category->getProducts()->getValues(); */
+
+            $products = $paginator->paginate(
+            
+                $category->getProducts()->getValues(),
+                $request->query->getInt('page', 1), /*page number*/
+                8/*limit per page*/
+            );
+
         } else {
             return $this->redirectToRoute('home');
         }

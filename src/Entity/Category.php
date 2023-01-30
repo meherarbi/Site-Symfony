@@ -33,10 +33,10 @@ class Category
     {
         $this->products = new ArrayCollection();
     }
-public function __toString()
-{
-    return $this->getName();
-}
+    public function __toString() {
+        return $this->getName() ?? 'Unnamed Category';
+    }
+
 
     public function getId(): ?int
     {

@@ -259,13 +259,17 @@
 										</span>
 									</div>
 									<div class="department-dropdown-menu down">
-									
+
 										<ul>
-										{% for categorie in categorie %}
-											<li><a href=" {{path('product_category',{'id':categorie.id})}} "><i class="cate-name"></i>{{ categorie.name }}</a></li>
-										{% endfor %}	
+											{% for categorie in categorie %}
+												<li>
+													<a href=" {{path('product_category',{'id':categorie.id})}} ">
+														<i class="cate-name"></i>
+														{{ categorie.name }}</a>
+												</li>
+											{% endfor %}
 										</ul>
-									
+
 									</div>
 								</div>
 							</div>
@@ -620,157 +624,195 @@
 												<li>
 													<a class="active" href="#tab1">All</a>
 												</li>
-												<li>
-													<a href="#tab2">Technologie</a>
-												</li>
-												<li>
-													<a href="#tab3">Accessoire</a>
-												</li>
-												<li>
-													<a href="#tab4">Beauté et santé</a>
-												</li>
-												<li>
-													<a href="#tab5">Bijoux & Montres</a>
-												</li>
+												{% for category in categorie %}
+													<li>
+														<a href="#tab{{ loop.index }}" >
+															{{ category.name }}
+														</a>
+													</li>
+												{% endfor %}
 											</ul>
 										</div>
 									</div>
 								</div>
-								
 
 
-								 <div class="best-seller_bottom">
-                  <div id="tab1">
-                    <div class="row no-gutters-sm">
-					{% for product in products %}
-                      <div class="col-6 col-md-4">
-                        <div class="product pink"><a class="product-img" href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}"  ></a>
-							<h5 class="product-type">{{product.category.name}}</h5>
-							{% if product.name|length > 10 %}
-    						<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
-							{% else %}
-    						<h3 class="product-name">{{ product.name }}</h3>
-							{% endif %}
-							<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
-                            <del>$35.00</del>
-                          </h3>
-                          <div class="product-select">
-                            <button class="add-to-wishlist round-icon-btn pink"><i class="icon_heart_alt"></i></button>
-                            <button class="add-to-cart round-icon-btn pink">  <i class="icon_bag_alt"></i></button>
-                            <button class="add-to-compare round-icon-btn pink"><i class="fas fa-random"></i></button>
-                            <button class="quickview round-icon-btn pink"><i class="far fa-eye"></i></button>
-                          </div>
-                        </div>
-                      </div>
-               {% endfor %}
-                    </div>
-                  </div>
-                  <div id="tab2">
-                    <div class="row no-gutters-sm">
-					{% for product in products %}
-                      <div class="col-6 col-md-4">
-                        <div class="product"><a class="product-img" href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}"  ></a>
-                          <h5 class="product-type">{{product.category.name}}</h5>
-							{% if product.name|length > 10 %}
-    						<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
-							{% else %}
-    						<h3 class="product-name">{{ product.name }}</h3>
-							{% endif %}
-							<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
-                            <del>$35.00</del>
-                          </h3>
-                          <div class="product-select">
-                            <button class="add-to-wishlist round-icon-btn pink"><i class="icon_heart_alt"></i></button>
-                            <button class="add-to-cart round-icon-btn pink">  <i class="icon_bag_alt"></i></button>
-                            <button class="add-to-compare round-icon-btn pink"><i class="fas fa-random"></i></button>
-                            <button class="quickview round-icon-btn pink"><i class="far fa-eye"></i></button>
-                          </div>
-                        </div>
-                      </div>
-                  {% endfor %}
-                    </div>
-                  </div>
-                  <div id="tab3"> 
-                    <div class="row no-gutters-sm">
-                     	{% for product in products %}
-                      <div class="col-6 col-md-4">
-                        <div class="product"><a class="product-img" href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}"  ></a>
-                          <h5 class="product-type">{{product.category.name}}</h5>
-							{% if product.name|length > 10 %}
-    						<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
-							{% else %}
-    						<h3 class="product-name">{{ product.name }}</h3>
-							{% endif %}
-							<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
-                            <del>$35.00</del>
-                          </h3>
-                          <div class="product-select">
-                            <button class="add-to-wishlist round-icon-btn pink"><i class="icon_heart_alt"></i></button>
-                            <button class="add-to-cart round-icon-btn pink">  <i class="icon_bag_alt"></i></button>
-                            <button class="add-to-compare round-icon-btn pink"><i class="fas fa-random"></i></button>
-                            <button class="quickview round-icon-btn pink"><i class="far fa-eye"></i></button>
-                          </div>
-                        </div>
-                      </div>
-                  {% endfor %}
-                    </div>
-                  </div>
-                  <div id="tab4">
-                    <div class="row no-gutters-sm">
-                      	{% for product in products %}
-                      <div class="col-6 col-md-4">
-                        <div class="product"><a class="product-img" href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}"  ></a>
-                          <h5 class="product-type">{{product.category.name}}</h5>
-							{% if product.name|length > 10 %}
-    						<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
-							{% else %}
-    						<h3 class="product-name">{{ product.name }}</h3>
-							{% endif %}
-							<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
-                            <del>$35.00</del>
-                          </h3>
-                          <div class="product-select">
-                            <button class="add-to-wishlist round-icon-btn pink"><i class="icon_heart_alt"></i></button>
-                            <button class="add-to-cart round-icon-btn pink">  <i class="icon_bag_alt"></i></button>
-                            <button class="add-to-compare round-icon-btn pink"><i class="fas fa-random"></i></button>
-                            <button class="quickview round-icon-btn pink"><i class="far fa-eye"></i></button>
-                          </div>
-                        </div>
-                      </div>
-                  {% endfor %}
-                    </div>
-                  </div>
-                  <div id="tab5">
-                    <div class="row no-gutters-sm">
-                    	{% for product in products %}
-                      <div class="col-6 col-md-4">
-                        <div class="product"><a class="product-img" href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}"  ></a>
-                          <h5 class="product-type">{{product.category.name}}</h5>
-							{% if product.name|length > 10 %}
-    						<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
-							{% else %}
-    						<h3 class="product-name">{{ product.name }}</h3>
-							{% endif %}
-							<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
-                            <del>$35.00</del>
-                          </h3>
-                          <div class="product-select">
-                            <button class="add-to-wishlist round-icon-btn pink"><i class="icon_heart_alt"></i></button>
-                            <button class="add-to-cart round-icon-btn pink">  <i class="icon_bag_alt"></i></button>
-                            <button class="add-to-compare round-icon-btn pink"><i class="fas fa-random"></i></button>
-                            <button class="quickview round-icon-btn pink"><i class="far fa-eye"></i></button>
-                          </div>
-                        </div>
-                      </div>
-                  {% endfor %}
-                    </div>
-                  </div>
-                </div>	
-
+								<div class="best-seller_bottom">
+									<div id="tab1">
+										<div class="row no-gutters-sm">
+											{% for product in products  %}
+												<div class="col-6 col-md-4">
+													<div class="product pink">
+														<a class="product-img" href="{{ path('product',{'id':product.id}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}"></a>
+														<h5 class="product-type">{{product.category.name}}</h5>
+														{% if product.name|length > 10 %}
+															<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
+														{% else %}
+															<h3 class="product-name">{{ product.name }}</h3>
+														{% endif %}
+														<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
+															<del>$35.00</del>
+														</h3>
+														<div class="product-select">
+															<button class="add-to-wishlist round-icon-btn pink">
+																<i class="icon_heart_alt"></i>
+															</button>
+															<button class="add-to-cart round-icon-btn pink">
+																<i class="icon_bag_alt"></i>
+															</button>
+															<button class="add-to-compare round-icon-btn pink">
+																<i class="fas fa-random"></i>
+															</button>
+															<button class="quickview round-icon-btn pink">
+																<i class="far fa-eye"></i>
+															</button>
+														</div>
+													</div>
+												</div>
+											{% endfor %}
+										</div>
+									</div>
+									<div id="tab2">
+										<div class="row no-gutters-sm">
+											{% for product in products %}
+												<div class="col-6 col-md-4">
+													<div class="product">
+														<a class="product-img" href="{{ path('product',{'id':product.id}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}"></a>
+														<h5 class="product-type">{{product.category.name}}</h5>
+														{% if product.name|length > 10 %}
+															<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
+														{% else %}
+															<h3 class="product-name">{{ product.name }}</h3>
+														{% endif %}
+														<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
+															<del>$35.00</del>
+														</h3>
+														<div class="product-select">
+															<button class="add-to-wishlist round-icon-btn pink">
+																<i class="icon_heart_alt"></i>
+															</button>
+															<button class="add-to-cart round-icon-btn pink">
+																<i class="icon_bag_alt"></i>
+															</button>
+															<button class="add-to-compare round-icon-btn pink">
+																<i class="fas fa-random"></i>
+															</button>
+															<button class="quickview round-icon-btn pink">
+																<i class="far fa-eye"></i>
+															</button>
+														</div>
+													</div>
+												</div>
+											{% endfor %}
+										</div>
+									</div>
+									<div id="tab3">
+										<div class="row no-gutters-sm">
+											{% for product in products %}
+												<div class="col-6 col-md-4">
+													<div class="product">
+														<a class="product-img" href="{{ path('product',{'id':product.id}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}"></a>
+														<h5 class="product-type">{{product.category.name}}</h5>
+														{% if product.name|length > 10 %}
+															<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
+														{% else %}
+															<h3 class="product-name">{{ product.name }}</h3>
+														{% endif %}
+														<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
+															<del>$35.00</del>
+														</h3>
+														<div class="product-select">
+															<button class="add-to-wishlist round-icon-btn pink">
+																<i class="icon_heart_alt"></i>
+															</button>
+															<button class="add-to-cart round-icon-btn pink">
+																<i class="icon_bag_alt"></i>
+															</button>
+															<button class="add-to-compare round-icon-btn pink">
+																<i class="fas fa-random"></i>
+															</button>
+															<button class="quickview round-icon-btn pink">
+																<i class="far fa-eye"></i>
+															</button>
+														</div>
+													</div>
+												</div>
+											{% endfor %}
+										</div>
+									</div>
+									<div id="tab4">
+										<div class="row no-gutters-sm">
+											{% for product in products %}
+												<div class="col-6 col-md-4">
+													<div class="product">
+														<a class="product-img" href="{{ path('product',{'id':product.id}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}"></a>
+														<h5 class="product-type">{{product.category.name}}</h5>
+														{% if product.name|length > 10 %}
+															<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
+														{% else %}
+															<h3 class="product-name">{{ product.name }}</h3>
+														{% endif %}
+														<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
+															<del>$35.00</del>
+														</h3>
+														<div class="product-select">
+															<button class="add-to-wishlist round-icon-btn pink">
+																<i class="icon_heart_alt"></i>
+															</button>
+															<button class="add-to-cart round-icon-btn pink">
+																<i class="icon_bag_alt"></i>
+															</button>
+															<button class="add-to-compare round-icon-btn pink">
+																<i class="fas fa-random"></i>
+															</button>
+															<button class="quickview round-icon-btn pink">
+																<i class="far fa-eye"></i>
+															</button>
+														</div>
+													</div>
+												</div>
+											{% endfor %}
+										</div>
+									</div>
+									<div id="tab5">
+										<div class="row no-gutters-sm">
+											{% for product in products %}
+												<div class="col-6 col-md-4">
+													<div class="product">
+														<a class="product-img" href="{{ path('product',{'id':product.id}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}"></a>
+														<h5 class="product-type">{{product.category.name}}</h5>
+														{% if product.name|length > 10 %}
+															<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
+														{% else %}
+															<h3 class="product-name">{{ product.name }}</h3>
+														{% endif %}
+														<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
+															<del>$35.00</del>
+														</h3>
+														<div class="product-select">
+															<button class="add-to-wishlist round-icon-btn pink">
+																<i class="icon_heart_alt"></i>
+															</button>
+															<button class="add-to-cart round-icon-btn pink">
+																<i class="icon_bag_alt"></i>
+															</button>
+															<button class="add-to-compare round-icon-btn pink">
+																<i class="fas fa-random"></i>
+															</button>
+															<button class="quickview round-icon-btn pink">
+																<i class="far fa-eye"></i>
+															</button>
+														</div>
+													</div>
+												</div>
+											{% endfor %}
+										</div>
+									</div>
+								</div>
 
 
 							</div>
-							
+
 							<div class="quick-banner">
 								<div class="row justify-content-center align-items-center flex-column flex-md-row">
 									<div class="col-12 col-md-5">
@@ -821,404 +863,415 @@
 								<div class="best-seller_bottom">
 									<div id="tab1">
 										<div class="row no-gutters-sm">
-										{% for product in products %}
-											<div class="col-6 col-md-4">
-												<div class="product pink">
-													<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
-													<h5 class="product-type">{{product.category.name}}</h5>
-													{% if product.name|length > 10 %}
-    						<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
-							{% else %}
-    						<h3 class="product-name">{{ product.name }}</h3>
-							{% endif %}
-							<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
-														<del>$75.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
+											{% for product in products %}
+												<div class="col-6 col-md-4">
+													<div class="product pink">
+														<a href="{{ path('product',{'id':product.id}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
+														<h5 class="product-type">{{product.category.name}}</h5>
+														{% if product.name|length > 10 %}
+															<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
+														{% else %}
+															<h3 class="product-name">{{ product.name }}</h3>
+														{% endif %}
+														<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
+															<del>$75.00</del>
+														</h3>
+														<div class="product-select">
+															<button class="add-to-wishlist round-icon-btn pink">
+																<i class="icon_heart_alt"></i>
+															</button>
+															<button class="add-to-cart round-icon-btn pink">
+																<i class="icon_bag_alt"></i>
+															</button>
+															<button class="add-to-compare round-icon-btn pink">
+																<i class="fas fa-random"></i>
+															</button>
+															<button class="quickview round-icon-btn pink">
+																<i class="far fa-eye"></i>
+															</button>
+														</div>
 													</div>
 												</div>
-											</div>
-										{% endfor %}
+											{% endfor %}
 										</div>
 									</div>
 									<div id="tab2">
 										<div class="row no-gutters-sm">
-										{% for product in products %}
-											<div class="col-6 col-md-4">
-												<div class="product pink">
-													<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
-													<h5 class="product-type">{{product.category.name}}</h5>
-													{% if product.name|length > 10 %}
-    						<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
-							{% else %}
-    						<h3 class="product-name">{{ product.name }}</h3>
-							{% endif %}
-							<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
-														<del>$75.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
+											{% for product in products %}
+												<div class="col-6 col-md-4">
+													<div class="product pink">
+														<a href="{{ path('product',{'id':product.id}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
+														<h5 class="product-type">{{product.category.name}}</h5>
+														{% if product.name|length > 10 %}
+															<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
+														{% else %}
+															<h3 class="product-name">{{ product.name }}</h3>
+														{% endif %}
+														<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
+															<del>$75.00</del>
+														</h3>
+														<div class="product-select">
+															<button class="add-to-wishlist round-icon-btn pink">
+																<i class="icon_heart_alt"></i>
+															</button>
+															<button class="add-to-cart round-icon-btn pink">
+																<i class="icon_bag_alt"></i>
+															</button>
+															<button class="add-to-compare round-icon-btn pink">
+																<i class="fas fa-random"></i>
+															</button>
+															<button class="quickview round-icon-btn pink">
+																<i class="far fa-eye"></i>
+															</button>
+														</div>
 													</div>
 												</div>
-											</div>
-										{% endfor %}	
-											
+											{% endfor %}
+
 										</div>
 									</div>
 									<div id="tab3">
 										<div class="row no-gutters-sm">
-										{% for product in products %}
-											<div class="col-6 col-md-4">
-												<div class="product pink">
-													<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
-													<h5 class="product-type">{{product.category.name}}</h5>
-													{% if product.name|length > 10 %}
-    						<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
-							{% else %}
-    						<h3 class="product-name">{{ product.name }}</h3>
-							{% endif %}
-							<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
-														<del>$75.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
+											{% for product in products %}
+												<div class="col-6 col-md-4">
+													<div class="product pink">
+														<a href="{{ path('product',{'id':product.id}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
+														<h5 class="product-type">{{product.category.name}}</h5>
+														{% if product.name|length > 10 %}
+															<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
+														{% else %}
+															<h3 class="product-name">{{ product.name }}</h3>
+														{% endif %}
+														<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
+															<del>$75.00</del>
+														</h3>
+														<div class="product-select">
+															<button class="add-to-wishlist round-icon-btn pink">
+																<i class="icon_heart_alt"></i>
+															</button>
+															<button class="add-to-cart round-icon-btn pink">
+																<i class="icon_bag_alt"></i>
+															</button>
+															<button class="add-to-compare round-icon-btn pink">
+																<i class="fas fa-random"></i>
+															</button>
+															<button class="quickview round-icon-btn pink">
+																<i class="far fa-eye"></i>
+															</button>
+														</div>
 													</div>
 												</div>
-											</div>
-										{% endfor %}		
+											{% endfor %}
 										</div>
 									</div>
 									<div id="tab4">
 										<div class="row no-gutters-sm">
-										{% for product in products %}
-											<div class="col-6 col-md-4">
-												<div class="product pink">
-													<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
-													<h5 class="product-type">{{product.category.name}}</h5>
-													{% if product.name|length > 10 %}
-    						<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
-							{% else %}
-    						<h3 class="product-name">{{ product.name }}</h3>
-							{% endif %}
-							<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
-														<del>$75.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
+											{% for product in products %}
+												<div class="col-6 col-md-4">
+													<div class="product pink">
+														<a href="{{ path('product',{'id':product.id}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
+														<h5 class="product-type">{{product.category.name}}</h5>
+														{% if product.name|length > 10 %}
+															<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
+														{% else %}
+															<h3 class="product-name">{{ product.name }}</h3>
+														{% endif %}
+														<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
+															<del>$75.00</del>
+														</h3>
+														<div class="product-select">
+															<button class="add-to-wishlist round-icon-btn pink">
+																<i class="icon_heart_alt"></i>
+															</button>
+															<button class="add-to-cart round-icon-btn pink">
+																<i class="icon_bag_alt"></i>
+															</button>
+															<button class="add-to-compare round-icon-btn pink">
+																<i class="fas fa-random"></i>
+															</button>
+															<button class="quickview round-icon-btn pink">
+																<i class="far fa-eye"></i>
+															</button>
+														</div>
 													</div>
 												</div>
-											</div>
-										{% endfor %}
-											
+											{% endfor %}
+
 										</div>
 									</div>
 									<div id="tab5">
 										<div class="row no-gutters-sm">
-										  {% for product in products %}
-											<div class="col-6 col-md-4">
-												<div class="product pink">
-													<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
-													<h5 class="product-type">{{product.category.name}}</h5>
-													{% if product.name|length > 10 %}
-    						<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
-							{% else %}
-    						<h3 class="product-name">{{ product.name }}</h3>
-							{% endif %}
-							<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
-														<del>$75.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
+											{% for product in products %}
+												<div class="col-6 col-md-4">
+													<div class="product pink">
+														<a href="{{ path('product',{'id':product.id}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
+														<h5 class="product-type">{{product.category.name}}</h5>
+														{% if product.name|length > 10 %}
+															<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
+														{% else %}
+															<h3 class="product-name">{{ product.name }}</h3>
+														{% endif %}
+														<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
+															<del>$75.00</del>
+														</h3>
+														<div class="product-select">
+															<button class="add-to-wishlist round-icon-btn pink">
+																<i class="icon_heart_alt"></i>
+															</button>
+															<button class="add-to-cart round-icon-btn pink">
+																<i class="icon_bag_alt"></i>
+															</button>
+															<button class="add-to-compare round-icon-btn pink">
+																<i class="fas fa-random"></i>
+															</button>
+															<button class="quickview round-icon-btn pink">
+																<i class="far fa-eye"></i>
+															</button>
+														</div>
 													</div>
 												</div>
-											</div>
-										  {% endfor %}
+											{% endfor %}
 										</div>
 									</div>
 								</div>
 							</div>
-							 <div id="tab-so2">
-                <div class="best-seller_top mini-tab-title underline pink">
-                  <div class="row align-items-md-center">
-                    <div class="col-12 col-md-4">
-                      <h2 class="title">Latest Products</h2>
-                    </div>
-                    <div class="col-12 col-md-8 text-lg-right">
-                      <ul class="tab-control text-md-right">
-                        <li><a class="active" href="#tab1">All</a></li>
-                        <li><a href="#tab2">Oranges</a></li>
-                        <li> <a href="#tab3">Fresh Meat</a></li>
-                        <li><a href="#tab4">Vegetables</a></li>
-                        <li><a href="#tab5">Fastfood</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div class="best-seller_bottom">
-                  <div id="tab1">
-                    <div class="row no-gutters-sm">
-                      {% for product in products %}
-											<div class="col-6 col-md-4">
-												<div class="product pink">
-													<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
-													<h5 class="product-type">{{product.category.name}}</h5>
-													{% if product.name|length > 10 %}
-    						<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
-							{% else %}
-    						<h3 class="product-name">{{ product.name }}</h3>
-							{% endif %}
-							<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
-														<del>$75.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
-										  {% endfor %}
-                    </div>
-                  </div>
-                  <div id="tab2">
-                      <div class="row no-gutters-sm">
-                      {% for product in products %}
-											<div class="col-6 col-md-4">
-												<div class="product pink">
-													<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
-													<h5 class="product-type">{{product.category.name}}</h5>
-													{% if product.name|length > 10 %}
-    						<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
-							{% else %}
-    						<h3 class="product-name">{{ product.name }}</h3>
-							{% endif %}
-							<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
-														<del>$75.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
-										  {% endfor %}
-                    </div>
-                    </div>
-                  <div id="tab3"> 
-                    <div class="row no-gutters-sm">
-                        
-                      {% for product in products %}
-											<div class="col-6 col-md-4">
-												<div class="product pink">
-													<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
-													<h5 class="product-type">{{product.category.name}}</h5>
-													{% if product.name|length > 10 %}
-    						<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
-							{% else %}
-    						<h3 class="product-name">{{ product.name }}</h3>
-							{% endif %}
-							<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
-														<del>$75.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
-										  {% endfor %}
-                    
-                    </div>
-                  </div>
-                  <div id="tab4">
-                    <div class="row no-gutters-sm">
-                    {% for product in products %}
-											<div class="col-6 col-md-4">
-												<div class="product pink">
-													<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
-													<h5 class="product-type">{{product.category.name}}</h5>
-													{% if product.name|length > 10 %}
-    						<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
-							{% else %}
-    						<h3 class="product-name">{{ product.name }}</h3>
-							{% endif %}
-							<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
-														<del>$75.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
-										  {% endfor %}
-                    </div>
-                  </div>
-                  <div id="tab5">
-                    <div class="row no-gutters-sm">
-                     {% for product in products %}
-											<div class="col-6 col-md-4">
-												<div class="product pink">
-													<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
-													<h5 class="product-type">{{product.category.name}}</h5>
-													{% if product.name|length > 10 %}
-    						<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
-							{% else %}
-    						<h3 class="product-name">{{ product.name }}</h3>
-							{% endif %}
-							<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
-														<del>$75.00</del>
-													</h3>
-													<div class="product-select">
-														<button class="add-to-wishlist round-icon-btn pink">
-															<i class="icon_heart_alt"></i>
-														</button>
-														<button class="add-to-cart round-icon-btn pink">
-															<i class="icon_bag_alt"></i>
-														</button>
-														<button class="add-to-compare round-icon-btn pink">
-															<i class="fas fa-random"></i>
-														</button>
-														<button class="quickview round-icon-btn pink">
-															<i class="far fa-eye"></i>
-														</button>
-													</div>
-												</div>
-											</div>
-										  {% endfor %}
-                    </div>
-                  </div>
-                </div>
-              </div>
-						
-						<div class="row">
-							<div class="col-12 col-md-6">
-								<div class="quick-banner quick-banner-2">
-									<div class="row justify-content-center align-items-center">
-										<div class="col-6 col-md-5">
-											<div class="bannner-img text-center"><img class="img-fluid" src="assets/images/homepage03/v1.jpg" width="123px" height="114px" alt=""></div>
+							<div id="tab-so2">
+								<div class="best-seller_top mini-tab-title underline pink">
+									<div class="row align-items-md-center">
+										<div class="col-12 col-md-4">
+											<h2 class="title">Latest Products</h2>
 										</div>
-										<div class="col-6 col-md-5">
-											<div class="banner-text text-center text-md-left">
-												<h3 class="day">Black Friday
-												</h3>
-												<h3 class="sale">Sale Off
-													<span>60%</span>
-												</h3>
-												<a class="normal-btn pink" href="shop_grid+list_3col.html">Shop now</a>
-											</div>
+										<div class="col-12 col-md-8 text-lg-right">
+											<ul class="tab-control text-md-right">
+												<li>
+													<a class="active" href="#tab1">All</a>
+												</li>
+												<li>
+													<a href="#tab2">Oranges</a>
+												</li>
+												<li>
+													<a href="#tab3">Fresh Meat</a>
+												</li>
+												<li>
+													<a href="#tab4">Vegetables</a>
+												</li>
+												<li>
+													<a href="#tab5">Fastfood</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="best-seller_bottom">
+									<div id="tab1">
+										<div class="row no-gutters-sm">
+											{% for product in products %}
+												<div class="col-6 col-md-4">
+													<div class="product pink">
+														<a href="{{ path('product',{'id':product.id}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
+														<h5 class="product-type">{{product.category.name}}</h5>
+														{% if product.name|length > 10 %}
+															<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
+														{% else %}
+															<h3 class="product-name">{{ product.name }}</h3>
+														{% endif %}
+														<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
+															<del>$75.00</del>
+														</h3>
+														<div class="product-select">
+															<button class="add-to-wishlist round-icon-btn pink">
+																<i class="icon_heart_alt"></i>
+															</button>
+															<button class="add-to-cart round-icon-btn pink">
+																<i class="icon_bag_alt"></i>
+															</button>
+															<button class="add-to-compare round-icon-btn pink">
+																<i class="fas fa-random"></i>
+															</button>
+															<button class="quickview round-icon-btn pink">
+																<i class="far fa-eye"></i>
+															</button>
+														</div>
+													</div>
+												</div>
+											{% endfor %}
+										</div>
+									</div>
+									<div id="tab2">
+										<div class="row no-gutters-sm">
+											{% for product in products %}
+												<div class="col-6 col-md-4">
+													<div class="product pink">
+														<a href="{{ path('product',{'id':product.id}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
+														<h5 class="product-type">{{product.category.name}}</h5>
+														{% if product.name|length > 10 %}
+															<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
+														{% else %}
+															<h3 class="product-name">{{ product.name }}</h3>
+														{% endif %}
+														<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
+															<del>$75.00</del>
+														</h3>
+														<div class="product-select">
+															<button class="add-to-wishlist round-icon-btn pink">
+																<i class="icon_heart_alt"></i>
+															</button>
+															<button class="add-to-cart round-icon-btn pink">
+																<i class="icon_bag_alt"></i>
+															</button>
+															<button class="add-to-compare round-icon-btn pink">
+																<i class="fas fa-random"></i>
+															</button>
+															<button class="quickview round-icon-btn pink">
+																<i class="far fa-eye"></i>
+															</button>
+														</div>
+													</div>
+												</div>
+											{% endfor %}
+										</div>
+									</div>
+									<div id="tab3">
+										<div class="row no-gutters-sm">
+
+											{% for product in products %}
+												<div class="col-6 col-md-4">
+													<div class="product pink">
+														<a href="{{ path('product',{'id':product.id}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
+														<h5 class="product-type">{{product.category.name}}</h5>
+														{% if product.name|length > 10 %}
+															<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
+														{% else %}
+															<h3 class="product-name">{{ product.name }}</h3>
+														{% endif %}
+														<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
+															<del>$75.00</del>
+														</h3>
+														<div class="product-select">
+															<button class="add-to-wishlist round-icon-btn pink">
+																<i class="icon_heart_alt"></i>
+															</button>
+															<button class="add-to-cart round-icon-btn pink">
+																<i class="icon_bag_alt"></i>
+															</button>
+															<button class="add-to-compare round-icon-btn pink">
+																<i class="fas fa-random"></i>
+															</button>
+															<button class="quickview round-icon-btn pink">
+																<i class="far fa-eye"></i>
+															</button>
+														</div>
+													</div>
+												</div>
+											{% endfor %}
+
+										</div>
+									</div>
+									<div id="tab4">
+										<div class="row no-gutters-sm">
+											{% for product in products %}
+												<div class="col-6 col-md-4">
+													<div class="product pink">
+														<a href="{{ path('product',{'id':product.id}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
+														<h5 class="product-type">{{product.category.name}}</h5>
+														{% if product.name|length > 10 %}
+															<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
+														{% else %}
+															<h3 class="product-name">{{ product.name }}</h3>
+														{% endif %}
+														<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
+															<del>$75.00</del>
+														</h3>
+														<div class="product-select">
+															<button class="add-to-wishlist round-icon-btn pink">
+																<i class="icon_heart_alt"></i>
+															</button>
+															<button class="add-to-cart round-icon-btn pink">
+																<i class="icon_bag_alt"></i>
+															</button>
+															<button class="add-to-compare round-icon-btn pink">
+																<i class="fas fa-random"></i>
+															</button>
+															<button class="quickview round-icon-btn pink">
+																<i class="far fa-eye"></i>
+															</button>
+														</div>
+													</div>
+												</div>
+											{% endfor %}
+										</div>
+									</div>
+									<div id="tab5">
+										<div class="row no-gutters-sm">
+											{% for product in products %}
+												<div class="col-6 col-md-4">
+													<div class="product pink">
+														<a href="{{ path('product',{'id':product.id}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
+														<h5 class="product-type">{{product.category.name}}</h5>
+														{% if product.name|length > 10 %}
+															<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
+														{% else %}
+															<h3 class="product-name">{{ product.name }}</h3>
+														{% endif %}
+														<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
+															<del>$75.00</del>
+														</h3>
+														<div class="product-select">
+															<button class="add-to-wishlist round-icon-btn pink">
+																<i class="icon_heart_alt"></i>
+															</button>
+															<button class="add-to-cart round-icon-btn pink">
+																<i class="icon_bag_alt"></i>
+															</button>
+															<button class="add-to-compare round-icon-btn pink">
+																<i class="fas fa-random"></i>
+															</button>
+															<button class="quickview round-icon-btn pink">
+																<i class="far fa-eye"></i>
+															</button>
+														</div>
+													</div>
+												</div>
+											{% endfor %}
 										</div>
 									</div>
 								</div>
 							</div>
-							<div class="col-12 col-md-6">
-								<div class="quick-banner quick-banner-3">
-									<div class="row justify-content-center align-items-center">
-										<div class="col-6 col-md-5">
-											<div class="bannner-img text-center"><img class="img-fluid" src="assets/images/homepage03/v2.webp" alt=""></div>
+
+							<div class="row">
+								<div class="col-12 col-md-6">
+									<div class="quick-banner quick-banner-2">
+										<div class="row justify-content-center align-items-center">
+											<div class="col-6 col-md-5">
+												<div class="bannner-img text-center"><img class="img-fluid" src="assets/images/homepage03/v1.jpg" width="123px" height="114px" alt=""></div>
+											</div>
+											<div class="col-6 col-md-5">
+												<div class="banner-text text-center text-md-left">
+													<h3 class="day">Black Friday
+													</h3>
+													<h3 class="sale">Sale Off
+														<span>60%</span>
+													</h3>
+													<a class="normal-btn pink" href="shop_grid+list_3col.html">Shop now</a>
+												</div>
+											</div>
 										</div>
-										<div class="col-6 col-md-5">
-											<div class="banner-text text-center text-md-left">
-												<h3 class="day">Summer</h3>
-												<h3 class="sale">Sale Off
-													<span>50%</span>
-												</h3>
-												<a class="normal-btn pink" href="shop_grid+list_3col.html">Shop now</a>
+									</div>
+								</div>
+								<div class="col-12 col-md-6">
+									<div class="quick-banner quick-banner-3">
+										<div class="row justify-content-center align-items-center">
+											<div class="col-6 col-md-5">
+												<div class="bannner-img text-center"><img class="img-fluid" src="assets/images/homepage03/v2.webp" alt=""></div>
+											</div>
+											<div class="col-6 col-md-5">
+												<div class="banner-text text-center text-md-left">
+													<h3 class="day">Summer</h3>
+													<h3 class="sale">Sale Off
+														<span>50%</span>
+													</h3>
+													<a class="normal-btn pink" href="shop_grid+list_3col.html">Shop now</a>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -1228,120 +1281,120 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<!-- End product block-->
-		<div class="partner">
-			<div class="container">
-				<div class="partner_block d-flex justify-content-between" data-slick="{&quot;slidesToShow&quot;: 6}">
-					<div class="partner--logo" href="">
-						<a href="#"><img src="{{ asset('assets/images/partner/a1.webp') }}" alt="partner" title="partner logo"></a>
-					</div>
-					<div class="partner--logo" href="">
-						<a href="#"><img src="{{ asset('assets/images/partner/a2.webp') }}" alt="partner" title="partner logo"></a>
-					</div>
-					<div class="partner--logo" href="">
-						<a href="#"><img src="{{ asset('assets/images/partner/a3.webp') }}" alt="partner" title="partner logo"></a>
-					</div>
-					<div class="partner--logo" href="">
-						<a href="#"><img src="{{ asset('assets/images/partner/a4.webp') }}" alt="partner" title="partner logo"></a>
-					</div>
-					<div class="partner--logo" href="">
-						<a href="#"><img src="{{ asset('assets/images/partner/a5.webp') }}" alt="partner" title="partner logo"></a>
-					</div>
-					<div class="partner--logo" href="">
-						<a href="#"><img src="{{ asset('assets/images/partner/a6.webp') }}" alt="partner" title="partner logo"></a>
-					</div>
-					<div class="partner--logo" href="">
-						<a href=""><img src="{{ asset('assets/images/partner/a7.webp') }}" alt="partner" title="partner logo"></a>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- End partner-->
-		<footer class="pink">
-			<div class="container">
-				<div class="row">
-					<div class="col-12 col-sm-12 col-md-4 text-sm-center text-md-left">
-						<div class="footer-logo"><img src="assets/images/logo.png" alt=""></div>
-						<div class="footer-contact">
-							<p>Address: 20 avenue habib bourguiba Tunis</p>
-							<p>Phone: +216 58 58 83 43</p>
-							<p>Email: meher.arbi@folio.com</p>
-						</div>
-						<div class="footer-social">
-							<a class="round-icon-btn pink" href="">
-								<i class="fab fa-facebook-f"></i>
-							</a>
-							<a class="round-icon-btn pink" href="">
-								<i class="fab fa-twitter"></i>
-							</a>
-							<a class="round-icon-btn pink" href="">
-								<i class="fab fa-invision"></i>
-							</a>
-							<a class="round-icon-btn pink" href="">
-								<i class="fab fa-pinterest-p"></i>
-							</a>
-						</div>
-					</div>
-					<div class="col-md-8">
-						<div class="row">
-							<div class="col-12 col-sm-4 text-sm-center text-md-left">
-								<div class="footer-quicklink">
-									<h5>Infomation</h5>
-									<a href="about_us.html">About us</a>
-									<a href="checkout.html">Check out</a>
-									<a href="contact.html">Contact</a>
-									<a href="about_us.html">Service</a>
-								</div>
-							</div>
-							<div class="col-12 col-sm-4 text-sm-center text-md-left">
-								<div class="footer-quicklink">
-									<h5>My Account</h5>
-									<a href="login.html">My Account</a>
-									<a href="contact.html">Contact</a>
-									<a href="shop_cart.html">Shopping cart</a>
-									<a href="shop_grid+list_3col.html">Shop</a>
-								</div>
-							</div>
-							<div class="col-12 col-sm-4 text-sm-center text-md-left">
-								<div class="footer-quicklink">
-									<h5>Quick Shop</h5>
-									<a href="about_us.html">About us</a>
-									<a href="checkout.html">Check out</a>
-									<a href="contact.html">Contact</a>
-									<a href="about_us.html">Service</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="newletter">
+			<!-- End product block-->
+			<div class="partner">
 				<div class="container">
-					<div class="row justify-content-between align-items-center">
-						<div class="col-12 col-md-7">
-							<div class="newletter_text text-center text-md-left">
-								<h5>Join Our Newsletter Now</h5>
-								<p>Get E-mail updates about our latest shop and special offers.</p>
-							</div>
+					<div class="partner_block d-flex justify-content-between" data-slick="{&quot;slidesToShow&quot;: 6}">
+						<div class="partner--logo" href="">
+							<a href="#"><img src="{{ asset('assets/images/partner/a1.webp') }}" alt="partner" title="partner logo"></a>
 						</div>
-						<div class="col-12 col-md-5">
-							<div class="newletter_input">
-								<input class="round-input" type="text" placeholder="Enter your email">
-								<button>Subcribe</button>
-							</div>
+						<div class="partner--logo" href="">
+							<a href="#"><img src="{{ asset('assets/images/partner/a2.webp') }}" alt="partner" title="partner logo"></a>
+						</div>
+						<div class="partner--logo" href="">
+							<a href="#"><img src="{{ asset('assets/images/partner/a3.webp') }}" alt="partner" title="partner logo"></a>
+						</div>
+						<div class="partner--logo" href="">
+							<a href="#"><img src="{{ asset('assets/images/partner/a4.webp') }}" alt="partner" title="partner logo"></a>
+						</div>
+						<div class="partner--logo" href="">
+							<a href="#"><img src="{{ asset('assets/images/partner/a5.webp') }}" alt="partner" title="partner logo"></a>
+						</div>
+						<div class="partner--logo" href="">
+							<a href="#"><img src="{{ asset('assets/images/partner/a6.webp') }}" alt="partner" title="partner logo"></a>
+						</div>
+						<div class="partner--logo" href="">
+							<a href=""><img src="{{ asset('assets/images/partner/a7.webp') }}" alt="partner" title="partner logo"></a>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="footer-credit">
+			<!-- End partner-->
+			<footer class="pink">
 				<div class="container">
-					<div class="footer-creadit_block d-flex flex-column flex-md-row justify-content-start justify-content-md-between align-items-baseline align-items-md-center">
-						<p class="author">Copyright © 2019 Ogami - All Rights Reserved.</p><img class="payment-method" src="assets/images/payment.png" alt="">
+					<div class="row">
+						<div class="col-12 col-sm-12 col-md-4 text-sm-center text-md-left">
+							<div class="footer-logo"><img src="assets/images/logo.png" alt=""></div>
+							<div class="footer-contact">
+								<p>Address: 20 avenue habib bourguiba Tunis</p>
+								<p>Phone: +216 58 58 83 43</p>
+								<p>Email: meher.arbi@folio.com</p>
+							</div>
+							<div class="footer-social">
+								<a class="round-icon-btn pink" href="">
+									<i class="fab fa-facebook-f"></i>
+								</a>
+								<a class="round-icon-btn pink" href="">
+									<i class="fab fa-twitter"></i>
+								</a>
+								<a class="round-icon-btn pink" href="">
+									<i class="fab fa-invision"></i>
+								</a>
+								<a class="round-icon-btn pink" href="">
+									<i class="fab fa-pinterest-p"></i>
+								</a>
+							</div>
+						</div>
+						<div class="col-md-8">
+							<div class="row">
+								<div class="col-12 col-sm-4 text-sm-center text-md-left">
+									<div class="footer-quicklink">
+										<h5>Infomation</h5>
+										<a href="about_us.html">About us</a>
+										<a href="checkout.html">Check out</a>
+										<a href="contact.html">Contact</a>
+										<a href="about_us.html">Service</a>
+									</div>
+								</div>
+								<div class="col-12 col-sm-4 text-sm-center text-md-left">
+									<div class="footer-quicklink">
+										<h5>My Account</h5>
+										<a href="login.html">My Account</a>
+										<a href="contact.html">Contact</a>
+										<a href="shop_cart.html">Shopping cart</a>
+										<a href="shop_grid+list_3col.html">Shop</a>
+									</div>
+								</div>
+								<div class="col-12 col-sm-4 text-sm-center text-md-left">
+									<div class="footer-quicklink">
+										<h5>Quick Shop</h5>
+										<a href="about_us.html">About us</a>
+										<a href="checkout.html">Check out</a>
+										<a href="contact.html">Contact</a>
+										<a href="about_us.html">Service</a>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
-		</footer>
-		<!-- End footer-->
+				<div class="newletter">
+					<div class="container">
+						<div class="row justify-content-between align-items-center">
+							<div class="col-12 col-md-7">
+								<div class="newletter_text text-center text-md-left">
+									<h5>Join Our Newsletter Now</h5>
+									<p>Get E-mail updates about our latest shop and special offers.</p>
+								</div>
+							</div>
+							<div class="col-12 col-md-5">
+								<div class="newletter_input">
+									<input class="round-input" type="text" placeholder="Enter your email">
+									<button>Subcribe</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="footer-credit">
+					<div class="container">
+						<div class="footer-creadit_block d-flex flex-column flex-md-row justify-content-start justify-content-md-between align-items-baseline align-items-md-center">
+							<p class="author">Copyright © 2019 Ogami - All Rights Reserved.</p><img class="payment-method" src="assets/images/payment.png" alt="">
+						</div>
+					</div>
+				</div>
+			</footer>
+			<!-- End footer-->
+		</body>
 	</body>
 </html></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="assets/js/jquery-ui.min.js"></script><script src="assets/js/jquery.countdown.min.js"></script><script src="assets/js/slick.min.js"></script><script src="assets/js/jquery.easing.js"></script><script src="assets/js/jquery.scrollUp.min.js"></script><script src="assets/js/jquery.zoom.min.js"></script><script src="assets/js/parallax.js"></script><script src="assets/js/jquery.fancybox.js"></script><script src="assets/js/numscroller-1.0.js"></script><script src="assets/js/vanilla-tilt.min.js"></script><script src="assets/js/main.js"></script></body></html></body></html>

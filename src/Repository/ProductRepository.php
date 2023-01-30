@@ -33,6 +33,67 @@ class ProductRepository extends ServiceEntityRepository
         ;
     }
 
+ /*    public function findByCategory()
+    {
+        return $this->createQueryBuilder('p')
+        ->select('c.name as category, p.name ,p.slug,')
+        ->join('p.category', 'c')
+        ->groupBy('c.name')
+        ->getQuery()
+        ->getResult();
+    } */
+
+/*     
+    public function findProductsGroupByCategory($Id = null)
+    {
+        if (!$Id) {
+            return $this->findAll();
+        }
+    
+        return $this->createQueryBuilder('p')
+            ->join('p.category', 'c')
+            ->where('c.id = :id')
+            ->setParameter('id', $Id)
+            ->getQuery()
+            ->getResult();
+    }
+
+ */
+    public function findAllWithCategory()
+{
+    return $this->createQueryBuilder('p')
+        ->leftJoin('p.category', 'c')
+        ->addSelect('c')
+        ->getQuery()
+        ->getResult();
+}
+
+public function findProductsGroupByCategory($categoryId)
+{
+    $qb = $this->createQueryBuilder('p')
+        ->join('p.category', 'c')
+        ->where('c.id = :categoryId')
+        ->setParameter('categoryId', $categoryId)
+        ->getQuery();
+
+    return $qb->getResult();
+}
+
+    
+
+    /*  *
+     * @return Product[] Returns an array of Product objects
+     */
+    /*   public function findByCategory(string $category): array
+    {
+    return $this->createQueryBuilder('p')
+    ->andWhere('p.category = :category')
+    ->setParameter('category', $category)
+    ->getQuery()
+    ->getResult()
+    ;
+    } */
+
     /**
      * @return Product[] Returns an array of Product objects
      */
@@ -55,11 +116,11 @@ class ProductRepository extends ServiceEntityRepository
         } */
 
         //Categories
-        if($search->getCategories()){
-        $query = $query->join('p.category','c')
-        ->andWhere('c.id IN (:categories)')
-        ->setParameter('categories',$search->getCategories());
-        } 
+        if ($search->getCategories()) {
+            $query = $query->join('p.category', 'c')
+                ->andWhere('c.id IN (:categories)')
+                ->setParameter('categories', $search->getCategories());
+        }
         return $query->getQuery()->getResult();
 
     }

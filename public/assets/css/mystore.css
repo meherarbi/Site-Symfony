@@ -10,6 +10,50 @@
   background: snow;
 }
 
+.shop-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+
+  .no-round-btn.smooth {
+    background-color: #f2f7f7;
+    color: #fff;
+    font-size: 13px;
+    border-radius: 999px;
+    padding: auto;
+    text-transform: uppercase ;
+    border: 2px solid #ebf3f4;
+    transition: 0.3s ease;
+    -webkit-border-radius: 999px;
+    -moz-border-radius: 999px;
+    -ms-border-radius: 999px;
+    -o-border-radius: 999px;
+    -webkit-transition: 0.3s ease;
+    -moz-transition: 0.3s ease;
+    -ms-transition: 0.3s ease;
+    -o-transition: 0.3s ease;
+}  
+
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+background-color: #17A2AB;
+color: #fff;
+}
+
+.pagination > .disabled > span.page-link {
+  background-color: #17A2AB;
+  color: #fff;
+  }
+
+.pagination > li > a,
+.pagination > li > span { background-color: #17A2AB; color: #fff; font-size: 13px; padding: auto; border-radius: 999px; border: 2px solid #17a2b8; text-decoration: aucun; -webkit-border-radius: 999px; -moz-border-radius: 999px; -ms-border-radius: 999px; -o-border-radius: 999px;
+}
+
 .form-control {
   display: block;
   width: 500px;
