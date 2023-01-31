@@ -20,7 +20,7 @@ class HomeController extends AbstractController
  */
     public function index(Request $request)
     {
-        if ($request->request->has('Id')) {
+        /* if ($request->request->has('Id')) {
             $productId = $request->request->get('Id');
             
             $productGroup = $this->productRepository->findProductsGroupByCategory($productId);
@@ -29,12 +29,14 @@ class HomeController extends AbstractController
                 'products' => $productGroup,
                 'categories' => $this->categoryRepository->findAll(),
             ]);
-        }
+        } */
 
-        $products = $this->productRepository->findAll();
+        $products = $this->productRepository->findProduct();
+        $productsMin = $this->productRepository->findProductMin();
 
         return $this->render('home/index.html.twig', [
             'products' => $products,
+            'productsMin'=>$productsMin,
             'categorie' => $this->categoryRepository->findAll(),
         ]);
     }

@@ -32,6 +32,15 @@ class ProductRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+    public function findProductMin()
+    {
+        return $this->createQueryBuilder('p')
+            ->orderBy('p.id', 'DESC')
+            ->setMaxResults(3)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
  /*    public function findByCategory()
     {
