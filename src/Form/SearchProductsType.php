@@ -4,6 +4,7 @@ namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -37,6 +38,7 @@ class SearchProductsType extends AbstractType
                     'style' => 'width:120px',
                 ],
             ])
+           
             /*   ->add('tags', TextType::class, [
         'label' => false,
         'required'=> false,

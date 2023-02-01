@@ -86,6 +86,11 @@ class ProductController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $products = $repProduct->findWithSearch($search);
+            $products = $paginator->paginate(
+                $products,
+                $request->query->getInt('page', 1), /*page number*/
+                8/*limit per page*/
+            );
 
         }
 
