@@ -20,7 +20,10 @@
       <link rel="stylesheet" href="{{ asset('assets/css/jquery.fancybox.min.css') }}">
       <link rel="shortcut icon" href="{{ asset('assets/images/shortcut_logo.png') }}">
       <link rel="stylesheet" href="{{ asset('assets/css/mystore.css') }}">
+      <link rel="stylesheet" href="{{ asset('assets/css/select2.min.css') }}">
       <link rel="stylesheet" href="{{ asset('build/css/intlTelInput.css') }}">
+      
+      
       {#    
       <link rel="stylesheet" href="{{ asset('build/css/demo.css') }}">
       #}
@@ -340,7 +343,10 @@
          </div>
    </body>
 </html>
-</div><!-- End footer--><script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js') }}"></script><script src="{{ asset('assets/js/jquery-ui.min.js') }}"></script><script src="{{ asset('assets/js/jquery.countdown.min.js') }}"></script><script src="{{ asset('assets/js/slick.min.js') }}"></script><script src="{{ asset('assets/js/jquery.easing.js') }}"></script><script src="{{ asset('assets/js/jquery.scrollUp.min.js') }}"></script><script src="{{ asset('assets/js/jquery.zoom.min.js') }}"></script><script src="{{ asset('assets/js/parallax.js') }}"></script><script src="{{ asset('assets/js/jquery.fancybox.js') }}"></script><script src="{{ asset('assets/js/numscroller-1.0.js') }}"></script><script src="{{ asset('assets/js/vanilla-tilt.min.js') }}"></script><script src="{{ asset('assets/js/main.js') }}"></script><script src="{{ asset('build/js/intlTelInput.min.js') }}"></script><script src="{{ asset('build/js/intlTelInput-jquery.min.js') }}"></script><script src="{{ asset('build/js/intlTelInput.js') }}"></script><script>
+</div><!-- End footer--><script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js') }}"></script><script src="{{ asset('assets/js/jquery-ui.min.js') }}"></script><script src="{{ asset('assets/js/jquery.countdown.min.js') }}"></script><script src="{{ asset('assets/js/slick.min.js') }}"></script><script src="{{ asset('assets/js/jquery.easing.js') }}"></script><script src="{{ asset('assets/js/jquery.scrollUp.min.js') }}"></script><script src="{{ asset('assets/js/jquery.zoom.min.js') }}"></script><script src="{{ asset('assets/js/parallax.js') }}"></script><script src="{{ asset('assets/js/jquery.fancybox.js') }}"></script><script src="{{ asset('assets/js/numscroller-1.0.js') }}"></script><script src="{{ asset('assets/js/vanilla-tilt.min.js') }}"></script><script src="{{ asset('assets/js/main.js') }}"></script><script src="{{ asset('build/js/intlTelInput.min.js') }}"></script><script src="{{ asset('build/js/intlTelInput-jquery.min.js') }}"></script><script src="{{ asset('build/js/intlTelInput.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+<script src="{{ asset('assets/css/select2.min.js') }}"></script>
+<script>
    var input = document.querySelector("#inputPhone");
    window.intlTelInput(input, {
        // allowDropdown: false,

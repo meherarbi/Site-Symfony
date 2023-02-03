@@ -42,53 +42,51 @@ class ProductRepository extends ServiceEntityRepository
         ;
     }
 
- /*    public function findByCategory()
+    /*    public function findByCategory()
     {
-        return $this->createQueryBuilder('p')
-        ->select('c.name as category, p.name ,p.slug,')
-        ->join('p.category', 'c')
-        ->groupBy('c.name')
-        ->getQuery()
-        ->getResult();
+    return $this->createQueryBuilder('p')
+    ->select('c.name as category, p.name ,p.slug,')
+    ->join('p.category', 'c')
+    ->groupBy('c.name')
+    ->getQuery()
+    ->getResult();
     } */
 
-/*     
-    public function findProductsGroupByCategory($Id = null)
+/*
+public function findProductsGroupByCategory($Id = null)
+{
+if (!$Id) {
+return $this->findAll();
+}
+
+return $this->createQueryBuilder('p')
+->join('p.category', 'c')
+->where('c.id = :id')
+->setParameter('id', $Id)
+->getQuery()
+->getResult();
+}
+
+ */
+    public function findAllWithCategory()
     {
-        if (!$Id) {
-            return $this->findAll();
-        }
-    
         return $this->createQueryBuilder('p')
-            ->join('p.category', 'c')
-            ->where('c.id = :id')
-            ->setParameter('id', $Id)
+            ->leftJoin('p.category', 'c')
+            ->addSelect('c')
             ->getQuery()
             ->getResult();
     }
 
- */
-    public function findAllWithCategory()
-{
-    return $this->createQueryBuilder('p')
-        ->leftJoin('p.category', 'c')
-        ->addSelect('c')
-        ->getQuery()
-        ->getResult();
-}
+    public function findProductsGroupByCategory($categoryId)
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->join('p.category', 'c')
+            ->where('c.id = :categoryId')
+            ->setParameter('categoryId', $categoryId)
+            ->getQuery();
 
-public function findProductsGroupByCategory($categoryId)
-{
-    $qb = $this->createQueryBuilder('p')
-        ->join('p.category', 'c')
-        ->where('c.id = :categoryId')
-        ->setParameter('categoryId', $categoryId)
-        ->getQuery();
-
-    return $qb->getResult();
-}
-
-    
+        return $qb->getResult();
+    }
 
     /*  *
      * @return Product[] Returns an array of Product objects
@@ -106,7 +104,30 @@ public function findProductsGroupByCategory($categoryId)
     /**
      * @return Product[] Returns an array of Product objects
      */
-    public function findWithSearch($search)
+    public function findWithSearch($search, $category)
+    {
+        $query = $this->createQueryBuilder('p');
+        if ($search->getMinPrice()) {
+            $query = $query->andWhere('p.price >= ' . $search->getMinPrice() * 100);
+        }
+
+        if ($search->getMaxPrice()) {
+            $query = $query->andWhere('p.price <= ' . $search->getMaxPrice() * 100);
+        }
+
+        $query = $query->join('p.category', 'c')
+            ->andWhere('c.id = :category')
+            ->setParameter('category', $category->getId());
+
+        return $query->getQuery()->getResult();
+    }
+
+    
+
+     /**
+     * @return Product[] Returns an array of Product objects
+     */
+    public function findWithSearchSelectCategory($search)
     {
         $query = $this->createQueryBuilder('p');
 

@@ -2,11 +2,13 @@
 
 namespace App\Form;
 
+use App\Entity\Category;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 class SearchProductsType extends AbstractType
 {
@@ -18,9 +20,7 @@ class SearchProductsType extends AbstractType
         'label' => false,
         'required' => false,
         'multiple' => true,
-        'attr' => [
-        'class' => 'js-example-basic-single',
-        ],
+       
         ]) */
             ->add('minprice', IntegerType::class, [
                 'required' => false,

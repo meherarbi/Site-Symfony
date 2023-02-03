@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use App\Repository\SearchProductRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -17,8 +18,15 @@ class SearchProduct
      */
     private $id;
 
+    /**
+     * @ORM\JoinColumn(nullable=true)
+     */
     private $minPrice = null;
 
+    
+    /**
+     * @ORM\JoinColumn(nullable=true)
+     */
     private $maxPrice = null;
 
     /**

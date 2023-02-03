@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "bootstrap-icons": "^1.7.2"
+    "bootstrap-icons": "^1.7.2",
+    "select2": "^4.1.0-rc.0"
   },
   "devDependencies": {
     "bootstrap": "^5.2.3"

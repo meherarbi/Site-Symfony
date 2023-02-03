@@ -7,18 +7,18 @@
 
 {% block content %}
 	{# <div class="row product-container ">
-	        {% for product in products  %}
-	            <div class="col-md-3 ">
-	                <div class="products-item text-center">
-	                    <a href="{{ path('product',{'id':product.id}) }}" ><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="img-fluid" height="90px"></a>
-	                    <figcaption><h5>{{ product.name }}</h5></figcaption>
-	                    <span class="products-subtitle">{{ product.subtitle }}</span>
-	                    <span class="products-price">{{ (product.price/100)|number_format(2) }} $</span>
-	                </div>
-	            </div>
-	
-	        {% endfor %}
-	    </div> #}
+				        {% for product in products  %}
+				            <div class="col-md-3 ">
+				                <div class="products-item text-center">
+				                    <a href="{{ path('product',{'id':product.id}) }}" ><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="img-fluid" height="90px"></a>
+				                    <figcaption><h5>{{ product.name }}</h5></figcaption>
+				                    <span class="products-subtitle">{{ product.subtitle }}</span>
+				                    <span class="products-price">{{ (product.price/100)|number_format(2) }} $</span>
+				                </div>
+				            </div>
+				
+				        {% endfor %}
+				    </div> #}
 
 	<div class="ogami-breadcrumb">
 		<div class="ogami-container-fluid">
@@ -52,94 +52,140 @@
 
 							</ul>
 						</div>
-					</div>
-					{{ form_start(search) }}
+							{{ form_start(search) }}
 
 					<div class="shop-sidebar_price-filter">
 						<div class="price-filter_top mini-tab-title underline">
-							<h2 class="title">Filter By Price</h2>
+							<h2 class="title">Filter By Price </h2>
 						</div>
 						<div class="price-filter_bottom">
 							<p>
 								<label for="amount">Price range:</label>
 								<div class="filter-group">
 									{{form_row(search.minprice)}}{{form_row(search.maxprice)}}
+
+
 									<button class="normal-btn">Fiter</button>
 								</div>
 							</p>
+							{# <label for="categories">Category range:</label>
+							<div class="js-example-basic-multiple">
+								{{form_row(search.categories)}}
+							</div> #}
+
 							<div id="slider-range"></div>
 						</div>
 					</div>
-
-					{# <div class="shop-sidebar_color-filter">
-					                  <div class="color-filter_top mini-tab-title underline">
-					                    <h2 class="title">Color</h2>
-					                  </div>
-					                  <div class="color-filter_bottom">
-					                    <div class="row">
-					                      <div class="col-6">
-					                        <div class="color">
-					                          <div class="visible-color" style="background-color: black;"></div><a href="shop_grid+list_3col.html">Black (12)</a>
-					                        </div>
-					                        <div class="color">
-					                          <div class="visible-color" style="background-color: red;"></div><a href="shop_grid+list_3col.html">Red (4)</a>
-					                        </div>
-					                        <div class="color">
-					                          <div class="visible-color" style="background-color: orange;"></div><a href="shop_grid+list_3col.html">Orange (8)</a>
-					                        </div>
-					                      </div>
-					                      <div class="col-6">
-					                        <div class="color">
-					                          <div class="visible-color" style="background-color: blue;"></div><a href="shop_grid+list_3col.html">Blue (4)</a>
-					                        </div>
-					                        <div class="color">
-					                          <div class="visible-color" style="background-color: green;"></div><a href="shop_grid+list_3col.html">Green (9)</a>
-					                        </div>
-					                        <div class="color">
-					                          <div class="visible-color" style="background-color: pink;"></div><a href="shop_grid+list_3col.html">Pink (12)</a>
-					                        </div>
-					                      </div>
-					                    </div>
-					                  </div>
-					                </div> #}
-				{# <div class="shop-sidebar_size">
-				                  <div class="size_top mini-tab-title underline">
-				                    <h2 class="title">Popular size</h2>
-				                  </div>
-				                  <div class="size_bottom">
-				                    &nbsp;<form>
-				                      &nbsp;<div class="size">
-				                          &nbsp;<input type="checkbox" id="large">
-				                        <label for="large">Large</label>
-				                      </div>
-				                      <div class="size">
-				                        <input type="checkbox" id="medium">
-				                        <label for="medium">Medium</label>
-				                      </div>
-				                      <div class="size">
-				                        <input type="checkbox" id="small">
-				                        <label for="small">Small</label>
-				                      </div>
-				                      <div class="size">
-				                        <input type="checkbox" id="tiny">
-				                        <label for="tiny">Tiny</label>
-				                      </div>
-				                    </form>
-				                  </div>
-				                </div> #}
-
-					{# <div class="shop-sidebar_tag">
-					                  <div class="tag_top mini-tab-title underline">
-					                    <h2 class="title">Product tag</h2>
-					                  </div>
-					                  
-					                  <div class="tag_bottom">{{ form_row(search.categories) }}</div>
-					                  
-					                </div> #}
+					{{ form_end(search) }}
+					</div>
+				
+					<div class="filter-sidebar--background" style="display: none"></div>
 				</div>
-				<div class="filter-sidebar--background" style="display: none"></div>
+<script>
+$(document).ready(function() {
+    $("button.normal-btn").click(function(e) {
+        e.preventDefault();
+        var minPrice = $("#search_minPrice").val();
+        var maxPrice = $("#search_maxPrice").val();
+        var categories = $("#search_categories").val();
+
+        $.ajax({
+            type: "POST",
+            url: "/productsCategory/{id}",
+            data: { minPrice: minPrice, maxPrice: maxPrice, categories: categories },
+            success: function(response) {
+                // Mettez à jour le contenu HTML avec les produits filtrés retournés
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+    });
+});
+
+</script>			
+
+
+
+
+
+
+
+
+
+
+
+				{# <div class="shop-sidebar_color-filter">
+																			                  <div class="color-filter_top mini-tab-title underline">
+																			                    <h2 class="title">Color</h2>
+																			                  </div>
+																			                  <div class="color-filter_bottom">
+																			                    <div class="row">
+																			                      <div class="col-6">
+																			                        <div class="color">
+																			                          <div class="visible-color" style="background-color: black;"></div><a href="shop_grid+list_3col.html">Black (12)</a>
+																			                        </div>
+																			                        <div class="color">
+																			                          <div class="visible-color" style="background-color: red;"></div><a href="shop_grid+list_3col.html">Red (4)</a>
+																			                        </div>
+																			                        <div class="color">
+																			                          <div class="visible-color" style="background-color: orange;"></div><a href="shop_grid+list_3col.html">Orange (8)</a>
+																			                        </div>
+																			                      </div>
+																			                      <div class="col-6">
+																			                        <div class="color">
+																			                          <div class="visible-color" style="background-color: blue;"></div><a href="shop_grid+list_3col.html">Blue (4)</a>
+																			                        </div>
+																			                        <div class="color">
+																			                          <div class="visible-color" style="background-color: green;"></div><a href="shop_grid+list_3col.html">Green (9)</a>
+																			                        </div>
+																			                        <div class="color">
+																			                          <div class="visible-color" style="background-color: pink;"></div><a href="shop_grid+list_3col.html">Pink (12)</a>
+																			                        </div>
+																			                      </div>
+																			                    </div>
+																			                  </div>
+																			                </div> #}
+			{# <div class="shop-sidebar_size">
+															                  <div class="size_top mini-tab-title underline">
+															                    <h2 class="title">Popular size</h2>
+															                  </div>
+															                  <div class="size_bottom">
+															                    &nbsp;<form>
+															                      &nbsp;<div class="size">
+															                          &nbsp;<input type="checkbox" id="large">
+															                        <label for="large">Large</label>
+															                      </div>
+															                      <div class="size">
+															                        <input type="checkbox" id="medium">
+															                        <label for="medium">Medium</label>
+															                      </div>
+															                      <div class="size">
+															                        <input type="checkbox" id="small">
+															                        <label for="small">Small</label>
+															                      </div>
+															                      <div class="size">
+															                        <input type="checkbox" id="tiny">
+															                        <label for="tiny">Tiny</label>
+															                      </div>
+															                    </form>
+															                  </div>
+															                </div> #}
+
+				{# <div class="shop-sidebar_tag">
+																			                  <div class="tag_top mini-tab-title underline">
+																			                    <h2 class="title">Product tag</h2>
+																			                  </div>
+																			                  
+																			                  <div class="tag_bottom">{{ form_row(search.categories) }}</div>
+																			                  
+										
+										
+										
+																			                </div> #}
 			</div>
-			{{ form_end(search) }}
+
+
 			<div class="col-xl-9 col-xxl-9 col-xxxl-10">
 				<div class="shop-grid-list">
 					<div class="shop-products">
@@ -186,104 +232,103 @@
 						Produit(s)
 						<div class="shop-products_bottom--fullwidth">
 							<div class="row no-gutters-sm">
-								
-									 
-											{% for product in products  %}
-												<div class="col-6 col-md-3">
-													<div class="product pink">
-														<a class="product-img" href="{{ path('product',{'id':product.id}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}"></a>
-														<h5 class="product-type">{{product.category.name}}</h5>
-														{% if product.name|length > 10 %}
-															<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
-														{% else %}
-															<h3 class="product-name">{{ product.name }}</h3>
-														{% endif %}
-														<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
-															<del>$35.00</del>
-														</h3>
-														<div class="product-select">
-															<button class="add-to-wishlist round-icon-btn pink">
-																<i class="icon_heart_alt"></i>
-															</button>
-															<button class="add-to-cart round-icon-btn pink">
-																<i class="icon_bag_alt"></i>
-															</button>
-															<button class="add-to-compare round-icon-btn pink">
-																<i class="fas fa-random"></i>
-															</button>
-															<button class="quickview round-icon-btn pink">
-																<i class="far fa-eye"></i>
-															</button>
-														</div>
-													</div>
-												</div>
-											{% endfor %}
-										
-   
-    </div>
-	<div class="shop-pagination ">	
-											<button class="no-round-btn smooth active">
-												{{ knp_pagination_render(products) }}</button>
-								</div>
-							
+
+
+								{% for product in products  %}
+									<div class="col-6 col-md-3">
+										<div class="product pink">
+											<a class="product-img" href="{{ path('product',{'id':product.id}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}"></a>
+											<h5 class="product-type">{{product.category.name}}</h5>
+											{% if product.name|length > 10 %}
+												<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
+											{% else %}
+												<h3 class="product-name">{{ product.name }}</h3>
+											{% endif %}
+											<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
+												<del>$35.00</del>
+											</h3>
+											<div class="product-select">
+												<button class="add-to-wishlist round-icon-btn pink">
+													<i class="icon_heart_alt"></i>
+												</button>
+												<button class="add-to-cart round-icon-btn pink">
+													<i class="icon_bag_alt"></i>
+												</button>
+												<button class="add-to-compare round-icon-btn pink">
+													<i class="fas fa-random"></i>
+												</button>
+												<button class="quickview round-icon-btn pink">
+													<i class="far fa-eye"></i>
+												</button>
+											</div>
+										</div>
+									</div>
+								{% endfor %}
+
+
 							</div>
+							<div class="shop-pagination ">
+								<button class="no-round-btn smooth active">
+									{{ knp_pagination_render(products) }}</button>
+							</div>
+
 						</div>
-						<div class="recentview-product">
-							<div class="recentview-product_top mini-tab-title underline">
-								<h2 class="title">Recently Viewed Products</h2>
-							</div>
-							<div class="recentview-product_bottom">
-								<div class="row">
-									<div class="col-12 col-sm-6 col-lg-4 col-lg-3 col-xxl-3">
-										<div class="mini-product border">
-											<div class="mini-product_img">
-												<a href="shop_detail.html"><img src="assets/images/product/product13.png" alt="product image"></a>
-											</div>
-											<div class="mini-product_info">
-												<a href="shop_detail.html">Fresh Met</a>
-												<p>$37.00
-													<del>$45.00</del>
-												</p>
-											</div>
+					</div>
+					<div class="recentview-product">
+						<div class="recentview-product_top mini-tab-title underline">
+							<h2 class="title">Recently Viewed Products</h2>
+						</div>
+						<div class="recentview-product_bottom">
+							<div class="row">
+								<div class="col-12 col-sm-6 col-lg-4 col-lg-3 col-xxl-3">
+									<div class="mini-product border">
+										<div class="mini-product_img">
+											<a href="shop_detail.html"><img src="assets/images/product/product13.png" alt="product image"></a>
+										</div>
+										<div class="mini-product_info">
+											<a href="shop_detail.html">Fresh Met</a>
+											<p>$37.00
+												<del>$45.00</del>
+											</p>
 										</div>
 									</div>
-									<div class="col-12 col-sm-6 col-lg-4 col-lg-3 col-xxl-3">
-										<div class="mini-product border">
-											<div class="mini-product_img">
-												<a href="shop_detail.html"><img src="assets/images/product/product14.png" alt="product image"></a>
-											</div>
-											<div class="mini-product_info">
-												<a href="shop_detail.html">Coconut</a>
-												<p>$37.00
-													<del>$45.00</del>
-												</p>
-											</div>
+								</div>
+								<div class="col-12 col-sm-6 col-lg-4 col-lg-3 col-xxl-3">
+									<div class="mini-product border">
+										<div class="mini-product_img">
+											<a href="shop_detail.html"><img src="assets/images/product/product14.png" alt="product image"></a>
+										</div>
+										<div class="mini-product_info">
+											<a href="shop_detail.html">Coconut</a>
+											<p>$37.00
+												<del>$45.00</del>
+											</p>
 										</div>
 									</div>
-									<div class="col-12 col-sm-6 col-lg-4 col-lg-3 col-xxl-3">
-										<div class="mini-product border">
-											<div class="mini-product_img">
-												<a href="shop_detail.html"><img src="assets/images/product/product15.png" alt="product image"></a>
-											</div>
-											<div class="mini-product_info">
-												<a href="shop_detail.html">Venion</a>
-												<p>$37.00
-													<del>$45.00</del>
-												</p>
-											</div>
+								</div>
+								<div class="col-12 col-sm-6 col-lg-4 col-lg-3 col-xxl-3">
+									<div class="mini-product border">
+										<div class="mini-product_img">
+											<a href="shop_detail.html"><img src="assets/images/product/product15.png" alt="product image"></a>
+										</div>
+										<div class="mini-product_info">
+											<a href="shop_detail.html">Venion</a>
+											<p>$37.00
+												<del>$45.00</del>
+											</p>
 										</div>
 									</div>
-									<div class="col-12 col-sm-6 col-lg-4 col-lg-3 col-xxl-3">
-										<div class="mini-product border">
-											<div class="mini-product_img">
-												<a href="shop_detail.html"><img src="assets/images/product/product16.png" alt="product image"></a>
-											</div>
-											<div class="mini-product_info">
-												<a href="shop_detail.html">Coconut</a>
-												<p>$37.00
-													<del>$45.00</del>
-												</p>
-											</div>
+								</div>
+								<div class="col-12 col-sm-6 col-lg-4 col-lg-3 col-xxl-3">
+									<div class="mini-product border">
+										<div class="mini-product_img">
+											<a href="shop_detail.html"><img src="assets/images/product/product16.png" alt="product image"></a>
+										</div>
+										<div class="mini-product_info">
+											<a href="shop_detail.html">Coconut</a>
+											<p>$37.00
+												<del>$45.00</del>
+											</p>
 										</div>
 									</div>
 								</div>
@@ -293,6 +338,7 @@
 				</div>
 			</div>
 		</div>
+	</div>
 
 
-	{% endblock %}
+{% endblock %}

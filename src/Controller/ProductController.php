@@ -13,6 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\ORM\Query;
 
 class ProductController extends AbstractController
 {
@@ -20,24 +21,23 @@ class ProductController extends AbstractController
     public function __construct(EntityManagerInterface $entityManager)
     {
         $this->entityManager = $entityManager;
-
     }
     /**
      * @Route("/product", name="products")
      */
-    public function index(PaginatorInterface $paginator, Request $request , EntityManagerInterface $manager , ProductRepository $productrepository  )
+    public function index(PaginatorInterface $paginator, Request $request, EntityManagerInterface $manager, ProductRepository $productrepository)
     {
         /* $products = $this->entityManager->getRepository(Product::class)->findAll(); */
         /*  $search = new Search(); */
         /* $form = $this->createForm(SearchType::class, $search); */
 
         $products = $paginator->paginate(
-            
             $productrepository->findAll(),
-            $request->query->getInt('page', 1), /*page number*/
-            8/*limit per page*/
+            $request->query->getInt('page', 1),
+            /*page number*/
+            8 /*limit per page*/
         );
-       
+
         return $this->render('product/index.html.twig', [
             'products' => $products,
             /*  'form' => $form->createView(), */
@@ -61,43 +61,36 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/productsCategory/{id}", name="product_category")
-     */
-    public function showCategory(PaginatorInterface $paginator,Category $category, Request $request, ProductRepository $repProduct): Response
-    {
-        if ($category) {
-            /* $products = $category->getProducts()->getValues(); */
-
-            $products = $paginator->paginate(
-            
-                $category->getProducts()->getValues(),
-                $request->query->getInt('page', 1), /*page number*/
-                8/*limit per page*/
-            );
-
-        } else {
-            return $this->redirectToRoute('home');
-        }
-        $search = new SearchProduct();
-
-        $form = $this->createForm(SearchProductsType::class, $search);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-
-            $products = $repProduct->findWithSearch($search);
-            $products = $paginator->paginate(
-                $products,
-                $request->query->getInt('page', 1), /*page number*/
-                8/*limit per page*/
-            );
-
-        }
-
-        return $this->render('product/showCategory.html.twig', [
-            'products' => $products,
-            'search' => $form->createView(),
-
-        ]);
+ * @Route("/productsCategory/{id}", name="product_category")
+ */
+public function showCategory(PaginatorInterface $paginator, Category $category, Request $request, ProductRepository $repProduct): Response
+{
+    if (!$category) {
+        return $this->redirectToRoute('home');
     }
+
+    $search = new SearchProduct();
+    $form = $this->createForm(SearchProductsType::class, $search);
+    $form->handleRequest($request);
+
+    $products = $paginator->paginate(
+        $repProduct->findWithSearch($search, $category),
+        $request->query->getInt('page', 1),
+        8 /*limit per page*/
+    );
+
+    if ($form->isSubmitted() && !$form->isValid()) {
+        // gestion des erreurs
+        $errors = $form->getErrors(true);
+        foreach ($errors as $error) {
+            $this->addFlash('danger', $error->getMessage());
+        }
+    }
+
+    return $this->render('product/showCategory.html.twig', [
+        'products' => $products,
+        'search' => $form->createView(),
+        'category' => $category,
+    ]);
+}
 }
