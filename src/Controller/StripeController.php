@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Classe\Cart;
+use App\Service\Cart;
 use Stripe\Checkout\Session;
 use Stripe\Stripe;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

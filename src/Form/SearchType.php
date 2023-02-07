@@ -1,6 +1,6 @@
 <?php
 namespace App\Form;
-use App\Classe\Search;
+use App\Service\Search;
 use App\Entity\Category;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;

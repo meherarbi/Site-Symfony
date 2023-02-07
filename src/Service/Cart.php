@@ -1,5 +1,5 @@
 <?php
-namespace App\Classe;
+namespace App\Service;
 use App\Entity\Product;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;

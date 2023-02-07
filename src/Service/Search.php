@@ -1,5 +1,5 @@
 <?php
-namespace App\Classe;
+namespace App\Service;
 use App\Entity\category;
 class Search
 {

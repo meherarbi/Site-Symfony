@@ -2,9 +2,10 @@
 
 namespace App\Repository;
 
+use App\Entity\User;
 use App\Entity\Product;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method Product|null find($id, $lockMode = null, $lockVersion = null)
@@ -122,7 +123,20 @@ return $this->createQueryBuilder('p')
         return $query->getQuery()->getResult();
     }
 
-    
+
+
+    public function findRecentlyViewedByUser(User $user)
+{
+    return $this->createQueryBuilder('recently_viewed_product')
+        ->select('product')
+        ->join('recently_viewed_product.product', 'product')
+        ->where('recently_viewed_product.user = :user')
+        ->setParameter('user', $user)
+        ->getQuery()
+        ->getResult();
+}
+
+
 
      /**
      * @return Product[] Returns an array of Product objects
