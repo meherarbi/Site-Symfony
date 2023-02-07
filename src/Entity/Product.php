@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProductRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -54,6 +56,19 @@ class Product
      * @ORM\JoinColumn(nullable=true)
      */
     private $category;
+
+    /**
+     * @ORM\OneToMany(targetEntity=RecentlyViewedProduct::class, mappedBy="product")
+     */
+    private $recentlyViewedProducts;
+
+
+
+
+    public function __construct()
+    {
+        $this->recentlyViewedProducts = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -140,6 +155,36 @@ class Product
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, RecentlyViewedProduct>
+     */
+    public function getRecentlyViewedProducts(): Collection
+    {
+        return $this->recentlyViewedProducts;
+    }
+
+    public function addRecentlyViewedProduct(RecentlyViewedProduct $recentlyViewedProduct): self
+    {
+        if (!$this->recentlyViewedProducts->contains($recentlyViewedProduct)) {
+            $this->recentlyViewedProducts[] = $recentlyViewedProduct;
+            $recentlyViewedProduct->setProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRecentlyViewedProduct(RecentlyViewedProduct $recentlyViewedProduct): self
+    {
+        if ($this->recentlyViewedProducts->removeElement($recentlyViewedProduct)) {
+            // set the owning side to null (unless already changed)
+            if ($recentlyViewedProduct->getProduct() === $this) {
+                $recentlyViewedProduct->setProduct(null);
+            }
+        }
 
         return $this;
     }

@@ -57,10 +57,16 @@ class User implements UserInterface
      */
     private $orders;
 
+    /**
+     * @ORM\OneToMany(targetEntity=RecentlyViewedProduct::class, mappedBy="user")
+     */
+    private $recentlyViewedProducts;
+
     public function __construct()
     {
         $this->addresses = new ArrayCollection();
         $this->orders = new ArrayCollection();
+        $this->recentlyViewedProducts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -226,6 +232,36 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($order->getUser() === $this) {
                 $order->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, RecentlyViewedProduct>
+     */
+    public function getRecentlyViewedProducts(): Collection
+    {
+        return $this->recentlyViewedProducts;
+    }
+
+    public function addRecentlyViewedProduct(RecentlyViewedProduct $recentlyViewedProduct): self
+    {
+        if (!$this->recentlyViewedProducts->contains($recentlyViewedProduct)) {
+            $this->recentlyViewedProducts[] = $recentlyViewedProduct;
+            $recentlyViewedProduct->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRecentlyViewedProduct(RecentlyViewedProduct $recentlyViewedProduct): self
+    {
+        if ($this->recentlyViewedProducts->removeElement($recentlyViewedProduct)) {
+            // set the owning side to null (unless already changed)
+            if ($recentlyViewedProduct->getUser() === $this) {
+                $recentlyViewedProduct->setUser(null);
             }
         }
 
