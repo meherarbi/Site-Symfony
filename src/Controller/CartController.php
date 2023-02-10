@@ -5,9 +5,11 @@ namespace App\Controller;
 use App\Service\Cart;
 use App\Entity\Product;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/my-cart", name="cart_")
@@ -40,21 +42,28 @@ class CartController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/cart/add/{id}", name="add_to_cart")
-     */
-    public function add(Cart  $cart, $id)
-    {
-        $cart->add($id);
+  /**
+ * @Route("/cart/add/{id}", name="add_to_cart")
+ */
+public function add(Cart $cart, Request $request, $id)
+{
 
-        return $this->redirectToRoute('cart_index');
-    }
+        $cart->add($id);
+   
+
+    return $this->redirectToRoute('cart_index');
+}
+
+
+  
+
 
     /**
      * @Route("/cart/remove", name="remove_my_cart")
      */
     public function remove(Cart  $cart)
     {
+        
         $cart->remove();
 
         return $this->redirectToRoute('products');
@@ -79,4 +88,29 @@ class CartController extends AbstractController
 
         return $this->redirectToRoute('cart_index');
     }
+
+    /**
+ * @Route("/cart/update", name="update_cart")
+ */
+public function update(Request $request, Cart $cart)
+{
+    if ($request->isXmlHttpRequest()) {
+        $id = $request->request->get('id');
+        $action = $request->request->get('action');
+        
+        switch ($action) {
+            case 'add':
+                $cart->add($id);
+                break;
+            case 'remove':
+                $cart->remove($id);
+                break;
+        }
+        
+        return new JsonResponse(['success' => true]);
+    }
+    
+    return new JsonResponse(['success' => false]);
+}
+
 }

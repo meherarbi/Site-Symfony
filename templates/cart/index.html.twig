@@ -85,36 +85,38 @@
 								</thead>
 								<tbody>
 									{% set total=null %}
-{% for product in cart %}
-<tr>
-<td class="product-iamge">
-<div class="img-wrapper">
-<img src="/uploads/{{ product.product.illustration }}" alt="{{ product.product.name }}" class="img-fluid">
-</div>
-</td>
-<td class="product-name">{{ product.product.name }}</td>
-<td class="product-price" data-product-id="{{ product.product.id }}">{{ (product.product.price/100)|number_format(2) }} $</td>
-<td class="product-quantity">
-<button class="btn btn-secondary" onclick="decrementProduct({{ product.product.id }})">
-<img src="{{ asset('assets/images/minus.png') }}" alt="moins" height="11px">
-</button>
-<input class="quantity no-round-input" data-product-id="{{ product.product.id }}" min="1" value="{{ product.quantity }}">
-<button class="btn btn-secondary" onclick="incrementProduct({{ product.product.id }})">
-<img src="{{ asset('assets/images/add.png') }}" alt="plus" height="11px">
-</button>
-</td>
-<td class="product-total cart-total" data-product-id="{{ product.product.id }}">{{ ((product.product.price*product.quantity)/100)|number_format(2) }} $</td>
+									{% for product in cart %}
+										<tr>
+											<td class="product-iamge">
+												<div class="img-wrapper">
+													<img src="/uploads/{{ product.product.illustration }}" alt="{{ product.product.name }}" class="img-fluid">
+												</div>
+											</td>
+											<td class="product-name">{{ product.product.name }}</td>
+											<td class="product-price" data-product-id="{{ product.product.id }}">{{ (product.product.price/100)|number_format(2) }}
+												$</td>
+											<td class="product-quantity">
+												<button class="btn btn-secondary" onclick="decrementProduct({{ product.product.id }})">
+													<img src="{{ asset('assets/images/minus.png') }}" alt="moins" height="11px">
+												</button>
+												<input class="quantity no-round-input" data-product-id="{{ product.product.id }}" min="1" value="{{ product.quantity }}">
+												<button class="btn btn-secondary" onclick="incrementProduct({{ product.product.id }})">
+													<img src="{{ asset('assets/images/add.png') }}" alt="plus" height="11px">
+												</button>
+											</td>
+											<td class="product-total cart-total" data-product-id="{{ product.product.id }}">{{ ((product.product.price*product.quantity)/100)|number_format(2) }}
+												$</td>
 
-<td class="product-clear">
-<a href="{{ path('cart_delete_my_cart',{'id':product.product.id}) }}">
-<button class="btn btn-outline-danger">
-<img src="{{asset('assets/images/trash.png')}}" alt="supprimer" height="25px">
-</button>
-</a>
-</td>
-</tr>
-{% set total=total+(product.product.price*product.quantity) %}
-{% endfor %}
+											<td class="product-clear">
+												<a href="{{ path('cart_delete_my_cart',{'id':product.product.id}) }}">
+													<button class="btn btn-outline-danger">
+														<img src="{{asset('assets/images/trash.png')}}" alt="supprimer" height="25px">
+													</button>
+												</a>
+											</td>
+										</tr>
+										{% set total=total+(product.product.price*product.quantity) %}
+									{% endfor %}
 								</tbody>
 							</table>
 						</div>
@@ -152,7 +154,6 @@
 											<p>Calculate shipping</p>
 										</td>
 									</tr>
-
 									<tr>
 										<th>TOTAL</th>
 										<td>
@@ -179,7 +180,4 @@
 		</div>
 
 	{% endif %}
-
-
-
 {% endblock %}

@@ -1,9 +1,23 @@
 {
   "dependencies": {
+    "@babel/core": "^7.20.12",
+    "@babel/preset-env": "^7.20.2",
+    "@symfony/webpack-encore": "^4.2.0",
     "bootstrap-icons": "^1.7.2",
-    "select2": "^4.1.0-rc.0"
+    "npm-watch": "^0.11.0",
+    "select2": "^4.1.0-rc.0",
+    "webpack": "^5.75.0"
   },
   "devDependencies": {
-    "bootstrap": "^5.2.3"
+    "bootstrap": "^5.2.3",
+    "encore": "^0.0.30-beta",
+    "webpack-cli": "^5.0.1",
+    "webpack-notifier": "^1.15.0"
+  },
+  "scripts": {
+    "dev-server": "encore dev-server",
+    "dev": "encore dev",
+    "watch": "encore dev --watch",
+    "build": "encore production --progress"
   }
 }

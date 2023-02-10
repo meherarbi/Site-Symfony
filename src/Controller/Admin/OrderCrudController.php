@@ -31,10 +31,11 @@ class OrderCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id'),
+            
             DateTimeField::new('createdAt','passer le'),
            TextField::new('user.fullName','Client'),
             MoneyField::new('total')->setCurrency('EUR'),
-            BooleanField::new('isPaid','Statut')
+            BooleanField::new('isPaid','Payé')
         ];
     }
 

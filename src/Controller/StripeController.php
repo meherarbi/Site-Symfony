@@ -18,7 +18,7 @@ class StripeController extends AbstractController
     public function index(Cart $cart)
     {
         $products_for_stripe=[];
-        $YOUR_DOMAIN = 'http://127.0.0.1:8000';
+        $YOUR_DOMAIN = 'foryoumer';
 
         foreach ($cart->getFull() as $product) {
             $products_for_stripe[] = [
