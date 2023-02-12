@@ -44,6 +44,11 @@ class OrderDetails
      */
     private $product;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $illustration;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -106,6 +111,18 @@ class OrderDetails
     public function setProduct(?Product $product): self
     {
         $this->product = $product;
+
+        return $this;
+    }
+
+    public function getIllustration(): ?string
+    {
+        return $this->illustration;
+    }
+
+    public function setIllustration(?string $illustration): self
+    {
+        $this->illustration = $illustration;
 
         return $this;
     }

@@ -2,16 +2,20 @@
 
 namespace App\Entity;
 
-use App\Repository\OrderRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\OrderDetails;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\OrderRepository;
+use Doctrine\Common\EventSubscriber;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Persistence\Event\LifecycleEventArgs;
+use Doctrine\ORM\Events;
 
 /**
  * @ORM\Entity(repositoryClass=OrderRepository::class)
  * @ORM\Table(name="`order`")
  */
-class Order
+class Order 
 {
     /**
      * @ORM\Id
@@ -47,18 +51,59 @@ class Order
     private $delivery;
 
     /**
-     * @ORM\OneToMany(targetEntity=OrderDetails::class, mappedBy="myOrder")
+     * @ORM\OneToMany(targetEntity=OrderDetails::class, mappedBy="myOrder", cascade={"persist"})
      */
     private $orderDetails;
+
+    
+    public function addOrderDetail(OrderDetails $orderDetail): self
+    {
+        if (!$this->orderDetails->contains($orderDetail)) {
+            $this->orderDetails[] = $orderDetail;
+            $orderDetail->setMyOrder($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrderDetail(OrderDetails $orderDetail): self
+    {
+        if ($this->orderDetails->removeElement($orderDetail)) {
+            // set the owning side to null (unless already changed)
+            if ($orderDetail->getMyOrder() === $this) {
+                $orderDetail->setMyOrder(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function addOrderDetails(array $orderDetails): self
+    {
+        foreach ($orderDetails as $orderDetail) {
+            $this->addOrderDetail($orderDetail);
+        }
+
+        return $this;
+    }
+
+  
 
     /**
      * @ORM\Column(type="boolean")
      */
     private $isPaid;
 
+    
+
     public function __construct()
     {
         $this->orderDetails = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return (string) $this->getUser();
     }
 
     public function getTotal()
@@ -67,6 +112,7 @@ class Order
         foreach ($this->getOrderDetails()->getValues() as $product)
         {
             $total=$total+($product->getPrice()*$product->getQuantity());
+           
         }
         return $total;
     }
@@ -145,27 +191,7 @@ class Order
         return $this->orderDetails;
     }
 
-    public function addOrderDetail(OrderDetails $orderDetail): self
-    {
-        if (!$this->orderDetails->contains($orderDetail)) {
-            $this->orderDetails[] = $orderDetail;
-            $orderDetail->setMyOrder($this);
-        }
-
-        return $this;
-    }
-
-    public function removeOrderDetail(OrderDetails $orderDetail): self
-    {
-        if ($this->orderDetails->removeElement($orderDetail)) {
-            // set the owning side to null (unless already changed)
-            if ($orderDetail->getMyOrder() === $this) {
-                $orderDetail->setMyOrder(null);
-            }
-        }
-
-        return $this;
-    }
+    
 
     public function getIsPaid(): ?bool
     {
@@ -178,4 +204,21 @@ class Order
 
         return $this;
     }
+
+    public function cleanDelivery()
+    {
+        $this->delivery = strip_tags($this->delivery);
+    }
+
+    public function prePersist(LifecycleEventArgs $args)
+    {
+        $this->cleanDelivery();
+    }
+
+    public function getSubscribedEvents()
+    {
+        return [Events::prePersist];
+    }
+
+
 }

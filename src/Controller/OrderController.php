@@ -2,41 +2,39 @@
 
 namespace App\Controller;
 
-use App\Service\Cart;
 use App\Entity\Order;
 use App\Entity\OrderDetails;
 use App\Form\OrderType;
+use App\Service\Cart;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class OrderController extends AbstractController
 {
     private $entityManager;
 
-    public function __construct(EntityManagerInterface $entityManager){
-        $this->entityManager=$entityManager;
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        $this->entityManager = $entityManager;
     }
     /**
      * @Route("/commande", name="order")
      */
-    public function index(Cart $cart,Request $request)
+    public function index(Cart $cart, Request $request)
     {
-        if (!$this->getUser()->getAddresses()->getValues()){
+        if (!$this->getUser()->getAddresses()->getValues()) {
             return $this->redirectToRoute('account_address_add');
         }
 
         $form = $this->createForm(OrderType::class, null, [
-            'user'=>$this->getUser()
+            'user' => $this->getUser(),
         ]);
 
-
-
-        return $this->render('order/index.html.twig',[
-            'form'=>$form->createView(),
-            'cart'=>$cart->getFull(),
+        return $this->render('order/index.html.twig', [
+            'form' => $form->createView(),
+            'cart' => $cart->getFull(),
 
         ]);
     }
@@ -44,62 +42,63 @@ class OrderController extends AbstractController
     /**
      * @Route("/commande/recap", name="order_recap" )
      */
-    public function recap( Cart $cart, request $request)
+    public function recap(Cart $cart, request $request)
     {
         $form = $this->createForm(OrderType::class, null, [
             'method' => 'POST',
-            'user'=>$this->getUser()
+            'user' => $this->getUser(),
         ]);
 
         $form->handleRequest($request);
 
-        if($form->isSubmitted()&& $form->isValid()){
-            $date= new \DateTime();
-            $carriers=$form->get('carriers')->getData();
-            $delivery=$form->get('addresses')->getData();
-            $delivery_content = $delivery->getFirstname().' '.$delivery->getLastname();
-            $delivery_content .= '<br/>'.$delivery->getPhone();
+        if ($form->isSubmitted() && $form->isValid()) {
+            $date = new \DateTime();
+            $carriers = $form->get('carriers')->getData();
+            $delivery = $form->get('addresses')->getData();
+            $delivery_content = $delivery->getFirstname() . ' ' . $delivery->getLastname();
+            $delivery_content .= ' ' . $delivery->getPhone();
 
-
-            if ($delivery->getCompany()){
-                $delivery_content .='<br/>'.$delivery->getCompany();
+            if ($delivery->getCompany()) {
+                $delivery_content .= ' ' . $delivery->getCompany();
             }
-            $delivery_content .='<br/>'.$delivery->getAddress();
-            $delivery_content .='<br/>'.$delivery->getPostal().''.$delivery->getCity();
-            $delivery_content .='<br/>'.$delivery->getCountry();
+            $delivery_content .= ' ' . $delivery->getAddress();
+            $delivery_content .= ' ' . $delivery->getPostal() . ' ' . $delivery->getCity();
 
-
-            //enregistrer ma commande
-
+            $delivery_content = str_replace('<br/>', ' ', $delivery_content);
             $order = new Order();
             $order->setUser($this->getUser());
             $order->setCreatedAt($date);
             $order->setCarrierName($carriers->getName());
             $order->setCarrierPrice($carriers->getPrice());
-            $order->setDelivery($delivery_content);
+            $order->setDelivery(strip_tags($delivery_content));
             $order->setIsPaid(0);
 
             $this->entityManager->persist($order);
 
-           // enregistre les details de produits
+// enregistre les details de produits
             foreach ($cart->getFull() as $product) {
                 $orderDetails = new OrderDetails();
                 $orderDetails->setMyOrder($order);
+
                 $orderDetails->setProduct($product['product']);
                 $orderDetails->setQuantity($product['quantity']);
                 $orderDetails->setPrice($product['product']->getPrice());
                 $orderDetails->setTotal($product['product']->getPrice() * $product['quantity']);
 
+                // Récupération de l'illustration (l'image) du produit
+                $illustration = $product['product']->getIllustration();
+
+                $orderDetails->setIllustration($illustration); // l'image du produit
+
                 $this->entityManager->persist($orderDetails);
-
             }
+            
+            $this->entityManager->flush();
 
-                $this->entityManager->flush();
-
-            return $this->render('order/recap.html.twig',[
-                'cart'=> $cart->getFull(),
-                'carrier'=>$carriers,
-                'delivery'=>$delivery_content
+            return $this->render('order/recap.html.twig', [
+                'cart' => $cart->getFull(),
+                'carrier' => $carriers,
+                'delivery' => $delivery_content,
             ]);
 
         }

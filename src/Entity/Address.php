@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AddressRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -72,6 +74,10 @@ class Address
      * @ORM\Column(type="string", length=255)
      */
     private $phone;
+
+   
+
+   
 
     public function __toString()
     {
@@ -202,4 +208,5 @@ class Address
 
         return $this;
     }
+
 }
