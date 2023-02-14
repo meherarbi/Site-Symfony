@@ -3,19 +3,18 @@
 namespace App\Entity;
 
 use App\Entity\OrderDetails;
-use Doctrine\ORM\Mapping as ORM;
 use App\Repository\OrderRepository;
-use Doctrine\Common\EventSubscriber;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Persistence\Event\LifecycleEventArgs;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Events;
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Persistence\Event\LifecycleEventArgs;
 
 /**
  * @ORM\Entity(repositoryClass=OrderRepository::class)
  * @ORM\Table(name="`order`")
  */
-class Order 
+class Order
 {
     /**
      * @ORM\Id
@@ -55,7 +54,6 @@ class Order
      */
     private $orderDetails;
 
-    
     public function addOrderDetail(OrderDetails $orderDetail): self
     {
         if (!$this->orderDetails->contains($orderDetail)) {
@@ -87,18 +85,39 @@ class Order
         return $this;
     }
 
-  
-
     /**
      * @ORM\Column(type="boolean")
      */
     private $isPaid;
 
-    
+    /**
+     * @ORM\ManyToMany(targetEntity=Product::class, inversedBy="orders")
+     */
+    private $products;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $illustration;
+
+    public function getProductIllustrations(): string
+    {
+        $illustrationUrls = [];
+        foreach ($this->getOrderDetails() as $detail) {
+            $product = $detail->getProduct();
+            if ($product && $product->getIllustration()) {
+                $illustrationUrls[] = '<img src="/uploads/' . $product->getIllustration() . '" style="max-height:100px">';
+            }
+        }
+        $illustrationUrls = array_merge($illustrationUrls, $this->getIllustrationUrls());
+
+        return implode('<br>', $illustrationUrls);
+    }
 
     public function __construct()
     {
         $this->orderDetails = new ArrayCollection();
+        $this->products = new ArrayCollection();
     }
 
     public function __toString()
@@ -108,15 +127,13 @@ class Order
 
     public function getTotal()
     {
-        $total=null;
-        foreach ($this->getOrderDetails()->getValues() as $product)
-        {
-            $total=$total+($product->getPrice()*$product->getQuantity());
-           
+        $total = null;
+        foreach ($this->getOrderDetails()->getValues() as $product) {
+            $total = $total + ($product->getPrice() * $product->getQuantity());
+
         }
         return $total;
     }
-
 
     public function getId(): ?int
     {
@@ -140,7 +157,7 @@ class Order
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    public function setCreatedAt(\DateTimeInterface$createdAt): self
     {
         $this->createdAt = $createdAt;
 
@@ -191,8 +208,6 @@ class Order
         return $this->orderDetails;
     }
 
-    
-
     public function getIsPaid(): ?bool
     {
         return $this->isPaid;
@@ -220,5 +235,62 @@ class Order
         return [Events::prePersist];
     }
 
+    /**
+     * @return Collection<int, Product>
+     */
+    public function getProducts(): Collection
+    {
+        return $this->products;
+    }
+
+    public function addProduct(Product $product): self
+    {
+        if (!$this->products->contains($product)) {
+            $this->products[] = $product;
+            $product->addOrder($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProduct(Product $product): self
+    {
+        if ($this->products->contains($product)) {
+            $this->products->removeElement($product);
+            $product->removeOrder($this);
+        }
+
+        return $this;
+    }
+
+    public function getIllustration(): ?array
+    {
+        if (!$this->illustration) {
+            return null;
+        }
+    
+        return json_decode($this->illustration, true, 512);
+
+    }
+
+    public function setIllustration(array $illustration)
+    {
+        $this->illustration = json_encode($illustration, JSON_THROW_ON_ERROR);
+    }
+
+    public function getIllustrationUrls(): array
+    {
+        $urls = [];
+
+        if (!empty($this->illustration)) {
+            $illustrations = unserialize($this->illustration);
+
+            foreach ($illustrations as $illustration) {
+                $urls[] = '/uploads/' . $illustration;
+            }
+        }
+
+        return $urls;
+    }
 
 }
