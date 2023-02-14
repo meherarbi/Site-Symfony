@@ -42,7 +42,7 @@ class OrderController extends AbstractController
     /**
      * @Route("/commande/recap", name="order_recap" )
      */
-    public function recap(Cart $cart, request $request)
+    public function recap(Cart $cart, Request $request)
     {
         $form = $this->createForm(OrderType::class, null, [
             'method' => 'POST',
@@ -65,40 +65,55 @@ class OrderController extends AbstractController
             $delivery_content .= ' ' . $delivery->getPostal() . ' ' . $delivery->getCity();
 
             $delivery_content = str_replace('<br/>', ' ', $delivery_content);
+
+            $illustrations = [];
+            foreach ($cart->getFull() as $product) {
+                
+                $illustrations[] = $product['product']->getIllustration();
+            }
+
+            $illustrationsJson = json_encode($illustrations);
+
+            // Créer une nouvelle commande
             $order = new Order();
             $order->setUser($this->getUser());
-            $order->setCreatedAt($date);
+            $order->setCreatedAt(new \DateTime());
             $order->setCarrierName($carriers->getName());
             $order->setCarrierPrice($carriers->getPrice());
             $order->setDelivery(strip_tags($delivery_content));
-            $order->setIsPaid(0);
-
+            $order->setIsPaid(false);
+            $illustrationsJson = json_encode($illustrations);
+            $illustrationsArray = json_decode($illustrationsJson, true);
+            $order->setIllustration($illustrationsArray);
+            
             $this->entityManager->persist($order);
 
-// enregistre les details de produits
+            // Enregistre les détails de produits
             foreach ($cart->getFull() as $product) {
                 $orderDetails = new OrderDetails();
                 $orderDetails->setMyOrder($order);
-
                 $orderDetails->setProduct($product['product']);
                 $orderDetails->setQuantity($product['quantity']);
                 $orderDetails->setPrice($product['product']->getPrice());
                 $orderDetails->setTotal($product['product']->getPrice() * $product['quantity']);
-
-                // Récupération de l'illustration (l'image) du produit
                 $illustration = $product['product']->getIllustration();
-
-                $orderDetails->setIllustration($illustration); // l'image du produit
-
+                $orderDetails->setIllustration($illustration); 
                 $this->entityManager->persist($orderDetails);
             }
-            
+
             $this->entityManager->flush();
+
+            /*       return $this->redirectToRoute('order_payment', [
+            'stripePublicKey' => $this->getParameter('stripe_public_key'),
+            'orderId' => $order->getId()
+            ]);
+            } */
 
             return $this->render('order/recap.html.twig', [
                 'cart' => $cart->getFull(),
                 'carrier' => $carriers,
                 'delivery' => $delivery_content,
+
             ]);
 
         }
