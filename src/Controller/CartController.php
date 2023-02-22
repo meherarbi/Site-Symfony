@@ -89,28 +89,6 @@ public function add(Cart $cart, Request $request, $id)
         return $this->redirectToRoute('cart_index');
     }
 
-    /**
- * @Route("/cart/update", name="update_cart")
- */
-public function update(Request $request, Cart $cart)
-{
-    if ($request->isXmlHttpRequest()) {
-        $id = $request->request->get('id');
-        $action = $request->request->get('action');
-        
-        switch ($action) {
-            case 'add':
-                $cart->add($id);
-                break;
-            case 'remove':
-                $cart->remove($id);
-                break;
-        }
-        
-        return new JsonResponse(['success' => true]);
-    }
-    
-    return new JsonResponse(['success' => false]);
-}
+ 
 
 }
