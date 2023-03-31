@@ -290,16 +290,18 @@
 														</div>
 													</div>
 												</div>
-												<div class="col-10 col-md-10 col-lg-6 col-xl-7">
-													<div class="search-input">
-														<input class="no-round-input no-border" type="text" placeholder="What do you need">
+												<form action="{{ path('search') }}" method="GET" class="row no-gutters">
+													<div class="col-12 col-md-12 col-lg-8 col-xl-8">
+														<div class="search-input">
+															<input class="no-round-input no-border" type="text" name="q" placeholder="What do you need" style="width: 100%;">
+														</div>
 													</div>
-												</div>
-												<div class="col-2 col-md-2 col-lg-2 col-xl-1">
-													<button class="no-round-btn black">
-														<i class="icon_search"></i>
-													</button>
-												</div>
+													<div class="col-12 col-md-12 col-lg-4 col-xl-4 d-flex justify-content-end">
+														<button type="submit" class="no-round-btn black" style="width: 50px; height: 50px;">
+															<i class="icon_search"></i>
+														</button>
+													</div>
+												</form>
 											</div>
 										</div>
 									</div>
@@ -637,10 +639,10 @@
 									</div>
 								</div>
 								<div class="best-seller_bottom">
-								<div id="tab0">
+									<div id="tab0">
 										<div class="row no-gutters-sm">
 											{% for product in products  %}
-											
+
 												<div class="col-6 col-md-4">
 													<div class="product pink">
 														<a href="{{ path('product',{'id':product.id}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
@@ -823,7 +825,7 @@
 											</div>
 										</div>
 									{% endfor %}
-								
+
 								</div>
 							</div>
 							<div id="tab-so2">
@@ -837,7 +839,7 @@
 												<li>
 													<a class="active" href="#tab0">All</a>
 												</li>
-											{% for category in categorie %}
+												{% for category in categorie %}
 													<li>
 														<a href="#tab{{ loop.index }}">
 															{{ category.name }}
@@ -883,7 +885,7 @@
 											{% endfor %}
 										</div>
 									</div>
-								{% for category in categorie %}
+									{% for category in categorie %}
 										<div id="tab{{ loop.index }}">
 											<div class="row no-gutters-sm">
 												{% for product in category.products|slice(0, 3) %}

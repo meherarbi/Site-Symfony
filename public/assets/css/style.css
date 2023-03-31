@@ -1401,6 +1401,11 @@ a:focus {
   }
 }
 
+/* header.pink .navigation-filter .website-search button.no-round-btn, header.pink .navigation-filter .navigation_v2 .website-search_v2 button.no-round-btn, header.pink .navigation_v2 .navigation-filter .website-search_v2 button.no-round-btn {
+  padding: 0px;
+  width: 54px;
+} */
+
 /************************************
 	Product
 *************************************/

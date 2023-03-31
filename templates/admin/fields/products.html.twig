@@ -1,0 +1,30 @@
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Produit</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Quantité</th>
+            <th>Prix unitaire</th>
+            <th>Sous-total</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in value %}
+        <tr>
+            <td>{{ product.product.name }}</td>
+            <td>{{ product.product.description }}</td>
+            <td><img src="{{ asset('uploads/' ~ product.product.illustration) }}" style="max-height:100px"></td>
+            <td>{{ product.quantity }}</td>
+            <td>{{ product.product.price|number_format(2, ',', ' ') }} €</td>
+            <td>{{ (product.product.price * product.quantity)|number_format(2, ',', ' ') }} €</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="5" class="text-right">Total :</td>
+            <td>{{ total|number_format(2, ',', ' ') }} €</td>
+        </tr>
+    </tfoot>
+</table>

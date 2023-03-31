@@ -1,0 +1,30 @@
+
+
+{% block body %}
+    <h1>Récapitulatif de la commande n°{{ order.id }}</h1>
+
+    <p>Montant total : {{ order.amount }} €</p>
+
+    <h2>Détails de la commande</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Produit</th>
+                <th>Prix unitaire</th>
+                <th>Quantité</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for orderDetail in orderDetails %}
+                <tr>
+                    <td>{{ orderDetail.product.name }}</td>
+                    <td>{{ orderDetail.price|number_format(2) }} €</td>
+                    <td>{{ orderDetail.quantity }}</td>
+                    <td>{{ orderDetail.total|number_format(2) }} €</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
