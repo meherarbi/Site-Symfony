@@ -7,7 +7,6 @@ use Stripe\Checkout\Session;
 use Stripe\Stripe;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class StripeController extends AbstractController
@@ -17,8 +16,8 @@ class StripeController extends AbstractController
      */
     public function index(Cart $cart)
     {
-        $products_for_stripe=[];
-        $YOUR_DOMAIN = 'foryoumer';
+        $products_for_stripe = [];
+        $YOUR_DOMAIN = 'https://foryoumer.com';
 
         foreach ($cart->getFull() as $product) {
             $products_for_stripe[] = [
@@ -46,7 +45,7 @@ class StripeController extends AbstractController
             'cancel_url' => $YOUR_DOMAIN . '/cancel.html',
         ]);
 
-        $response= new JsonResponse(['id' => $checkout_session->id]);
+        $response = new JsonResponse(['id' => $checkout_session->id]);
         return $response;
 
     }

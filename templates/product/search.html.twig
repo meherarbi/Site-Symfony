@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Résultats de la recherche
+{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<h5>Résultats de la recherche pour "{{ searchTerm }}"</h5>
+		<hr>
+
+		<div class="row no-gutters-sm">
+			{% for product in products  %}
+				<div class="col-6 col-md-3">
+					<div class="product pink">
+						<a class="product-img" href="{{ path('product',{'id': product.id}) }}"><img src="/uploads/{{ product.illustration ?? 'default.jpg' }}" alt="{{ product.name }}"></a>
+						<h5 class="product-type">{{product.category.name}}</h5>
+						{% if product.name|length > 10 %}
+							<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
+						{% else %}
+							<h3 class="product-name">{{ product.name }}</h3>
+						{% endif %}
+						<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
+							<del>$35.00</del>
+						</h3>
+						<div class="product-select">
+							<button class="add-to-wishlist round-icon-btn pink">
+								<i class="icon_heart_alt"></i>
+							</button>
+							<button class="add-to-cart round-icon-btn pink">
+								<i class="icon_bag_alt"></i>
+							</button>
+							<button class="add-to-compare round-icon-btn pink">
+								<i class="fas fa-random"></i>
+							</button>
+							<button class="quickview round-icon-btn pink">
+								<i class="far fa-eye"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+
+		<div class="pagination">
+			{{ knp_pagination_render(products) }}
+		</div>
+	</div>
+{% endblock %}

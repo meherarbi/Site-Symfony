@@ -8,7 +8,7 @@ use App\Entity\RecentlyViewedProduct;
 use App\Entity\SearchProduct;
 use App\Form\SearchProductsType;
 use App\Repository\ProductRepository;
-use App\Repository\RecentlyViewedProductRepository;
+use App\Service\ElasticsearchService;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Query;
 use Knp\Component\Pager\PaginatorInterface;
@@ -16,15 +16,16 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ProductController extends AbstractController
 {
     private $entityManager;
-    public function __construct(EntityManagerInterface $entityManager)
+    private $elasticsearchService;
+    public function __construct(EntityManagerInterface $entityManager, ElasticsearchService $elasticsearchService)
     {
         $this->entityManager = $entityManager;
+        $this->elasticsearchService = $elasticsearchService;
     }
     /**
      * @Route("/product", name="products")
@@ -46,6 +47,24 @@ class ProductController extends AbstractController
             'products' => $products,
             /*  'form' => $form->createView(), */
 
+        ]);
+    }
+
+    /**
+     * @Route("/search", name="search")
+     */
+    public function searchProducts(Request $request, PaginatorInterface $paginator)
+    {
+        $searchTerm = $request->query->get('q', '');
+        $searchResults = $this->elasticsearchService->searchProducts($searchTerm);
+
+        if (empty($searchResults)) {
+            return $this->render('error_custom.html.twig');
+        }
+
+        return $this->render('product/search.html.twig', [
+            'products' => $searchResults,
+            'searchTerm' => $searchTerm,
         ]);
     }
 

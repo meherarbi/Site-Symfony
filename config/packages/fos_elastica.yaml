@@ -1,0 +1,20 @@
+fos_elastica:
+    clients:
+        default: { url: '%env(ELASTICSEARCH_URL)%' }
+    indexes:
+        products:
+            index_name: products
+            properties:
+                id: ~
+                name: ~
+                description: ~
+                category: ~
+            persistence:
+                driver: orm
+                model: App\Entity\Product
+                provider: ~
+                listener: ~
+                finder: ~
+                identifier: id
+                elastica_to_model_transformer:
+                    service: app.elastica_to_model_transformer
