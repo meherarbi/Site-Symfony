@@ -26,7 +26,7 @@ class RegisterType extends AbstractType
                 'first_options'=>['label'=>'Password'],
                 'second_options'=>['label'=>'Confirm Your Password']
             ])
-            ->add('submit',SubmitType::class,['label'=>'valider'])
+            
         ;
     }
 

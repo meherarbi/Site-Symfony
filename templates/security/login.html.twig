@@ -1,11 +1,25 @@
+
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Login{% endblock %}
 
 {% block content %}
-<div class="block-small">
-    <form method="post">
-        {% if error %}
+  <div class="ogami-breadcrumb">
+    <div class="container">
+      <ul>
+        <li><a class="breadcrumb-link" href="{{ path('home') }}"><i class="fas fa-home"></i>Home</a></li>
+        <li><a class="breadcrumb-link active" href="#">Login</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="account">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-6 mx-auto">
+          <h1 class="title">Login</h1>
+          <form method="post">
+           {% if error %}
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
         {% endif %}
 
@@ -14,29 +28,29 @@
                 You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
             </div>
         {% endif %}
-        <div class="log">
-            <div class="h">Please sign in</div>
-            <label for="inputEmail">Email</label>
-            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
+        <label for="inputEmail">Email</label>
+            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="no-round-input" required autofocus>
             <br>
             <label for="inputPassword">Password</label>
-            <input type="password" name="password" id="inputPassword" class="form-control" required>
-
-            <input type="hidden" name="_csrf_token"
+            <input type="password" name="password" id="inputPassword" class="no-round-input" required>
+             <input type="hidden" name="_csrf_token"
                    value="{{ csrf_token('authenticate') }}"
             >
-
-
-            <br>
-
-            <button class="btn btn-lg btn-primary " type="submit">
-                Sign in
-            </button>
-            <hr>
-            <p class="text-center">Ou souhaitez-vous <a href="{{ path('register') }}" >créer un compte</a>?</p>
+            <div class="account-method">
+              <div class="account-save">
+                <input id="savepass" type="checkbox">
+                <label for="savepass">Save Password</label>
+              </div>
+              <div class="account-forgot"><a href="#">Forget your Password</a></div>
+            </div>
+            <div class="account-function">
+              <button class="no-round-btn">Login</button>
+              <a class="create-account" href="{{ path('register') }}">Or create an account</a>
+            </div>
+          </form>
         </div>
-    </form>
-</div>
-
+      </div>
+    </div>
+  </div>
 {% endblock %}
 
