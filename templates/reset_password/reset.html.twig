@@ -1,14 +1,38 @@
+
 {% extends 'base.html.twig' %}
 
 {% block title %}Réinitialiser le mot de passe{% endblock %}
 
 {% block content %}
-    <h1>Réinitialiser le mot de passe</h1>
+    <div class="ogami-breadcrumb">
+        <div class="container">
+            <ul>
+                <li><a class="breadcrumb-link" href="{{ path('home') }}"><i class="fas fa-home"></i>Home</a></li>
+                <li><a class="breadcrumb-link active" href="#">Réinitialiser le mot de passe</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- End breadcrumb-->
 
-    <form method="post" action="{{ path('app_reset_password', {'token': token}) }}">
-        {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <button type="submit">Réinitialiser le mot de passe</button>
-        {{ form_end(form) }}
-    </form>
+    <div class="account">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6 mx-auto">
+                    <h1 class="title">Réinitialiser le mot de passe</h1>
+                    <form method="post" action="{{ path('app_reset_password', {'token': token}) }}">
+                        {{ form_start(form) }}
+                        <div class="form-group">
+                            {{ form_row(form.plainPassword, {'label': 'Nouveau mot de passe *', 'attr': {'class': 'form-control no-round-input'}}) }}
+                        </div>
+                        <div class="account-function">
+                            <button class="no-round-btn" type="submit">Réinitialiser le mot de passe</button>
+                        </div>
+                        {{ form_end(form) }}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End account-->
 {% endblock %}
+
