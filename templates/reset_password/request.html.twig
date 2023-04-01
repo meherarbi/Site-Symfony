@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Demander une réinitialisation de mot de passe
+{% endblock %}
+
+{% block content %}
+	
+
+{# 	<form id="reset-password-form" method="post" action="{{ path('app_request_reset_password') }}">
+		{{ form_start(form) }}
+		<div class="form-group">
+			{{ form_widget(form.email, {'attr': {'class': 'form-control no-round-input', 'placeholder': 'Email address'}}) }}
+		</div>
+		<button type="submit" class="no-round-btn">Submit</button>
+		{{ form_end(form) }}
+	</form> #}
+
+	<hr>
+	<div class="container">
+    <h5>Demande de réinitialisation de mot de passe</h5>
+
+	{% for message in app.flashes('error') %}
+		<div class="alert alert-danger">
+			{{ message }}
+		</div>
+	{% endfor %}
+	<div id="error-message" class="alert alert-danger" style="display:none;"></div>
+		<div class="row">
+			<div class="col-md-4 offset-md-4">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div class="text-center">
+							<h3>
+								<i class="fa fa-lock fa-3x"></i>
+							</h3>
+							<h2 class="text-center">Mot de passe oublié ?</h2>
+							<p class="mt-3">Vous pouvez réinitialiser votre mot de passe ici.</p>
+							<div class="panel-body">
+								<form id="reset-password-form" method="post" action="{{ path('app_request_reset_password') }}">
+									<fieldset>
+										<div class="form-group">
+											<div class="input-group">
+												<span class="input-group-addon">
+													<i class="glyphicon glyphicon-envelope color-blue"></i>
+												</span>
+												{{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Adresse email'}}) }}
+											</div>
+										</div>
+										<div class="form-group">
+											<button class=" no-round-btn btn-block" type="submit">Réinitialiser le mot de passe</button>
+										</div>
+									</fieldset>
+                                    {{ form_end(form) }}
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script type="text/javascript">
+		document.addEventListener('DOMContentLoaded', function () {
+const resetPasswordForm = document.getElementById('reset-password-form');
+const errorMessage = document.getElementById('error-message');
+
+resetPasswordForm.addEventListener('submit', function (event) {
+event.preventDefault();
+
+const formData = new FormData(resetPasswordForm);
+const xhr = new XMLHttpRequest();
+
+xhr.open('POST', resetPasswordForm.getAttribute('action'), true);
+xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+xhr.onreadystatechange = function () {
+if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+const response = JSON.parse(xhr.responseText);
+
+if (response.success) {
+window.location.href = response.redirectUrl;
+} else {
+errorMessage.textContent = response.message;
+errorMessage.style.display = 'block';
+}
+}
+};
+xhr.send(formData);
+});
+});
+	</script>
+
+{% endblock %}
