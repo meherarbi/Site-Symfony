@@ -3,21 +3,65 @@
 {% block title %}Folio Shop{% endblock %}
 
 {% block container %}
-    <h1>Gérer mes une Adresses </h1>
-    <a href ="{{ path('account') }}">Retour</a>
+<div class="container">
+    <div class="ogami-breadcrumb">
+        <div class="container">
+            <ul>
+                <li><a class="breadcrumb-link" href="{{ path('home') }}"><i class="fas fa-home"></i>Home</a></li>
+                <li><a class="breadcrumb-link active" href="#">Mes Adresses </a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- End breadcrumb-->
+    <h1 class="mb-4">Gérer mes adresses</h1>
+    <a href="{{ path('account') }}" class="btn btn-secondary mb-3">Retour</a>
     <hr>
     {{ form_start(form) }}
-           <div class="row">
-               <div class="col-md-12">{{ form_row(form.name) }}</div>
-               <div class="col-md-6">{{ form_row(form.firstname) }}</div>
-               <div class="col-md-12">{{ form_row(form.lastname) }}</div>
-               <div class="col-md-6">{{ form_row(form.company) }}</div>
-               <div class="col-md-12">{{ form_row(form.address) }}</div>
-               <div class="col-md-6">{{ form_row(form.postal) }}</div>
-               <div class="col-md-12">{{ form_row(form.city) }}</div>
-               <div class="col-md-12">{{ form_row(form.country) }}</div>
-               <div class="col-md-12">{{ form_row(form.phone) }}</div>
-           </div>
+    <div class="row justify-content-center">
+        <div class="col-md-12 mb-3 text-center">
+            {{ form_label(form.name, null, {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.name, {'attr': {'class': 'form-control custom-inputN mb-3'}}) }}
+        </div>
+        <div class="col-md-5">
+            {{ form_row(form.firstname, {'attr': {'class': 'form-control custom-input mb-3'}}) }}
+            {{ form_row(form.lastname, {'attr': {'class': 'form-control custom-input mb-3'}}) }}
+            {{ form_row(form.address, {'attr': {'class': 'form-control custom-input mb-3'}}) }}
+            {{ form_row(form.postal, {'attr': {'class': 'form-control custom-input mb-3'}}) }}
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-5">
+            {{ form_row(form.company, {'attr': {'class': 'form-control custom-input mb-3'}}) }}
+            {{ form_row(form.city, {'attr': {'class': 'form-control custom-input mb-3'}}) }}
+            {{ form_row(form.country, {'attr': {'class': 'form-control custom-input mb-3'}}) }}
+            {{ form_row(form.phone, {'attr': {'class': 'form-control custom-input mb-3'}}) }}
+        </div>
+    </div>
     {{ form_end(form) }}
+</div>
 
+<style>
+.custom-container {
+    max-width: 60%;
+}
+
+.custom-input {
+    width: 100%;
+}
+.custom-inputN {
+    width: 30%;
+    display: inline-block;
+}
+.form-label {
+    display: block;
+}
+.custom-submit {
+    width: 50%;
+    margin-left: 24%;
+}
+.submit-btn-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+</style>
 {% endblock %}

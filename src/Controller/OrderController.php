@@ -7,6 +7,7 @@ use App\Entity\OrderDetails;
 use App\Form\OrderType;
 use App\Service\Cart;
 use Doctrine\ORM\EntityManagerInterface;
+use Stripe\Price;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;

@@ -30,7 +30,7 @@ class AddressType extends AbstractType
             ->add('submit',SubmitType::class,[
                 'label'=>'Ajouter mon adresse',
                 'attr'=>[
-                    'class'=>'btn-block btn-info'
+                    'class'=>'btn-block btn-info custom-submit'
                 ]
             ])
         ;
