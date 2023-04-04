@@ -22,15 +22,19 @@
 		<link rel="stylesheet" href="{{ asset('assets/css/mystore.css') }}">
 		<link rel="stylesheet" href="{{ asset('assets/css/select2.min.css') }}">
 		<link rel="stylesheet" href="{{ asset('build/css/intlTelInput.css') }}">
-		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
 		{#    
-						      <link rel="stylesheet" href="{{ asset('build/css/demo.css') }}">
-						      #}
+																												      <link rel="stylesheet" href="{{ asset('build/css/demo.css') }}">
+																												      #}
 		{% block javascript %}{% endblock %}
 	</head>
 	<body>
+		<div id="notification" class="notification" style="display: none; position: fixed; top: 10px; right: 10px; background-color: #4CAF50; color: white; padding: 10px; border-radius: 5px;">
+			Produit ajouté au panier!
+		</div>
+
 		<div id="main">
 			<header class="pink">
 				<div class="topimg">
@@ -55,14 +59,14 @@
 								<div class="header-right d-flex flex-column flex-md-row justify-content-md-end justify-content-center align-items-center">
 									<div class="social-link d-flex">
 										<a href="{{ path('cart_index') }}">
-											<img src="
-																																				                                 {{ asset('assets/images/panier.png') }}
-																																				                                 " height="30px" alt="Panier">
+											<img src="{{ asset('assets/images/panier.png') }}" height="30px" alt="Panier">
+											{% if app.session.get('uniqueProductsCount') is not empty %}
+												<span class="cart-quantity">{{ app.session.get('uniqueProductsCount') }}</span>
+											{% endif %}
+
 										</a>
+
 										{{ "" }}
-										{#  <a href="">
-																														                              <i class="fab fa-facebook-f"></i>
-																														                              </a> #}
 									</div>
 									{% if app.user %}
 										<div class="login d-flex">
@@ -177,12 +181,12 @@
 						<div
 							class="partner_block d-flex justify-content-between" data-slick="{&quot;slidesToShow&quot;: 6}">
 							{# 	{% for product in products  %}
-														<div class="partner--logo" href="">
-															<a class="product-img" href="{{ path('product',{'id':product.id}) }}">
-																<img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}">
-															</a>
-														</div>
-													{% endfor %} #}
+																																																																																											<div class="partner--logo" href="">
+																																																																																												<a class="product-img" href="{{ path('product',{'id':product.id}) }}">
+																																																																																													<img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}">
+																																																																																												</a>
+																																																																																											</div>
+																																																																																										{% endfor %} #}
 							<div class="partner--logo" href="">
 								<a href="#">
 									<img src="{{ asset('assets/images/partner/a2.webp') }}" alt="partner" title="partner logo">
@@ -372,4 +376,32 @@ window.intlTelInput(input, {
 // preferredCountries: ['cn', 'jp'],
 // separateDialCode: true,
 utilsScript: "build/js/utils.js"
-});</script></body>{% block script %}<script src="{{ asset('assets/js/cart.js') }}"></script>{% endblock %}</html>
+});</script></body>{% block script %}<script src="{{ asset('assets/js/cart.js') }}"></script>{% endblock %}</html><script type="text/javascript">function addToCart(event, url) {
+event.preventDefault();
+// Empêche la navigation vers la page du lien
+
+// Ajoute le produit au panier en utilisant une requête AJAX
+$.ajax({
+url: url,
+method: 'GET',
+success: function () { // Met à jour le nombre d'articles dans le panier
+var cartItemCount = $('#cartItemCount');
+cartItemCount.text(parseInt(cartItemCount.text()) + 1);
+
+// Affiche la notification pendant 2 secondes
+cartItemCount.fadeIn(500).delay(2000).fadeOut(500);
+},
+error: function () {
+console.error('Erreur lors de l\'ajout du produit au panier.');
+}
+});
+}</script><style>.cart-quantity {
+	position: absolute;
+	background-color: red;
+	color: white;
+	border-radius: 50%;
+	font-size: 12px;
+	padding: 2px 6px;
+	margin-left: -12px;
+	margin-top: -10px;
+}</style>

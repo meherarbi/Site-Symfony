@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Category;
 use App\Entity\User;
 use App\Entity\Product;
 use Doctrine\Persistence\ManagerRegistry;
@@ -135,6 +136,23 @@ return $this->createQueryBuilder('p')
         ->getQuery()
         ->getResult();
 }
+
+public function findRecentlyViewedProductsByProductIdsAndCategory(array $productIds, Category $category): array
+{
+    if (empty($productIds)) {
+        return [];
+    }
+
+    $qb = $this->createQueryBuilder('p')
+        ->where('p.id IN (:productIds)')
+        ->andWhere('p.category = :category')
+        ->setParameter('productIds', $productIds)
+        ->setParameter('category', $category);
+
+    return $qb->getQuery()->getResult();
+}
+
+
 
 
 

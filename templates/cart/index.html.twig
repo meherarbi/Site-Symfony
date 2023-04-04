@@ -8,8 +8,8 @@
 	<div class="ogami-breadcrumb">
 		<div class="container">
 			<ul>
-				<li><a class="breadcrumb-link" href="{{ path('home') }}"><i class="fas fa-home"></i>Home</a></li>
-				<li><a class="breadcrumb-link" href="{{ path('products') }}">Shop</a></li>
+				<li><a class="breadcrumb-link"href="{{ path('home') }}"><i class="fas fa-home"></i>Home</a></li>
+				<li><a class="breadcrumb-link"href="{{ path('products') }}">Shop</a></li>
 				<li><a class="breadcrumb-link active" href="#">Shoping cart</a></li>
 			</ul>
 		</div>
@@ -17,39 +17,42 @@
 	<!-- End breadcrumb-->
 	{% if cart|length >0 %}
 		<div class="order-step">
-        <div class="container">
-          <div class="row">
-            <div class="col-12">
-              <div class="order-step_block">
-                <div class="row no-gutters">
-                  <div class="col-12 col-md-4">
-                    <div class="step-block active">
-                      <div class="step">
-                        <h2>Shopping Cart</h2><span>01</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-4">
-                    <div class="step-block">
-                      <div class="step">
-                        <h2>Check Out</h2><span>02</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-4">
-                    <div class="step-block">
-                      <div class="step">
-                        <h2>Order Completed</h2><span>03</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- End order step-->
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<div class="order-step_block">
+							<div class="row no-gutters">
+								<div class="col-12 col-md-4">
+									<div class="step-block active">
+										<div class="step">
+											<h2>Shopping Cart</h2>
+											<span>01</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-12 col-md-4">
+									<div class="step-block">
+										<div class="step">
+											<h2>Check Out</h2>
+											<span>02</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-12 col-md-4">
+									<div class="step-block">
+										<div class="step">
+											<h2>Order Completed</h2>
+											<span>03</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End order step-->
 		<div class="shopping-cart">
 			<div class="container">
 				<div class="row">
@@ -105,12 +108,15 @@
 												$</td>
 
 											<td class="product-clear">
-												<a href="{{ path('cart_delete_my_cart',{'id':product.product.id}) }}">
+												<a class="remove-from-cart" href="#" data-id="{{ product.product.id }}">
 													<button class="btn btn-outline-danger">
 														<img src="{{asset('assets/images/trash.png')}}" alt="supprimer" height="25px">
 													</button>
 												</a>
+
 											</td>
+
+
 										</tr>
 										{% set total=total+(product.product.price*product.quantity) %}
 									{% endfor %}
@@ -142,7 +148,7 @@
 								<tbody>
 									<tr>
 										<th>SUBTOTAL</th>
-										<td>{{ cart |length }}</td>
+										<td class="subtotal-cell" >{{ cart |length }}</td>
 									</tr>
 									<tr>
 										<th>SHIPPING</th>
@@ -153,7 +159,7 @@
 									</tr>
 									<tr>
 										<th>TOTAL</th>
-										<td>
+										<td class="cart-total-cell">
 											{{ (total/100)|number_format(2) }}</td>
 									</tr>
 								</tbody>
@@ -177,4 +183,34 @@
 		</div>
 
 	{% endif %}
+	{# <script type="text/javascript">
+	
+	function removeProduct(event) {
+	  event.preventDefault();
+	  const productId = event.target.closest(".remove-from-cart").dataset.id;
+	  fetch(`/my-cart/cart/delete/${productId}`, { method: "GET" })
+	    .then((response) => {
+	      if (response.ok) {
+	        // Supprimer le produit du DOM
+	        const row = event.target.closest("tr");
+	        row.parentNode.removeChild(row);
+	
+	        // Mettre à jour la notification
+	        updateNotification(-1);
+	
+	        // Mettre à jour le total du panier
+	        updateCartTotal();
+	      }
+	    })
+	    .catch((error) => {
+	      console.error("Erreur lors de la suppression du produit :", error);
+	    });
+	}
+	
+	function updateNotification(change) {
+	  const cartQuantity = document.querySelector(".cart-quantity");
+	  const currentCount = parseInt(cartQuantity.textContent, 10);
+	  cartQuantity.textContent = currentCount + change;
+	}
+	</script> #}
 {% endblock %}

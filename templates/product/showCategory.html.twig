@@ -7,18 +7,18 @@
 
 {% block content %}
 	{# <div class="row product-container ">
-					        {% for product in products  %}
-					            <div class="col-md-3 ">
-					                <div class="products-item text-center">
-					                    <a href="{{ path('product',{'id':product.id}) }}" ><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="img-fluid" height="90px"></a>
-					                    <figcaption><h5>{{ product.name }}</h5></figcaption>
-					                    <span class="products-subtitle">{{ product.subtitle }}</span>
-					                    <span class="products-price">{{ (product.price/100)|number_format(2) }} $</span>
-					                </div>
-					            </div>
-					
-					        {% endfor %}
-					    </div> #}
+											        {% for product in products  %}
+											            <div class="col-md-3 ">
+											                <div class="products-item text-center">
+											                    <a href="{{ path('product',{'id':product.id}) }}" ><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="img-fluid" height="90px"></a>
+											                    <figcaption><h5>{{ product.name }}</h5></figcaption>
+											                    <span class="products-subtitle">{{ product.subtitle }}</span>
+											                    <span class="products-price">{{ (product.price/100)|number_format(2) }} $</span>
+											                </div>
+											            </div>
+											
+											        {% endfor %}
+											    </div> #}
 
 	<div class="ogami-breadcrumb">
 		<div class="ogami-container-fluid">
@@ -44,7 +44,7 @@
 									{% for categorie in cat.getCategories %}
 										<li></li>
 										<li>
-											<a class="department-link" href="{{path('product_category',{'id':categorie.id,'userId': user.id})}} ">{{ categorie.name }}</a>
+											<a class="department-link" href="{{path('product_category',{'id':categorie.id,'userId': user ? user.id : ''})}} ">{{ categorie.name }}</a>
 										</li>
 									</li>
 								{% endfor %}
@@ -70,9 +70,9 @@
 									</div>
 								</p>
 								{# <label for="categories">Category range:</label>
-															<div class="js-example-basic-multiple">
-																{{form_row(search.categories)}}
-															</div> #}
+																																																															<div class="js-example-basic-multiple">
+																																																																{{form_row(search.categories)}}
+																																																															</div> #}
 
 								<div id="slider-range"></div>
 							</div>
@@ -85,73 +85,73 @@
 
 
 				{# <div class="shop-sidebar_color-filter">
-																							                  <div class="color-filter_top mini-tab-title underline">
-																							                    <h2 class="title">Color</h2>
-																							                  </div>
-																							                  <div class="color-filter_bottom">
-																							                    <div class="row">
-																							                      <div class="col-6">
-																							                        <div class="color">
-																							                          <div class="visible-color" style="background-color: black;"></div><a href="shop_grid+list_3col.html">Black (12)</a>
-																							                        </div>
-																							                        <div class="color">
-																							                          <div class="visible-color" style="background-color: red;"></div><a href="shop_grid+list_3col.html">Red (4)</a>
-																							                        </div>
-																							                        <div class="color">
-																							                          <div class="visible-color" style="background-color: orange;"></div><a href="shop_grid+list_3col.html">Orange (8)</a>
-																							                        </div>
-																							                      </div>
-																							                      <div class="col-6">
-																							                        <div class="color">
-																							                          <div class="visible-color" style="background-color: blue;"></div><a href="shop_grid+list_3col.html">Blue (4)</a>
-																							                        </div>
-																							                        <div class="color">
-																							                          <div class="visible-color" style="background-color: green;"></div><a href="shop_grid+list_3col.html">Green (9)</a>
-																							                        </div>
-																							                        <div class="color">
-																							                          <div class="visible-color" style="background-color: pink;"></div><a href="shop_grid+list_3col.html">Pink (12)</a>
-																							                        </div>
-																							                      </div>
-																							                    </div>
-																							                  </div>
-																							                </div> #}
+																																															                  <div class="color-filter_top mini-tab-title underline">
+																																															                    <h2 class="title">Color</h2>
+																																															                  </div>
+																																															                  <div class="color-filter_bottom">
+																																															                    <div class="row">
+																																															                      <div class="col-6">
+																																															                        <div class="color">
+																																															                          <div class="visible-color" style="background-color: black;"></div><a href="shop_grid+list_3col.html">Black (12)</a>
+																																															                        </div>
+																																															                        <div class="color">
+																																															                          <div class="visible-color" style="background-color: red;"></div><a href="shop_grid+list_3col.html">Red (4)</a>
+																																															                        </div>
+																																															                        <div class="color">
+																																															                          <div class="visible-color" style="background-color: orange;"></div><a href="shop_grid+list_3col.html">Orange (8)</a>
+																																															                        </div>
+																																															                      </div>
+																																															                      <div class="col-6">
+																																															                        <div class="color">
+																																															                          <div class="visible-color" style="background-color: blue;"></div><a href="shop_grid+list_3col.html">Blue (4)</a>
+																																															                        </div>
+																																															                        <div class="color">
+																																															                          <div class="visible-color" style="background-color: green;"></div><a href="shop_grid+list_3col.html">Green (9)</a>
+																																															                        </div>
+																																															                        <div class="color">
+																																															                          <div class="visible-color" style="background-color: pink;"></div><a href="shop_grid+list_3col.html">Pink (12)</a>
+																																															                        </div>
+																																															                      </div>
+																																															                    </div>
+																																															                  </div>
+																																															                </div> #}
 			{# <div class="shop-sidebar_size">
-																		                  <div class="size_top mini-tab-title underline">
-																		                    <h2 class="title">Popular size</h2>
-																		                  </div>
-																		                  <div class="size_bottom">
-																		                    &nbsp;<form>
-																		                      &nbsp;<div class="size">
-																		                          &nbsp;<input type="checkbox" id="large">
-																		                        <label for="large">Large</label>
-																		                      </div>
-																		                      <div class="size">
-																		                        <input type="checkbox" id="medium">
-																		                        <label for="medium">Medium</label>
-																		                      </div>
-																		                      <div class="size">
-																		                        <input type="checkbox" id="small">
-																		                        <label for="small">Small</label>
-																		                      </div>
-																		                      <div class="size">
-																		                        <input type="checkbox" id="tiny">
-																		                        <label for="tiny">Tiny</label>
-																		                      </div>
-																		                    </form>
-																		                  </div>
-																		                </div> #}
+																																				                  <div class="size_top mini-tab-title underline">
+																																				                    <h2 class="title">Popular size</h2>
+																																				                  </div>
+																																				                  <div class="size_bottom">
+																																				                    &nbsp;<form>
+																																				                      &nbsp;<div class="size">
+																																				                          &nbsp;<input type="checkbox" id="large">
+																																				                        <label for="large">Large</label>
+																																				                      </div>
+																																				                      <div class="size">
+																																				                        <input type="checkbox" id="medium">
+																																				                        <label for="medium">Medium</label>
+																																				                      </div>
+																																				                      <div class="size">
+																																				                        <input type="checkbox" id="small">
+																																				                        <label for="small">Small</label>
+																																				                      </div>
+																																				                      <div class="size">
+																																				                        <input type="checkbox" id="tiny">
+																																				                        <label for="tiny">Tiny</label>
+																																				                      </div>
+																																				                    </form>
+																																				                  </div>
+																																				                </div> #}
 
 				{# <div class="shop-sidebar_tag">
-																							                  <div class="tag_top mini-tab-title underline">
-																							                    <h2 class="title">Product tag</h2>
-																							                  </div>
-																							                  
-																							                  <div class="tag_bottom">{{ form_row(search.categories) }}</div>
-																							                  
-														
-														
-														
-																							                </div> #}
+																																															                  <div class="tag_top mini-tab-title underline">
+																																															                    <h2 class="title">Product tag</h2>
+																																															                  </div>
+																																															                  
+																																															                  <div class="tag_bottom">{{ form_row(search.categories) }}</div>
+																																															                  
+																																						
+																																						
+																																						
+																																															                </div> #}
 			</div>
 
 
@@ -236,107 +236,50 @@
 
 
 							</div>
-							<div class="shop-pagination ">
-								<button class="no-round-btn smooth active">
-									{{ knp_pagination_render(products) }}</button>
-							</div>
+							{% if products.pageCount > 1 %}
+								<div class="shop-pagination">
+									<button class="no-round-btn smooth active">
+										{{ knp_pagination_render(products) }}
+									</button>
+								</div>
+							{% endif %}
 
 						</div>
 					</div>
-					<div class="recentview-product">
-						<div class="recentview-product_top mini-tab-title underline">
-							<h2 class="title">Recently Viewed Products</h2>
-						</div>
+					{% if user %}
+						<div class="recentview-product">
+							<div class="recentview-product_top mini-tab-title underline">
+								<h2 class="title">Recently Viewed Products</h2>
+							</div>
+							<div class="recentview-product_bottom">
+								<div class="row">
+									{% if recentlyViewedProducts %}
+										{% for product in recentlyViewedProducts|slice(0, 4) %}
 
+											<div class="col-12 col-sm-6 col-lg-4 col-lg-3 col-xxl-3">
+												<div class="mini-product border">
+													<div class="mini-product_img">
+														<a class="product-img" href="{{ path('product',{'id':product.id}) }}">
+															<img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}">
+														</a>
+													</div>
+													<div class="mini-product_info">
+														<a href="{{ path('product',{'id':product.id}) }}">{{ product.name|slice(0, 10) }}...</a>
+														<p>{{ product.price/100|number_format(2) }}
+															<del>$45.00</del>
+														</p>
+													</div>
 
-						{# {% if recentlyViewedProducts %}
-						    <ul>
-						        {% for product in recentlyViewedProducts %}
-						            <li>{{ product.getProduct().getName() }}</li>
-						            <a class="product-img" href="{{ path('product',{'id':product.getProduct().getId()}) }}">
-						                <img src="/uploads/{{ product.getProduct().getIllustration() }}" alt="{{ product.getProduct().getName() }}">
-						            </a>
-						            <h5 class="product-type">{{product.getProduct().getName()}}</h5>
-						        {% endfor %}
-						    </ul>
-						{% else %}
-						    <p>Aucun produit récemment consulté.</p>
-						{% endif %} #}
-
-
-						<div class="recentview-product_bottom">
-							<div class="row">
-
-								{% if recentlyViewedProducts %}
-									{% for product in recentlyViewedProducts|slice(0, 4) %}
-
-										<div class="col-12 col-sm-6 col-lg-4 col-lg-3 col-xxl-3">
-											<div class="mini-product border">
-												<div class="mini-product_img">
-													<a class="product-img" href="{{ path('product',{'id':product.getProduct().getId()}) }}">
-														<img src="/uploads/{{ product.getProduct().getIllustration() }}" alt="{{ product.getProduct().getName() }}">
-													</a>
-												</div>
-												<div class="mini-product_info">
-													<a href="{{ path('product',{'id':product.getProduct().getId()}) }}">{{ product.getProduct().getName()|slice(0, 10)  }}...</a>
-													<p>{{ product.getProduct().getPrice()/100|number_format(2) }}
-														<del>$45.00</del>
-													</p>
 												</div>
 											</div>
-										</div>
-									{% endfor %}
-
-									{# {{ dump(recentlyViewedProducts) }} #}
-
-
-								{% else %}
-									<p>Aucun produit récemment consulté.</p>
-								{% endif %}
-
-
-								{# 	<div class="col-12 col-sm-6 col-lg-4 col-lg-3 col-xxl-3">
-																	<div class="mini-product border">
-																		<div class="mini-product_img">
-																			<a href="shop_detail.html"><img src="assets/images/product/product14.png" alt="product image"></a>
-																		</div>
-																		<div class="mini-product_info">
-																			<a href="shop_detail.html">Coconut</a>
-																			<p>$37.00
-																				<del>$45.00</del>
-																			</p>
-																		</div>
-																	</div>
-																</div>
-																<div class="col-12 col-sm-6 col-lg-4 col-lg-3 col-xxl-3">
-																	<div class="mini-product border">
-																		<div class="mini-product_img">
-																			<a href="shop_detail.html"><img src="assets/images/product/product15.png" alt="product image"></a>
-																		</div>
-																		<div class="mini-product_info">
-																			<a href="shop_detail.html">Venion</a>
-																			<p>$37.00
-																				<del>$45.00</del>
-																			</p>
-																		</div>
-																	</div>
-																</div>
-																<div class="col-12 col-sm-6 col-lg-4 col-lg-3 col-xxl-3">
-																	<div class="mini-product border">
-																		<div class="mini-product_img">
-																			<a href="shop_detail.html"><img src="assets/images/product/product16.png" alt="product image"></a>
-																		</div>
-																		<div class="mini-product_info">
-																			<a href="shop_detail.html">Coconut</a>
-																			<p>$37.00
-																				<del>$45.00</del>
-																			</p>
-																		</div>
-																	</div>
-																</div> #}
+										{% endfor %}
+									{% else %}
+										<p>Aucun produit récemment consulté.</p>
+									{% endif %}
+								</div>
 							</div>
 						</div>
-					</div>
+					{% endif %}
 				</div>
 			</div>
 		</div>

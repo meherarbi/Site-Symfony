@@ -8,10 +8,13 @@ use App\Entity\RecentlyViewedProduct;
 use App\Entity\SearchProduct;
 use App\Form\SearchProductsType;
 use App\Repository\ProductRepository;
+use App\Repository\RecentlyViewedProductRepository;
 use App\Service\ElasticsearchService;
+use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Query;
 use Knp\Component\Pager\PaginatorInterface;
+use Psr\Log\LoggerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,20 +25,20 @@ class ProductController extends AbstractController
 {
     private $entityManager;
     private $elasticsearchService;
-    public function __construct(EntityManagerInterface $entityManager, ElasticsearchService $elasticsearchService)
+
+    private $logger;
+
+    public function __construct(EntityManagerInterface $entityManager, ElasticsearchService $elasticsearchService, LoggerInterface $logger)
     {
         $this->entityManager = $entityManager;
         $this->elasticsearchService = $elasticsearchService;
+        $this->logger = $logger;
     }
     /**
      * @Route("/product", name="products")
      */
-    public function index(PaginatorInterface $paginator, Request $request, EntityManagerInterface $manager, ProductRepository $productrepository)
+    public function index(PaginatorInterface $paginator, Request $request, ProductRepository $productrepository)
     {
-        /* $products = $this->entityManager->getRepository(Product::class)->findAll(); */
-        /*  $search = new Search(); */
-        /* $form = $this->createForm(SearchType::class, $search); */
-
         $products = $paginator->paginate(
             $productrepository->findAll(),
             $request->query->getInt('page', 1),
@@ -45,7 +48,6 @@ class ProductController extends AbstractController
 
         return $this->render('product/index.html.twig', [
             'products' => $products,
-            /*  'form' => $form->createView(), */
 
         ]);
     }
@@ -68,20 +70,35 @@ class ProductController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/products/{id}", name="product")
-     */
-    public function show($id): Response
-    {
-        $product = $this->entityManager->getRepository(Product::class)->find($id);
-        if (!$product) {
-            return $this->redirectToRoute('products');
-        }
-        return $this->render('product/show.html.twig', [
-            'product' => $product,
-
-        ]);
+/**
+ * @Route("/products/{id}", name="product")
+ */
+public function show($id, RecentlyViewedProductRepository $recentlyViewedProductRepository): Response
+{
+    $user = $this->getUser();
+    $product = $this->entityManager->getRepository(Product::class)->find($id);
+    
+    if (!$product) {
+        return $this->redirectToRoute('products');
     }
+
+    // Enregistrez le produit comme récemment consulté si l'utilisateur est connecté
+    if ($user) {
+        $recentlyViewedProduct = new RecentlyViewedProduct();
+        $recentlyViewedProduct->setProduct($product);
+        $recentlyViewedProduct->setUser($user);
+        $recentlyViewedProduct->setViewedAt(new \DateTimeImmutable());
+
+        $this->entityManager->persist($recentlyViewedProduct);
+        $this->entityManager->flush();
+    }
+    
+    
+    return $this->render('product/show.html.twig', [
+        'product' => $product,
+    ]);
+}
+
 
 /**
  * @Route("/productsCategory/{id}", name="product_category")
@@ -91,7 +108,9 @@ class ProductController extends AbstractController
         PaginatorInterface $paginator,
         Category $category,
         Request $request,
-        ProductRepository $repProduct
+        ProductRepository $repProduct,
+        RecentlyViewedProductRepository $recentlyViewedProductRepository,
+        ?RecentlyViewedProduct $recentlyViewedProduct = null
     ): Response {
         $user = $this->getUser();
         if (!$category) {
@@ -116,20 +135,13 @@ class ProductController extends AbstractController
             }
         }
 
-        // Enregistrer l'historique de consultation de produits
-        foreach ($products->getItems() as $product) {
-            $recentlyViewedProduct = new RecentlyViewedProduct();
-            $recentlyViewedProduct->setProduct($product);
-            $recentlyViewedProduct->setUser($user);
-
-            $this->getDoctrine()->getManager()->persist($recentlyViewedProduct);
+        $recentlyViewedProducts = [];
+        if ($user) {
+            $recentlyViewedProductIds = $recentlyViewedProductRepository->findRecentlyViewedProductIdsByUser($user, new DateTime('-24 hours'));
+            $recentlyViewedProducts = $repProduct->findRecentlyViewedProductsByProductIdsAndCategory($recentlyViewedProductIds, $category);
         }
-        $this->getDoctrine()->getManager()->flush();
+      
 
-        // Récupérer les produits consultés récemment
-        $recentlyViewedProducts = $this->getDoctrine()
-            ->getRepository(RecentlyViewedProduct::class)
-            ->findBy(['user' => $user], ['id' => 'DESC']);
 
         // Retourner la vue avec les produits, la catégorie et les produits consultés récemment
         return $this->render('product/showCategory.html.twig', [
@@ -138,6 +150,8 @@ class ProductController extends AbstractController
             'category' => $category,
             'user' => $user,
             'recentlyViewedProducts' => $recentlyViewedProducts,
+            'recentlyViewedProduct' => $recentlyViewedProduct
+
         ]);
     }
 

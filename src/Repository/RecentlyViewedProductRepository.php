@@ -2,8 +2,10 @@
 
 namespace App\Repository;
 
+use App\Entity\Category;
 use App\Entity\RecentlyViewedProduct;
 use App\Entity\User;
+use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
@@ -43,6 +45,59 @@ class RecentlyViewedProductRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function findRecentlyViewedProductsByUser(User $user, DateTime $since, Category $category = null)
+    {
+        $queryBuilder = $this->createQueryBuilder('r')
+            ->innerJoin('r.product', 'p')
+            ->andWhere('r.user = :user')
+            ->andWhere('r.viewedAt > :since')
+            ->setParameter('user', $user)
+            ->setParameter('since', $since);
+    
+        if ($category !== null) {
+            $queryBuilder->andWhere('p.category = :category')
+                ->setParameter('category', $category);
+        }
+    
+        return $queryBuilder
+            ->orderBy('r.viewedAt', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+    
+    public function findRecentlyViewedProductIdsByUser(User $user, DateTime $since): array
+    {
+        $qb = $this->createQueryBuilder('rvp')
+            ->select('IDENTITY(rvp.product) as id')
+            ->where('rvp.user = :user')
+            ->andWhere('rvp.viewedAt >= :since')
+            ->setParameter('user', $user)
+            ->setParameter('since', $since);
+    
+        $result = $qb->getQuery()->getResult();
+    
+        return array_column($result, 'id');
+    }
+    
+
+public function findRecentlyViewedProductsByProductIdsAndCategory(array $productIds, Category $category): array
+{
+    if (empty($productIds)) {
+        return [];
+    }
+
+    $qb = $this->createQueryBuilder('p')
+        ->where('p.id IN (:productIds)')
+        ->andWhere('p.category = :category')
+        ->setParameter('productIds', $productIds)
+        ->setParameter('category', $category);
+
+    return $qb->getQuery()->getResult();
+}
+
+    
+    
 
     public function findByUser(User $user)
     {
