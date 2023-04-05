@@ -24,60 +24,7 @@
 
 			<header class="pink">
 				<div class="topimg"><img src="{{ asset('assets/images/homepage03/as7.webp') }}" id="mk" alt=""></div>
-				<div class="header-block d-flex align-items-center">
-					<div class="container">
-						<div class="row">
-							<div class="col-12 col-md-6">
-								<div class="header-left d-flex flex-column flex-md-row align-items-center">
-									<p class="d-flex align-items-center">
-										<i class="fas fa-envelope"></i>contact@gmail.com</p>
-									<p class="d-flex align-items-center">
-										<i class="fas fa-phone"></i>+216 58 58 83 58</p>
-								</div>
-							</div>
-							<div class="col-12 col-md-6">
-								<div class="header-right d-flex flex-column flex-md-row justify-content-md-end justify-content-center align-items-center">
-									<div class="social-link d-flex">
-										<a href="">
-											<i class="fab fa-facebook-f"></i>
-										</a>
-										<a href="">
-											<i class="fab fa-twitter"></i>
-										</a>
-										<a href="">
-											<i class="fab fa-invision"></i>
-										</a>
-										<a href="">
-											<i class="fab fa-pinterest-p"></i>
-										</a>
-									</div>
-
-									{% if app.user %}
-										<div class="login d-flex">
-											<a href="{{ path('account') }}">
-												<i class="fas fa-user ">&nbsp;&nbsp;{{ app.user.firstname }}</i>Account</a>
-										</div>&nbsp;&nbsp;&nbsp;
-										<div class="login d-flex">
-											<a href="{{ path('app_logout') }}">
-												<i class="fas fa-user"></i>Logout</a>
-										</div>
-									{% else %}
-										<div class="login d-flex">
-											<a href="{{ path('app_login') }}">
-												<i class="fas fa-user"></i>Login</a>
-										</div>&nbsp;&nbsp;&nbsp;
-										<div class="login d-flex">
-											<a href="{{ path('register') }}">
-												<i class="fas fa-user"></i>Register</a>
-										</div>
-									{% endif %}
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-
+				{% include "header.html.twig" %}
 				<div id="mobile-menu">
 					<div class="container">
 						<div class="row">
@@ -361,7 +308,7 @@
 										<div class="deal-block_detail">
 											<h5 class="deal-discount">-34</h5>
 											<div class="deal-img">
-												<a href="shop_detail.html"><img src="assets/images/product/re.webp" alt="product image"></a>
+												<a href="#"><img src="assets/images/product/re.webp" alt="product image"></a>
 											</div>
 											<div class="deal-countdown">
 												<div class="event-countdown" id="event-countdown"></div>
@@ -656,16 +603,16 @@
 															<del>$75.00</del>
 														</h3>
 														<div class="product-select">
-															<button class="add-to-wishlist round-icon-btn pink">
+															<button class="add-to-wishlist round-icon-btn pink" onclick="location.href='{{ path('cart_add_to_cart', {'id': product.id}) }}'">
 																<i class="icon_heart_alt"></i>
 															</button>
-															<button class="add-to-cart round-icon-btn pink">
+															<button class="add-to-cart round-icon-btn pink" onclick="location.href='{{ path('cart_add_to_cart', {'id': product.id}) }}'">
 																<i class="icon_bag_alt"></i>
 															</button>
 															<button class="add-to-compare round-icon-btn pink">
 																<i class="fas fa-random"></i>
 															</button>
-															<button class="quickview round-icon-btn pink">
+															<button class="quickview round-icon-btn pink" onclick="location.href='{{ path('product', {'id': product.id}) }}'">
 																<i class="far fa-eye"></i>
 															</button>
 														</div>
@@ -727,7 +674,7 @@
 											</div>
 											<p>Lorem ipsum dolor sit amet, consectetur oce omnis iste natus error sit
 											</p>
-											<a class="normal-btn pink" href="shop_grid+list_3col.html">Shop now</a>
+											<a class="normal-btn pink" href="{{ path('products')}}">Shop now</a>
 										</div>
 									</div>
 								</div>
@@ -1068,4 +1015,13 @@
 	<div class="footer-creadit_block d-flex flex-column flex-md-row justify-content-start justify-content-md-between align-items-baseline align-items-md-center">
 		<p class="author">Copyright © 2019 Ogami - All Rights Reserved.</p><img class="payment-method" src="assets/images/payment.png" alt="">
 	</div>
-</div></div></footer></div><!-- End footer--></body></body></html></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="assets/js/jquery-ui.min.js"></script><script src="assets/js/jquery.countdown.min.js"></script><script src="assets/js/slick.min.js"></script><script src="assets/js/jquery.easing.js"></script><script src="assets/js/jquery.scrollUp.min.js"></script><script src="assets/js/jquery.zoom.min.js"></script><script src="assets/js/parallax.js"></script><script src="assets/js/jquery.fancybox.js"></script><script src="assets/js/numscroller-1.0.js"></script><script src="assets/js/vanilla-tilt.min.js"></script><script src="assets/js/main.js"></script></body></html> </body></html>
+</div></div></footer></div><!-- End footer--></body></body></html></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="assets/js/jquery-ui.min.js"></script><script src="assets/js/jquery.countdown.min.js"></script><script src="assets/js/slick.min.js"></script><script src="assets/js/jquery.easing.js"></script><script src="assets/js/jquery.scrollUp.min.js"></script><script src="assets/js/jquery.zoom.min.js"></script><script src="assets/js/parallax.js"></script><script src="assets/js/jquery.fancybox.js"></script><script src="assets/js/numscroller-1.0.js"></script><script src="assets/js/vanilla-tilt.min.js"></script><script src="assets/js/main.js"></script></body></html> </body></html><style> .cart-quantity {
+	position: absolute;
+	background-color: red;
+	color: white;
+	border-radius: 50%;
+	font-size: 12px;
+	padding: 2px 6px;
+	margin-left: -12px;
+	margin-top: -10px;
+}</style>

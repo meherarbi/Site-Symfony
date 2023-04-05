@@ -1,5 +1,5 @@
 function updateProductTotal(productId) {
-  console.log('updateProductTotal fonctionne')
+  console.log("updateProductTotal fonctionne");
   // Récupérer la quantité actuelle du produit
   let quantityInput = document.querySelector(
     'input[data-product-id="' + productId + '"]'
@@ -15,7 +15,7 @@ function updateProductTotal(productId) {
 
   // Calculer le nouveau prix total pour ce produit
   let newTotal = currentPrice * currentQuantity;
-   console.log("newTotal", newTotal);
+  console.log("newTotal", newTotal);
 
   // Récupérer l'élément qui affiche le prix total pour ce produit
   let totalElement = document.querySelector(
@@ -28,7 +28,7 @@ function updateProductTotal(productId) {
 }
 
 function incrementProduct(productId) {
-   console.log("Button with product id " + productId + " was clicked."); 
+  console.log("Button with product id " + productId + " was clicked.");
 
   // Get the current quantity of the product
   let quantityInput = document.querySelector(
@@ -65,7 +65,7 @@ function incrementProduct(productId) {
   );
 }
 function decrementProduct(productId) {
-  console.log("Le bouton du produit avec l'ID " + productId + " a été cliqué."); 
+  console.log("Le bouton du produit avec l'ID " + productId + " a été cliqué.");
 
   // Obtenir la quantité actuelle du produit
   let quantityInput = document.querySelector(
@@ -113,7 +113,6 @@ function decrementProduct(productId) {
     }
   };
   xhr.send();
-  
 }
 
 function updateCartTotal() {
@@ -133,51 +132,109 @@ function updateCartTotal() {
   cartTotalElement.textContent = newTotal.toFixed(2) + " $";
 }
 
-
-
 function removeProduct(event) {
-  console.log("remove product start")
+  console.log("remove product start");
   event.preventDefault();
   const productId = event.target.closest(".remove-from-cart").dataset.id;
   fetch(`/my-cart/cart/delete/${productId}`, { method: "POST" })
-.then((response) => {
-  if (response.ok) { // Supprimer le produit du DOM
-  const row = event.target.closest("tr");
-  row.parentNode.removeChild(row);
-  
-  // Mettre à jour la notification
-  updateNotification(-1);
-  
-  // Mettre à jour le sous-total
-  const subtotalElement = document.querySelector(".subtotal-cell");
-  const currentSubtotal = parseInt(subtotalElement.textContent, 10);
-  subtotalElement.textContent = currentSubtotal - 1;
+    .then((response) => {
+      if (response.ok) {
+        // Supprimer le produit du DOM
+        const row = event.target.closest("tr");
+        row.parentNode.removeChild(row);
 
-  // Mettre à jour le total du panier
-  updateCartTotal();
-  }
-  }).catch((error) => {
-  console.error("Erreur lors de la suppression du produit :", error);
-  });
-  }
+        // Mettre à jour la notification
+        updateNotification(-1);
 
+        // Mettre à jour le sous-total
+        const subtotalElement = document.querySelector(".subtotal-cell");
+        const currentSubtotal = parseInt(subtotalElement.textContent, 10);
+        subtotalElement.textContent = currentSubtotal - 1;
 
-  
-  
-  function updateNotification(change) {
-    console.log("update Notification start")
+        // Mettre à jour le total du panier
+        updateCartTotal();
+      }
+    })
+    .catch((error) => {
+      console.error("Erreur lors de la suppression du produit :", error);
+    });
+}
+
+function updateNotification(change) {
+  console.log("update Notification start");
   const cartQuantity = document.querySelector(".cart-quantity");
   const currentCount = parseInt(cartQuantity.textContent, 10);
-  cartQuantity.textContent = currentCount + change;
-  }
+  const newCount = currentCount + change;
 
-  document.addEventListener("DOMContentLoaded", function () {
-    const removeFromCartButtons = document.querySelectorAll(".remove-from-cart");
-  
-    console.log("removeFromCartButtons: ", removeFromCartButtons); // Ajout d'un console.log ici
-  
-    removeFromCartButtons.forEach((button) => {
-      button.addEventListener("click", removeProduct);
-    });
+  // Mettre à jour la valeur de la quantité et l'affichage
+  if (newCount <= 0) {
+    cartQuantity.textContent = "";
+    cartQuantity.style.display = "none";
+  } else {
+    cartQuantity.textContent = newCount;
+    cartQuantity.style.display = "inline";
+  }
+}
+
+function clearCart() {
+  // Afficher un message de confirmation avec SweetAlert2
+  Swal.fire({
+    title: "Êtes-vous sûr de vouloir vider le panier ?",
+    text: "Cette action ne peut pas être annulée.",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Oui, vider le panier",
+    cancelButtonText: "Annuler",
+  }).then((result) => {
+    // Si l'utilisateur confirme, vider le panier
+    if (result.isConfirmed) {
+      const removeFromCartButtons =
+        document.querySelectorAll(".remove-from-cart");
+
+      // Parcourir chaque bouton de suppression de produit et déclencher un clic sur eux
+      removeFromCartButtons.forEach((button) => {
+        button.click();
+      });
+
+      // Afficher une notification de succès
+      Swal.fire(
+        "Panier vidé",
+        "Votre panier a été vidé avec succès.",
+        "success"
+      );
+    }
   });
+}
+
+function showNotification() {
+  const notification = document.getElementById("notification");
   
+  // Afficher la notification
+  notification.style.display = "block";
+
+  // Masquer la notification après un certain temps (3 secondes)
+  setTimeout(() => {
+    notification.style.display = "none";
+  }, 3000);
+}
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const addToCartButtons = document.querySelectorAll(".add-to-cart");
+
+  const removeFromCartButtons = document.querySelectorAll(".remove-from-cart");
+
+  console.log("removeFromCartButtons: ", removeFromCartButtons); 
+
+  addToCartButtons.forEach((button) => {
+    button.addEventListener("click", showNotification);
+  });
+  removeFromCartButtons.forEach((button) => {
+    button.addEventListener("click", removeProduct);
+  });
+
+  const clearCartButton = document.getElementById("clear-cart-btn");
+  clearCartButton.addEventListener("click", clearCart);
+});

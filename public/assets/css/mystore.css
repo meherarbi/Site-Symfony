@@ -186,6 +186,17 @@ P.login-box-msg {
   padding-left: 27%;
 }
 
+.cart-quantity {
+	position: absolute;
+	background-color: red;
+	color: white;
+	border-radius: 50%;
+	font-size: 12px;
+	padding: 2px 6px;
+	margin-left: -12px;
+	margin-top: -10px;
+}
+
 .product-iamge {
   width: 50px;
   height: 50px;
