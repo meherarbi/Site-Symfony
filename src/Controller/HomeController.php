@@ -32,12 +32,33 @@ class HomeController extends AbstractController
         } */
 
         $products = $this->productRepository->findProduct();
+        $productsOneByCategory = $this->productRepository->findProductByCategory();
         $productsMin = $this->productRepository->findProductMin();
+
+        $icons = [
+            'Homme' => 'fas fa-tshirt',
+            'Femme' => 'fas fa-female',
+            'Electronique' => 'fas fa-laptop',
+            'Accessoire' => 'fas fa-mobile-alt',
+            'Jouets et enfants' => 'fas fa-tooth',
+            'Beauté et santé' => 'fas fa-leaf',
+            'Outils et bricolage' => 'fas fa-wrench'
+        ];
+        
+        
+        
+        
+        
+        
+        
+        
 
         return $this->render('home/index.html.twig', [
             'products' => $products,
+            'productsOneByCategory'=>$productsOneByCategory,
             'productsMin'=>$productsMin,
             'categorie' => $this->categoryRepository->findAll(),
+            'icons' => $icons
         ]);
     }
 

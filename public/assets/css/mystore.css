@@ -166,6 +166,74 @@ P.login-box-msg {
 .pass {
   background: #d3dcd5;
 }
+
+
+
+
+.categories-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.categories-list li {
+  display: inline-block;
+  margin: 5px 10px;
+}
+
+.categories-list li a {
+  text-decoration: none;
+  font-size: 18px;
+  color: #333;
+  transition: color 0.3s;
+}
+
+.categories-list li a:hover {
+  color: #007bff;
+}
+
+.categories-list i {
+  margin-right: 5px;
+}
+
+
+
+
+.menu-item {
+  margin-right: 30px;
+}
+@media (max-width: 575.98px) {
+  .menu-item {
+    margin-right: 70px;
+  }
+  .small-icon {
+    font-size: 0.8rem;
+  }
+  .small-text {
+    font-size: 0.9rem;
+  }
+}
+
+
+
+
+@media (max-width: 575.98px) {
+  .search-input {
+    width: 100%;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .navigation .pagination {
+    flex-wrap: wrap;
+  }
+  .navigation .pagination li {
+    margin: 2px;
+  }
+}
+
+
+
 .products-item h5 {
   text-transform: uppercase;
   font-size: 15px;

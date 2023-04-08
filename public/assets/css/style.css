@@ -238,8 +238,6 @@ video {
   line-height: 1;
 }
 
-
-
 ul,
 li {
   list-style: none;
@@ -1406,9 +1404,6 @@ a:focus {
   width: 54px;
 } */
 
-
-
-
 /************************************
 	Product
 *************************************/
@@ -1583,8 +1578,8 @@ a:focus {
   transition: 0.3s;
 }
 .product .product-img {
-  height: 140px;
-  width: 200px;
+  height: 50%;
+  width: 160px;
   display: flex;
   margin-bottom: 30px;
   justify-content: center;

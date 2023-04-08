@@ -26,10 +26,9 @@
 		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
-
 		{#    
-																																		      <link rel="stylesheet" href="{{ asset('build/css/demo.css') }}">
-																																		      #}
+																																																		      <link rel="stylesheet" href="{{ asset('build/css/demo.css') }}">
+																																																		      #}
 		{% block javascript %}{% endblock %}
 	</head>
 	<body>
@@ -38,6 +37,7 @@
 		</div>
 
 		<div id="main">
+
 			<header class="pink">
 				<div class="topimg">
 					<a href="{{path('home')}}"><img src="{{ asset('assets/images/homepage03/as7.webp') }}" id="mk" alt=""></a>
@@ -108,7 +108,7 @@
 						</div>
 					</div>
 				</div>
-
+				{% include "header_mobile.html.twig" %}
 				<div class="navigation-filter">
 					<div class="container">
 						<div class="row">
@@ -152,7 +152,6 @@
 													</div>
 												</form>
 
-
 											</div>
 										</div>
 									</div>
@@ -173,6 +172,7 @@
 				</div>
 
 				<!-- End header-->
+
 				{% block container %}{% endblock %}
 				<!-- End banner v2-->
 				<div class="home3-product-block"> {% block content %}{% endblock %}
@@ -184,12 +184,12 @@
 						<div
 							class="partner_block d-flex justify-content-between" data-slick="{&quot;slidesToShow&quot;: 6}">
 							{# 	{% for product in products  %}
-																																																																																																																<div class="partner--logo" href="">
-																																																																																																																	<a class="product-img" href="{{ path('product',{'id':product.id}) }}">
-																																																																																																																		<img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}">
-																																																																																																																	</a>
-																																																																																																																</div>
-																																																																																																															{% endfor %} #}
+																																																																																																																																																																								<div class="partner--logo" href="">
+																																																																																																																																																																									<a class="product-img" href="{{ path('product',{'id':product.id}) }}">
+																																																																																																																																																																										<img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}">
+																																																																																																																																																																									</a>
+																																																																																																																																																																								</div>
+																																																																																																																																																																							{% endfor %} #}
 							<div class="partner--logo" href="">
 								<a href="#">
 									<img src="{{ asset('assets/images/partner/a2.webp') }}" alt="partner" title="partner logo">
@@ -379,8 +379,7 @@ window.intlTelInput(input, {
 // preferredCountries: ['cn', 'jp'],
 // separateDialCode: true,
 utilsScript: "build/js/utils.js"
-});</script></body>{% block script %}<script src="{{ asset('assets/js/cart.js') }}"></script>{% endblock %}</html>
-<style>.cart-quantity {
+});</script></body>{% block script %}<script src="{{ asset('assets/js/cart.js') }}"></script>{% endblock %}</html><style>.cart-quantity {
 	position: absolute;
 	background-color: red;
 	color: white;

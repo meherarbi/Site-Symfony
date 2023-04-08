@@ -3,10 +3,11 @@
 namespace App\Repository;
 
 use App\Entity\Category;
-use App\Entity\User;
 use App\Entity\Product;
-use Doctrine\Persistence\ManagerRegistry;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query\Expr\Join;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * @method Product|null find($id, $lockMode = null, $lockVersion = null)
@@ -42,6 +43,41 @@ class ProductRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult()
         ;
+    }
+    public function findProductASC()
+    {
+        return $this->createQueryBuilder('p')
+            ->orderBy('p.id', 'ASC')
+            ->setMaxResults(6)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+    public function findRandomProducts(int $limit): array
+    {
+        return $this->createQueryBuilder('p')
+            ->orderBy('RAND()')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
+    public function findProductByCategory(): array
+    {
+
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery('
+            SELECT p FROM App\Entity\Product p
+            WHERE p.id IN (
+                SELECT MIN(p2.id)
+                FROM App\Entity\Product p2
+                GROUP BY p2.category
+            )
+            ORDER BY p.category
+        ');
+    
+        return $query->getResult();
+
     }
 
     /*    public function findByCategory()
@@ -124,39 +160,33 @@ return $this->createQueryBuilder('p')
         return $query->getQuery()->getResult();
     }
 
-
-
     public function findRecentlyViewedByUser(User $user)
-{
-    return $this->createQueryBuilder('recently_viewed_product')
-        ->select('product')
-        ->join('recently_viewed_product.product', 'product')
-        ->where('recently_viewed_product.user = :user')
-        ->setParameter('user', $user)
-        ->getQuery()
-        ->getResult();
-}
-
-public function findRecentlyViewedProductsByProductIdsAndCategory(array $productIds, Category $category): array
-{
-    if (empty($productIds)) {
-        return [];
+    {
+        return $this->createQueryBuilder('recently_viewed_product')
+            ->select('product')
+            ->join('recently_viewed_product.product', 'product')
+            ->where('recently_viewed_product.user = :user')
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getResult();
     }
 
-    $qb = $this->createQueryBuilder('p')
-        ->where('p.id IN (:productIds)')
-        ->andWhere('p.category = :category')
-        ->setParameter('productIds', $productIds)
-        ->setParameter('category', $category);
+    public function findRecentlyViewedProductsByProductIdsAndCategory(array $productIds, Category $category): array
+    {
+        if (empty($productIds)) {
+            return [];
+        }
 
-    return $qb->getQuery()->getResult();
-}
+        $qb = $this->createQueryBuilder('p')
+            ->where('p.id IN (:productIds)')
+            ->andWhere('p.category = :category')
+            ->setParameter('productIds', $productIds)
+            ->setParameter('category', $category);
 
+        return $qb->getQuery()->getResult();
+    }
 
-
-
-
-     /**
+    /**
      * @return Product[] Returns an array of Product objects
      */
     public function findWithSearchSelectCategory($search)

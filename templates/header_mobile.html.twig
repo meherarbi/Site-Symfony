@@ -1,0 +1,52 @@
+<div id="mobile-menu">
+					<div class="container">
+						<div class="row">
+							<div class="col-12">
+								<div class="header d-flex justify-content-center align-items-center">
+									<div class="header-right d-flex flex-row align-items-center">
+
+										{% if app.user %}
+											<div class="login d-flex menu-item">
+												<a href="{{ path('account') }}" class="small-text">
+													<i class="fas fa-user small-icon">
+														&nbsp;&nbsp;
+														{{ app.user.firstname }}
+													</i>
+													Account
+												</a>
+											</div>
+											<div class="login d-flex menu-item">
+												<a href="{{ path('app_logout') }}" class="small-text">
+													<i class="fas fa-user small-icon"></i>
+													Logout
+												</a>
+											</div>
+										{% else %}
+											<div class="login d-flex menu-item">
+												<a href="{{ path('app_login') }}" class="small-text">
+													<i class="fas fa-user small-icon"></i>
+													Login
+												</a>
+											</div>
+											<div class="social-link d-flex menu-item">
+												<a href="{{ path('cart_index') }}">
+													<img src="{{ asset('assets/images/panier.png') }}" height="25px" alt="Panier">
+													{% set cart_quantity = app.session.get('uniqueProductsCount') %}
+													{% if cart_quantity is not empty and cart_quantity != 0 %}
+														<span class="cart-quantity small-text">{{ cart_quantity }}</span>
+													{% endif %}
+												</a>
+											</div>
+											<div class="login d-flex menu-item">
+												<a href="{{ path('register') }}" class="small-text">
+													<i class="fas fa-user small-icon"></i>
+													Register
+												</a>
+											</div>
+										{% endif %}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
