@@ -32,15 +32,15 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-12 col-md-4 col-lg-4 col-xl-3 order-2 order-md-1">
-								<div class="department-menu_block down">
-									<div class="department-menu d-flex justify-content-between align-items-center">
+								<div class="department-menu_block down " id="department-menu_block">
+									<div class="department-menu d-flex justify-content-between align-items-center" id="department-menu">
 										<i class="fas fa-bars"></i>All departments<span>
 											<i class="arrow_carrot-up"></i>
 										</span>
 									</div>
-									<div class="department-dropdown-menu down">
+									<div class="department-dropdown-menu down" id="department-dropdown-menu">
 
-										<ul class="categories-list">
+										<ul class="categories-list ">
 											{% for categorie in categorie %}
 												<li>
 													<a href="{{ path('product_category', {'id': categorie.id}) }}">
@@ -850,7 +850,47 @@
 	<div class="footer-creadit_block d-flex flex-column flex-md-row justify-content-start justify-content-md-between align-items-baseline align-items-md-center">
 		<p class="author">Copyright © 2019 Ogami - All Rights Reserved.</p><img class="payment-method" src="assets/images/payment.png" alt="">
 	</div>
-</div></div></footer></div><!-- End footer--></body></body></html></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="assets/js/jquery-ui.min.js"></script><script src="assets/js/jquery.countdown.min.js"></script><script src="assets/js/slick.min.js"></script><script src="assets/js/jquery.easing.js"></script><script src="assets/js/jquery.scrollUp.min.js"></script><script src="assets/js/jquery.zoom.min.js"></script><script src="assets/js/parallax.js"></script><script src="assets/js/jquery.fancybox.js"></script><script src="assets/js/numscroller-1.0.js"></script><script src="assets/js/vanilla-tilt.min.js"></script><script src="assets/js/main.js"></script></body></html> </body></html><style> .cart-quantity {
+</div></div></footer></div><!-- End footer-->
+
+<script>
+    const departmentMenu = document.getElementById('department-menu');
+    const departmentMenuBlock = document.getElementById('department-menu_block');
+    const departmentDropdownMenu = document.getElementById('department-dropdown-menu');
+
+    departmentMenu.addEventListener('mouseenter', function() {
+        departmentDropdownMenu.style.display = 'block';
+    });
+
+    departmentMenuBlock.addEventListener('mouseleave', function() {
+        departmentDropdownMenu.style.display = 'none';
+    });
+
+	// Affiche le menu déroulant au chargement de la page
+departmentDropdownMenu.style.display = 'block';
+
+// Cache le menu déroulant après 2 secondes (2000 millisecondes)
+setTimeout(function() {
+    departmentDropdownMenu.style.display = 'none';
+}, 2000);
+</script>
+<script>
+$(document).ready(function() {
+    // Sélectionne le menu déroulant
+    var $departmentDropdownMenu = $('.department-dropdown-menu');
+
+    // Affiche le menu déroulant au chargement de la page
+    $departmentDropdownMenu.show();
+
+    // Cache le menu déroulant après 2 secondes (2000 millisecondes)
+    setTimeout(function() {
+        $departmentDropdownMenu.hide();
+    }, 2000);
+});
+</script>
+
+
+
+</body></body></html></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="assets/js/jquery-ui.min.js"></script><script src="assets/js/jquery.countdown.min.js"></script><script src="assets/js/slick.min.js"></script><script src="assets/js/jquery.easing.js"></script><script src="assets/js/jquery.scrollUp.min.js"></script><script src="assets/js/jquery.zoom.min.js"></script><script src="assets/js/parallax.js"></script><script src="assets/js/jquery.fancybox.js"></script><script src="assets/js/numscroller-1.0.js"></script><script src="assets/js/vanilla-tilt.min.js"></script><script src="assets/js/main.js"></script></body></html> </body></html><style> .cart-quantity {
 	position: absolute;
 	background-color: red;
 	color: white;
@@ -860,3 +900,5 @@
 	margin-left: -12px;
 	margin-top: -10px;
 }</style>
+
+

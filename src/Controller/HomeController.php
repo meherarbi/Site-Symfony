@@ -40,7 +40,7 @@ class HomeController extends AbstractController
             'Femme' => 'fas fa-female',
             'Electronique' => 'fas fa-laptop',
             'Accessoire' => 'fas fa-mobile-alt',
-            'Jouets et enfants' => 'fas fa-tooth',
+            'Jouets et enfants' => 'fas fa-baby-carriage',
             'Beauté et santé' => 'fas fa-leaf',
             'Outils et bricolage' => 'fas fa-wrench'
         ];
