@@ -82,13 +82,13 @@
 									{# Afficher les images supplémentaires si elles existent #}
 									
 
-									{% if product.Images|length > 0 %}
 									
-										{% for productImage in product.getImages %}
-											<div class="big-img_block"><img src="/uploads/{{ productImage.imagess }}" alt="{{ product.name }}" class="img-fluid"></div>
-										{% endfor %}
-									{% endif %}
-
+									
+										
+											<div class="big-img_block"><img src="/uploads/{{ product.imageFile }}" alt="{{ product.name }}" class="img-fluid"></div>
+											<div class="big-img_block"><img src="/uploads/{{ product.img }}" alt="{{ product.name }}" class="img-fluid"></div>
+										
+									
 								</div>
 								<div
 									class="slide-img">
@@ -96,11 +96,12 @@
 									<div class="slide-img_block"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}"></div>
 
 									{# Afficher les images supplémentaires si elles existent #}
-									{% if product.Images|length > 0 %}
-										{% for productImage in product.getImages %}
-											<div class="big-img_block"><img src="/uploads/{{ productImage.imagess }}" alt="{{ product.name }}" class="img-fluid"></div>
-										{% endfor %}
-									{% endif %}
+									{% if product.imageFile and product.img %}
+											<div class="big-img_block"><img src="/uploads/{{ product.imageFile }}" alt="{{ product.name }}" class="img-fluid"></div>
+											<div class="big-img_block"><img src="/uploads/{{ product.img }}" alt="{{ product.name }}" class="img-fluid"></div>
+									{% endif %}		
+
+								
 
 								</div>
 
@@ -117,7 +118,8 @@
 
 								<div class="price-rate">
 									<h3 class="product-price">
-										<del>$35.00</del>
+										<del>{{ (product.oldPrice/100)|number_format(2) }}
+										$ </del>
 										{{ (product.price/100)|number_format(2) }}
 										$
 									</h3>
@@ -176,17 +178,19 @@
 											<div class="description-item_block">
 												<div class="row align-items-center">
 													<div class="col-12 col-md-6">
-														<div class="description-item_img"><img class="img-fluid" src="assets/images/shop/shop_detail_img.png" alt="description image"></div>
+													{% if product.descriptionImage %}
+														<div class="description-item_img"><img class="img-fluid" src="/uploads/{{ product.descriptionImage }}" alt="{{ product.name }}" ></div>
+														{% endif %}
 													</div>
 													<div class="col-12 col-md-6">
 														<div class="description-item_text">
 															<h2>Product information</h2>
-															<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+															<p>{{product.description}}</p>
 														</div>
 													</div>
 												</div>
 											</div>
-											<div class="description-item_block">
+											{# <div class="description-item_block">
 												<div class="row align-items-center">
 													<div class="col-md-6">
 														<div class="description-item_img"><img class="img-fluid" src="assets/images/shop/shop_detail_img_2.png" alt="description image"></div>
@@ -199,7 +203,7 @@
 														</div>
 													</div>
 												</div>
-											</div>
+											</div> #}
 										</div>
 									</div>
 									<div id="tab-2">

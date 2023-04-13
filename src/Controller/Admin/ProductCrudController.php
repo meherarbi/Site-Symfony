@@ -12,7 +12,6 @@ use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
@@ -20,6 +19,11 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
+use Vich\UploaderBundle\Form\Type\VichFileType;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
+
 use Psr\Log\LoggerInterface;
 
 class ProductCrudController extends AbstractCrudController
@@ -56,12 +60,31 @@ class ProductCrudController extends AbstractCrudController
             MoneyField::new ('oldprice')->setCurrency('EUR')->setFormTypeOptions(['attr' => ['class' => 'col-md-6']]),
             BooleanField::new ('onPromotion', 'En promotion')->setFormTypeOptions(['attr' => ['class' => 'col-md-6']]),
 
-            FormField::addPanel('Illustration')->setIcon('fas fa-image'),
+            FormField::addPanel('Images')->setIcon('fas fa-image'),
             ImageField::new('illustration')
                 ->setBasePath('uploads/')
                 ->setUploadDir('public/uploads/')
                 ->setUploadedFileNamePattern('[randomhash].[extension]')
                 ->setRequired( false),
+            ImageField::new('imageFile', 'Images 1')
+                ->setBasePath('uploads/')
+                ->setUploadDir('public/uploads/')
+                ->setUploadedFileNamePattern('[randomhash].[extension]')
+                ->setRequired(false),
+            ImageField::new('img', 'Images 2')
+                ->setBasePath('uploads/')
+                ->setUploadDir('public/uploads/')
+                ->setUploadedFileNamePattern('[randomhash].[extension]')
+                ->setRequired(false), 
+            ImageField::new('descriptionImage', 'Images de description')
+                ->setBasePath('uploads/')
+                ->setUploadDir('public/uploads/')
+                ->setUploadedFileNamePattern('[randomhash].[extension]')
+                ->setRequired(false)       
+                
+            
+              
+     
            /*  CollectionField::new('images', 'Images supplémentaires')
             ->setEntryType(ImageUploadType::class)
             ->setFormTypeOption('by_reference', false), */

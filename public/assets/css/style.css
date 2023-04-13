@@ -1578,8 +1578,8 @@ a:focus {
   transition: 0.3s;
 }
 .product .product-img {
-  height: 50%;
-  width: 160px;
+  height: 180px;
+  width: 180px;
   display: flex;
   margin-bottom: 30px;
   justify-content: center;

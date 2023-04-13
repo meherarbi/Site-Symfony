@@ -34,6 +34,13 @@ class HomeController extends AbstractController
         $products = $this->productRepository->findProduct();
         $productsOneByCategory = $this->productRepository->findProductByCategory();
         $productsMin = $this->productRepository->findProductMin();
+        $promotedProducts = $this->productRepository->findPromotedProducts();
+        $categories = $this->categoryRepository->findAll();
+        $promotedProductsByCategory = [];
+    
+        foreach ($categories as $category) {
+            $promotedProductsByCategory[$category->getId()] = $this->productRepository->findPromotedProductsByCategory($category->getId());
+        }
 
         $icons = [
             'Homme' => 'fas fa-tshirt',
@@ -57,6 +64,8 @@ class HomeController extends AbstractController
             'products' => $products,
             'productsOneByCategory'=>$productsOneByCategory,
             'productsMin'=>$productsMin,
+            'promoted_products' => $promotedProducts,
+            'promotedProductsByCategory' => $promotedProductsByCategory,
             'categorie' => $this->categoryRepository->findAll(),
             'icons' => $icons
         ]);

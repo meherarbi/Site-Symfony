@@ -70,7 +70,7 @@ class Product
     private $orders;
 
     /**
-     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true,options={"default": 10})
      */
     private $oldPrice;
 
@@ -80,14 +80,24 @@ class Product
     private $onPromotion;
 
     /**
-     * @var File|null
-     */
+    * @ORM\Column(type="string", nullable=true)
+    */
     private $imageFile;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\ProductImage", mappedBy="product", cascade={"persist"})
      */
     private $images;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $img;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $descriptionImage;
 
     public function __construct()
     {
@@ -161,12 +171,12 @@ class Product
 
     public function getPrice(): ?float
     {
-        return $this->price;
+        return $this->price ;
     }
 
     public function setPrice(float $price): self
     {
-        $this->price = $price;
+        $this->price = $price ;
 
         return $this;
     }
@@ -265,19 +275,12 @@ class Product
         return $this;
     }
 
-    /**
-     * @return File|null
-     */
-    public function getImageFile(): ?File
+    public function getImageFile(): ?string
     {
         return $this->imageFile;
     }
 
-    /**
-     * @param File|null $imageFile
-     * @return Product
-     */
-    public function setImageFile(?File $imageFile): self
+    public function setImageFile(string $imageFile): self
     {
         $this->imageFile = $imageFile;
 
@@ -322,6 +325,30 @@ return $this;
                 $image->setProduct(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getImg(): ?string
+    {
+        return $this->img;
+    }
+
+    public function setImg(?string $img): self
+    {
+        $this->img = $img;
+
+        return $this;
+    }
+
+    public function getDescriptionImage(): ?string
+    {
+        return $this->descriptionImage;
+    }
+
+    public function setDescriptionImage(?string $descriptionImage): self
+    {
+        $this->descriptionImage = $descriptionImage;
 
         return $this;
     }

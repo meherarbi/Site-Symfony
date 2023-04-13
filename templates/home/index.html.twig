@@ -423,7 +423,7 @@
 								<div class="best-seller_bottom">
 									<div id="tab0">
 										<div class="row no-gutters-sm">
-											{% for product in products  %}
+											{% for product in productsOneByCategory|slice(0, 6)  %}
 
 												<div class="col-6 col-md-4">
 													<div class="product pink">
@@ -518,10 +518,10 @@
 								<div class="best-seller_top mini-tab-title underline pink">
 									<div class="row align-items-md-center">
 										<div class="col-12 col-md-4">
-											<h2 class="title">Best Seller</h2>
+											<h2 class="title">Deal of the day</h2>
 										</div>
 										<div class="col-12 col-md-8 text-lg-right">
-											<ul class="tab-control text-md-right">
+										{# 	<ul class="tab-control text-md-right">
 												<li>
 													<a class="active" href="#tab0">All</a>
 												</li>
@@ -532,14 +532,14 @@
 														</a>
 													</li>
 												{% endfor %}
-											</ul>
+											</ul> #}
 										</div>
 									</div>
 								</div>
 								<div class="best-seller_bottom">
 									<div id="tab0">
 										<div class="row no-gutters-sm">
-											{% for product in productsOneByCategory|slice(0, 3) %}
+											{% for product in promoted_products|slice(0, 6) %}
 												<div class="col-6 col-md-4">
 													<div class="product pink">
 														<a href="{{ path('product',{'id':product.id}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
@@ -571,10 +571,19 @@
 											{% endfor %}
 										</div>
 									</div>
-									{% for category in categorie %}
+									{# {% for category in categorie %}
+										{% set has_promotion = false %}
+										{% for product in category.products %}
+											{% if product.onpromotion %}
+											{% set has_promotion = true %}
+											{% endif %}
+										{% endfor %}
+										{% if has_promotion %}
 										<div id="tab{{ loop.index }}">
 											<div class="row no-gutters-sm">
-												{% for product in category.products|slice(0, 3) %}
+												{% for product in category.products %}
+  													{% if product.onpromotion %}
+													 {% set has_promotion = true %}	 								
 													<div class="col-6 col-md-4">
 														<div class="product pink">
 															<a class="product-img" href="{{ path('product',{'id':product.id}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}"></a>
@@ -603,11 +612,14 @@
 															</div>
 														</div>
 													</div>
+													{% endif %}
+							
 												{% endfor %}
 											</div>
 										</div>
+										 {% endif %}
 									{% endfor %}
-
+                                                 #}
 								</div>
 							</div>
 							<div id="tab-so2">
