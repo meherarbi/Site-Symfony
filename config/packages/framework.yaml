@@ -16,4 +16,7 @@ framework:
     php_errors:
         log: true
 
-        
+    assets:
+        packages:
+            uploads:
+                base_path: '%kernel.project_dir%/public/uploads'    

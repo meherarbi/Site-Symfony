@@ -85,13 +85,18 @@
 									</tr>
 								</thead>
 								<tbody>
+								
 									{% set total=null %}
 									{% for product in cart %}
+									{% if product.product is not null %}	
+									
 										<tr>
 											<td class="product-iamge">
-												<div class="img-wrapper">
-													<img src="/uploads/{{ product.product.illustration }}" alt="{{ product.product.name }}" class="img-fluid">
-												</div>
+												
+											<div class="img-wrapper">
+												<img src="/uploads/{{ product.product.illustration }}" alt="{{ product.product.name }}" class="img-fluid">
+											</div>
+
 											</td>
 											<td class="product-name">{{ product.product.name }}</td>
 											<td class="product-price" data-product-id="{{ product.product.id }}">{{ (product.product.price/100)|number_format(2) }}
@@ -120,8 +125,11 @@
 
 										</tr>
 										{% set total=total+(product.product.price*product.quantity) %}
+										{% endif %}
 									{% endfor %}
+									
 								</tbody>
+								
 							</table>
 						</div>
 					</div>

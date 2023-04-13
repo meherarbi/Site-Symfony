@@ -53,6 +53,29 @@ class ProductRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+
+    public function findPromotedProducts()
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.onPromotion = :val')
+            ->setParameter('val', true)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+    
+    public function findPromotedProductsByCategory($categoryId)
+{
+    return $this->createQueryBuilder('p')
+        ->andWhere('p.onPromotion = :val')
+        ->andWhere('p.category = :categoryId')
+        ->setParameter('val', true)
+        ->setParameter('categoryId', $categoryId)
+        ->getQuery()
+        ->getResult()
+    ;
+}
+
     public function findRandomProducts(int $limit): array
     {
         return $this->createQueryBuilder('p')

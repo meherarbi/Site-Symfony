@@ -169,6 +169,14 @@ P.login-box-msg {
 
 
 
+.department-dropdown-menu.show {
+  display: block;
+}
+.department-dropdown-menu {
+  display: none;
+}
+
+
 
 .categories-list {
   list-style: none;

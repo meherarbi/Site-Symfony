@@ -86,7 +86,7 @@ function decrementProduct(productId) {
 
   // Envoyer une requête AJAX pour mettre à jour le panier
   let xhr = new XMLHttpRequest();
-  xhr.open("PUT", "/my-cart/cart/add/" + productId, true);
+  xhr.open("PUT", "/my-cart/cart/decrease/" + productId, true);
   xhr.onreadystatechange = function () {
     if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
       /* console.log("Le produit a été mis à jour avec succès."); */

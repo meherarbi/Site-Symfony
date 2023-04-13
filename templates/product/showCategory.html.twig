@@ -214,7 +214,7 @@
 												<h3 class="product-name">{{ product.name }}</h3>
 											{% endif %}
 											<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
-												<del>$35.00</del>
+												<del>{{ (product.oldPrice/100)|number_format(2) }}$</del>
 											</h3>
 											<div class="product-select">
 												<button class="add-to-wishlist round-icon-btn pink">
