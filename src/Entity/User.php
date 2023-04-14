@@ -14,6 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ORM\Table(name="`user`")
+ * #[UniqueEntity('email')]
  */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -40,6 +41,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Assert\NotBlank
+     * @Assert\Regex(
+     *     pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d!@#$%^&*()_+,.?;:\[\]{}|~<>\/=-]{8,}$/",
+     *     message="The password must contain at least 8 characters including at least one lowercase letter, one uppercase letter, and one digit."
+     * )
      */
     private $password;
 

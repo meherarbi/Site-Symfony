@@ -11,6 +11,8 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Regex;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class RegisterController extends AbstractController
@@ -48,6 +50,18 @@ class RegisterController extends AbstractController
             ]);
 
             $errors = $validator->validate($email, $emailConstraint);
+
+            $password = $user->getPassword();
+
+            $errors = $validator->validate($password, [
+                new NotBlank([
+                    'message' => 'Please enter a password'
+                ]),
+                new Regex([
+                    'pattern' => '/^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[!@#$%^&()-_=+{};:,<.>§~?])[a-zA-Z\d!@#$%^&()-_=+{};:,<.>§~?]{8,}$/',
+                    'message' => 'The password must contain at least 8 characters including at least one lowercase letter, one uppercase letter, and one digit.'
+                ])
+            ]);
 
             if (count($errors) > 0) {
                 $this->addFlash('danger', 'The email address is not valid.');
