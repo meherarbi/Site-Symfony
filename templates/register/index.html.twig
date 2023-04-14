@@ -12,7 +12,13 @@
 		</div>
 	</div>
 	<!-- End breadcrumb-->
-
+{% for type, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="alert alert-{{ type }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
 	<div class="account">
 		<div class="container">
 			<div class="row">
@@ -25,8 +31,10 @@
 					<div class="form-group">
 						{{ form_row(form.lastname, {'label': ' LastName *', 'attr': {'class': 'form-control no-round-input'}}) }}
 					</div>
-					<div class="form-group">
-						{{ form_row(form.email, {'label': ' email address *', 'attr': {'class': 'form-control no-round-input'}}) }}
+					<div class="form-group {% if form.email.vars.valid == false %}has-error{% elseif form.email.vars.valid == true %}has-success{% endif %}">
+						{{ form_label(form.email, 'Email *', {'label_attr': {'class': 'control-label'}}) }}
+						{{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+						{{ form_errors(form.email) }}
 					</div>
 					<div class="form-group">
 						{{ form_row(form.password.first, {'label': 'Password *', 'attr': {'class': 'form-control no-round-input'}}) }}
@@ -38,10 +46,13 @@
 						<button class="no-round-btn" type="submit">Register</button>
 						<a class="create-account" href="{{ path('app_login') }}">Or login</a>
 					</div>
+
 					{{ form_end(form) }}
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- End account-->
+
+
 {% endblock %}
