@@ -24,12 +24,17 @@
 		<link rel="stylesheet" href="{{ asset('build/css/intlTelInput.css') }}">
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+		<script src="https://js.stripe.com/v3/"></script>
+		
+		<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' https://code.jquery.com/jquery-3.6.0.min.js https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js https://foryoumer.tn/assets/js/cart.js https://foryoumer.tn/assets/js/jquery-ui.min.js https://foryoumer.tn/assets/js/jquery.countdown.min.js https://foryoumer.tn/assets/js/slick.min.js https://foryoumer.tn/assets/js/jquery.easing.js https://foryoumer.tn/assets/js/jquery.scrollUp.min.js https://foryoumer.tn/assets/js/jquery.zoom.min.js https://foryoumer.tn/assets/js/parallax.js https://foryoumer.tn/assets/js/jquery.fancybox.js https://foryoumer.tn/assets/js/numscroller-1.0.js https://foryoumer.tn/assets/js/vanilla-tilt.min.js https://foryoumer.tn/assets/js/main.js https://foryoumer.tn/build/js/intlTelInput.min.js https://foryoumer.tn/build/js/intlTelInput-jquery.min.js https://foryoumer.tn/build/js/intlTelInput.js https://cdn.jsdelivr.net/npm/sweetalert2@11">
+
 
 
 		{#    
 																																																		      <link rel="stylesheet" href="{{ asset('build/css/demo.css') }}">
 																																																		      #}
 		{% block javascript %}{% endblock %}
+
 	</head>
 	<body>
 		<div id="notification" class="notification" style="display: none; position: fixed; top: 10px; right: 10px; background-color: #4CAF50; color: white; padding: 10px; border-radius: 5px;">
