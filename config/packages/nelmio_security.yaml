@@ -17,41 +17,43 @@ nelmio_security:
                 enabled: false
             report-uri: '%router.request_context.base_url%/nelmio/csp/report'
             default-src:
-                - 'self'    
-                - 'https://foryoumer.com/assets/fonts/'
+                - 'none' 
+            object-src:
+                - 'none'          
             img-src:
                 - 'self'
-                - https://foryoumer.com/uploads/
-                - https://foryoumer.com/assets/images/
+                - https://foryoumer.tn/uploads/
+                - https://foryoumer.tn/assets/images/
                 - https://*.stripe.com
     
             connect-src:
-                - 'https://foryoumer.com/'
+                - 'self'
+                - 'https://foryoumer.tn/'
                 - 'https://checkout.stripe.com'
                 - 'https://api.stripe.com'
                 - 'https://js.stripe.com/v3/'
                 
                 
 
-            font-src: ['https://foryoumer.com/']    
+            font-src: ['https://foryoumer.tn/']    
             script-src:
                 - 'self'
                 - 'unsafe-inline'
                 - 'https://code.jquery.com'
                 - 'https://cdnjs.cloudflare.com'
                 - 'https://cdn.jsdelivr.net'
-                - 'https://foryoumer.com'
+                - 'https://foryoumer.tn'
                 - 'https://js.stripe.com/v3/'
                 
             frame-src:
                 - 'https://js.stripe.com/'    
                 
-            style-src: ["'self'", "'unsafe-inline'", "https://foryoumer.com/assets/css/style.css", "https://foryoumer.com/assets/css/custom_bootstrap.css", "https://foryoumer.com/assets/css/normalize.css", "https://foryoumer.com/assets/css/fontawesome.css", "https://foryoumer.com/assets/css/elegant.css", "https://foryoumer.com/assets/css/animate.css", "https://foryoumer.com/assets/css/slick.css", "https://foryoumer.com/assets/css/scroll.css", "https://foryoumer.com/assets/css/icomoon.css", "https://foryoumer.com/assets/css/jquery.fancybox.min.css", "https://foryoumer.com/assets/css/mystore.css", "https://foryoumer.com/assets/css/select2.min.css", "https://foryoumer.com/build/css/intlTelInput.css"]
+            style-src: ["'self'", "'unsafe-inline'", "https://foryoumer.tn"]
             block-all-mixed-content: true # defaults to false, blocks HTTP content over HTTPS transport
             # upgrade-insecure-requests: true # defaults to false, upgrades HTTP requests to HTTPS transport
 
-   
-
+        
+    
     # forces Microsoft's XSS-Protection with
     # its block mode
     xss_protection:

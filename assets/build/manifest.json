@@ -1,0 +1,15 @@
+{
+  "build/app.css": "/build/app.css",
+  "build/app.js": "/build/app.js",
+  "build/jquery.js": "/build/jquery.js",
+  "build/sweetalert2.js": "/build/sweetalert2.js",
+  "build/stripe.js": "/build/stripe.js",
+  "build/style.css": "/build/style.css",
+  "build/style.js": "/build/style.js",
+  "build/custom_bootstrap.css": "/build/custom_bootstrap.css",
+  "build/custom_bootstrap.js": "/build/custom_bootstrap.js",
+  "build/elegant.js": "/build/elegant.js",
+  "build/animate.css": "/build/animate.css",
+  "build/animate.js": "/build/animate.js",
+  "build/runtime.js": "/build/runtime.js"
+}
