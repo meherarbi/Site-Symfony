@@ -1,0 +1,189 @@
+{
+  "entrypoints": {
+    "app": {
+      "js": [
+        "/build/runtime.js",
+        "/build/app.js"
+      ],
+      "css": [
+        "/build/app.css"
+      ]
+    },
+    "jquery": {
+      "js": [
+        "/build/runtime.js",
+        "/build/jquery.js"
+      ]
+    },
+    "sweetalert2": {
+      "js": [
+        "/build/runtime.js",
+        "/build/sweetalert2.js"
+      ]
+    },
+    "stripe": {
+      "js": [
+        "/build/runtime.js",
+        "/build/stripe.js"
+      ]
+    },
+    "style": {
+      "js": [
+        "/build/runtime.js",
+        "/build/style.js"
+      ],
+      "css": [
+        "/build/style.css"
+      ]
+    },
+    "custom_bootstrap": {
+      "js": [
+        "/build/runtime.js",
+        "/build/custom_bootstrap.js"
+      ],
+      "css": [
+        "/build/custom_bootstrap.css"
+      ]
+    },
+    "normalize": {
+      "js": [
+        "/build/runtime.js"
+      ]
+    },
+    "fontawesome": {
+      "js": [
+        "/build/runtime.js"
+      ]
+    },
+    "elegant": {
+      "js": [
+        "/build/runtime.js",
+        "/build/elegant.js"
+      ]
+    },
+    "animate": {
+      "js": [
+        "/build/runtime.js",
+        "/build/animate.js"
+      ],
+      "css": [
+        "/build/animate.css"
+      ]
+    },
+    "slick": {
+      "js": [
+        "/build/runtime.js"
+      ]
+    },
+    "scroll": {
+      "js": [
+        "/build/runtime.js"
+      ]
+    },
+    "icomoon": {
+      "js": [
+        "/build/runtime.js"
+      ]
+    },
+    "jquery.fancybox": {
+      "js": [
+        "/build/runtime.js"
+      ]
+    },
+    "mystore": {
+      "js": [
+        "/build/runtime.js"
+      ]
+    },
+    "select2": {
+      "js": [
+        "/build/runtime.js"
+      ]
+    },
+    "intlTelInput": {
+      "js": [
+        "/build/runtime.js"
+      ]
+    },
+    "jquery.min": {
+      "js": [
+        "/build/runtime.js"
+      ]
+    },
+    "popper.min": {
+      "js": [
+        "/build/runtime.js"
+      ]
+    },
+    "bootstrap.min": {
+      "js": [
+        "/build/runtime.js"
+      ]
+    },
+    "cart": {
+      "js": [
+        "/build/runtime.js"
+      ]
+    },
+    "slick.min": {
+      "js": [
+        "/build/runtime.js"
+      ]
+    },
+    "jquery.easing": {
+      "js": [
+        "/build/runtime.js"
+      ]
+    },
+    "jquery.scrollUp.min": {
+      "js": [
+        "/build/runtime.js"
+      ]
+    },
+    "parallax": {
+      "js": [
+        "/build/runtime.js"
+      ]
+    },
+    "jquery.fancybox.min": {
+      "js": [
+        "/build/runtime.js"
+      ]
+    },
+    "numscroller-1.0": {
+      "js": [
+        "/build/runtime.js"
+      ]
+    },
+    "vanilla-tilt.min": {
+      "js": [
+        "/build/runtime.js"
+      ]
+    },
+    "main": {
+      "js": [
+        "/build/runtime.js"
+      ]
+    },
+    "intlTelInput.min": {
+      "js": [
+        "/build/runtime.js"
+      ]
+    },
+    "intlTelInput-jquery.min": {
+      "js": [
+        "/build/runtime.js"
+      ]
+    },
+    "intlTelInputjs": {
+      "js": [
+        "/build/runtime.js"
+      ]
+    },
+    "select2.min": {
+      "js": [
+        "/build/runtime.js"
+      ]
+    }
+  }
+}

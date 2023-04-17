@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block javascript %}
-    <script src="https://js.stripe.com/v3/"></script>
+    
 {% endblock %}
 
 {% block title %}Valider Mes commande{% endblock %}
@@ -9,6 +9,7 @@
     <div class="container">
     <div class="ogami-breadcrumb">
 		<div class="container">
+        
 			<ul>
 				<li><a class="breadcrumb-link"href="{{ path('home') }}"><i class="fas fa-home"></i>Home</a></li>
                 <li><a class="breadcrumb-link"href="{{ path('cart_index') }}">Shopping Cart</a></li>

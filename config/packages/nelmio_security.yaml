@@ -17,27 +17,43 @@ nelmio_security:
                 enabled: false
             report-uri: '%router.request_context.base_url%/nelmio/csp/report'
             default-src:
-                - 'https://foryoumer.tn/assets/fonts/'
+                - 'none' 
+            object-src:
+                - 'none'          
             img-src:
                 - 'self'
                 - https://foryoumer.tn/uploads/
                 - https://foryoumer.tn/assets/images/
+                - https://*.stripe.com
     
             connect-src:
-                - 'https://foryoumer.tn/_wdt/'
+                - 'self'
+                - 'https://foryoumer.tn/'
+                - 'https://checkout.stripe.com'
+                - 'https://api.stripe.com'
+                - 'https://js.stripe.com/v3/'
+                
+                
 
             font-src: ['https://foryoumer.tn/']    
             script-src:
                 - 'self'
                 - 'unsafe-inline'
-                - https://code.jquery.com/jquery-3.6.0.min.js
-                - https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js
-            style-src: ["'self'", "'unsafe-inline'", "https://foryoumer.tn/assets/css/style.css", "https://foryoumer.tn/assets/css/custom_bootstrap.css", "https://foryoumer.tn/assets/css/normalize.css", "https://foryoumer.tn/assets/css/fontawesome.css", "https://foryoumer.tn/assets/css/elegant.css", "https://foryoumer.tn/assets/css/animate.css", "https://foryoumer.tn/assets/css/slick.css", "https://foryoumer.tn/assets/css/scroll.css", "https://foryoumer.tn/assets/css/icomoon.css", "https://foryoumer.tn/assets/css/jquery.fancybox.min.css", "https://foryoumer.tn/assets/css/mystore.css", "https://foryoumer.tn/assets/css/select2.min.css", "https://foryoumer.tn/build/css/intlTelInput.css"]
+                - 'https://code.jquery.com'
+                - 'https://cdnjs.cloudflare.com'
+                - 'https://cdn.jsdelivr.net'
+                - 'https://foryoumer.tn'
+                - 'https://js.stripe.com/v3/'
+                
+            frame-src:
+                - 'https://js.stripe.com/'    
+                
+            style-src: ["'self'", "'unsafe-inline'", "https://foryoumer.tn"]
             block-all-mixed-content: true # defaults to false, blocks HTTP content over HTTPS transport
             # upgrade-insecure-requests: true # defaults to false, upgrades HTTP requests to HTTPS transport
 
-   
-
+        
+    
     # forces Microsoft's XSS-Protection with
     # its block mode
     xss_protection:
