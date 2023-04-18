@@ -21,12 +21,21 @@ class DashboardController extends AbstractDashboardController
      * @Route("/admin", name="admin")
      */
     public function index(): Response
-    {
-        $routeBuilder = $this->get(AdminUrlGenerator::class);
-
-        return $this->redirect($routeBuilder->setController(OrderCrudController::class)->generateUrl());
-
+{
+    // Vérifiez si l'utilisateur actuel a le rôle 'ROLE_ADMIN'
+    if (!$this->isGranted('ROLE_ADMIN')) {
+        // Si l'utilisateur n'a pas le rôle 'ROLE_ADMIN', redirigez-le vers une page d'authentification
+        return $this->redirectToRoute('app_login');
     }
+
+    // Si l'utilisateur a le rôle 'ROLE_ADMIN', générez l'URL du contrôleur 'OrderCrudController'
+    $routeBuilder = $this->get(AdminUrlGenerator::class);
+    $url = $routeBuilder->setController(OrderCrudController::class)->generateUrl();
+
+    // Redirigez l'utilisateur vers l'URL générée
+    return $this->redirect($url);
+}
+
 
     public function configureDashboard(): Dashboard
     {
