@@ -31,6 +31,7 @@
 		</div>
 	</div>
 	<!-- End breadcrumb-->
+	
 	<div class="shop-layout">
 		<div class="ogami-container-fluid">
 			<div class="row">
@@ -199,8 +200,8 @@
 							</div>
 							<!--Using column-->
 						</div>
-						{{ products.getTotalItemCount }}
-						Produit(s)
+						{# {{ products.getTotalItemCount }}
+						Produit(s) #}
 						<div class="shop-products_bottom--fullwidth">
 							<div class="row no-gutters-sm">
 
@@ -283,9 +284,45 @@
 						</div>
 					{% endif %}
 				</div>
+				
 			</div>
 		</div>
 	</div>
 
+<div class="container-fluid bg-light mt-5">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        {% set categoryName = products[0].category.name %}
+		{% set categoryDescription = products[0].category.description %}
+        <div class="card-header">
+          <h5 class="card-title">{{ categoryName }}</h5>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Bienvenue dans la catégorie {{ categoryName }}. Ici, vous trouverez une sélection des meilleurs produits pour répondre à vos besoins. {{categoryDescription}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+
+.card-header h7.card-title {
+  font-size: 0.5rem; /* taille de la police */
+  font-weight: 600; /* épaisseur de la police */
+  text-transform: uppercase; /* mise en majuscule du texte */
+  color: #333; /* couleur du texte */
+  margin-bottom: 1.5rem; /* espacement entre le titre et le texte */
+}
+
+.card-body p.card-text {
+  font-size: 1.125rem; /* taille de la police */
+  line-height: 1.8; /* espacement entre les lignes */
+  color: #666; /* couleur du texte */
+}
+
+
+</style>
 
 {% endblock %}

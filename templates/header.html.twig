@@ -1,66 +1,66 @@
 <div class="header-block d-flex align-items-center">
-					<div class="container">
-						<div class="row">
-							<div class="col-12 col-md-6">
-								<div class="header-left d-flex flex-column flex-md-row align-items-center">
-									<p class="d-flex align-items-center">
-										<i class="fas fa-envelope"></i>
-										contact@gmail.com
-									</p>
-									<p class="d-flex align-items-center">
-										<i class="fas fa-phone"></i>
-										+216 58 58 83 58
-									</p>
-								</div>
-							</div>
-							<div class="col-12 col-md-6">
-								<div class="header-right d-flex flex-column flex-md-row justify-content-md-end justify-content-center align-items-center">
-									<div class="social-link d-flex">
-										<a href="{{ path('cart_index') }}">
-											<img src="{{ asset('assets/images/panier.png') }}" height="30px" alt="Panier">
-											{% set cart_quantity = app.session.get('uniqueProductsCount') %}
-											{% if cart_quantity is not empty and cart_quantity != 0 %}
-												<span class="cart-quantity">{{ cart_quantity }}</span>
-											{% endif %}
-										</a>
-
-
-										{{ "" }}
-									</div>
-									{% if app.user %}
-										<div class="login d-flex">
-											<a href="{{ path('account') }}">
-												<i class="fas fa-user ">
-													&nbsp;&nbsp;
-													{{ app.user.firstname }}
-												</i>
-												Account
-											</a>
-										</div>
-										&nbsp;&nbsp;&nbsp;
-										<div class="login d-flex">
-											<a href="{{ path('app_logout') }}">
-												<i class="fas fa-user"></i>
-												Logout
-											</a>
-										</div>
-									{% else %}
-										<div class="login d-flex">
-											<a href="{{ path('app_login') }}">
-												<i class="fas fa-user"></i>
-												Login
-											</a>
-										</div>
-										&nbsp;&nbsp;&nbsp;
-										<div class="login d-flex">
-											<a href="{{ path('register') }}">
-												<i class="fas fa-user"></i>
-												Register
-											</a>
-										</div>
-									{% endif %}
-								</div>
-							</div>
-						</div>
-					</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-12 col-md-6">
+				<div class="header-left d-flex flex-column flex-md-row align-items-center">
+					<p class="d-flex align-items-center">
+						<i class="fas fa-envelope"></i>
+						meher@foryoumer.com
+					</p>
+					<p class="d-flex align-items-center">
+						<i class="fas fa-phone"></i>
+						+216 58 58 83 58
+					</p>
 				</div>
+			</div>
+			<div class="col-12 col-md-6">
+				<div class="header-right d-flex flex-column flex-md-row justify-content-md-end justify-content-center align-items-center">
+					<div class="social-link d-flex">
+						<a href="{{ path('cart_index') }}">
+							<img src="{{ asset('assets/images/panier.png') }}" height="30px" alt="vente en ligne en Tunisie foryoumer">
+							{% set cart_quantity = app.session.get('uniqueProductsCount') %}
+							{% if cart_quantity is not empty and cart_quantity != 0 %}
+								<span class="cart-quantity">{{ cart_quantity }}</span>
+							{% endif %}
+						</a>
+
+
+						{{ "" }}
+					</div>
+					{% if app.user %}
+						<div class="login d-flex">
+							<a href="{{ path('account') }}">
+								<i class="fas fa-user ">
+									&nbsp;&nbsp;
+									{{ app.user.firstname }}
+								</i>
+								Account
+							</a>
+						</div>
+						&nbsp;&nbsp;&nbsp;
+						<div class="login d-flex">
+							<a href="{{ path('app_logout') }}">
+								<i class="fas fa-user"></i>
+								Logout
+							</a>
+						</div>
+					{% else %}
+						<div class="login d-flex">
+							<a href="{{ path('app_login') }}">
+								<i class="fas fa-user"></i>
+								Login
+							</a>
+						</div>
+						&nbsp;&nbsp;&nbsp;
+						<div class="login d-flex">
+							<a href="{{ path('register') }}">
+								<i class="fas fa-user"></i>
+								Register
+							</a>
+						</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
