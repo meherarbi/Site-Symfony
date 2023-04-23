@@ -1,51 +1,74 @@
 {% extends 'base.html.twig' %}
 
-
-{% block title %}My Product{% endblock %}
+{% block seo %}
+    {{ parent() }}
+{% endblock %}
+{% block title %}My Product
+{% endblock %}
 
 
 {% block content %}
-    <div class="row product-container ">
-    <div class="count">
-    {{ products.getTotalItemCount }} Produit(s)
-</div>
-        <div class="row no-gutters-sm">
-											{% for product in products  %}
-												<div class="col-6 col-md-3">
-													<div class="product pink">
-														<a class="product-img" href="{{ path('product',{'id':product.id}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}"></a>
-														<h5 class="product-type">{{product.category.name}}</h5>
-														{% if product.name|length > 10 %}
-															<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
-														{% else %}
-															<h3 class="product-name">{{ product.name }}</h3>
-														{% endif %}
-														<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
-															<del>$35.00</del>
-														</h3>
-														<div class="product-select">
-															<button class="add-to-wishlist round-icon-btn pink">
-																<i class="icon_heart_alt"></i>
-															</button>
-															<button class="add-to-cart round-icon-btn pink">
-																<i class="icon_bag_alt"></i>
-															</button>
-															<button class="add-to-compare round-icon-btn pink">
-																<i class="fas fa-random"></i>
-															</button>
-															<button class="quickview round-icon-btn pink">
-																<i class="far fa-eye"></i>
-															</button>
-														</div>
-													</div>
-												</div>
-											{% endfor %}
-										</div>
-   
-    </div>
-                    <div class="navigation d-flex justify-content-center">
-    {{ knp_pagination_render(products) }}
-</div>
+	{# <div class="row product-container ">
+			<div class="count">
+				<span class="count-number">{{ products.getTotalItemCount }}</span>
+				<span class="count-text">Produit(s)</span>
+			</div> #}
+{# 	<style>
+		.count {
+			display: flex;
+			align-items: center;
+			font-size: 14px;
+			font-weight: bold;
+			color: #333;
+		}
 
+		.count-number {
+			background-color: #f5f5f5;
+			padding: 10px;
+			border-radius: 40px;
+			margin-right: 9px;
+		}
 
-{% endblock %}
+		.count-text {
+			text-transform: uppercase;
+		}
+	</style> #}
+	<div class="row no-gutters-sm">
+		{% for product in products  %}
+			<div class="col-6 col-md-4 col-lg-3 col-xl-2 mx-3">
+				<div class="product pink rounded rounded-lg rounded-xl border">
+					
+						<a class="product-img" href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}"></a>
+						<h5 class="product-type">{{product.category.name}}</h5>
+						{% if product.name|length > 10 %}
+							<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
+						{% else %}
+							<h3 class="product-name">{{ product.name }}</h3>
+						{% endif %}
+						<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
+							<del>{{(product.oldPrice/100)|number_format(2)}}</del>
+						</h3>
+						<div class="product-select">
+							<button class="add-to-wishlist round-icon-btn pink">
+								<i class="icon_heart_alt"></i>
+							</button>
+							<button class="add-to-cart round-icon-btn pink">
+								<i class="icon_bag_alt"></i>
+							</button>
+							<button class="add-to-compare round-icon-btn pink">
+								<i class="fas fa-random"></i>
+							</button>
+							<button class="quickview round-icon-btn pink">
+								<i class="far fa-eye"></i>
+							</button>
+						</div>
+					
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+
+</div>
+<div class="navigation d-flex justify-content-center">
+	{{ knp_pagination_render(products) }}
+</div>{% endblock %}

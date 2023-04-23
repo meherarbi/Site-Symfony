@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 
-
+{% block seo %}
+    {{ parent() }}
+{% endblock %}
 {% block title %}My Product
 {% endblock %}
 
@@ -10,7 +12,7 @@
 											        {% for product in products  %}
 											            <div class="col-md-3 ">
 											                <div class="products-item text-center">
-											                    <a href="{{ path('product',{'id':product.id}) }}" ><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="img-fluid" height="90px"></a>
+											                    <a href="{{ path('product',{'slug':product.slug}) }}" ><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="img-fluid" height="90px"></a>
 											                    <figcaption><h5>{{ product.name }}</h5></figcaption>
 											                    <span class="products-subtitle">{{ product.subtitle }}</span>
 											                    <span class="products-price">{{ (product.price/100)|number_format(2) }} $</span>
@@ -171,7 +173,7 @@
 								</div>
 								<div class="col-12 col-xl-8">
 									<div class="product-option">
-										<div class="product-filter">
+										{# <div class="product-filter">
 											<select class="select-form" id="sort" name="">
 												<option value="A-Z">A to Z</option>
 												<option value="Z-A">Z to A</option>
@@ -183,7 +185,7 @@
 												<option value="Z-A">Show 20</option>
 												<option value="High to low price">Show 30</option>
 											</select>
-										</div>
+										</div> #}
 										<div class="view-method">
 											<p class="active" id="grid-view">
 												<i class="fas fa-th-large"></i>
@@ -206,7 +208,7 @@
 								{% for product in products  %}
 									<div class="col-6 col-md-3">
 										<div class="product pink">
-											<a class="product-img" href="{{ path('product',{'id':product.id}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}"></a>
+											<a class="product-img" href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}"></a>
 											<h5 class="product-type">{{product.category.name}}</h5>
 											{% if product.name|length > 10 %}
 												<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
@@ -259,12 +261,12 @@
 											<div class="col-12 col-sm-6 col-lg-4 col-lg-3 col-xxl-3">
 												<div class="mini-product border">
 													<div class="mini-product_img">
-														<a class="product-img" href="{{ path('product',{'id':product.id}) }}">
+														<a class="product-img" href="{{ path('product',{'slug':product.slug}) }}">
 															<img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}">
 														</a>
 													</div>
 													<div class="mini-product_info">
-														<a href="{{ path('product',{'id':product.id}) }}">{{ product.name|slice(0, 10) }}...</a>
+														<a href="{{ path('product',{'slug':product.slug}) }}">{{ product.name|slice(0, 10) }}...</a>
 														<p>{{ product.price/100|number_format(2) }}
 															<del>$45.00</del>
 														</p>

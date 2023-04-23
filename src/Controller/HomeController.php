@@ -60,7 +60,7 @@ class HomeController extends AbstractController
         
         
 
-        return $this->render('home/index.html.twig', [
+        $response = $this->render('home/index.html.twig', [
             'products' => $products,
             'productsOneByCategory'=>$productsOneByCategory,
             'productsMin'=>$productsMin,
@@ -69,6 +69,9 @@ class HomeController extends AbstractController
             'categorie' => $this->categoryRepository->findAll(),
             'icons' => $icons
         ]);
+        $response->headers->remove('X-Robots-Tag');
+        
+        return $response;
     }
 
 /* public function index(Category $category = null)

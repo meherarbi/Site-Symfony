@@ -2,85 +2,84 @@
 <html lang="en">
 	<head>
 		<title>
-			foryoumer
+			Vente en ligne des divers produits en Tunisie
 		</title>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-		<meta name="keywords" content="blog, business, clean, clear, cooporate, creative, design web, flat, marketing, minimal, portfolio, shop, shopping, unique">
-		<meta name="author" content="MARTECH | Deer Creative Theme">	
-		<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-		<link rel="stylesheet" href="{{ asset('assets/css/custom_bootstrap.css') }}">
-		<link rel="stylesheet" href="{{ asset('assets/css/normalize.css') }}">
-		<link rel="stylesheet" href="{{ asset('assets/css/fontawesome.css') }}">
-		<link rel="stylesheet" href="{{ asset('assets/css/elegant.css') }}">
-		<link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}">
-		<link rel="stylesheet" href="{{ asset('assets/css/slick.css') }}">
-		<link rel="stylesheet" href="{{ asset('assets/css/scroll.css') }}">
-		<link rel="stylesheet" href="{{ asset('assets/css/icomoon.css') }}">
-		<link rel="stylesheet" href="{{ asset('assets/css/jquery.fancybox.min.css') }}">
-		<link rel="shortcut icon" href="{{ asset('assets/images/shortcut_logo.png') }}">
-		<link rel="stylesheet" href="{{ asset('assets/css/mystore.css') }}">
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="Trouvez tout ce dont vous avez besoin sur notre site de vente en ligne en Tunisie. Découvrez notre large gamme de produits de qualité, des vêtements tendance aux articles de maison élégants. Avec des prix compétitifs, des offres spéciales et une livraison rapide, faites de notre site votre destination de shopping en ligne préférée en Tunisie"/>
+		<meta name="keywords" content="vente en ligne , vente en ligne en tunisie , vente des articles maison , vente des montres, vente des articles de bébés "/>
+		<meta name="author" content="MARTECH | Deer Creative Theme"/>
+		<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}"/>
+		<link rel="stylesheet" href="{{ asset('assets/css/custom_bootstrap.css') }}"/>
+		<link rel="stylesheet" href="{{ asset('assets/css/normalize.css') }}"/>
+		<link rel="stylesheet" href="{{ asset('assets/css/fontawesome.css') }}"/>
+		<link rel="stylesheet" href="{{ asset('assets/css/elegant.css') }}"/>
+		<link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}"/>
+		<link rel="stylesheet" href="{{ asset('assets/css/slick.css') }}"/>
+		<link rel="stylesheet" href="{{ asset('assets/css/scroll.css') }}"/>
+		<link rel="stylesheet" href="{{ asset('assets/css/icomoon.css') }}"/>
+		<link rel="stylesheet" href="{{ asset('assets/css/jquery.fancybox.min.css') }}"/>
+		<link rel="shortcut icon" href="{{ asset('assets/images/shortcut_logo.png') }}"/>
+		<link rel="stylesheet" href="{{ asset('assets/css/mystore.css') }}"/>
 		<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" integrity="sha384-/Wx1NuqlgALfa1Do1U6Mer7quEDHOo8REf/0izoIrV8Y3Z/gtEHQc01STCEMM1LZ" crossorigin="anonymous"></script>
-		<script src="https://js.stripe.com/v3/" integrity="sha384-xuGg+pwfeJ639S2KfMVIJ+dA0PwgYpn2r3/5lwc83/xIqU8xA866X3dHtImK/wwj" crossorigin="anonymous"></script>
-		<meta http-equiv="Content-Security-Policy" Content-Security-Policy: "default-src 'none'; font-src https://foryoumer.tn;
-			 img-src 'self' https://foryoumer.tn; object-src 'none'; script-src https://foryoumer.tn; style-src https://foryoumer.tn">
-	
+		<script src="https://js.stripe.com/v3/" integrity="sha256-asSKfHBOtRKt3YaQ/xZfh/l1f5htLs9rPxLC/wd87L8=" crossorigin="anonymous"></script>
+		<meta
+		name="google-site-verification" content="NcMDVxMcuILOFYdEdjV4rnQ7xngn52ddBq0nkzkG1ZA"/>
+		{# <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self';"> #}
+		{% set hostname = app.request.host %}
+		<meta http-equiv="Content-Security-Policy" content="default-src 'none'; font-src 'self'; img-src 'self' https://{{ hostname }}/uploads/ https://{{ hostname }}/assets/images/ https://*.stripe.com; connect-src 'self' https://{{ hostname }}/ https://checkout.stripe.com https://api.stripe.com https://js.stripe.com/v3/; script-src 'self' 'unsafe-inline' https://code.jquery.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://{{ hostname }} https://js.stripe.com/v3/; frame-src https://js.stripe.com/; style-src 'self' 'unsafe-inline' https://{{ hostname }};"> {% block seo %}{% endblock %}
+		</head>
+		<body>
 
-	</head>
-	<body>
-	
-   
-		<div id="notification" class="notification" style="display: none; position: fixed; top: 10px; right: 10px; background-color: #4CAF50; color: white; padding: 10px; border-radius: 5px;">
-			Produit ajouté au panier!
-		</div>
 
-		<div id="main">
+			<div id="notification" class="notification" style="display: none; position: fixed; top: 10px; right: 10px; background-color: #4CAF50; color: white; padding: 10px; border-radius: 5px;">
+				Produit ajouté au panier!
+			</div>
 
-			<header class="pink">
-				<div class="topimg">
-					<a href="{{path('home')}}"><img src="{{ asset('assets/images/homepage03/as7.webp') }}" id="mk" alt=""></a>
-				</div>
-				<div class="header-block d-flex align-items-center">
-					<div class="container">
-						<div class="row">
-							<div class="col-12 col-md-6">
-								<div class="header-left d-flex flex-column flex-md-row align-items-center">
-									<p class="d-flex align-items-center">
-										<i class="fas fa-envelope"></i>
-										contact@gmail.com
-									</p>
-									<p class="d-flex align-items-center">
-										<i class="fas fa-phone"></i>
-										+216 58 58 83 58
-									</p>
+			<div id="main">
+
+				<header class="pink">
+					<div class="topimg">
+						<a href="{{path('home')}}"><img src="{{ asset('assets/images/homepage03/as7.webp') }}" id="mk" alt=""/></a>
+					</div>
+					<div class="header-block d-flex align-items-center">
+						<div class="container">
+							<div class="row">
+								<div class="col-12 col-md-6">
+									<div class="header-left d-flex flex-column flex-md-row align-items-center">
+										<p class="d-flex align-items-center">
+											<i class="fas fa-envelope"></i>
+											contact@gmail.com
+										</p>
+										<p class="d-flex align-items-center">
+											<i class="fas fa-phone"></i>
+											+216 58 58 83 58
+										</p>
+									</div>
 								</div>
-							</div>
-							<div class="col-12 col-md-6">
-								<div class="header-right d-flex flex-column flex-md-row justify-content-md-end justify-content-center align-items-center">
-									<div class="social-link d-flex">
-										<a href="{{ path('cart_index') }}">
-											<img src="{{ asset('assets/images/panier.png') }}" height="30px" alt="Panier">
-											{% set cart_quantity = app.session.get('uniqueProductsCount') %}
-											{% if cart_quantity is not empty and cart_quantity != 0 %}
-												<span class="cart-quantity">{{ cart_quantity }}</span>
+								<div class="col-12 col-md-6">
+									<div class="header-right d-flex flex-column flex-md-row justify-content-md-end justify-content-center align-items-center">
+										<div class="social-link d-flex">
+											<a href="{{ path('cart_index') }}">
+												<img src="{{ asset('assets/images/panier.png') }}" height="30px" alt="Panier"/>
+												{% set cart_quantity = app.session.get('uniqueProductsCount') %}
+												{% if cart_quantity is not empty and cart_quantity != 0 %}
+													<span class="cart-quantity"/>{{ cart_quantity }}
+												</span>
 											{% endif %}
 										</a>
-
-
-										{{ "" }}
 									</div>
 									{% if app.user %}
 										<div class="login d-flex">
 											<a href="{{ path('account') }}">
 												<i class="fas fa-user ">
-													&nbsp;&nbsp;
+
 													{{ app.user.firstname }}
 												</i>
 												Account
 											</a>
 										</div>
-										&nbsp;&nbsp;&nbsp;
+
 										<div class="login d-flex">
 											<a href="{{ path('app_logout') }}">
 												<i class="fas fa-user"></i>
@@ -89,285 +88,261 @@
 										</div>
 									{% else %}
 										<div class="login d-flex">
-											<a href="{{ path('app_login') }}">
-												<i class="fas fa-user"></i>
-												Login
-											</a>
-										</div>
-										&nbsp;&nbsp;&nbsp;
-										<div class="login d-flex">
-											<a href="{{ path('register') }}">
-												<i class="fas fa-user"></i>
-												Register
-											</a>
-										</div>
-									{% endif %}
+											<a href="{{ path('app_login') }}"/>
+											<i class="fas fa-user"></i>
+											Login
+										</a>
+									</div>
+
+									<div class="login d-flex">
+										<a href="{{ path('register') }}"/>
+										<i class="fas fa-user"></i>
+										Register
+									</a>
 								</div>
-							</div>
+							{% endif %}
 						</div>
 					</div>
 				</div>
-				{% include "header_mobile.html.twig" %}
-				<div class="navigation-filter">
-					<div class="container">
-						<div class="row">
-							<div class="col-12 col-md-4 col-lg-4 col-xl-3 order-2 order-md-1"></div>
-							<div class="col-12 col-md-8 col-lg-8 col-xl-9 order-1 order-md-2">
-								<div class="row">
-									<div class="col-12 col-xl-8">
-										<div class="website-search">
-											<div class="row no-gutters">
-												<div class="col-0 col-md-0 col-lg-4 col-xl-4">
-													<div class="filter-search">
-														<div class="categories-select d-flex align-items-center justify-content-around">
-															<span>
-																All Categories
-															</span>
-															<i class="arrow_carrot-down"></i>
-														</div>
-														<div class="categories-select_box">
-															<ul>
-																{% for categorie in cat.getCategories %}
-																	<li>
-																		<a href=" {{path('product_category',{'id':categorie.id})}} ">
-																			<i class="cate-name"></i>
-																			{{ categorie.name }}</a>
-																	</li>
-																{% endfor %}
-															</ul>
-														</div>
-													</div>
-												</div>
-												<form action="{{ path('search') }}" method="GET" class="row no-gutters">
-													<div class="col-12 col-md-12 col-lg-8 col-xl-8">
-														<div class="search-input">
-															<input class="no-round-input no-border" type="text" name="q" placeholder="What do you need" style="width: 100%;">
-														</div>
-													</div>
-													<div class="col-12 col-md-12 col-lg-4 col-xl-4 d-flex justify-content-end">
-														<button type="submit" class="no-round-btn black" style="width: 50px; height: 50px;">
-															<i class="icon_search"></i>
-														</button>
-													</div>
-												</form>
-
-											</div>
-										</div>
-									</div>
-									<div class="col-0 col-xl-4">
-										<div class="phone-number">
-											<div class="phone-number_icon">
-												<i class="icon_phone"></i>
-											</div>
-											<h2>
-												+216 58 58 83 43
-											</h2>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- End header-->
-
-				{% block container %}{% endblock %}
-				<!-- End banner v2-->
-				<div class="home3-product-block"> {% block content %}{% endblock %}
-					<div class="newletter"></div>
-				</br>
-				<hr>
-				<div class="partner">
-					<div class="container">
-						<div
-							class="partner_block d-flex justify-content-between" data-slick="{&quot;slidesToShow&quot;: 6}">
-							{# 	{% for product in products  %}
-																																																																																																																																																																								<div class="partner--logo" href="">
-																																																																																																																																																																									<a class="product-img" href="{{ path('product',{'id':product.id}) }}">
-																																																																																																																																																																										<img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}">
-																																																																																																																																																																									</a>
-																																																																																																																																																																								</div>
-																																																																																																																																																																							{% endfor %} #}
-							<div class="partner--logo" href="">
-								<a href="#">
-									<img src="{{ asset('assets/images/partner/a2.webp') }}" alt="partner" title="partner logo">
-								</a>
-							</div>
-							<div class="partner--logo" href="">
-								<a href="#">
-									<img src="{{ asset('assets/images/partner/a3.webp') }}" alt="partner" title="partner logo">
-								</a>
-							</div>
-							<div class="partner--logo" href="">
-								<a href="#">
-									<img src="{{ asset('assets/images/partner/a4.webp') }}" alt="partner" title="partner logo">
-								</a>
-							</div>
-							<div class="partner--logo" href="">
-								<a href="#">
-									<img src="{{ asset('assets/images/partner/a5.webp') }}" alt="partner" title="partner logo">
-								</a>
-							</div>
-							<div class="partner--logo" href="">
-								<a href="#">
-									<img src="{{ asset('assets/images/partner/a6.webp') }}" alt="partner" title="partner logo">
-								</a>
-							</div>
-							<div class="partner--logo" href="">
-								<a href="">
-									<img src="{{ asset('assets/images/partner/a7.webp') }}" alt="partner" title="partner logo">
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<footer class="pink">
-					<div class="container">
-						<div class="row">
-							<div class="col-12 col-sm-12 col-md-4 text-sm-center text-md-left">
-								<div class="footer-logo"></div>
-								<div class="footer-contact">
-									<p>
-										Address: Avenue habib bourguiba 1000 Tunis
-									</p>
-									<p>
-										Phone: +216 58 58 83 58
-									</p>
-									<p>
-										Email: info.deercreative@gmail.com
-									</p>
-								</div>
-								<div class="footer-social">
-									<a class="round-icon-btn pink" href="">
-										<i class="fab fa-facebook-f"></i>
-									</a>
-									<a class="round-icon-btn pink" href="">
-										<i class="fab fa-twitter"></i>
-									</a>
-									<a class="round-icon-btn pink" href="">
-										<i class="fab fa-invision"></i>
-									</a>
-									<a class="round-icon-btn pink" href="">
-										<i class="fab fa-pinterest-p"></i>
-									</a>
-								</div>
-							</div>
-							<div class="col-md-8">
-								<div class="row">
-									<div class="col-12 col-sm-4 text-sm-center text-md-left">
-										<div class="footer-quicklink">
-											<h5>
-												Infomation
-											</h5>
-											<a href="about_us.html">
-												About us
-											</a>
-											<a href="checkout.html">
-												Check out
-											</a>
-											<a href="contact.html">
-												Contact
-											</a>
-											<a href="about_us.html">
-												Service
-											</a>
-										</div>
-									</div>
-									<div class="col-12 col-sm-4 text-sm-center text-md-left">
-										<div class="footer-quicklink">
-											<h5>
-												My Account
-											</h5>
-											<a href="login.html">
-												My Account
-											</a>
-											<a href="contact.html">
-												Contact
-											</a>
-											<a href="shop_cart.html">
-												Shopping cart
-											</a>
-											<a href="shop_grid+list_3col.html">
-												Shop
-											</a>
-										</div>
-									</div>
-									<div class="col-12 col-sm-4 text-sm-center text-md-left">
-										<div class="footer-quicklink">
-											<h5>
-												Quick Shop
-											</h5>
-											<a href="about_us.html">
-												About us
-											</a>
-											<a href="checkout.html">
-												Check out
-											</a>
-											<a href="contact.html">
-												Contact
-											</a>
-											<a href="about_us.html">
-												Service
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="newletter">
-						<div class="container">
-							<div class="row justify-content-between align-items-center">
-								<div class="col-12 col-md-7">
-									<div class="newletter_text text-center text-md-left">
-										<h5>
-											Join Our Newsletter Now
-										</h5>
-										<p>
-											Get E-mail updates about our latest shop and special offers.
-										</p>
-									</div>
-								</div>
-								<div class="col-12 col-md-5">
-									<div class="newletter_input">
-										<input class="round-input" type="text" placeholder="Enter your email">
-										<button>
-											Subcribe
-										</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="footer-credit">
-						<div class="container">
-							<div class="footer-creadit_block d-flex flex-column flex-md-row justify-content-start justify-content-md-between align-items-baseline align-items-md-center">
-								<p class="author">
-									Copyright © 2019 Ogami - All Rights Reserved.
-								</p>
-								<img class="payment-method" src="assets/images/payment.png" alt="">
-							</div>
-						</div>
-					</div>
-				</footer>
 			</div>
 		</body>
-	</body>
-</html></div><!-- End footer-->
+	</html>
+</div>
+{% include "header_mobile.html.twig" %}<div class="navigation-filter">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 col-md-4 col-lg-4 col-xl-3 order-2 order-md-1"></div>
+			<div class="col-12 col-md-8 col-lg-8 col-xl-9 order-1 order-md-2">
+				<div class="row">
+					<div class="col-12 col-xl-8">
+						<div class="website-search">
+							<div class="row no-gutters">
+								<div class="col-0 col-md-0 col-lg-4 col-xl-4">
+									<div class="filter-search">
+										<div class="categories-select d-flex align-items-center justify-content-around">
+											<span>
+												All Categories
+											</span>
+											<i class="arrow_carrot-down"></i>
+										</div>
+										<div class="categories-select_box">
+											<ul>
+												{% for categorie in cat.getCategories %}
+													<li>
+														<a href=" {{path('product_category',{'id':categorie.id})}} ">
+															<i class="cate-name"></i>
+															{{ categorie.name }}</a>
+													</li>
+												{% endfor %}
+											</ul>
+										</div>
+									</div>
+								</div>
+								<form action="{{ path('search') }}" method="GET" class="row no-gutters">
+									<div class="col-12 col-md-12 col-lg-8 col-xl-8">
+										<div class="search-input">
+											<input class="no-round-input no-border" type="text" name="q" placeholder="What do you need" style="width: 100%;">
+										</div>
+									</div>
+									<div class="col-12 col-md-12 col-lg-4 col-xl-4 d-flex justify-content-end">
+										<button type="submit" class="no-round-btn black" style="width: 50px; height: 50px;">
+											<i class="icon_search"></i>
+										</button>
+									</div>
+								</form>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script>
-<script src="{{ asset('assets/js/jquery.countdown.min.js') }}" defer></script>
-<script src="{{ asset('assets/js/slick.min.js') }}" defer></script>
-<script src="{{ asset('assets/js/jquery.scrollUp.min.js') }} "defer></script>
-<script src="{{ asset('assets/js/jquery.zoom.min.js') }}"defer></script>
-<script src="assets/js/vanilla-tilt.min.js"></script>
-<script src="{{ asset('assets/js/main.js') }}" defer></script>
-
-
-<script>
-var input = document.querySelector("#inputPhone");
+							</div>
+						</div>
+					</div>
+					<div class="col-0 col-xl-4">
+						<div class="phone-number">
+							<div class="phone-number_icon">
+								<i class="icon_phone"></i>
+							</div>
+							<h2>
+								+216 58 58 83 43
+							</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div><!-- End header-->{% block container %}{% endblock %}<!-- End banner v2--><div class="home3-product-block"> {% block content %}{% endblock %}
+	<div class="newletter"></div>
+</br><hr><div class="partner">
+	<div class="container">
+		<div
+			class="partner_block d-flex justify-content-between" data-slick="{&quot;slidesToShow&quot;: 6}">
+			{# 	{% for product in products  %}
+																																																																																																																																																																																						<div class="partner--logo" href="">
+																																																																																																																																																																																							<a class="product-img" href="{{ path('product',{'id':product.id}) }}">
+																																																																																																																																																																																								<img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}">
+																																																																																																																																																																																							</a>
+																																																																																																																																																																																						</div>
+																																																																																																																																																																																					{% endfor %} #}
+			<div class="partner--logo" href="">
+				<a href="#">
+					<img src="{{ asset('assets/images/partner/a2.webp') }}" alt="partner" title="partner logo">
+				</a>
+			</div>
+			<div class="partner--logo" href="">
+				<a href="#">
+					<img src="{{ asset('assets/images/partner/a3.webp') }}" alt="partner" title="partner logo">
+				</a>
+			</div>
+			<div class="partner--logo" href="">
+				<a href="#">
+					<img src="{{ asset('assets/images/partner/a4.webp') }}" alt="partner" title="partner logo">
+				</a>
+			</div>
+			<div class="partner--logo" href="">
+				<a href="#">
+					<img src="{{ asset('assets/images/partner/a5.webp') }}" alt="partner" title="partner logo">
+				</a>
+			</div>
+			<div class="partner--logo" href="">
+				<a href="#">
+					<img src="{{ asset('assets/images/partner/a6.webp') }}" alt="partner" title="partner logo">
+				</a>
+			</div>
+			<div class="partner--logo" href="">
+				<a href="">
+					<img src="{{ asset('assets/images/partner/a7.webp') }}" alt="partner" title="partner logo">
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+<footer class="pink">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 col-sm-12 col-md-4 text-sm-center text-md-left">
+				<div class="footer-logo"></div>
+				<div class="footer-contact">
+					<p>
+						Address: Avenue habib bourguiba 1000 Tunis
+					</p>
+					<p>
+						Phone: +216 58 58 83 58
+					</p>
+					<p>
+						Email: info.deercreative@gmail.com
+					</p>
+				</div>
+				<div class="footer-social">
+					<a class="round-icon-btn pink" href="">
+						<i class="fab fa-facebook-f"></i>
+					</a>
+					<a class="round-icon-btn pink" href="">
+						<i class="fab fa-twitter"></i>
+					</a>
+					<a class="round-icon-btn pink" href="">
+						<i class="fab fa-invision"></i>
+					</a>
+					<a class="round-icon-btn pink" href="">
+						<i class="fab fa-pinterest-p"></i>
+					</a>
+				</div>
+			</div>
+			<div class="col-md-8">
+				<div class="row">
+					<div class="col-12 col-sm-4 text-sm-center text-md-left">
+						<div class="footer-quicklink">
+							<h5>
+								Infomation
+							</h5>
+							<a href="about_us.html">
+								About us
+							</a>
+							<a href="checkout.html">
+								Check out
+							</a>
+							<a href="contact.html">
+								Contact
+							</a>
+							<a href="about_us.html">
+								Service
+							</a>
+						</div>
+					</div>
+					<div class="col-12 col-sm-4 text-sm-center text-md-left">
+						<div class="footer-quicklink">
+							<h5>
+								My Account
+							</h5>
+							<a href="login.html">
+								My Account
+							</a>
+							<a href="contact.html">
+								Contact
+							</a>
+							<a href="shop_cart.html">
+								Shopping cart
+							</a>
+							<a href="shop_grid+list_3col.html">
+								Shop
+							</a>
+						</div>
+					</div>
+					<div class="col-12 col-sm-4 text-sm-center text-md-left">
+						<div class="footer-quicklink">
+							<h5>
+								Quick Shop
+							</h5>
+							<a href="about_us.html">
+								About us
+							</a>
+							<a href="checkout.html">
+								Check out
+							</a>
+							<a href="contact.html">
+								Contact
+							</a>
+							<a href="about_us.html">
+								Service
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="newletter">
+		<div class="container">
+			<div class="row justify-content-between align-items-center">
+				<div class="col-12 col-md-7">
+					<div class="newletter_text text-center text-md-left">
+						<h5>
+							Join Our Newsletter Now
+						</h5>
+						<p>
+							Get E-mail updates about our latest shop and special offers.
+						</p>
+					</div>
+				</div>
+				<div class="col-12 col-md-5">
+					<div class="newletter_input">
+						<input class="round-input" type="text" placeholder="Enter your email">
+						<button>
+							Subcribe
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer-credit">
+		<div class="container">
+			<div class="footer-creadit_block d-flex flex-column flex-md-row justify-content-start justify-content-md-between align-items-baseline align-items-md-center">
+				<p class="author">
+					Copyright © 2019 Ogami - All Rights Reserved.
+				</p>
+				<img class="payment-method" src="assets/images/payment.png" alt="">
+			</div>
+		</div>
+	</div>
+</footer></div></body></body></html></div><!-- End footer--><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script><script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script><script src="{{ asset('assets/js/jquery.countdown.min.js') }}" defer></script><script src="{{ asset('assets/js/slick.min.js') }}" defer></script><script src="{{ asset('assets/js/jquery.scrollUp.min.js') }} " defer></script><script src="{{ asset('assets/js/jquery.zoom.min.js') }}" defer></script><script src="assets/js/vanilla-tilt.min.js"></script><script src="{{ asset('assets/js/main.js') }}" defer></script><script>var input = document.querySelector("#inputPhone");
 window.intlTelInput(input, {
 // allowDropdown: false,
 // autoHideDialCode: false,

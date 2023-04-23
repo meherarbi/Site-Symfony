@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 
-
+{% block seo %}
+    {{ parent() }}
+{% endblock %}
 {% block title %}
 	{{ product.name }}
 {% endblock %}
@@ -135,7 +137,7 @@
 
 
 								<div class="product-select">
-									<a href="{{ path('cart_add_to_cart',{'id':product.id}) }}">
+									<a href="{{ path('cart_add_to_cart',{'slug':product.slug}) }}">
 										<button class="add-to-cart normal-btn outline">Add to Cart</button>
 									</a>
 
