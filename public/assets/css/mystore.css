@@ -168,14 +168,14 @@ P.login-box-msg {
 }
 
 .cart-quantity {
-	position: absolute;
-	background-color: red;
-	color: white;
-	border-radius: 50%;
-	font-size: 12px;
-	padding: 2px 6px;
-	margin-left: -12px;
-	margin-top: -10px;
+  position: absolute;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  font-size: 12px;
+  padding: 2px 6px;
+  margin-left: -12px;
+  margin-top: -10px;
 }
 
 .custom-container {
@@ -230,19 +230,12 @@ P.login-box-msg {
   color: white;
 }
 
-
-
-
-
-
 .department-dropdown-menu.show {
   display: block;
 }
 .department-dropdown-menu {
   display: none;
 }
-
-
 
 .categories-list {
   list-style: none;
@@ -270,9 +263,6 @@ P.login-box-msg {
   margin-right: 5px;
 }
 
-
-
-
 .menu-item {
   margin-right: 30px;
 }
@@ -288,9 +278,6 @@ P.login-box-msg {
   }
 }
 
-
-
-
 @media (max-width: 575.98px) {
   .search-input {
     width: 100%;
@@ -305,8 +292,6 @@ P.login-box-msg {
     margin: 2px;
   }
 }
-
-
 
 .products-item h5 {
   text-transform: uppercase;
@@ -329,14 +314,14 @@ P.login-box-msg {
 }
 
 .cart-quantity {
-	position: absolute;
-	background-color: red;
-	color: white;
-	border-radius: 50%;
-	font-size: 12px;
-	padding: 2px 6px;
-	margin-left: -12px;
-	margin-top: -10px;
+  position: absolute;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  font-size: 12px;
+  padding: 2px 6px;
+  margin-left: -12px;
+  margin-top: -10px;
 }
 
 .product-iamge {
@@ -364,7 +349,6 @@ P.login-box-msg {
   padding-top: 50%;
 }
 .order-summary {
-  
   padding: 20px;
   margin-top: 20px;
 }
@@ -386,6 +370,10 @@ div.col-md-4 {
 div.row.product-container {
   width: 100%;
   margin: 5px;
+  padding: 0%;
+}
+.rounded-lg {
+  border-radius: 1.3rem !important;
 }
 i.fas.fa-user {
   text-transform: capitalize;

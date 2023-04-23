@@ -43,7 +43,7 @@ class ProductController extends AbstractController
             $productrepository->findAll(),
             $request->query->getInt('page', 1),
             /*page number*/
-            8/*limit per page*/
+            10/*limit per page*/
         );
 
         return $this->render('product/index.html.twig', [
@@ -71,12 +71,12 @@ class ProductController extends AbstractController
     }
 
 /**
- * @Route("/products/{id}", name="product")
+ * @Route("/products/{slug}", name="product")
  */
-public function show($id, RecentlyViewedProductRepository $recentlyViewedProductRepository): Response
+public function show($slug): Response
 {
     $user = $this->getUser();
-    $product = $this->entityManager->getRepository(Product::class)->find($id);
+    $product = $this->entityManager->getRepository(Product::class)->findOneBy(['slug' => $slug]);
     
     if (!$product) {
         return $this->redirectToRoute('products');
@@ -98,6 +98,7 @@ public function show($id, RecentlyViewedProductRepository $recentlyViewedProduct
         'product' => $product,
     ]);
 }
+
 
 
 /**

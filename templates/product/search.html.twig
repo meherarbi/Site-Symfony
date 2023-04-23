@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
-
+{% block seo %}
+    {{ parent() }}
+{% endblock %}
 {% block title %}Résultats de la recherche
 {% endblock %}
 
@@ -12,7 +14,7 @@
 			{% for product in products  %}
 				<div class="col-6 col-md-3">
 					<div class="product pink">
-						<a class="product-img" href="{{ path('product',{'id': product.id}) }}"><img src="/uploads/{{ product.illustration ?? 'default.jpg' }}" alt="{{ product.name }}"></a>
+						<a class="product-img" href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration ?? 'default.jpg' }}" alt="{{ product.name }}"></a>
 						<h5 class="product-type">{{product.category.name}}</h5>
 						{% if product.name|length > 10 %}
 							<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>

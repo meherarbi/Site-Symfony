@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Product;
+use App\Repository\ProductRepository;
 use App\Service\Cart;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -70,27 +71,32 @@ private function updateProductCount(SessionInterface $session): void
 
 
     /**
-     * @Route("/cart/add/{id}", name="add_to_cart")
-     */
-    public function add(Cart $cart, Request $request, $id, SessionInterface $session)
-    {
+ * @Route("/cart/add/{slug}", name="add_to_cart")
+ */
+public function add(Cart $cart, Request $request, ProductRepository $productRepository, $slug, SessionInterface $session)
+{
+    $product = $productRepository->findOneBy(['slug' => $slug]);
 
-        $cart->add($id);
-
-        // Récupérez le panier de la session
-        $cart = $session->get('cart', []);
-
-        // Mettez à jour la quantité de produits différents dans la session
-        $uniqueProductsCount = count($cart);
-        $session->set('uniqueProductsCount', $uniqueProductsCount);
-
-        // Mettez à jour la quantité de produits différents dans la session
-        $this->updateProductCount($session, 1);
-
-        $response = $this->redirectToRoute('cart_index');
-        $this->setNoCacheHeaders($response);
-        return $response;
+    if (!$product) {
+        throw $this->createNotFoundException('The product does not exist');
     }
+
+    $cart->add($product->getId());
+
+    // Récupérez le panier de la session
+    $cart = $session->get('cart', []);
+
+    // Mettez à jour la quantité de produits différents dans la session
+    $uniqueProductsCount = count($cart);
+    $session->set('uniqueProductsCount', $uniqueProductsCount);
+
+    // Mettez à jour la quantité de produits différents dans la session
+    $this->updateProductCount($session, 1);
+
+    $response = $this->redirectToRoute('cart_index');
+    $this->setNoCacheHeaders($response);
+    return $response;
+}
 
     /**
      * @Route("/cart/remove", name="remove_my_cart")
@@ -113,7 +119,7 @@ private function updateProductCount(SessionInterface $session): void
         return $response;
     }
 
-    /**
+/**
      * @Route("/cart/delete/{id}", name="delete_my_cart")
      */
     public function delete(Cart $cart, $id,SessionInterface $session)
@@ -126,12 +132,19 @@ private function updateProductCount(SessionInterface $session): void
         return $this->redirectToRoute('cart_index');
     }
 
+
+
     /**
-     * @Route("/cart/decrease/{id}", name="decrease_my_cart")
+     * @Route("/cart/decrease/{slug}", name="decrease_my_cart")
      */
-    public function decrease(Cart $cart, $id)
+    public function decrease(Cart $cart, $slug,ProductRepository $productRepository)
     {
-        $cart->decrease($id);
+        $product = $productRepository->findOneBy(['slug' => $slug]);
+
+        if (!$product) {
+            throw $this->createNotFoundException('The product does not exist');
+        }
+        $cart->decrease($product->getId());
 
         return $this->redirectToRoute('cart_index');
     }
