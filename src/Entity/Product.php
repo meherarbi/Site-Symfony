@@ -99,6 +99,21 @@ class Product
      */
     private $descriptionImage;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isDeal;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isOnSale;
+
+    /**
+     * @ORM\Column(type="datetime_immutable", nullable=true)
+     */
+    private $createdAt;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -349,6 +364,42 @@ return $this;
     public function setDescriptionImage(?string $descriptionImage): self
     {
         $this->descriptionImage = $descriptionImage;
+
+        return $this;
+    }
+
+    public function getIsDeal(): ?bool
+    {
+        return $this->isDeal;
+    }
+
+    public function setIsDeal(?bool $isDeal): self
+    {
+        $this->isDeal = $isDeal;
+
+        return $this;
+    }
+
+    public function getIsOnSale(): ?bool
+    {
+        return $this->isOnSale;
+    }
+
+    public function setIsOnSale(?bool $isOnSale): self
+    {
+        $this->isOnSale = $isOnSale;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(?\DateTimeImmutable $createdAt): self
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }

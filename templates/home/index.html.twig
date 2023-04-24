@@ -145,105 +145,49 @@
 										<div class="week-deal_control"></div>
 									</div>
 									<div class="week-deal_bottom">
-										<div class="deal-block">
-											<div class="deal-block_detail">
-												<h5 class="deal-discount">-34</h5>
-												<div class="deal-img">
-													<a href="#"><img src="assets/images/product/re.webp" alt="product image"></a>
+
+										{% for product in products %}
+											{%  if product.isDeal is defined and product.isDeal == true %}
+												<div class="deal-block">
+													<div class="deal-block_detail">
+														<h5 class="deal-discount">-34</h5>
+
+														<div class="deal-img">
+															<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img"></a>
+														</div>
+														<div class="deal-countdown">
+															<div class="event-countdown" id="event-countdown"></div>
+														</div>
+														<div class="deal-info text-center">
+															<h5 class="color-type pink deal-type">{{product.category.name}}</h5>
+															{% if product.name|length > 10 %}
+																<a class="deal-name" href="{{ path('product',{'slug':product.slug}) }}">{{ product.name|slice(0, 10) }}...</a>
+															{% else %}
+																<a class="deal-name" href="{{ path('product',{'slug':product.slug}) }}">{{ product.name }}</a>
+															{% endif %}
+															<h3 class="deal-price">{{ (product.price/100)|number_format(2) }}
+																<del>{{(product.oldPrice/100)|number_format(2)}}
+																</del>
+															</h3>
+														</div>
+														<div class="deal-select text-center">
+															<button class="add-to-wishlist round-icon-btn pink">
+																<i class="icon_heart_alt"></i>
+															</button>
+															<button class="add-to-cart round-icon-btn pink pink">
+																<i class="icon_bag_alt"></i>
+															</button>
+															<button class="add-to-compare round-icon-btn pink">
+																<i class="fas fa-random"></i>
+															</button>
+															<button class="quickview round-icon-btn pink">
+																<i class="far fa-eye"></i>
+															</button>
+														</div>
+													</div>
 												</div>
-												<div class="deal-countdown">
-													<div class="event-countdown" id="event-countdown"></div>
-												</div>
-												<div class="deal-info text-center">
-													<h5 class="color-type pink deal-type">Oranges</h5>
-													<a class="deal-name" href="shop_detail.html">Pure Pinapple</a>
-													<h3 class="deal-price">$14.00
-														<del>$35.00
-														</del>
-													</h3>
-												</div>
-												<div class="deal-select text-center">
-													<button class="add-to-wishlist round-icon-btn pink">
-														<i class="icon_heart_alt"></i>
-													</button>
-													<button class="add-to-cart round-icon-btn pink pink">
-														<i class="icon_bag_alt"></i>
-													</button>
-													<button class="add-to-compare round-icon-btn pink">
-														<i class="fas fa-random"></i>
-													</button>
-													<button class="quickview round-icon-btn pink">
-														<i class="far fa-eye"></i>
-													</button>
-												</div>
-											</div>
-										</div>
-										<div class="deal-block">
-											<div class="deal-block_detail">
-												<h5 class="deal-discount">-34</h5>
-												<div class="deal-img">
-													<a href="shop_detail.html"><img src="assets/images/product/q.webp" alt="product image"></a>
-												</div>
-												<div class="deal-countdown">
-													<div class="event-countdown" id="event-countdown-2"></div>
-												</div>
-												<div class="deal-info text-center">
-													<h5 class="color-type pink deal-type">Oranges</h5>
-													<a class="deal-name" href="shop_detail.html">Pure Pinapple</a>
-													<h3 class="deal-price">$14.00
-														<del>$35.00
-														</del>
-													</h3>
-												</div>
-												<div class="deal-select text-center">
-													<button class="add-to-wishlist round-icon-btn pink">
-														<i class="icon_heart_alt"></i>
-													</button>
-													<button class="add-to-cart round-icon-btn pink pink">
-														<i class="icon_bag_alt"></i>
-													</button>
-													<button class="add-to-compare round-icon-btn pink">
-														<i class="fas fa-random"></i>
-													</button>
-													<button class="quickview round-icon-btn pink">
-														<i class="far fa-eye"></i>
-													</button>
-												</div>
-											</div>
-										</div>
-										<div class="deal-block">
-											<div class="deal-block_detail">
-												<h5 class="deal-discount">-34</h5>
-												<div class="deal-img">
-													<a href="shop_detail.html"><img src="assets/images/product/z.webp" alt="product image"></a>
-												</div>
-												<div class="deal-countdown">
-													<div class="event-countdown" id="event-countdown-3"></div>
-												</div>
-												<div class="deal-info text-center">
-													<h5 class="color-type pink deal-type">Oranges</h5>
-													<a class="deal-name" href="shop_detail.html">Pure Pinapple</a>
-													<h3 class="deal-price">$14.00
-														<del>$35.00
-														</del>
-													</h3>
-												</div>
-												<div class="deal-select text-center">
-													<button class="add-to-wishlist round-icon-btn pink">
-														<i class="icon_heart_alt"></i>
-													</button>
-													<button class="add-to-cart round-icon-btn pink pink">
-														<i class="icon_bag_alt"></i>
-													</button>
-													<button class="add-to-compare round-icon-btn pink">
-														<i class="fas fa-random"></i>
-													</button>
-													<button class="quickview round-icon-btn pink">
-														<i class="far fa-eye"></i>
-													</button>
-												</div>
-											</div>
-										</div>
+											{% endif %}
+										{% endfor  %}
 
 									</div>
 								</div>
@@ -294,58 +238,27 @@
 									</div>
 									<div class="sale-product_bottom">
 										<div class="row">
-											<div class="col-12">
-												<div class="mini-product column">
-													<div class="mini-product_img">
-														<a href="shop_detail.html"><img src="assets/images/product/q4.webp" alt=""></a>
+											{% for product in products %}
+												{%  if product.isOnSale is defined and product.isOnSale == true %}
+													<div class="col-12">
+														<div class="mini-product column">
+															<div class="mini-product_img">
+																<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img"></a>
+															</div>
+															<div class="mini-product_info">
+																{% if product.name|length > 10 %}
+																	<a href="shop_detail.html">{{ product.name|slice(0, 10) }}...</a>
+																{% else %}
+																	<a href="shop_detail.html">{{ product.name}}</a>
+																{% endif %}
+																<p>{{ (product.price/100)|number_format(2) }}
+																	<del>{{(product.oldPrice/100)|number_format(2)}}</del>
+																</p>
+															</div>
+														</div>
 													</div>
-													<div class="mini-product_info">
-														<a href="shop_detail.html">Coffret</a>
-														<p>$37.00
-															<del>$45.00</del>
-														</p>
-													</div>
-												</div>
-											</div>
-											<div class="col-12">
-												<div class="mini-product column">
-													<div class="mini-product_img">
-														<a href="shop_detail.html"><img src="assets/images/product/q5.webp" alt=""></a>
-													</div>
-													<div class="mini-product_info">
-														<a href="shop_detail.html">Ecouteur</a>
-														<p>$17.00
-															<del>$25.00</del>
-														</p>
-													</div>
-												</div>
-											</div>
-											<div class="col-12">
-												<div class="mini-product column">
-													<div class="mini-product_img">
-														<a href="shop_detail.html"><img src="assets/images/product/q6.webp" alt=""></a>
-													</div>
-													<div class="mini-product_info">
-														<a href="shop_detail.html">Robe</a>
-														<p>$35.00
-															<del>$55.00</del>
-														</p>
-													</div>
-												</div>
-											</div>
-											<div class="col-12">
-												<div class="mini-product column">
-													<div class="mini-product_img">
-														<a href="shop_detail.html"><img src="assets/images/product/re.webp" alt=""></a>
-													</div>
-													<div class="mini-product_info">
-														<a href="shop_detail.html">Montre chro</a>
-														<p>$137.00
-															<del>$145.00</del>
-														</p>
-													</div>
-												</div>
-											</div>
+												{% endif %}
+											{% endfor %}
 										</div>
 									</div>
 								</div>
@@ -514,8 +427,8 @@
 													</h3>
 												</div>
 												<p>Lorem ipsum 
-																									
-																							 sit amet, consectetur oce omnis iste natus error sit
+																																																																
+																																																														 sit amet, consectetur oce omnis iste natus error sit
 												</p>
 												<a class="normal-btn pink" href="{{ path('products')}}">Shop now</a>
 											</div>
@@ -530,17 +443,17 @@
 											</div>
 											<div
 												class="col-12 col-md-8 text-lg-right">{# 	<ul class="tab-control text-md-right">
-																																																																<li>
-																																																																	<a class="active" href="#tab0">All</a>
-																																																																</li>
-																																																																{% for category in categorie %}
-																																																																	<li>
-																																																																		<a href="#tab{{ loop.index }}">
-																																																																			{{ category.name }}
-																																																																		</a>
-																																																																	</li>
-																																																																{% endfor %}
-																																																															</ul> #}
+																																																																																																							<li>
+																																																																																																								<a class="active" href="#tab0">All</a>
+																																																																																																							</li>
+																																																																																																							{% for category in categorie %}
+																																																																																																								<li>
+																																																																																																									<a href="#tab{{ loop.index }}">
+																																																																																																										{{ category.name }}
+																																																																																																									</a>
+																																																																																																								</li>
+																																																																																																							{% endfor %}
+																																																																																																						</ul> #}
 											</div>
 										</div>
 									</div>
@@ -580,54 +493,54 @@
 											</div>
 										</div>
 										{# {% for category in categorie %}
-																																																		{% set has_promotion = false %}
-																																																		{% for product in category.products %}
-																																																			{% if product.onpromotion %}
-																																																			{% set has_promotion = true %}
-																																																			{% endif %}
-																																																		{% endfor %}
-																																																		{% if has_promotion %}
-																																																		<div id="tab{{ loop.index }}">
-																																																			<div class="row no-gutters-sm">
-																																																				{% for product in category.products %}
-																																								  													{% if product.onpromotion %}
-																																																					 {% set has_promotion = true %}	 								
-																																																					<div class="col-6 col-md-4">
-																																																						<div class="product pink rounded rounded-lg rounded-xl border ">
-																																																							<a class="product-img" href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}"></a>
-																																																							<h5 class="product-type">{{product.category.name}}</h5>
-																																																							{% if product.name|length > 10 %}
-																																																								<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
-																																																							{% else %}
-																																																								<h3 class="product-name">{{ product.name }}</h3>
-																																																							{% endif %}
-																																																							<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
-																																																								<del>{{(product.oldPrice/100)|number_format(2)}}</del>
-																																																							</h3>
-																																																							<div class="product-select">
-																																																								<button class="add-to-wishlist round-icon-btn pink">
-																																																									<i class="icon_heart_alt"></i>
-																																																								</button>
-																																																								<button class="add-to-cart round-icon-btn pink">
-																																																									<i class="icon_bag_alt"></i>
-																																																								</button>
-																																																								<button class="add-to-compare round-icon-btn pink">
-																																																									<i class="fas fa-random"></i>
-																																																								</button>
-																																																								<button class="quickview round-icon-btn pink">
-																																																									<i class="far fa-eye"></i>
-																																																								</button>
-																																																							</div>
-																																																						</div>
-																																																					</div>
-																																																					{% endif %}
-																																															
-																																																				{% endfor %}
-																																																			</div>
-																																																		</div>
-																																																		 {% endif %}
-																																																	{% endfor %}
-																																								                                                 #}
+																																																																																{% set has_promotion = false %}
+																																																																																{% for product in category.products %}
+																																																																																	{% if product.onpromotion %}
+																																																																																	{% set has_promotion = true %}
+																																																																																	{% endif %}
+																																																																																{% endfor %}
+																																																																																{% if has_promotion %}
+																																																																																<div id="tab{{ loop.index }}">
+																																																																																	<div class="row no-gutters-sm">
+																																																																																		{% for product in category.products %}
+																																																																						  													{% if product.onpromotion %}
+																																																																																			 {% set has_promotion = true %}	 								
+																																																																																			<div class="col-6 col-md-4">
+																																																																																				<div class="product pink rounded rounded-lg rounded-xl border ">
+																																																																																					<a class="product-img" href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}"></a>
+																																																																																					<h5 class="product-type">{{product.category.name}}</h5>
+																																																																																					{% if product.name|length > 10 %}
+																																																																																						<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
+																																																																																					{% else %}
+																																																																																						<h3 class="product-name">{{ product.name }}</h3>
+																																																																																					{% endif %}
+																																																																																					<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
+																																																																																						<del>{{(product.oldPrice/100)|number_format(2)}}</del>
+																																																																																					</h3>
+																																																																																					<div class="product-select">
+																																																																																						<button class="add-to-wishlist round-icon-btn pink">
+																																																																																							<i class="icon_heart_alt"></i>
+																																																																																						</button>
+																																																																																						<button class="add-to-cart round-icon-btn pink">
+																																																																																							<i class="icon_bag_alt"></i>
+																																																																																						</button>
+																																																																																						<button class="add-to-compare round-icon-btn pink">
+																																																																																							<i class="fas fa-random"></i>
+																																																																																						</button>
+																																																																																						<button class="quickview round-icon-btn pink">
+																																																																																							<i class="far fa-eye"></i>
+																																																																																						</button>
+																																																																																					</div>
+																																																																																				</div>
+																																																																																			</div>
+																																																																																			{% endif %}
+																																																																													
+																																																																																		{% endfor %}
+																																																																																	</div>
+																																																																																</div>
+																																																																																 {% endif %}
+																																																																															{% endfor %}
+																																																																						                                                 #}
 									</div>
 								</div>
 								<div id="tab-so2">
@@ -740,7 +653,7 @@
 														<h3 class="sale">Sale Off
 															<span>60%</span>
 														</h3>
-														<a class="normal-btn pink" href="shop_grid+list_3col.html">Shop now</a>
+														<a class="normal-btn pink" href="{{ path('products')}}">Shop now</a>
 													</div>
 												</div>
 											</div>
@@ -758,7 +671,7 @@
 														<h3 class="sale">Sale Off
 															<span>50%</span>
 														</h3>
-														<a class="normal-btn pink" href="shop_grid+list_3col.html">Shop now</a>
+														<a class="normal-btn pink" href="{{ path('products')}}">Shop now</a>
 													</div>
 												</div>
 											</div>
@@ -797,11 +710,11 @@
 			<a href=""><img src="{{ asset('assets/images/partner/a7.webp') }}" alt="partner" title="partner logo"></a>
 		</div>
 	</div>
-</div></div><!-- End partner-->
-<footer class="pink">
+</div></div><!-- End partner--><footer class="pink">
 <div class="container">
 	<div class="row">
-		<div class="col-12 col-sm-12 col-md-4 text-sm-center text-md-left">
+		<div
+			class="col-12 col-sm-12 col-md-4 text-sm-center text-md-left">
 			{# <div class="footer-logo"><img src="assets/images/logo.png" alt="foryoumer Tunisie"></div> #}
 			<div class="footer-contact">
 				<p>Address: 20 avenue habib bourguiba Tunis</p>
