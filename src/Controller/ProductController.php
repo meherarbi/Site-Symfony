@@ -39,6 +39,7 @@ class ProductController extends AbstractController
      */
     public function index(PaginatorInterface $paginator, Request $request, ProductRepository $productrepository)
     {
+        $user = $this->getUser();
         $products = $paginator->paginate(
             $productrepository->findAll(),
             $request->query->getInt('page', 1),
@@ -48,6 +49,7 @@ class ProductController extends AbstractController
 
         return $this->render('product/index.html.twig', [
             'products' => $products,
+            'user'=>$user 
 
         ]);
     }

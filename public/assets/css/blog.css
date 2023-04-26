@@ -1,0 +1,321 @@
+/* Style général de l'article */
+.article {
+  max-width: 100%;
+  margin: 10 auto;
+  padding: 55px;
+  font-family: Arial, sans-serif;
+}
+
+/* Style du titre */
+.article-title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Style des informations de l'article */
+.article-meta {
+  font-size: 14px;
+  color: #999;
+  margin-bottom: 20px;
+}
+
+/* Style du texte d'introduction */
+.article-intro {
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 30px;
+}
+
+/* Style des titres de section */
+.article-section-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+/* Style du contenu des sections */
+.article-section-content {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 30px;
+}
+
+/* Style de la liste à puces */
+.article-list {
+  list-style: none;
+  margin-left: 0;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+/* Style des éléments de la liste à puces */
+.article-list-item {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+/* Style des citations */
+.article-quote {
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1.5;
+  margin-top: 40px;
+  margin-bottom: 30px;
+  border-left: 3px solid #999;
+  padding-left: 20px;
+}
+
+/* Style des sources des citations */
+.article-quote cite {
+  display: block;
+  font-size: 14px;
+  font-style: normal;
+  color: #999;
+  margin-top: 10px;
+}
+
+.article-footer {
+  border-top: 1px solid #ccc;
+  padding: 20px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.article-footer p {
+  margin-bottom: 10px;
+}
+
+.article-footer strong {
+  font-weight: bold;
+}
+
+.article-tags {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.article-tag {
+  margin-right: 10px;
+  padding: 5px 10px;
+  background-color: #eee;
+  border-radius: 5px;
+}
+/** About */
+
+/* Stylisation du body et des titres */
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2 {
+  font-size: 32px;
+  margin: 0;
+  padding: 0;
+}
+
+/* Stylisation de la bannière */
+#banner {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+#banner img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Stylisation de la section About */
+#about {
+  margin: 40px 0;
+  padding: 0 150px;
+}
+
+#about p {
+  margin: 20px 0;
+  text-align: justify;
+}
+
+#banner img {
+  margin-right: 100px;
+}
+
+/**Service */
+
+#services {
+    background-color: #f6f6f6;
+    padding: 50px 0;
+}
+
+.services-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.service {
+    width: 300px;
+    margin: 30px;
+    text-align: center;
+}
+
+.service i {
+    font-size: 48px;
+    color: #7d7d7d;
+    margin-bottom: 20px;
+}
+
+.service h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.service p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Style pour le titre */
+h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    margin: 4%;
+  }
+  
+  /* Style pour le formulaire */
+  form {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+  
+  form input,
+  form textarea {
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+  
+  form textarea {
+    height: 150px;
+  }
+  
+  form button {
+    display: block;
+    background-color: #0899e7;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  @media screen and (max-width: 480px) {
+    /* Augmenter la marge autour des éléments cliquables */
+    a, button {
+    margin: 10px;
+    }
+    
+    /* Configurer la fenêtre d'affichage */
+    meta[name="viewport"] {
+    width: device-width;
+    initial-scale: 1;
+    }
+    
+    /* Augmenter la taille de police */
+    body {
+    font-size: 16px;
+    }
+    
+    /* Rendre le contenu plus flexible */
+    #header, #about {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    }
+    }
+    
+    #header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #banner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #banner img {
+      width: 100%;
+      max-width: 120px;
+      height: auto;
+    }
+
+    #banner h1 {
+      font-size: 24px;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    @media(min-width: 768px) {
+      #header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      #banner {
+        flex-direction: row;
+        align-items: center;
+      }
+
+      #banner img {
+        max-width: none;
+        margin-right: 20px;
+      }
+
+      #banner h1 {
+        font-size: 36px;
+        text-align: left;
+        margin-top: 0;
+      }
+    }
+    
+    
+
+    
+ 
+    
+    
+    
+    
+    
+    

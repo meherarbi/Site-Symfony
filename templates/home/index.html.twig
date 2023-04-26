@@ -4,9 +4,12 @@
 		<title>Vente en ligne en Tunisie
 		</title>
 		<meta charset="UTF-8">
+		<meta name="google-site-verification" content="NcMDVxMcuILOFYdEdjV4rnQ7xngn52ddBq0nkzkG1ZA"/>
 		<meta name="viewport" content="Découvrez notre large sélection de produits en ligne en Tunisie. Commandez en toute sécurité et profitez de la livraison rapide. Trouvez tout ce dont vous avez besoin, des vêtements aux produits électroniques, en passant par les articles de maison et les produits de beauté. Faites vos achats en ligne dès maintenant sur notre site de vente en ligne de confiance en Tunisie">
-		<meta name="keywords" content="vente en ligne , vente de produits en Tunisie, livraison en Tunisie, livraison rapide, site commerce en ligne, montres en Tunisie ,vente produits de beauté en Tunisie, Vente vetements Homme en Tunisie">
+		<meta name="keywords" content="vente en ligne chez foryoumer.com, vente de produits en Tunisie, livraison en Tunisie, livraison rapide, site commerce en ligne, montres en Tunisie ,vente produits de beauté en Tunisie, Vente vetements Homme en Tunisie">
 		<meta name="author" content="MARTECH | Deer Creative Theme">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 		<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 		<link rel="stylesheet" href="{{ asset('assets/css/custom_bootstrap.css') }}">
 		<link rel="stylesheet" href="{{ asset('assets/css/normalize.css') }}">
@@ -20,14 +23,10 @@
 		<link rel="shortcut icon" href="{{ asset('assets/images/shortcut_logo.png') }}">
 		<link rel="stylesheet" href="{{ asset('assets/css/mystore.css') }}">
 		<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
-		<meta name="google-site-verification" content="NcMDVxMcuILOFYdEdjV4rnQ7xngn52ddBq0nkzkG1ZA"/> {% block seo %}{% endblock %}
+		{% set hostname = app.request.host %}
+		<meta http-equiv="Content-Security-Policy" content="default-src 'none'; font-src 'self'; img-src 'self' ; connect-src 'self' ; script-src 'self' 'unsafe-inline' https://code.jquery.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net ;  style-src 'self' "> {% block seo %}{% endblock %}
 		</head>
 		<body>
-			<style>
-				body {
-					background-color: gray;
-				}
-			</style>
 			<div id="main">
 
 				<header class="pink">
@@ -153,7 +152,7 @@
 														<h5 class="deal-discount">-34</h5>
 
 														<div class="deal-img">
-															<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img"></a>
+															<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }} foryoumer.com " class="product-img"></a>
 														</div>
 														<div class="deal-countdown">
 															<div class="event-countdown" id="event-countdown"></div>
@@ -198,7 +197,7 @@
 												<div class="col-12 col-md-6 col-xl-12">
 													<div class="benefit-detail d-flex flex-row align-items-center"><img class="benefit-img" src="assets/images/homepage02/benefit-icon1.png" alt="">
 														<div class="benefit-detail_info">
-															<h5 class="benefit-title">Free Shipping</h5>
+															<h5 class="benefit-title">Free Shipping with Foryoumer.com</h5>
 															<p class="benefit-describle">For all order over 99$</p>
 														</div>
 													</div>
@@ -214,7 +213,7 @@
 												<div class="col-12 col-md-6 col-xl-12">
 													<div class="benefit-detail d-flex flex-row align-items-center"><img class="benefit-img" src="assets/images/homepage02/benefit-icon3.png" alt="">
 														<div class="benefit-detail_info">
-															<h5 class="benefit-title">Secure Payment</h5>
+															<h5 class="benefit-title">Secure Payment with Foryoumer.com</h5>
 															<p class="benefit-describle">100% secure payment</p>
 														</div>
 													</div>
@@ -243,7 +242,7 @@
 													<div class="col-12">
 														<div class="mini-product column">
 															<div class="mini-product_img">
-																<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img"></a>
+																<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }} foryoumer.com " class="product-img"></a>
 															</div>
 															<div class="mini-product_info">
 																{% if product.name|length > 10 %}
@@ -269,7 +268,7 @@
 												<div class="customer-img mx-auto"><img src="assets/images/homepage03/ac.png" alt="customer"></div>
 												<div class="customer-info">
 													<h5 class="customer-name">Steven Ady</h5>
-													<p class="customer-comment">Lorem ipsum dolor sit amet consectetur adipisicing elit, sed do accusantium
+													<p class="customer-comment">J'ai récemment acheté un produit sur foryoumer.com et j'ai été très satisfait de mon expérience. La livraison a été rapide et le produit était exactement ce que j'attendais.
 													</p>
 													<div class="customer-rate">
 														<i class="icon_star"></i>
@@ -283,8 +282,8 @@
 											<div class="customer-satisfied_block">
 												<div class="customer-img mx-auto"><img src="assets/images/homepage03/avatar.png" alt="customer"></div>
 												<div class="customer-info">
-													<h5 class="customer-name">Steven Ady</h5>
-													<p class="customer-comment">Lorem ipsum dolor sit amet consectetur adipisicing elit, sed do accusantium
+													<h5 class="customer-name">Eric Sitma</h5>
+													<p class="customer-comment">J'ai eu un petit problème avec ma commande, mais le service client de foryoumer.com a été très rapide et efficace pour le résoudre. Je suis très impressionnée par leur professionnalisme.
 													</p>
 													<div class="customer-rate">
 														<i class="icon_star"></i>
@@ -296,10 +295,10 @@
 												</div>
 											</div>
 											<div class="customer-satisfied_block">
-												<div class="customer-img mx-auto"><img src="assets/images/homepage03/ac.png" alt="customer"></div>
+												<div class="customer-img mx-auto"><img src="assets/images/homepage03/edward.jpg" alt="customer"></div>
 												<div class="customer-info">
-													<h5 class="customer-name">Steven Ady</h5>
-													<p class="customer-comment">Lorem ipsum dolor sit amet consectetur adipisicing elit, sed do accusantium
+													<h5 class="customer-name">Anaïs Doe</h5>
+													<p class="customer-comment">Je suis très satisfait de mes achats chez foryoumer.com. Les produits sont de haute qualité et la livraison est toujours rapide et efficace. J'ai également été impressionné par le service clientèle, qui a été très réactif et utile lorsque j'ai eu des questions. Je recommande fortement ce site à tous ceux qui cherchent des produits de qualité avec un excellent service.
 													</p>
 													<div class="customer-rate">
 														<i class="icon_star"></i>
@@ -346,7 +345,7 @@
 
 													<div class="col-6 col-md-4">
 														<div class="product pink rounded rounded-lg rounded-xl border">
-															<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
+															<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }} produit foryoumer.com produit " class="product-img" height="90px"></a>
 															<h5 class="product-type">{{product.category.name}}</h5>
 															{% if product.name|length > 10 %}
 																<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
@@ -381,7 +380,7 @@
 													{% for product in category.products %}
 														<div class="col-6 col-md-4">
 															<div class="product pink rounded rounded-lg rounded-xl border ">
-																<a class="product-img" href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}"></a>
+																<a class="product-img" href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }} produit foryoumer.com produit "></a>
 																<h5 class="product-type">{{product.category.name}}</h5>
 																{% if product.name|length > 10 %}
 																	<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
@@ -416,7 +415,7 @@
 								<div class="quick-banner">
 									<div class="row justify-content-center align-items-center flex-column flex-md-row">
 										<div class="col-12 col-md-5">
-											<div class="bannner-img text-center"><img class="img-fluid" src="assets/images/homepage03/sa.jpg" alt=""></div>
+											<div class="bannner-img text-center"><img class="img-fluid" src="assets/images/homepage03/foryoumer.jpg" alt=""></div>
 										</div>
 										<div class="col-10 col-md-5">
 											<div class="banner-text text-center text-md-left">
@@ -426,9 +425,8 @@
 														<span>Friday</span>
 													</h3>
 												</div>
-												<p>Lorem ipsum 
-																																																																
-																																																														 sit amet, consectetur oce omnis iste natus error sit
+												<p>
+													Profitez de nos offres exceptionnelles pour le Black Friday sur foryoumer.com ! Jusqu'à 50% de réduction sur une large sélection de produits. Ne manquez pas cette occasion de faire des économies tout en profitant de la meilleure qualité. Venez découvrir notre univers de beauté marine et laissez-vous transporter par nos produits innovants. Faites de votre peau votre plus bel atout avec foryoumer.com !
 												</p>
 												<a class="normal-btn pink" href="{{ path('products')}}">Shop now</a>
 											</div>
@@ -441,20 +439,7 @@
 											<div class="col-12 col-md-4">
 												<h2 class="title">Deal of the day</h2>
 											</div>
-											<div
-												class="col-12 col-md-8 text-lg-right">{# 	<ul class="tab-control text-md-right">
-																																																																																																							<li>
-																																																																																																								<a class="active" href="#tab0">All</a>
-																																																																																																							</li>
-																																																																																																							{% for category in categorie %}
-																																																																																																								<li>
-																																																																																																									<a href="#tab{{ loop.index }}">
-																																																																																																										{{ category.name }}
-																																																																																																									</a>
-																																																																																																								</li>
-																																																																																																							{% endfor %}
-																																																																																																						</ul> #}
-											</div>
+											<div class="col-12 col-md-8 text-lg-right"></div>
 										</div>
 									</div>
 									<div class="best-seller_bottom">
@@ -463,7 +448,7 @@
 												{% for product in promoted_products|slice(0, 6) %}
 													<div class="col-6 col-md-4">
 														<div class="product pink rounded rounded-lg rounded-xl border ">
-															<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
+															<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }} produit foryoumer.com produit " class="product-img" height="90px"></a>
 															<h5 class="product-type">{{product.category.name}}</h5>
 															{% if product.name|length > 10 %}
 																<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
@@ -491,56 +476,7 @@
 													</div>
 												{% endfor %}
 											</div>
-										</div>
-										{# {% for category in categorie %}
-																																																																																{% set has_promotion = false %}
-																																																																																{% for product in category.products %}
-																																																																																	{% if product.onpromotion %}
-																																																																																	{% set has_promotion = true %}
-																																																																																	{% endif %}
-																																																																																{% endfor %}
-																																																																																{% if has_promotion %}
-																																																																																<div id="tab{{ loop.index }}">
-																																																																																	<div class="row no-gutters-sm">
-																																																																																		{% for product in category.products %}
-																																																																						  													{% if product.onpromotion %}
-																																																																																			 {% set has_promotion = true %}	 								
-																																																																																			<div class="col-6 col-md-4">
-																																																																																				<div class="product pink rounded rounded-lg rounded-xl border ">
-																																																																																					<a class="product-img" href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}"></a>
-																																																																																					<h5 class="product-type">{{product.category.name}}</h5>
-																																																																																					{% if product.name|length > 10 %}
-																																																																																						<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
-																																																																																					{% else %}
-																																																																																						<h3 class="product-name">{{ product.name }}</h3>
-																																																																																					{% endif %}
-																																																																																					<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
-																																																																																						<del>{{(product.oldPrice/100)|number_format(2)}}</del>
-																																																																																					</h3>
-																																																																																					<div class="product-select">
-																																																																																						<button class="add-to-wishlist round-icon-btn pink">
-																																																																																							<i class="icon_heart_alt"></i>
-																																																																																						</button>
-																																																																																						<button class="add-to-cart round-icon-btn pink">
-																																																																																							<i class="icon_bag_alt"></i>
-																																																																																						</button>
-																																																																																						<button class="add-to-compare round-icon-btn pink">
-																																																																																							<i class="fas fa-random"></i>
-																																																																																						</button>
-																																																																																						<button class="quickview round-icon-btn pink">
-																																																																																							<i class="far fa-eye"></i>
-																																																																																						</button>
-																																																																																					</div>
-																																																																																				</div>
-																																																																																			</div>
-																																																																																			{% endif %}
-																																																																													
-																																																																																		{% endfor %}
-																																																																																	</div>
-																																																																																</div>
-																																																																																 {% endif %}
-																																																																															{% endfor %}
-																																																																						                                                 #}
+										</div>																																																																																							                                                 #}
 									</div>
 								</div>
 								<div id="tab-so2">
@@ -571,7 +507,7 @@
 												{% for product in products|slice(0, 3) %}
 													<div class="col-6 col-md-4">
 														<div class="product pink rounded rounded-lg rounded-xl border ">
-															<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="product-img" height="90px"></a>
+															<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }} produit foryoumer.com produit " class="product-img" height="90px"></a>
 															<h5 class="product-type">{{product.category.name}}</h5>
 															{% if product.name|length > 10 %}
 																<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
@@ -606,7 +542,7 @@
 													{% for product in category.products|slice(0, 3) %}
 														<div class="col-6 col-md-4">
 															<div class="product pink rounded rounded-lg rounded-xl border ">
-																<a class="product-img" href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}"></a>
+																<a class="product-img" href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }} produit foryoumer.com produit "></a>
 																<h5 class="product-type">{{product.category.name}}</h5>
 																{% if product.name|length > 10 %}
 																	<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
@@ -685,55 +621,55 @@
 			</body>
 		</body>
 	</html>
-</div></div><!-- End product block--><div class="partner">
+</div></div><!-- End product block-->
+<div class="partner">
 <div class="container">
 	<div class="partner_block d-flex justify-content-between" data-slick="{&quot;slidesToShow&quot;: 6}">
-		<div class="partner--logo" href="">
-			<a href="#"><img src="{{ asset('assets/images/partner/a1.webp') }}" alt="partner" title="partner logo"></a>
+		<div class="partner--logo">
+			<a><img src="{{ asset('assets/images/partner/a1.webp') }}" alt="partner" title="partner logo"></a>
 		</div>
-		<div class="partner--logo" href="">
-			<a href="#"><img src="{{ asset('assets/images/partner/a2.webp') }}" alt="partner" title="partner logo"></a>
+		<div class="partner--logo">
+			<a><img src="{{ asset('assets/images/partner/a2.webp') }}" alt="partner" title="partner logo"></a>
 		</div>
-		<div class="partner--logo" href="">
-			<a href="#"><img src="{{ asset('assets/images/partner/a3.webp') }}" alt="partner" title="partner logo"></a>
+		<div class="partner--logo" >
+			<a><img src="{{ asset('assets/images/partner/a3.webp') }}" alt="partner" title="partner logo"></a>
 		</div>
-		<div class="partner--logo" href="">
-			<a href="#"><img src="{{ asset('assets/images/partner/a4.webp') }}" alt="partner" title="partner logo"></a>
+		<div class="partner--logo">
+			<a><img src="{{ asset('assets/images/partner/a4.webp') }}" alt="partner" title="partner logo"></a>
 		</div>
-		<div class="partner--logo" href="">
-			<a href="#"><img src="{{ asset('assets/images/partner/a5.webp') }}" alt="partner" title="partner logo"></a>
+		<div class="partner--logo">
+			<a><img src="{{ asset('assets/images/partner/a5.webp') }}" alt="partner" title="partner logo"></a>
 		</div>
-		<div class="partner--logo" href="">
-			<a href="#"><img src="{{ asset('assets/images/partner/a6.webp') }}" alt="partner" title="partner logo"></a>
+		<div class="partner--logo">
+			<a><img src="{{ asset('assets/images/partner/a6.webp') }}" alt="partner" title="partner logo"></a>
 		</div>
-		<div class="partner--logo" href="">
-			<a href=""><img src="{{ asset('assets/images/partner/a7.webp') }}" alt="partner" title="partner logo"></a>
+		<div class="partner--logo">
+			<a ><img src="{{ asset('assets/images/partner/a7.webp') }}" alt="partner" title="partner logo"></a>
 		</div>
 	</div>
 </div></div><!-- End partner--><footer class="pink">
 <div class="container">
 	<div class="row">
-		<div
-			class="col-12 col-sm-12 col-md-4 text-sm-center text-md-left">
-			{# <div class="footer-logo"><img src="assets/images/logo.png" alt="foryoumer Tunisie"></div> #}
+		<div class="col-12 col-sm-12 col-md-4 text-sm-center text-md-left">
+			<div class="footer-logo"><img src="assets/images/foryoumer.png" alt="foryoumer.com Tunisie" height="60px" width="auto"></div>
 			<div class="footer-contact">
-				<p>Address: 20 avenue habib bourguiba Tunis</p>
+				<p>Address: 123 cite ikbel 7032 Tinja</p>
 				<p>Phone: +216 58 58 83 43</p>
 				<p>Email: meher@foryoumer.com</p>
 			</div>
 			<div class="footer-social">
-				<a class="round-icon-btn pink" href="">
+				<a class="round-icon-btn pink" href="https://www.facebook.com/foryoumer">
 					<i class="fab fa-facebook-f"></i>
 				</a>
-				<a class="round-icon-btn pink" href="">
+				<a class="round-icon-btn pink" href="https://www.instagram.com/foryoumer.co/">
+					<i class="fab fa-instagram"></i>
+				</a>
+			{# 	<a class="round-icon-btn pink" href="">
 					<i class="fab fa-twitter"></i>
 				</a>
 				<a class="round-icon-btn pink" href="">
-					<i class="fab fa-invision"></i>
-				</a>
-				<a class="round-icon-btn pink" href="">
 					<i class="fab fa-pinterest-p"></i>
-				</a>
+				</a> #}
 			</div>
 		</div>
 		<div class="col-md-8">
@@ -741,28 +677,28 @@
 				<div class="col-12 col-sm-4 text-sm-center text-md-left">
 					<div class="footer-quicklink">
 						<h5>Infomation</h5>
-						<a href="about_us.html">About us</a>
-						<a href="checkout.html">Check out</a>
-						<a href="contact.html">Contact</a>
-						<a href="about_us.html">Service</a>
+						<a href="{{ path('about')}}" rel="canonical">About us</a>
+						<a href="{{ path('blog')}}" rel="canonical">Blog</a>
+						<a href="{{ path('contact')}}" rel="canonical">Contact</a>
+						<a href="{{ path('service')}}" rel="canonical">Service</a>
 					</div>
 				</div>
 				<div class="col-12 col-sm-4 text-sm-center text-md-left">
 					<div class="footer-quicklink">
 						<h5>My Account</h5>
-						<a href="login.html">My Account</a>
-						<a href="contact.html">Contact</a>
-						<a href="shop_cart.html">Shopping cart</a>
-						<a href="shop_grid+list_3col.html">Shop</a>
+						<a href="{{ path('account')}}">My Account</a>
+						<a href="{{ path('contact')}}">Contact</a>
+						<a href="{{ path('cart_index')}}">Shopping cart</a>
+						<a href="{{ path('products')}}">Shop</a>
 					</div>
 				</div>
 				<div class="col-12 col-sm-4 text-sm-center text-md-left">
 					<div class="footer-quicklink">
 						<h5>Quick Shop</h5>
-						<a href="about_us.html">About us</a>
-						<a href="checkout.html">Check out</a>
-						<a href="contact.html">Contact</a>
-						<a href="about_us.html">Service</a>
+						<a href="{{ path('about')}}">About us</a>
+						<a href="{{ path('blog')}}">Blog</a>
+						<a href="{{ path('contact')}}">Contact</a>
+						<a href="{{ path('service')}}">Service</a>
 					</div>
 				</div>
 			</div>
@@ -774,8 +710,8 @@
 		<div class="row justify-content-between align-items-center">
 			<div class="col-12 col-md-7">
 				<div class="newletter_text text-center text-md-left">
-					<h5>Join Our Newsletter Now</h5>
-					<p>Get E-mail updates about our latest shop and special offers.</p>
+					<h5>Join Our Newsletter Now at foryoumer.com</h5>
+					<p>Get E-mail updates about our latest shop and special offers at foryoumer.com.</p>
 				</div>
 			</div>
 			<div class="col-12 col-md-5">
@@ -821,4 +757,12 @@ $departmentDropdownMenu.show();
 setTimeout(function () {
 $departmentDropdownMenu.hide();
 }, 2000);
-});</script></body></body></html></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script><script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script><script src="{{ asset('assets/js/jquery.countdown.min.js') }}" defer></script><script src="{{ asset('assets/js/slick.min.js') }}" defer></script><script src="{{ asset('assets/js/jquery.scrollUp.min.js') }} " defer></script><script src="{{ asset('assets/js/jquery.zoom.min.js') }}" defer></script><script src="assets/js/vanilla-tilt.min.js"></script><script src="{{ asset('assets/js/main.js') }}" defer></script></body></html></body> </html> <style>
+});</script></body></body></html></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script><script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script><script src="{{ asset('assets/js/jquery.countdown.min.js') }}" defer></script><script src="{{ asset('assets/js/slick.min.js') }}" defer></script><script src="{{ asset('assets/js/jquery.scrollUp.min.js') }} " defer></script><script src="{{ asset('assets/js/jquery.zoom.min.js') }}" defer></script><script src="assets/js/vanilla-tilt.min.js"></script><script src="{{ asset('assets/js/main.js') }}" defer></script></body></html></body><style>@media only screen and(max-width: 768px) {
+	.customer-name {
+		font-size: 20px;
+	}
+	.customer-comment {
+		font-size: 16px;
+		max-width: 100%;
+	}
+}</style> </html>
