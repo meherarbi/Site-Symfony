@@ -31,7 +31,9 @@ class HomeController extends AbstractController
             ]);
         } */
 
-        $products = $this->productRepository->findProduct();
+        $products = $this->productRepository->findAll();
+        $latestProducts = $this->productRepository->findProduct();
+        $latestProductsCategory = $this->productRepository->LatestProductCategory();
         $productsOneByCategory = $this->productRepository->findProductByCategory();
         $productsMin = $this->productRepository->findProductMin();
         $promotedProducts = $this->productRepository->findPromotedProducts();
@@ -62,6 +64,8 @@ class HomeController extends AbstractController
 
         $response = $this->render('home/index.html.twig', [
             'products' => $products,
+            'latestProducts'=>$latestProducts,
+            'latestProductsCategory'=>$latestProductsCategory,
             'productsOneByCategory'=>$productsOneByCategory,
             'productsMin'=>$productsMin,
             'promoted_products' => $promotedProducts,

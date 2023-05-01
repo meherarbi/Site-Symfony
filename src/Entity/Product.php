@@ -80,9 +80,10 @@ class Product
     private $onPromotion;
 
     /**
-    * @ORM\Column(type="string", nullable=true)
-    */
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
     private $imageFile;
+
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\ProductImage", mappedBy="product", cascade={"persist"})
@@ -295,7 +296,7 @@ class Product
         return $this->imageFile;
     }
 
-    public function setImageFile(string $imageFile): self
+    public function setImageFile(?string $imageFile): self
     {
         $this->imageFile = $imageFile;
 

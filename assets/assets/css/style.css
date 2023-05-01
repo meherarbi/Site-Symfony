@@ -4567,7 +4567,7 @@ a:focus {
   width: 15px;
   height: 15px;
   border-radius: 15px;
-  background-color: #17a2b8;
+  background-color: #b81717;
 }
 #preload .preload-box .line:nth-last-child(1) {
   animation: loadingC 0.6s 0.1s linear infinite;

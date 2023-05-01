@@ -18,15 +18,9 @@ class SearchProduct
      */
     private $id;
 
-    /**
-     * @ORM\JoinColumn(nullable=true)
-     */
+  
     private $minPrice = null;
 
-    
-    /**
-     * @ORM\JoinColumn(nullable=true)
-     */
     private $maxPrice = null;
 
     /**

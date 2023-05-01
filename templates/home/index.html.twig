@@ -9,7 +9,6 @@
 		<meta name="keywords" content="vente en ligne chez foryoumer.com, vente de produits en Tunisie, livraison en Tunisie, livraison rapide, site commerce en ligne, montres en Tunisie ,vente produits de beauté en Tunisie, Vente vetements Homme en Tunisie">
 		<meta name="author" content="MARTECH | Deer Creative Theme">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 		<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 		<link rel="stylesheet" href="{{ asset('assets/css/custom_bootstrap.css') }}">
 		<link rel="stylesheet" href="{{ asset('assets/css/normalize.css') }}">
@@ -25,107 +24,80 @@
 		<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 		{% set hostname = app.request.host %}
 		<meta http-equiv="Content-Security-Policy" content="default-src 'none'; font-src 'self'; img-src 'self' ; connect-src 'self' ; script-src 'self' 'unsafe-inline' https://code.jquery.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net ;  style-src 'self' "> {% block seo %}{% endblock %}
-		</head>
-		<body>
-			<div id="main">
+				
+	</head>
+	<body>
+		<div id="main">
 
-				<header class="pink">
-					<div class="topimg"><img src="{{ asset('assets/images/homepage03/as7.webp') }}" id="mk" alt=""></div>
-					{% include "header.html.twig" %}
-					{% include "header_mobile.html.twig" %}
-					<div class="navigation-filter">
-						<div class="container">
-							<div class="row">
-								<div class="col-12 col-md-4 col-lg-4 col-xl-3 order-2 order-md-1">
-									<div class="department-menu_block down " id="department-menu_block">
-										<div class="department-menu d-flex justify-content-between align-items-center" id="department-menu">
-											<i class="fas fa-bars"></i>All departments<span>
-												<i class="arrow_carrot-up"></i>
-											</span>
-										</div>
-										<div class="department-dropdown-menu down" id="department-dropdown-menu">
-
-											<ul class="categories-list ">
-												{% for categorie in categorie %}
-													<li>
-														<a href="{{ path('product_category', {'id': categorie.id}) }}">
-															<i class="{{ icons[categorie.name]|default('fas fa-question') }}"></i>
-															{{ categorie.name }}
-														</a>
-													</li>
-												{% endfor %}
-											</ul>
-
-
-										</div>
+			<header class="pink">
+				<div class="topimg"><img src="{{ asset('assets/images/homepage03/as7.webp') }}" id="mk" alt=""></div>
+				{% include "header.html.twig" %}
+				{% include "header_mobile.html.twig" %}
+				<div class="navigation-filter">
+					<div class="container">
+						<div class="row">
+							<div class="col-12 col-md-4 col-lg-4 col-xl-3 order-2 order-md-1">
+								<div class="department-menu_block down " id="department-menu_block">
+									<div class="department-menu d-flex justify-content-between align-items-center" id="department-menu">
+										<i class="fas fa-bars"></i>All departments<span>
+											<i class="arrow_carrot-up"></i>
+										</span>
 									</div>
-								</div>
-								<div class="col-12 col-md-8 col-lg-8 col-xl-9 order-1 order-md-2">
-									<div class="row">
-										<div class="col-12 col-xl-8">
-											<div class="website-search">
-												<div class="row no-gutters">
-													<div class="col-0 col-md-0 col-lg-4 col-xl-4">
-														<div class="filter-search">
-															<div class="categories-select d-flex align-items-center justify-content-around">
-																<span>All Categories</span>
-																<i class="arrow_carrot-down"></i>
-															</div>
-															<div class="categories-select_box">
+									<div class="department-dropdown-menu down" id="department-dropdown-menu">
 
-																{{ render(controller('App\\Controller\\HomeController::categorieMenu')) }}
-															</div>
-														</div>
-													</div>
-													<form action="{{ path('search') }}" method="GET" class="row no-gutters">
-														<div class="col-12 col-md-12 col-lg-8 col-xl-8">
-															<div class="search-input">
-																<input class="no-round-input no-border" type="text" name="q" placeholder="What do you need" style="width: 100%;">
-															</div>
-														</div>
-														<div class="col-12 col-md-12 col-lg-4 col-xl-4 d-flex justify-content-end">
-															<button type="submit" class="no-round-btn black" style="width: 50px; height: 50px;">
-																<i class="icon_search"></i>
-															</button>
-														</div>
-													</form>
-												</div>
-											</div>
-										</div>
-										<div class="col-0 col-xl-4">
-											<div class="phone-number">
-												<div class="phone-number_icon">
-													<i class="icon_phone"></i>
-												</div>
-												<h2>+216 58 58 83 58</h2>
-											</div>
-										</div>
+										<ul class="categories-list ">
+											{% for categorie in categorie %}
+												<li>
+													<a href="{{ path('product_category', {'id': categorie.id}) }}">
+														<i class="{{ icons[categorie.name]|default('fas fa-question') }}"></i>
+														{{ categorie.name }}
+													</a>
+												</li>
+											{% endfor %}
+										</ul>
+
+
 									</div>
 								</div>
 							</div>
-						</div>
-					</div>
-				</header>
-				<!-- End header-->
-				<div class="banner_v2">
-					<div class="container">
-						<div class="row">
-							<div class="col-xl-3"></div>
-							<div class="col-12 col-xl-9">
-								<div class="banner-block">
-									<div class="row no-gutters justify-content-center align-items-md-center">
-										<div class="col-10 col-md-5 col-xl-6">
-											<div class="banner-text text-center text-md-left">
-												<h5 class="color-subtitle pink"></h5>
-												<h2 class="title"></h2>
-												<p></p>
-												<a class="normal-btn pink" href="{{ path('products')}}">Shop now</a>
+							<div class="col-12 col-md-8 col-lg-8 col-xl-9 order-1 order-md-2">
+								<div class="row">
+									<div class="col-12 col-xl-8">
+										<div class="website-search">
+											<div class="row no-gutters">
+												<div class="col-0 col-md-0 col-lg-4 col-xl-4">
+													<div class="filter-search">
+														<div class="categories-select d-flex align-items-center justify-content-around">
+															<span>All Categories</span>
+															<i class="arrow_carrot-down"></i>
+														</div>
+														<div class="categories-select_box">
+
+															{{ render(controller('App\\Controller\\HomeController::categorieMenu')) }}
+														</div>
+													</div>
+												</div>
+												<form action="{{ path('search') }}" method="GET" class="row no-gutters">
+													<div class="col-12 col-md-12 col-lg-8 col-xl-8">
+														<div class="search-input">
+															<input class="no-round-input no-border" type="text" name="q" placeholder="What do you need" style="width: 100%;">
+														</div>
+													</div>
+													<div class="col-12 col-md-12 col-lg-4 col-xl-4 d-flex justify-content-end">
+														<button type="submit" class="no-round-btn black" style="width: 50px; height: 50px;">
+															<i class="icon_search"></i>
+														</button>
+													</div>
+												</form>
 											</div>
 										</div>
-										<div class="col-12 col-md-5 col-xl-5">
-											<div class="banner-img">
-												<div class="img-block text-center"><img class="mymove" src="{{ asset('assets/images/homepage03/m.jpg') }}" alt="vente divers produits en Tunisie"></div>
+									</div>
+									<div class="col-0 col-xl-4">
+										<div class="phone-number">
+											<div class="phone-number_icon">
+												<i class="icon_phone"></i>
 											</div>
+											<h2>+216 58 58 83 58</h2>
 										</div>
 									</div>
 								</div>
@@ -133,47 +105,367 @@
 						</div>
 					</div>
 				</div>
-				<!-- End banner v2-->
-				<div class="home3-product-block">
-					<div class="container">
-						<div class="row">
-							<div class="col-12 col-xl-3">
-								<div class="deal-of-week_slide">
-									<div class="week-deal_top mini-tab-title underline pink">
-										<h2 class="title">Deal of the week</h2>
-										<div class="week-deal_control"></div>
+			</header>
+			<!-- End header-->
+			<div class="banner_v2">
+				<div class="container">
+					<div class="row">
+						<div class="col-xl-3"></div>
+						<div class="col-12 col-xl-9">
+							<div class="banner-block">
+								<div class="row no-gutters justify-content-center align-items-md-center">
+									<div class="col-10 col-md-5 col-xl-6">
+										<div class="banner-text text-center text-md-left">
+											<h5 class="color-subtitle pink"></h5>
+											<h2 class="title"></h2>
+											<p></p>
+											<a class="normal-btn pink" href="{{ path('products')}}">Shop now</a>
+										</div>
 									</div>
-									<div class="week-deal_bottom">
+									<div class="col-12 col-md-5 col-xl-5">
+										<div class="banner-img">
+											<div class="img-block text-center"><img class="mymove" src="{{ asset('assets/images/homepage03/m.jpg') }}" alt="vente divers produits en Tunisie"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End banner v2-->
+			<div class="home3-product-block">
+				<div class="container">
+					<div class="row">
+						<div class="col-12 col-xl-3">
+							<div class="deal-of-week_slide">
+								<div class="week-deal_top mini-tab-title underline pink">
+									<h2 class="title">Deal of the week</h2>
+									<div class="week-deal_control"></div>
+								</div>
+								<div class="week-deal_bottom">
 
+									{% for product in products %}
+										{%  if product.isDeal is defined and product.isDeal == true %}
+											<div class="deal-block">
+												<div class="deal-block_detail">
+													<h5 class="deal-discount">-34</h5>
+
+													<div class="deal-img">
+														<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }} foryoumer.com " class="product-img"></a>
+													</div>
+													<div class="deal-countdown">
+														<div class="event-countdown" id="event-countdown"></div>
+													</div>
+													<div class="deal-info text-center">
+														<h5 class="color-type pink deal-type">{{product.category.name}}</h5>
+														{% if product.name|length > 10 %}
+															<a class="deal-name" href="{{ path('product',{'slug':product.slug}) }}">{{ product.name|slice(0, 10) }}...</a>
+														{% else %}
+															<a class="deal-name" href="{{ path('product',{'slug':product.slug}) }}">{{ product.name }}</a>
+														{% endif %}
+														<h3 class="deal-price">{{ (product.price/100)|number_format(2) }}
+															<del>{{(product.oldPrice/100)|number_format(2)}}
+															</del>
+														</h3>
+													</div>
+													<div class="deal-select text-center">
+														<button class="add-to-wishlist round-icon-btn pink">
+															<i class="icon_heart_alt"></i>
+														</button>
+														<button class="add-to-cart round-icon-btn pink pink">
+															<i class="icon_bag_alt"></i>
+														</button>
+														<button class="add-to-compare round-icon-btn pink">
+															<i class="fas fa-random"></i>
+														</button>
+														<button class="quickview round-icon-btn pink">
+															<i class="far fa-eye"></i>
+														</button>
+													</div>
+												</div>
+											</div>
+										{% endif %}
+									{% endfor  %}
+
+								</div>
+							</div>
+							<div class="sidebar-benefit">
+								<div class="benefit-block">
+									<div class="our-benefits column shadowless benefit-border">
+										<div class="row">
+											<div class="col-12 col-md-6 col-xl-12">
+												<div class="benefit-detail d-flex flex-row align-items-center"><img class="benefit-img" src="assets/images/homepage02/benefit-icon1.png" alt="">
+													<div class="benefit-detail_info">
+														<h5 class="benefit-title">Free Shipping with Foryoumer.com</h5>
+														<p class="benefit-describle">For all order over 99$</p>
+													</div>
+												</div>
+											</div>
+											<div class="col-12 col-md-6 col-xl-12">
+												<div class="benefit-detail d-flex flex-row align-items-center"><img class="benefit-img" src="assets/images/homepage02/benefit-icon2.png" alt="">
+													<div class="benefit-detail_info">
+														<h5 class="benefit-title">Delivery On Time</h5>
+														<p class="benefit-describle">If good have prolems</p>
+													</div>
+												</div>
+											</div>
+											<div class="col-12 col-md-6 col-xl-12">
+												<div class="benefit-detail d-flex flex-row align-items-center"><img class="benefit-img" src="assets/images/homepage02/benefit-icon3.png" alt="">
+													<div class="benefit-detail_info">
+														<h5 class="benefit-title">Secure Payment with Foryoumer.com</h5>
+														<p class="benefit-describle">100% secure payment</p>
+													</div>
+												</div>
+											</div>
+											<div class="col-12 col-md-6 col-xl-12">
+												<div class="benefit-detail boderless d-flex flex-row align-items-center"><img class="benefit-img" src="assets/images/homepage02/benefit-icon4.png" alt="">
+													<div class="benefit-detail_info">
+														<h5 class="benefit-title">24/7 Support</h5>
+														<p class="benefit-describle">Dedicated support
+														</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="sale-product">
+								<div class="sale-product_top mini-tab-title underline pink">
+									<h2 class="title">Sale Products</h2>
+								</div>
+
+								<div class="sale-product_bottom">
+									<div class="row">
 										{% for product in products %}
-											{%  if product.isDeal is defined and product.isDeal == true %}
-												<div class="deal-block">
-													<div class="deal-block_detail">
-														<h5 class="deal-discount">-34</h5>
 
-														<div class="deal-img">
+											{%  if product.isOnSale is defined and product.isOnSale == true %}
+												<div class="col-12">
+													<div class="mini-product column">
+														<div class="mini-product_img">
 															<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }} foryoumer.com " class="product-img"></a>
 														</div>
-														<div class="deal-countdown">
-															<div class="event-countdown" id="event-countdown"></div>
-														</div>
-														<div class="deal-info text-center">
-															<h5 class="color-type pink deal-type">{{product.category.name}}</h5>
+														<div class="mini-product_info">
 															{% if product.name|length > 10 %}
-																<a class="deal-name" href="{{ path('product',{'slug':product.slug}) }}">{{ product.name|slice(0, 10) }}...</a>
+																<a href="shop_detail.html">{{ product.name|slice(0, 10) }}...</a>
 															{% else %}
-																<a class="deal-name" href="{{ path('product',{'slug':product.slug}) }}">{{ product.name }}</a>
+																<a href="shop_detail.html">{{ product.name}}</a>
 															{% endif %}
-															<h3 class="deal-price">{{ (product.price/100)|number_format(2) }}
-																<del>{{(product.oldPrice/100)|number_format(2)}}
-																</del>
-															</h3>
+															<p>{{ (product.price/100)|number_format(2) }}
+																<del>{{(product.oldPrice/100)|number_format(2)}}</del>
+															</p>
 														</div>
-														<div class="deal-select text-center">
+													</div>
+												</div>
+											{% endif %}
+										{% endfor %}
+									</div>
+								</div>
+							</div>
+							<div class="customer-satisfied text-center">
+								<div class="customer-satisfied_border">
+									<div class="customer-satisfied_wrapper">
+										<div class="customer-satisfied_block">
+											<div class="customer-img mx-auto"><img src="assets/images/homepage03/ac.png" alt="customer"></div>
+											<div class="customer-info">
+												<h5 class="customer-name">Steven Ady</h5>
+												<p class="customer-comment">J'ai récemment acheté un produit sur foryoumer.com et j'ai été très satisfait de mon expérience. La livraison a été rapide et le produit était exactement ce que j'attendais.
+												</p>
+												<div class="customer-rate">
+													<i class="icon_star"></i>
+													<i class="icon_star"></i>
+													<i class="icon_star"></i>
+													<i class="icon_star"></i>
+													<i class="icon_star-half"></i>
+												</div>
+											</div>
+										</div>
+										<div class="customer-satisfied_block">
+											<div class="customer-img mx-auto"><img src="assets/images/homepage03/avatar.png" alt="customer"></div>
+											<div class="customer-info">
+												<h5 class="customer-name">Eric Sitma</h5>
+												<p class="customer-comment">J'ai eu un petit problème avec ma commande, mais le service client de foryoumer.com a été très rapide et efficace pour le résoudre. Je suis très impressionnée par leur professionnalisme.
+												</p>
+												<div class="customer-rate">
+													<i class="icon_star"></i>
+													<i class="icon_star"></i>
+													<i class="icon_star"></i>
+													<i class="icon_star"></i>
+													<i class="icon_star-half"></i>
+												</div>
+											</div>
+										</div>
+										<div class="customer-satisfied_block">
+											<div class="customer-img mx-auto"><img src="assets/images/homepage03/edward.jpg" alt="customer"></div>
+											<div class="customer-info">
+												<h5 class="customer-name">Anaïs Doe</h5>
+												<p class="customer-comment">Je suis très satisfait de mes achats chez foryoumer.com. Les produits sont de haute qualité et la livraison est toujours rapide et efficace. J'ai également été impressionné par le service clientèle, qui a été très réactif et utile lorsque j'ai eu des questions. Je recommande fortement ce site à tous ceux qui cherchent des produits de qualité avec un excellent service.
+												</p>
+												<div class="customer-rate">
+													<i class="icon_star"></i>
+													<i class="icon_star"></i>
+													<i class="icon_star"></i>
+													<i class="icon_star"></i>
+													<i class="icon_star-half"></i>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="customer-satisfied_control"></div>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 col-xl-9">
+							<div id="tab">
+								<div class="best-seller_top mini-tab-title underline pink">
+									<div class="row align-items-md-center">
+										<div class="col-12 col-md-4">
+											<h2 class="title">Featured Product</h2>
+										</div>
+										<div class="col-12 col-md-8 text-lg-right">
+											<ul class="tab-control text-md-right">
+												<li>
+													<a class="active" href="#tab0">All</a>
+												</li>
+												{% for category in categorie %}
+													<li>
+														<a href="#tab{{ loop.index }}">
+															{{ category.name }}
+														</a>
+													</li>
+												{% endfor %}
+
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="best-seller_bottom">
+									<div id="tab0">
+										<div class="row no-gutters-sm">
+											{% for product in productsOneByCategory|slice(0, 6)  %}
+
+												<div class="col-6 col-md-4">
+													<div class="product pink rounded rounded-lg rounded-xl border">
+														<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }} produit foryoumer.com produit " class="product-img" height="90px"></a>
+														<h5 class="product-type">{{product.category.name}}</h5>
+														{% if product.name|length > 10 %}
+															<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
+														{% else %}
+															<h3 class="product-name">{{ product.name }}</h3>
+														{% endif %}
+														<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
+															<del>{{(product.oldPrice/100)|number_format(2)}}</del>
+														</h3>
+														<div class="product-select ">
+															<button class="add-to-wishlist round-icon-btn pink" onclick="location.href='{{ path('cart_add_to_cart', {'slug': product.slug}) }}'">
+																<i class="icon_heart_alt"></i>
+															</button>
+															<button class="add-to-cart round-icon-btn pink" onclick="location.href='{{ path('cart_add_to_cart', {'slug': product.slug}) }}'">
+																<i class="icon_bag_alt"></i>
+															</button>
+															<button class="add-to-compare round-icon-btn pink">
+																<i class="fas fa-random"></i>
+															</button>
+															<button class="quickview round-icon-btn pink" onclick="location.href='{{ path('product', {'slug': product.slug}) }}'">
+																<i class="far fa-eye"></i>
+															</button>
+														</div>
+													</div>
+												</div>
+											{% endfor %}
+										</div>
+									</div>
+									{% for category in categorie %}
+										<div id="tab{{ loop.index }}">
+											<div class="row no-gutters-sm">
+												{% for product in category.products|slice(0, 6) %}
+													<div class="col-6 col-md-4">
+														<div class="product pink rounded rounded-lg rounded-xl border ">
+															<a class="product-img" href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }} produit foryoumer.com produit "></a>
+															<h5 class="product-type">{{product.category.name}}</h5>
+															{% if product.name|length > 10 %}
+																<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
+															{% else %}
+																<h3 class="product-name">{{ product.name }}</h3>
+															{% endif %}
+															<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
+																<del>{{(product.oldPrice/100)|number_format(2)}}</del>
+															</h3>
+															<div class="product-select">
+																<button class="add-to-wishlist round-icon-btn pink">
+																	<i class="icon_heart_alt"></i>
+																</button>
+																<button class="add-to-cart round-icon-btn pink">
+																	<i class="icon_bag_alt"></i>
+																</button>
+																<button class="add-to-compare round-icon-btn pink">
+																	<i class="fas fa-random"></i>
+																</button>
+																<button class="quickview round-icon-btn pink">
+																	<i class="far fa-eye"></i>
+																</button>
+															</div>
+														</div>
+													</div>
+												{% endfor %}
+											</div>
+										</div>
+									{% endfor %}
+								</div>
+							</div>
+							<div class="quick-banner">
+								<div class="row justify-content-center align-items-center flex-column flex-md-row">
+									<div class="col-12 col-md-5">
+										<div class="bannner-img text-center"><img class="img-fluid" src="assets/images/homepage03/foryoumer.jpg" alt=""></div>
+									</div>
+									<div class="col-10 col-md-5">
+										<div class="banner-text text-center text-md-left">
+											<div class="discount-block d-flex align-items-center justify-content-center justify-content-md-start text-left">
+												<h2 class="big-number">50</h2>
+												<h3>%OFF<br>Black
+													<span>Friday</span>
+												</h3>
+											</div>
+											<p>
+												Profitez de nos offres exceptionnelles pour le Black Friday sur foryoumer.com ! Jusqu'à 50% de réduction sur une large sélection de produits. Ne manquez pas cette occasion de faire des économies tout en profitant de la meilleure qualité. Venez découvrir notre univers de beauté marine et laissez-vous transporter par nos produits innovants. Faites de votre peau votre plus bel atout avec foryoumer.com !
+											</p>
+											<a class="normal-btn pink" href="{{ path('products')}}">Shop now</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div id="tab-so1">
+								<div class="best-seller_top mini-tab-title underline pink">
+									<div class="row align-items-md-center">
+										<div class="col-12 col-md-4">
+											<h2 class="title">Deal of the day</h2>
+										</div>
+										<div class="col-12 col-md-8 text-lg-right"></div>
+									</div>
+								</div>
+								<div class="best-seller_bottom">
+									<div id="tab0">
+										<div class="row no-gutters-sm">
+											{% for product in promoted_products|slice(0, 6) %}
+												<div class="col-6 col-md-4">
+													<div class="product pink rounded rounded-lg rounded-xl border ">
+														<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }} produit foryoumer.com produit " class="product-img" height="90px"></a>
+														<h5 class="product-type">{{product.category.name}}</h5>
+														{% if product.name|length > 10 %}
+															<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
+														{% else %}
+															<h3 class="product-name">{{ product.name }}</h3>
+														{% endif %}
+														<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
+															<del>{{(product.oldPrice/100)|number_format(2)}}</del>
+														</h3>
+														<div class="product-select">
 															<button class="add-to-wishlist round-icon-btn pink">
 																<i class="icon_heart_alt"></i>
 															</button>
-															<button class="add-to-cart round-icon-btn pink pink">
+															<button class="add-to-cart round-icon-btn pink">
 																<i class="icon_bag_alt"></i>
 															</button>
 															<button class="add-to-compare round-icon-btn pink">
@@ -185,430 +477,175 @@
 														</div>
 													</div>
 												</div>
-											{% endif %}
-										{% endfor  %}
-
-									</div>
-								</div>
-								<div class="sidebar-benefit">
-									<div class="benefit-block">
-										<div class="our-benefits column shadowless benefit-border">
-											<div class="row">
-												<div class="col-12 col-md-6 col-xl-12">
-													<div class="benefit-detail d-flex flex-row align-items-center"><img class="benefit-img" src="assets/images/homepage02/benefit-icon1.png" alt="">
-														<div class="benefit-detail_info">
-															<h5 class="benefit-title">Free Shipping with Foryoumer.com</h5>
-															<p class="benefit-describle">For all order over 99$</p>
-														</div>
-													</div>
-												</div>
-												<div class="col-12 col-md-6 col-xl-12">
-													<div class="benefit-detail d-flex flex-row align-items-center"><img class="benefit-img" src="assets/images/homepage02/benefit-icon2.png" alt="">
-														<div class="benefit-detail_info">
-															<h5 class="benefit-title">Delivery On Time</h5>
-															<p class="benefit-describle">If good have prolems</p>
-														</div>
-													</div>
-												</div>
-												<div class="col-12 col-md-6 col-xl-12">
-													<div class="benefit-detail d-flex flex-row align-items-center"><img class="benefit-img" src="assets/images/homepage02/benefit-icon3.png" alt="">
-														<div class="benefit-detail_info">
-															<h5 class="benefit-title">Secure Payment with Foryoumer.com</h5>
-															<p class="benefit-describle">100% secure payment</p>
-														</div>
-													</div>
-												</div>
-												<div class="col-12 col-md-6 col-xl-12">
-													<div class="benefit-detail boderless d-flex flex-row align-items-center"><img class="benefit-img" src="assets/images/homepage02/benefit-icon4.png" alt="">
-														<div class="benefit-detail_info">
-															<h5 class="benefit-title">24/7 Support</h5>
-															<p class="benefit-describle">Dedicated support
-															</p>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="sale-product">
-									<div class="sale-product_top mini-tab-title underline pink">
-										<h2 class="title">Sale Products</h2>
-									</div>
-									<div class="sale-product_bottom">
-										<div class="row">
-											{% for product in products %}
-												{%  if product.isOnSale is defined and product.isOnSale == true %}
-													<div class="col-12">
-														<div class="mini-product column">
-															<div class="mini-product_img">
-																<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }} foryoumer.com " class="product-img"></a>
-															</div>
-															<div class="mini-product_info">
-																{% if product.name|length > 10 %}
-																	<a href="shop_detail.html">{{ product.name|slice(0, 10) }}...</a>
-																{% else %}
-																	<a href="shop_detail.html">{{ product.name}}</a>
-																{% endif %}
-																<p>{{ (product.price/100)|number_format(2) }}
-																	<del>{{(product.oldPrice/100)|number_format(2)}}</del>
-																</p>
-															</div>
-														</div>
-													</div>
-												{% endif %}
 											{% endfor %}
 										</div>
 									</div>
 								</div>
-								<div class="customer-satisfied text-center">
-									<div class="customer-satisfied_border">
-										<div class="customer-satisfied_wrapper">
-											<div class="customer-satisfied_block">
-												<div class="customer-img mx-auto"><img src="assets/images/homepage03/ac.png" alt="customer"></div>
-												<div class="customer-info">
-													<h5 class="customer-name">Steven Ady</h5>
-													<p class="customer-comment">J'ai récemment acheté un produit sur foryoumer.com et j'ai été très satisfait de mon expérience. La livraison a été rapide et le produit était exactement ce que j'attendais.
-													</p>
-													<div class="customer-rate">
-														<i class="icon_star"></i>
-														<i class="icon_star"></i>
-														<i class="icon_star"></i>
-														<i class="icon_star"></i>
-														<i class="icon_star-half"></i>
+							</div>
+							<div id="tab-so2">
+								<div class="best-seller_top mini-tab-title underline pink">
+									<div class="row align-items-md-center">
+										<div class="col-12 col-md-4">
+											<h2 class="title">Latest Products</h2>
+										</div>
+										<div class="col-12 col-md-8 text-lg-right">
+											<ul class="tab-control text-md-right">
+												<li>
+													<a class="active" href="#tab0">All</a>
+												</li>
+												{% for category in categorie %}
+													<li>
+														<a href="#tab{{ loop.index }}">
+															{{ category.name }}
+														</a>
+													</li>
+												{% endfor %}
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="best-seller_bottom">
+									<div id="tab0">
+										<div class="row no-gutters-sm">
+											{% for product in latestProducts|slice(0, 3) %}
+												<div class="col-6 col-md-4">
+													<div class="product pink rounded rounded-lg rounded-xl border ">
+														<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }} produit foryoumer.com produit " class="product-img" height="90px"></a>
+														<h5 class="product-type">{{product.category.name}}</h5>
+														{% if product.name|length > 10 %}
+															<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
+														{% else %}
+															<h3 class="product-name">{{ product.name }}</h3>
+														{% endif %}
+														<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
+															<del>{{(product.oldPrice/100)|number_format(2)}}</del>
+														</h3>
+														<div class="product-select">
+															<button class="add-to-wishlist round-icon-btn pink">
+																<i class="icon_heart_alt"></i>
+															</button>
+															<button class="add-to-cart round-icon-btn pink">
+																<i class="icon_bag_alt"></i>
+															</button>
+															<button class="add-to-compare round-icon-btn pink">
+																<i class="fas fa-random"></i>
+															</button>
+															<button class="quickview round-icon-btn pink">
+																<i class="far fa-eye"></i>
+															</button>
+														</div>
 													</div>
 												</div>
-											</div>
-											<div class="customer-satisfied_block">
-												<div class="customer-img mx-auto"><img src="assets/images/homepage03/avatar.png" alt="customer"></div>
-												<div class="customer-info">
-													<h5 class="customer-name">Eric Sitma</h5>
-													<p class="customer-comment">J'ai eu un petit problème avec ma commande, mais le service client de foryoumer.com a été très rapide et efficace pour le résoudre. Je suis très impressionnée par leur professionnalisme.
-													</p>
-													<div class="customer-rate">
-														<i class="icon_star"></i>
-														<i class="icon_star"></i>
-														<i class="icon_star"></i>
-														<i class="icon_star"></i>
-														<i class="icon_star-half"></i>
+											{% endfor %}
+										</div>
+									</div>
+									{% for category in categorie %}
+									{% set count = 0 %}
+										<div id="tab{{ loop.index }}">
+											<div class="row no-gutters-sm">
+												{# {% for product in category.products|slice(0, 3) %}
+													<div class="col-6 col-md-4">
+														<div class="product pink rounded rounded-lg rounded-xl border ">
+															<a class="product-img" href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }} produit foryoumer.com produit "></a>
+															<h5 class="product-type">{{product.category.name}}</h5>
+															{% if product.name|length > 10 %}
+																<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
+															{% else %}
+																<h3 class="product-name">{{ product.name }}</h3>
+															{% endif %}
+															<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
+																<del>{{(product.oldPrice/100)|number_format(2)}}</del>
+															</h3>
+															<div class="product-select">
+																<button class="add-to-wishlist round-icon-btn pink">
+																	<i class="icon_heart_alt"></i>
+																</button>
+																<button class="add-to-cart round-icon-btn pink">
+																	<i class="icon_bag_alt"></i>
+																</button>
+																<button class="add-to-compare round-icon-btn pink">
+																	<i class="fas fa-random"></i>
+																</button>
+																<button class="quickview round-icon-btn pink">
+																	<i class="far fa-eye"></i>
+																</button>
+															</div>
+														</div>
 													</div>
-												</div>
-											</div>
-											<div class="customer-satisfied_block">
-												<div class="customer-img mx-auto"><img src="assets/images/homepage03/edward.jpg" alt="customer"></div>
-												<div class="customer-info">
-													<h5 class="customer-name">Anaïs Doe</h5>
-													<p class="customer-comment">Je suis très satisfait de mes achats chez foryoumer.com. Les produits sont de haute qualité et la livraison est toujours rapide et efficace. J'ai également été impressionné par le service clientèle, qui a été très réactif et utile lorsque j'ai eu des questions. Je recommande fortement ce site à tous ceux qui cherchent des produits de qualité avec un excellent service.
-													</p>
-													<div class="customer-rate">
-														<i class="icon_star"></i>
-														<i class="icon_star"></i>
-														<i class="icon_star"></i>
-														<i class="icon_star"></i>
-														<i class="icon_star-half"></i>
-													</div>
-												</div>
+												{% endfor %} #}
+												{% for latestProduct in latestProductsCategory %}
+													{% if latestProduct.category == category and count < 3  %}
+														{% set count = count + 1 %}
+													
+														<div class="col-6 col-md-4">
+															<div class="product pink rounded rounded-lg rounded-xl border ">
+																<a class="product-img" href="{{ path('product',{'slug':latestProduct.slug}) }}"><img src="/uploads/{{ latestProduct.illustration }}" alt="{{ latestProduct.name }} produit foryoumer.com produit "></a>
+																<h5 class="product-type">{{ latestProduct.category.name }}</h5>
+																{% if latestProduct.name|length > 10 %}
+																	<h3 class="product-name">{{ latestProduct.name|slice(0, 10) }}...</h3>
+																{% else %}
+																	<h3 class="product-name">{{ latestProduct.name }}</h3>
+																{% endif %}
+																<h3 class="product-price">{{ (latestProduct.price/100)|number_format(2) }}
+																	<del>{{(latestProduct.oldPrice/100)|number_format(2)}}</del>
+																</h3>
+																<div class="product-select">
+																	<button class="add-to-wishlist round-icon-btn pink">
+																		<i class="icon_heart_alt"></i>
+																	</button>
+																	<button class="add-to-cart round-icon-btn pink">
+																		<i class="icon_bag_alt"></i>
+																	</button>
+																	<button class="add-to-compare round-icon-btn pink">
+																		<i class="fas fa-random"></i>
+																	</button>
+																	<button class="quickview round-icon-btn pink">
+																		<i class="far fa-eye"></i>
+																	</button>
+																</div>
+															</div>
+														</div>
+													{% endif %}
+												{% endfor %}
 											</div>
 										</div>
-										<div class="customer-satisfied_control"></div>
-									</div>
+									{% endfor %}
 								</div>
 							</div>
-							<div class="col-12 col-xl-9">
-								<div id="tab">
-									<div class="best-seller_top mini-tab-title underline pink">
-										<div class="row align-items-md-center">
-											<div class="col-12 col-md-4">
-												<h2 class="title">Featured Product</h2>
-											</div>
-											<div class="col-12 col-md-8 text-lg-right">
-												<ul class="tab-control text-md-right">
-													<li>
-														<a class="active" href="#tab0">All</a>
-													</li>
-													{% for category in categorie %}
-														<li>
-															<a href="#tab{{ loop.index }}">
-																{{ category.name }}
-															</a>
-														</li>
-													{% endfor %}
 
-												</ul>
+							<div class="row">
+								<div class="col-12 col-md-6">
+									<div class="quick-banner quick-banner-2">
+										<div class="row justify-content-center align-items-center">
+											<div class="col-6 col-md-5">
+												<div class="bannner-img text-center"><img class="img-fluid" src="assets/images/homepage03/v1.jpg" width="123px" height="114px" alt=""></div>
 											</div>
-										</div>
-									</div>
-									<div class="best-seller_bottom">
-										<div id="tab0">
-											<div class="row no-gutters-sm">
-												{% for product in productsOneByCategory|slice(0, 6)  %}
-
-													<div class="col-6 col-md-4">
-														<div class="product pink rounded rounded-lg rounded-xl border">
-															<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }} produit foryoumer.com produit " class="product-img" height="90px"></a>
-															<h5 class="product-type">{{product.category.name}}</h5>
-															{% if product.name|length > 10 %}
-																<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
-															{% else %}
-																<h3 class="product-name">{{ product.name }}</h3>
-															{% endif %}
-															<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
-																<del>{{(product.oldPrice/100)|number_format(2)}}</del>
-															</h3>
-															<div class="product-select ">
-																<button class="add-to-wishlist round-icon-btn pink" onclick="location.href='{{ path('cart_add_to_cart', {'slug': product.slug}) }}'">
-																	<i class="icon_heart_alt"></i>
-																</button>
-																<button class="add-to-cart round-icon-btn pink" onclick="location.href='{{ path('cart_add_to_cart', {'slug': product.slug}) }}'">
-																	<i class="icon_bag_alt"></i>
-																</button>
-																<button class="add-to-compare round-icon-btn pink">
-																	<i class="fas fa-random"></i>
-																</button>
-																<button class="quickview round-icon-btn pink" onclick="location.href='{{ path('product', {'slug': product.slug}) }}'">
-																	<i class="far fa-eye"></i>
-																</button>
-															</div>
-														</div>
-													</div>
-												{% endfor %}
-											</div>
-										</div>
-										{% for category in categorie %}
-											<div id="tab{{ loop.index }}">
-												<div class="row no-gutters-sm">
-													{% for product in category.products %}
-														<div class="col-6 col-md-4">
-															<div class="product pink rounded rounded-lg rounded-xl border ">
-																<a class="product-img" href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }} produit foryoumer.com produit "></a>
-																<h5 class="product-type">{{product.category.name}}</h5>
-																{% if product.name|length > 10 %}
-																	<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
-																{% else %}
-																	<h3 class="product-name">{{ product.name }}</h3>
-																{% endif %}
-																<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
-																	<del>{{(product.oldPrice/100)|number_format(2)}}</del>
-																</h3>
-																<div class="product-select">
-																	<button class="add-to-wishlist round-icon-btn pink">
-																		<i class="icon_heart_alt"></i>
-																	</button>
-																	<button class="add-to-cart round-icon-btn pink">
-																		<i class="icon_bag_alt"></i>
-																	</button>
-																	<button class="add-to-compare round-icon-btn pink">
-																		<i class="fas fa-random"></i>
-																	</button>
-																	<button class="quickview round-icon-btn pink">
-																		<i class="far fa-eye"></i>
-																	</button>
-																</div>
-															</div>
-														</div>
-													{% endfor %}
-												</div>
-											</div>
-										{% endfor %}
-									</div>
-								</div>
-								<div class="quick-banner">
-									<div class="row justify-content-center align-items-center flex-column flex-md-row">
-										<div class="col-12 col-md-5">
-											<div class="bannner-img text-center"><img class="img-fluid" src="assets/images/homepage03/foryoumer.jpg" alt=""></div>
-										</div>
-										<div class="col-10 col-md-5">
-											<div class="banner-text text-center text-md-left">
-												<div class="discount-block d-flex align-items-center justify-content-center justify-content-md-start text-left">
-													<h2 class="big-number">50</h2>
-													<h3>%OFF<br>Black
-														<span>Friday</span>
+											<div class="col-6 col-md-5">
+												<div class="banner-text text-center text-md-left">
+													<h3 class="day">Black Friday
 													</h3>
+													<h3 class="sale">Sale Off
+														<span>60%</span>
+													</h3>
+													<a class="normal-btn pink" href="{{ path('products')}}">Shop now</a>
 												</div>
-												<p>
-													Profitez de nos offres exceptionnelles pour le Black Friday sur foryoumer.com ! Jusqu'à 50% de réduction sur une large sélection de produits. Ne manquez pas cette occasion de faire des économies tout en profitant de la meilleure qualité. Venez découvrir notre univers de beauté marine et laissez-vous transporter par nos produits innovants. Faites de votre peau votre plus bel atout avec foryoumer.com !
-												</p>
-												<a class="normal-btn pink" href="{{ path('products')}}">Shop now</a>
 											</div>
 										</div>
 									</div>
 								</div>
-								<div id="tab-so1">
-									<div class="best-seller_top mini-tab-title underline pink">
-										<div class="row align-items-md-center">
-											<div class="col-12 col-md-4">
-												<h2 class="title">Deal of the day</h2>
+								<div class="col-12 col-md-6">
+									<div class="quick-banner quick-banner-3">
+										<div class="row justify-content-center align-items-center">
+											<div class="col-6 col-md-5">
+												<div class="bannner-img text-center"><img class="img-fluid" src="assets/images/homepage03/v2.webp" alt=""></div>
 											</div>
-											<div class="col-12 col-md-8 text-lg-right"></div>
-										</div>
-									</div>
-									<div class="best-seller_bottom">
-										<div id="tab0">
-											<div class="row no-gutters-sm">
-												{% for product in promoted_products|slice(0, 6) %}
-													<div class="col-6 col-md-4">
-														<div class="product pink rounded rounded-lg rounded-xl border ">
-															<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }} produit foryoumer.com produit " class="product-img" height="90px"></a>
-															<h5 class="product-type">{{product.category.name}}</h5>
-															{% if product.name|length > 10 %}
-																<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
-															{% else %}
-																<h3 class="product-name">{{ product.name }}</h3>
-															{% endif %}
-															<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
-																<del>{{(product.oldPrice/100)|number_format(2)}}</del>
-															</h3>
-															<div class="product-select">
-																<button class="add-to-wishlist round-icon-btn pink">
-																	<i class="icon_heart_alt"></i>
-																</button>
-																<button class="add-to-cart round-icon-btn pink">
-																	<i class="icon_bag_alt"></i>
-																</button>
-																<button class="add-to-compare round-icon-btn pink">
-																	<i class="fas fa-random"></i>
-																</button>
-																<button class="quickview round-icon-btn pink">
-																	<i class="far fa-eye"></i>
-																</button>
-															</div>
-														</div>
-													</div>
-												{% endfor %}
-											</div>
-										</div>																																																																																							                                                 #}
-									</div>
-								</div>
-								<div id="tab-so2">
-									<div class="best-seller_top mini-tab-title underline pink">
-										<div class="row align-items-md-center">
-											<div class="col-12 col-md-4">
-												<h2 class="title">Latest Products</h2>
-											</div>
-											<div class="col-12 col-md-8 text-lg-right">
-												<ul class="tab-control text-md-right">
-													<li>
-														<a class="active" href="#tab0">All</a>
-													</li>
-													{% for category in categorie %}
-														<li>
-															<a href="#tab{{ loop.index }}">
-																{{ category.name }}
-															</a>
-														</li>
-													{% endfor %}
-												</ul>
-											</div>
-										</div>
-									</div>
-									<div class="best-seller_bottom">
-										<div id="tab0">
-											<div class="row no-gutters-sm">
-												{% for product in products|slice(0, 3) %}
-													<div class="col-6 col-md-4">
-														<div class="product pink rounded rounded-lg rounded-xl border ">
-															<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }} produit foryoumer.com produit " class="product-img" height="90px"></a>
-															<h5 class="product-type">{{product.category.name}}</h5>
-															{% if product.name|length > 10 %}
-																<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
-															{% else %}
-																<h3 class="product-name">{{ product.name }}</h3>
-															{% endif %}
-															<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
-																<del>{{(product.oldPrice/100)|number_format(2)}}</del>
-															</h3>
-															<div class="product-select">
-																<button class="add-to-wishlist round-icon-btn pink">
-																	<i class="icon_heart_alt"></i>
-																</button>
-																<button class="add-to-cart round-icon-btn pink">
-																	<i class="icon_bag_alt"></i>
-																</button>
-																<button class="add-to-compare round-icon-btn pink">
-																	<i class="fas fa-random"></i>
-																</button>
-																<button class="quickview round-icon-btn pink">
-																	<i class="far fa-eye"></i>
-																</button>
-															</div>
-														</div>
-													</div>
-												{% endfor %}
-											</div>
-										</div>
-										{% for category in categorie %}
-											<div id="tab{{ loop.index }}">
-												<div class="row no-gutters-sm">
-													{% for product in category.products|slice(0, 3) %}
-														<div class="col-6 col-md-4">
-															<div class="product pink rounded rounded-lg rounded-xl border ">
-																<a class="product-img" href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }} produit foryoumer.com produit "></a>
-																<h5 class="product-type">{{product.category.name}}</h5>
-																{% if product.name|length > 10 %}
-																	<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
-																{% else %}
-																	<h3 class="product-name">{{ product.name }}</h3>
-																{% endif %}
-																<h3 class="product-price">{{ (product.price/100)|number_format(2) }}
-																	<del>{{(product.oldPrice/100)|number_format(2)}}</del>
-																</h3>
-																<div class="product-select">
-																	<button class="add-to-wishlist round-icon-btn pink">
-																		<i class="icon_heart_alt"></i>
-																	</button>
-																	<button class="add-to-cart round-icon-btn pink">
-																		<i class="icon_bag_alt"></i>
-																	</button>
-																	<button class="add-to-compare round-icon-btn pink">
-																		<i class="fas fa-random"></i>
-																	</button>
-																	<button class="quickview round-icon-btn pink">
-																		<i class="far fa-eye"></i>
-																	</button>
-																</div>
-															</div>
-														</div>
-													{% endfor %}
-												</div>
-											</div>
-										{% endfor %}
-									</div>
-								</div>
-
-								<div class="row">
-									<div class="col-12 col-md-6">
-										<div class="quick-banner quick-banner-2">
-											<div class="row justify-content-center align-items-center">
-												<div class="col-6 col-md-5">
-													<div class="bannner-img text-center"><img class="img-fluid" src="assets/images/homepage03/v1.jpg" width="123px" height="114px" alt=""></div>
-												</div>
-												<div class="col-6 col-md-5">
-													<div class="banner-text text-center text-md-left">
-														<h3 class="day">Black Friday
-														</h3>
-														<h3 class="sale">Sale Off
-															<span>60%</span>
-														</h3>
-														<a class="normal-btn pink" href="{{ path('products')}}">Shop now</a>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-12 col-md-6">
-										<div class="quick-banner quick-banner-3">
-											<div class="row justify-content-center align-items-center">
-												<div class="col-6 col-md-5">
-													<div class="bannner-img text-center"><img class="img-fluid" src="assets/images/homepage03/v2.webp" alt=""></div>
-												</div>
-												<div class="col-6 col-md-5">
-													<div class="banner-text text-center text-md-left">
-														<h3 class="day">Summer</h3>
-														<h3 class="sale">Sale Off
-															<span>50%</span>
-														</h3>
-														<a class="normal-btn pink" href="{{ path('products')}}">Shop now</a>
-													</div>
+											<div class="col-6 col-md-5">
+												<div class="banner-text text-center text-md-left">
+													<h3 class="day">Summer</h3>
+													<h3 class="sale">Sale Off
+														<span>50%</span>
+													</h3>
+													<a class="normal-btn pink" href="{{ path('products')}}">Shop now</a>
 												</div>
 											</div>
 										</div>
@@ -618,118 +655,79 @@
 						</div>
 					</div>
 				</div>
-			</body>
+			</div>
 		</body>
-	</html>
-</div></div><!-- End product block-->
-<div class="partner">
-<div class="container">
-	<div class="partner_block d-flex justify-content-between" data-slick="{&quot;slidesToShow&quot;: 6}">
-		<div class="partner--logo">
-			<a><img src="{{ asset('assets/images/partner/a1.webp') }}" alt="partner" title="partner logo"></a>
-		</div>
-		<div class="partner--logo">
-			<a><img src="{{ asset('assets/images/partner/a2.webp') }}" alt="partner" title="partner logo"></a>
-		</div>
-		<div class="partner--logo" >
-			<a><img src="{{ asset('assets/images/partner/a3.webp') }}" alt="partner" title="partner logo"></a>
-		</div>
-		<div class="partner--logo">
-			<a><img src="{{ asset('assets/images/partner/a4.webp') }}" alt="partner" title="partner logo"></a>
-		</div>
-		<div class="partner--logo">
-			<a><img src="{{ asset('assets/images/partner/a5.webp') }}" alt="partner" title="partner logo"></a>
-		</div>
-		<div class="partner--logo">
-			<a><img src="{{ asset('assets/images/partner/a6.webp') }}" alt="partner" title="partner logo"></a>
-		</div>
-		<div class="partner--logo">
-			<a ><img src="{{ asset('assets/images/partner/a7.webp') }}" alt="partner" title="partner logo"></a>
+	</body>
+</html></body></html></div></div><!-- End product block--><div class="partner"><div class="container"><div class="partner_block d-flex justify-content-between" data-slick="{&quot;slidesToShow&quot;: 6}"><div class="partner--logo">
+<a><img src="{{ asset('assets/images/partner/a1.webp') }}" alt="partner" title="partner logo"></a></div><div class="partner--logo">
+<a><img src="{{ asset('assets/images/partner/a2.webp') }}" alt="partner" title="partner logo"></a></div><div class="partner--logo">
+<a><img src="{{ asset('assets/images/partner/a3.webp') }}" alt="partner" title="partner logo"></a></div><div class="partner--logo">
+<a><img src="{{ asset('assets/images/partner/a4.webp') }}" alt="partner" title="partner logo"></a></div><div class="partner--logo">
+<a><img src="{{ asset('assets/images/partner/a5.webp') }}" alt="partner" title="partner logo"></a></div><div class="partner--logo">
+<a><img src="{{ asset('assets/images/partner/a6.webp') }}" alt="partner" title="partner logo"></a></div><div class="partner--logo">
+<a><img src="{{ asset('assets/images/partner/a7.webp') }}" alt="partner" title="partner logo"></a></div></div></div></div><!-- End partner--><footer class="pink"><div class="container"><div class="row"><div class="col-12 col-sm-12 col-md-4 text-sm-center text-md-left">
+<div class="footer-logo"><img src="assets/images/foryoumer.png" alt="foryoumer.com Tunisie" height="60px" width="auto"></div>
+<div class="footer-contact">
+	<p>Address: 123 cite ikbel 7032 Tinja</p>
+	<p>Phone: +216 58 58 83 43</p>
+	<p>Email: meher@foryoumer.com</p>
+</div>
+<div class="footer-social">
+	<a class="round-icon-btn pink" href="https://www.facebook.com/foryoumer">
+		<i class="fab fa-facebook-f"></i>
+	</a>
+	<a class="round-icon-btn pink" href="https://www.instagram.com/foryoumer.co/">
+		<i class="fab fa-instagram"></i>
+	</a>
+	{# 	<a class="round-icon-btn pink" href="">
+									<i class="fab fa-twitter"></i>
+								</a>
+								<a class="round-icon-btn pink" href="">
+									<i class="fab fa-pinterest-p"></i>
+								</a> #}
+</div></div><div class="col-md-8">
+<div class="row">
+	<div class="col-12 col-sm-4 text-sm-center text-md-left">
+		<div class="footer-quicklink">
+			<h5>Infomation</h5>
+			<a href="{{ path('about')}}" rel="canonical">About us</a>
+			<a href="{{ path('blog')}}" rel="canonical">Blog</a>
+			<a href="{{ path('contact')}}" rel="canonical">Contact</a>
+			<a href="{{ path('service')}}" rel="canonical">Service</a>
 		</div>
 	</div>
-</div></div><!-- End partner--><footer class="pink">
-<div class="container">
-	<div class="row">
-		<div class="col-12 col-sm-12 col-md-4 text-sm-center text-md-left">
-			<div class="footer-logo"><img src="assets/images/foryoumer.png" alt="foryoumer.com Tunisie" height="60px" width="auto"></div>
-			<div class="footer-contact">
-				<p>Address: 123 cite ikbel 7032 Tinja</p>
-				<p>Phone: +216 58 58 83 43</p>
-				<p>Email: meher@foryoumer.com</p>
-			</div>
-			<div class="footer-social">
-				<a class="round-icon-btn pink" href="https://www.facebook.com/foryoumer">
-					<i class="fab fa-facebook-f"></i>
-				</a>
-				<a class="round-icon-btn pink" href="https://www.instagram.com/foryoumer.co/">
-					<i class="fab fa-instagram"></i>
-				</a>
-			{# 	<a class="round-icon-btn pink" href="">
-					<i class="fab fa-twitter"></i>
-				</a>
-				<a class="round-icon-btn pink" href="">
-					<i class="fab fa-pinterest-p"></i>
-				</a> #}
-			</div>
+	<div class="col-12 col-sm-4 text-sm-center text-md-left">
+		<div class="footer-quicklink">
+			<h5>My Account</h5>
+			<a href="{{ path('account')}}">My Account</a>
+			<a href="{{ path('contact')}}">Contact</a>
+			<a href="{{ path('cart_index')}}">Shopping cart</a>
+			<a href="{{ path('products')}}">Shop</a>
 		</div>
-		<div class="col-md-8">
-			<div class="row">
-				<div class="col-12 col-sm-4 text-sm-center text-md-left">
-					<div class="footer-quicklink">
-						<h5>Infomation</h5>
-						<a href="{{ path('about')}}" rel="canonical">About us</a>
-						<a href="{{ path('blog')}}" rel="canonical">Blog</a>
-						<a href="{{ path('contact')}}" rel="canonical">Contact</a>
-						<a href="{{ path('service')}}" rel="canonical">Service</a>
-					</div>
-				</div>
-				<div class="col-12 col-sm-4 text-sm-center text-md-left">
-					<div class="footer-quicklink">
-						<h5>My Account</h5>
-						<a href="{{ path('account')}}">My Account</a>
-						<a href="{{ path('contact')}}">Contact</a>
-						<a href="{{ path('cart_index')}}">Shopping cart</a>
-						<a href="{{ path('products')}}">Shop</a>
-					</div>
-				</div>
-				<div class="col-12 col-sm-4 text-sm-center text-md-left">
-					<div class="footer-quicklink">
-						<h5>Quick Shop</h5>
-						<a href="{{ path('about')}}">About us</a>
-						<a href="{{ path('blog')}}">Blog</a>
-						<a href="{{ path('contact')}}">Contact</a>
-						<a href="{{ path('service')}}">Service</a>
-					</div>
-				</div>
-			</div>
+	</div>
+	<div class="col-12 col-sm-4 text-sm-center text-md-left">
+		<div class="footer-quicklink">
+			<h5>Quick Shop</h5>
+			<a href="{{ path('about')}}">About us</a>
+			<a href="{{ path('blog')}}">Blog</a>
+			<a href="{{ path('contact')}}">Contact</a>
+			<a href="{{ path('service')}}">Service</a>
 		</div>
+	</div>
+</div></div></div></div><div class="newletter"><div class="container"><div class="row justify-content-between align-items-center">
+<div class="col-12 col-md-7">
+	<div class="newletter_text text-center text-md-left">
+		<h5>Join Our Newsletter Now at foryoumer.com</h5>
+		<p>Get E-mail updates about our latest shop and special offers at foryoumer.com.</p>
 	</div>
 </div>
-<div class="newletter">
-	<div class="container">
-		<div class="row justify-content-between align-items-center">
-			<div class="col-12 col-md-7">
-				<div class="newletter_text text-center text-md-left">
-					<h5>Join Our Newsletter Now at foryoumer.com</h5>
-					<p>Get E-mail updates about our latest shop and special offers at foryoumer.com.</p>
-				</div>
-			</div>
-			<div class="col-12 col-md-5">
-				<div class="newletter_input">
-					<input class="round-input" type="text" placeholder="Enter your email">
-					<button>Subcribe</button>
-				</div>
-			</div>
-		</div>
+<div class="col-12 col-md-5">
+	<div class="newletter_input">
+		<input class="round-input" type="text" placeholder="Enter your email">
+		<button>Subcribe</button>
 	</div>
-</div>
-<div class="footer-credit">
-	<div class="container">
-		<div class="footer-creadit_block d-flex flex-column flex-md-row justify-content-start justify-content-md-between align-items-baseline align-items-md-center">
-			<p class="author">Copyright © 2023 Foryoumer - All Rights Reserved.</p><img class="payment-method" src="assets/images/payment.png" alt="Produits artisanaux tunisiens">
-		</div>
-	</div>
-</div></footer></div><!-- End footer--><script>const departmentMenu = document.getElementById('department-menu');
+</div></div></div></div><div class="footer-credit"><div class="container"><div class="footer-creadit_block d-flex flex-column flex-md-row justify-content-start justify-content-md-between align-items-baseline align-items-md-center">
+<p class="author">Copyright © 2023 Foryoumer - All Rights Reserved.</p><img class="payment-method" src="assets/images/payment.png" alt="Produits artisanaux tunisiens"></div></div></div></footer></div><!-- End footer--><script>const departmentMenu = document.getElementById('department-menu');
 const departmentMenuBlock = document.getElementById('department-menu_block');
 const departmentDropdownMenu = document.getElementById('department-dropdown-menu');
 
@@ -757,7 +755,7 @@ $departmentDropdownMenu.show();
 setTimeout(function () {
 $departmentDropdownMenu.hide();
 }, 2000);
-});</script></body></body></html></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script><script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script><script src="{{ asset('assets/js/jquery.countdown.min.js') }}" defer></script><script src="{{ asset('assets/js/slick.min.js') }}" defer></script><script src="{{ asset('assets/js/jquery.scrollUp.min.js') }} " defer></script><script src="{{ asset('assets/js/jquery.zoom.min.js') }}" defer></script><script src="assets/js/vanilla-tilt.min.js"></script><script src="{{ asset('assets/js/main.js') }}" defer></script></body></html></body><style>@media only screen and(max-width: 768px) {
+});</script></body></body></html></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script><script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script><script src="{{ asset('assets/js/jquery.countdown.min.js') }}" defer></script><script src="{{ asset('assets/js/slick.min.js') }}" defer></script><script src="{{ asset('assets/js/jquery.scrollUp.min.js') }} " defer></script><script src="{{ asset('assets/js/jquery.zoom.min.js') }}" defer></script><script src="assets/js/vanilla-tilt.min.js"></script><script src="{{ asset('assets/js/main.js') }}" defer></script> </body></html></body><style>@media only screen and(max-width: 768px) {
 	.customer-name {
 		font-size: 20px;
 	}
@@ -765,4 +763,4 @@ $departmentDropdownMenu.hide();
 		font-size: 16px;
 		max-width: 100%;
 	}
-}</style> </html>
+}</style></html>

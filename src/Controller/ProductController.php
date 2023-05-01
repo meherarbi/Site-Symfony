@@ -34,25 +34,43 @@ class ProductController extends AbstractController
         $this->elasticsearchService = $elasticsearchService;
         $this->logger = $logger;
     }
-    /**
-     * @Route("/product", name="products")
-     */
-    public function index(PaginatorInterface $paginator, Request $request, ProductRepository $productrepository)
-    {
-        $user = $this->getUser();
-        $products = $paginator->paginate(
-            $productrepository->findAll(),
-            $request->query->getInt('page', 1),
-            /*page number*/
-            10/*limit per page*/
-        );
+/**
+ * @Route("/product", name="products")
+ */
+public function index(PaginatorInterface $paginator, Request $request, ProductRepository $productrepository)
+{
+    $user = $this->getUser();
 
-        return $this->render('product/index.html.twig', [
-            'products' => $products,
-            'user'=>$user 
+    $search = new SearchProduct();
+    $form = $this->createForm(SearchProductsType::class, $search);
+    $form->handleRequest($request);
 
-        ]);
+    // get the page number from the query string
+    $page = $request->query->getInt('page', 1);
+    
+    $products = $paginator->paginate(
+        $productrepository->findWithSearchNoCategory($search),
+        $page,
+        9 /*limit per page*/
+        
+    );
+
+    if ($form->isSubmitted() && !$form->isValid()) {
+        // gestion des erreurs
+        $errors = $form->getErrors(true);
+        foreach ($errors as $error) {
+            $this->addFlash('danger', $error->getMessage());
+        }
     }
+
+    return $this->render('product/index.html.twig', [
+        'products' => $products,
+        'user' => $user,
+        'search' => $form->createView(),
+        'page' => $page,
+    ]);
+}
+
 
     /**
      * @Route("/search", name="search")
@@ -75,33 +93,30 @@ class ProductController extends AbstractController
 /**
  * @Route("/products/{slug}", name="product")
  */
-public function show($slug): Response
-{
-    $user = $this->getUser();
-    $product = $this->entityManager->getRepository(Product::class)->findOneBy(['slug' => $slug]);
-    
-    if (!$product) {
-        return $this->redirectToRoute('products');
+    public function show($slug): Response
+    {
+        $user = $this->getUser();
+        $product = $this->entityManager->getRepository(Product::class)->findOneBy(['slug' => $slug]);
+
+        if (!$product) {
+            return $this->redirectToRoute('products');
+        }
+
+        // Enregistrez le produit comme récemment consulté si l'utilisateur est connecté
+        if ($user) {
+            $recentlyViewedProduct = new RecentlyViewedProduct();
+            $recentlyViewedProduct->setProduct($product);
+            $recentlyViewedProduct->setUser($user);
+            $recentlyViewedProduct->setViewedAt(new \DateTimeImmutable());
+
+            $this->entityManager->persist($recentlyViewedProduct);
+            $this->entityManager->flush();
+        }
+
+        return $this->render('product/show.html.twig', [
+            'product' => $product,
+        ]);
     }
-
-    // Enregistrez le produit comme récemment consulté si l'utilisateur est connecté
-    if ($user) {
-        $recentlyViewedProduct = new RecentlyViewedProduct();
-        $recentlyViewedProduct->setProduct($product);
-        $recentlyViewedProduct->setUser($user);
-        $recentlyViewedProduct->setViewedAt(new \DateTimeImmutable());
-
-        $this->entityManager->persist($recentlyViewedProduct);
-        $this->entityManager->flush();
-    }
-    
-    
-    return $this->render('product/show.html.twig', [
-        'product' => $product,
-    ]);
-}
-
-
 
 /**
  * @Route("/productsCategory/{id}", name="product_category")
@@ -143,8 +158,6 @@ public function show($slug): Response
             $recentlyViewedProductIds = $recentlyViewedProductRepository->findRecentlyViewedProductIdsByUser($user, new DateTime('-24 hours'));
             $recentlyViewedProducts = $repProduct->findRecentlyViewedProductsByProductIdsAndCategory($recentlyViewedProductIds, $category);
         }
-      
-
 
         // Retourner la vue avec les produits, la catégorie et les produits consultés récemment
         return $this->render('product/showCategory.html.twig', [
@@ -153,7 +166,7 @@ public function show($slug): Response
             'category' => $category,
             'user' => $user,
             'recentlyViewedProducts' => $recentlyViewedProducts,
-            'recentlyViewedProduct' => $recentlyViewedProduct
+            'recentlyViewedProduct' => $recentlyViewedProduct,
 
         ]);
     }

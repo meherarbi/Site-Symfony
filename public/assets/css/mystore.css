@@ -357,7 +357,7 @@ input[type="checkbox"] {
   box-sizing: border-box;
   padding: 0;
   position: absolute;
-  right: 95%;
+  right: 43%;
 }
 a:not([href]):not([tabindex]) {
   color: white;

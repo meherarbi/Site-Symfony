@@ -44,7 +44,7 @@ class ProductCrudController extends AbstractCrudController
             SlugField::new('slug')->setTargetFieldName('name')->setFormTypeOptions(['attr' => ['class' => 'col-md-6']]),
             TextField::new('subtitle')->setFormTypeOptions(['attr' => ['class' => 'col-md-6']]),
             TextareaField::new('description')->setFormTypeOptions(['attr' => ['class' => 'col-md-6']]),
-            AssociationField::new('category')->setFormTypeOptions(['attr' => ['class' => 'col-md-6']]),
+            AssociationField::new('category')->setFormTypeOptions(['attr' => ['class' => 'col-md-6']])->setRequired(true),
             FormField::addPanel('Prix et promotion')->setIcon('fas fa-dollar-sign'),
         MoneyField::new('price')->setCurrency('EUR')->setFormTypeOptions(['attr' => ['class' => 'col-md-6']]),
         MoneyField::new('oldprice')->setCurrency('EUR')->setFormTypeOptions(['attr' => ['class' => 'col-md-6']]),

@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Category;
 use App\Entity\Product;
+use App\Entity\SearchProduct;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query\Expr\Join;
@@ -35,6 +36,51 @@ class ProductRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+
+    public function LatestProductCategory()
+    {
+        // Sous-requête pour récupérer les 6 derniers ID de produit de chaque catégorie
+        $qbSub = $this->createQueryBuilder('p2')
+            ->select('p2.id')
+            ->where('p2.category = p.category')
+            ->orderBy('p2.id', 'DESC')
+            ->setMaxResults(6);
+    
+        // Requête principale pour récupérer les produits correspondant aux ID obtenus dans la sous-requête
+        $qb = $this->createQueryBuilder('p')
+            ->leftJoin('p.category', 'c')
+            ->andWhere('p.id IN (
+                SELECT p3.id
+                FROM App\Entity\Product p3
+                WHERE p3.category = p.category
+                AND p3.id IN (' . $qbSub->getDQL() . ')
+            )')
+            ->orderBy('p.category', 'ASC')
+            ->addOrderBy('p.id', 'DESC');
+    
+        $qb->setParameters($qbSub->getParameters());
+    
+        return $qb->getQuery()->getResult();
+    }
+    
+
+    public function findByPriceRangeQueryBuilder($minPrice, $maxPrice)
+    {
+        $queryBuilder = $this->createQueryBuilder('p');
+
+        if ($minPrice !== null) {
+            $queryBuilder->andWhere('p.price >= :minPrice')
+                ->setParameter('minPrice', $minPrice);
+        }
+
+        if ($maxPrice !== null) {
+            $queryBuilder->andWhere('p.price <= :maxPrice')
+                ->setParameter('maxPrice', $maxPrice);
+        }
+
+        return $queryBuilder;
+    }
+
     public function findProductMin()
     {
         return $this->createQueryBuilder('p')
@@ -63,18 +109,18 @@ class ProductRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-    
+
     public function findPromotedProductsByCategory($categoryId)
-{
-    return $this->createQueryBuilder('p')
-        ->andWhere('p.onPromotion = :val')
-        ->andWhere('p.category = :categoryId')
-        ->setParameter('val', true)
-        ->setParameter('categoryId', $categoryId)
-        ->getQuery()
-        ->getResult()
-    ;
-}
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.onPromotion = :val')
+            ->andWhere('p.category = :categoryId')
+            ->setParameter('val', true)
+            ->setParameter('categoryId', $categoryId)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
     public function findRandomProducts(int $limit): array
     {
@@ -98,7 +144,7 @@ class ProductRepository extends ServiceEntityRepository
             )
             ORDER BY p.category
         ');
-    
+
         return $query->getResult();
 
     }
@@ -179,6 +225,23 @@ return $this->createQueryBuilder('p')
         $query = $query->join('p.category', 'c')
             ->andWhere('c.id = :category')
             ->setParameter('category', $category->getId());
+
+        return $query->getQuery()->getResult();
+    }
+
+    public function findWithSearchNoCategory(SearchProduct $search)
+    {
+        $query = $this->createQueryBuilder('p');
+
+        if ($search->getMinPrice()) {
+            $query = $query->andWhere('p.price >= :minPrice')
+                ->setParameter('minPrice', $search->getMinPrice() * 100);
+        }
+
+        if ($search->getMaxPrice()) {
+            $query = $query->andWhere('p.price <= :maxPrice')
+                ->setParameter('maxPrice', $search->getMaxPrice() * 100);
+        }
 
         return $query->getQuery()->getResult();
     }
