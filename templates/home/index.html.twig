@@ -21,10 +21,7 @@
 		<link rel="stylesheet" href="{{ asset('assets/css/jquery.fancybox.min.css') }}">
 		<link rel="shortcut icon" href="{{ asset('assets/images/shortcut_logo.png') }}">
 		<link rel="stylesheet" href="{{ asset('assets/css/mystore.css') }}">
-		<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
-		{% set hostname = app.request.host %}
-		<meta http-equiv="Content-Security-Policy" content="default-src 'none'; font-src 'self'; img-src 'self' ; connect-src 'self' ; script-src 'self' 'unsafe-inline' https://code.jquery.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net ;  style-src 'self' "> {% block seo %}{% endblock %}
-				
+		<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>		
 	</head>
 	<body>
 		<div id="main">
@@ -658,15 +655,32 @@
 			</div>
 		</body>
 	</body>
-</html></body></html></div></div><!-- End product block--><div class="partner"><div class="container"><div class="partner_block d-flex justify-content-between" data-slick="{&quot;slidesToShow&quot;: 6}"><div class="partner--logo">
-<a><img src="{{ asset('assets/images/partner/a1.webp') }}" alt="partner" title="partner logo"></a></div><div class="partner--logo">
-<a><img src="{{ asset('assets/images/partner/a2.webp') }}" alt="partner" title="partner logo"></a></div><div class="partner--logo">
-<a><img src="{{ asset('assets/images/partner/a3.webp') }}" alt="partner" title="partner logo"></a></div><div class="partner--logo">
-<a><img src="{{ asset('assets/images/partner/a4.webp') }}" alt="partner" title="partner logo"></a></div><div class="partner--logo">
-<a><img src="{{ asset('assets/images/partner/a5.webp') }}" alt="partner" title="partner logo"></a></div><div class="partner--logo">
-<a><img src="{{ asset('assets/images/partner/a6.webp') }}" alt="partner" title="partner logo"></a></div><div class="partner--logo">
-<a><img src="{{ asset('assets/images/partner/a7.webp') }}" alt="partner" title="partner logo"></a></div></div></div></div><!-- End partner--><footer class="pink"><div class="container"><div class="row"><div class="col-12 col-sm-12 col-md-4 text-sm-center text-md-left">
-<div class="footer-logo"><img src="assets/images/foryoumer.png" alt="foryoumer.com Tunisie" height="60px" width="auto"></div>
+</html><!-- End product block-->
+<div class="partner">
+<div class="container">
+<div class="partner_block d-flex justify-content-between" data-slick="{&quot;slidesToShow&quot;: 6}">
+<div class="partner--logo">
+<a><img src="{{ asset('assets/images/partner/a1.webp') }}" alt="partner" title="partner logo"></a></div>
+<div class="partner--logo">
+<a><img src="{{ asset('assets/images/partner/a2.webp') }}" alt="partner" title="partner logo"></a></div>
+<div class="partner--logo">
+<a><img src="{{ asset('assets/images/partner/a3.webp') }}" alt="partner" title="partner logo"></a></div>
+<div class="partner--logo">
+<a><img src="{{ asset('assets/images/partner/a4.webp') }}" alt="partner" title="partner logo"></a></div>
+<div class="partner--logo">
+<a><img src="{{ asset('assets/images/partner/a5.webp') }}" alt="partner" title="partner logo"></a></div>
+<div class="partner--logo">
+<a><img src="{{ asset('assets/images/partner/a6.webp') }}" alt="partner" title="partner logo"></a></div>
+<div class="partner--logo">
+<a><img src="{{ asset('assets/images/partner/a7.webp') }}" alt="partner" title="partner logo"></a></div>
+</div></div></div><!-- End partner-->
+<footer class="pink">
+<div class="container">
+<div class="row">
+<div class="col-12 col-sm-12 col-md-4 text-sm-center text-md-left">
+<div class="footer-logo">
+<img src="assets/images/foryoumer.png" alt="foryoumer.com Tunisie" height="60px" width="auto">
+</div>
 <div class="footer-contact">
 	<p>Address: 123 cite ikbel 7032 Tinja</p>
 	<p>Phone: +216 58 58 83 43</p>
@@ -685,7 +699,9 @@
 								<a class="round-icon-btn pink" href="">
 									<i class="fab fa-pinterest-p"></i>
 								</a> #}
-</div></div><div class="col-md-8">
+</div>
+</div>
+<div class="col-md-8">
 <div class="row">
 	<div class="col-12 col-sm-4 text-sm-center text-md-left">
 		<div class="footer-quicklink">
@@ -714,7 +730,13 @@
 			<a href="{{ path('service')}}">Service</a>
 		</div>
 	</div>
-</div></div></div></div><div class="newletter"><div class="container"><div class="row justify-content-between align-items-center">
+</div>
+</div>
+</div>
+</div>
+<div class="newletter">
+<div class="container">
+<div class="row justify-content-between align-items-center">
 <div class="col-12 col-md-7">
 	<div class="newletter_text text-center text-md-left">
 		<h5>Join Our Newsletter Now at foryoumer.com</h5>
@@ -726,8 +748,21 @@
 		<input class="round-input" type="text" placeholder="Enter your email">
 		<button>Subcribe</button>
 	</div>
-</div></div></div></div><div class="footer-credit"><div class="container"><div class="footer-creadit_block d-flex flex-column flex-md-row justify-content-start justify-content-md-between align-items-baseline align-items-md-center">
-<p class="author">Copyright © 2023 Foryoumer - All Rights Reserved.</p><img class="payment-method" src="assets/images/payment.png" alt="Produits artisanaux tunisiens"></div></div></div></footer></div><!-- End footer--><script>const departmentMenu = document.getElementById('department-menu');
+</div>
+</div>
+</div>
+</div>
+<div class="footer-credit">
+<div class="container">
+<div class="footer-creadit_block d-flex flex-column flex-md-row justify-content-start justify-content-md-between align-items-baseline align-items-md-center">
+<p class="author">Copyright © 2023 Foryoumer - All Rights Reserved.</p><img class="payment-method" src="assets/images/payment.png" alt="Produits artisanaux tunisiens"></div>
+</div>
+</div>
+</footer>
+</div>
+<!-- End footer-->
+<script>
+const departmentMenu = document.getElementById('department-menu');
 const departmentMenuBlock = document.getElementById('department-menu_block');
 const departmentDropdownMenu = document.getElementById('department-dropdown-menu');
 
@@ -755,7 +790,7 @@ $departmentDropdownMenu.show();
 setTimeout(function () {
 $departmentDropdownMenu.hide();
 }, 2000);
-});</script></body></body></html></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script><script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script><script src="{{ asset('assets/js/jquery.countdown.min.js') }}" defer></script><script src="{{ asset('assets/js/slick.min.js') }}" defer></script><script src="{{ asset('assets/js/jquery.scrollUp.min.js') }} " defer></script><script src="{{ asset('assets/js/jquery.zoom.min.js') }}" defer></script><script src="assets/js/vanilla-tilt.min.js"></script><script src="{{ asset('assets/js/main.js') }}" defer></script> </body></html></body><style>@media only screen and(max-width: 768px) {
+});</script><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script><script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script><script src="{{ asset('assets/js/jquery.countdown.min.js') }}" defer></script><script src="{{ asset('assets/js/slick.min.js') }}" defer></script><script src="{{ asset('assets/js/jquery.scrollUp.min.js') }} " defer></script><script src="{{ asset('assets/js/jquery.zoom.min.js') }}" defer></script><script src="assets/js/vanilla-tilt.min.js"></script><script src="{{ asset('assets/js/main.js') }}" defer></script> </body></html></body><style>@media only screen and(max-width: 768px) {
 	.customer-name {
 		font-size: 20px;
 	}
@@ -763,4 +798,4 @@ $departmentDropdownMenu.hide();
 		font-size: 16px;
 		max-width: 100%;
 	}
-}</style></html>
+}</style>
