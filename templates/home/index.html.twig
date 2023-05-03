@@ -577,7 +577,7 @@
 														<div class="col-6 col-md-4">
 															<div class="product pink rounded rounded-lg rounded-xl border ">
 																<a class="product-img" href="{{ path('product',{'slug':latestProduct.slug}) }}"><img src="/uploads/{{ latestProduct.illustration }}" alt="{{ latestProduct.name }} produit foryoumer.com produit "></a>
-																<h5 class="product-type">{{ latestProduct.category.name }}</h5>
+																<h5 class="product-type data-category-id="{{ category.id }}"">{{ latestProduct.category.name }}</h5>
 																{% if latestProduct.name|length > 10 %}
 																	<h3 class="product-name">{{ latestProduct.name|slice(0, 10) }}...</h3>
 																{% else %}
@@ -790,7 +790,8 @@ $departmentDropdownMenu.show();
 setTimeout(function () {
 $departmentDropdownMenu.hide();
 }, 2000);
-});</script><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script><script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script><script src="{{ asset('assets/js/jquery.countdown.min.js') }}" defer></script><script src="{{ asset('assets/js/slick.min.js') }}" defer></script><script src="{{ asset('assets/js/jquery.scrollUp.min.js') }} " defer></script><script src="{{ asset('assets/js/jquery.zoom.min.js') }}" defer></script><script src="assets/js/vanilla-tilt.min.js"></script><script src="{{ asset('assets/js/main.js') }}" defer></script> </body></html></body><style>@media only screen and(max-width: 768px) {
+});</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script><script async src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script><script async src="{{ asset('assets/js/jquery.countdown.min.js') }}" defer></script><script async src="{{ asset('assets/js/slick.min.js') }}" ></script><script async src="{{ asset('assets/js/jquery.scrollUp.min.js') }} " ></script><script async src="{{ asset('assets/js/jquery.zoom.min.js') }}" ></script><script async src="assets/js/vanilla-tilt.min.js"></script><script async src="{{ asset('assets/js/main.js') }}" ></script> </body></html></body><style>@media only screen and(max-width: 768px) {
 	.customer-name {
 		font-size: 20px;
 	}

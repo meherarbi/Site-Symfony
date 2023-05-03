@@ -59,6 +59,7 @@ class ProductRepository extends ServiceEntityRepository
             ->addOrderBy('p.id', 'DESC');
     
         $qb->setParameters($qbSub->getParameters());
+        
     
         return $qb->getQuery()->getResult();
     }
