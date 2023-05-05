@@ -7,7 +7,6 @@ use App\Repository\ProductRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * @ORM\Entity(repositoryClass=ProductRepository::class)
@@ -83,7 +82,6 @@ class Product
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $imageFile;
-
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\ProductImage", mappedBy="product", cascade={"persist"})
@@ -187,12 +185,12 @@ class Product
 
     public function getPrice(): ?float
     {
-        return $this->price ;
+        return $this->price;
     }
 
     public function setPrice(float $price): self
     {
-        $this->price = $price ;
+        $this->price = $price;
 
         return $this;
     }
@@ -398,11 +396,27 @@ return $this;
         return $this->createdAt;
     }
 
-    public function setCreatedAt(?\DateTimeImmutable $createdAt): self
+    public function setCreatedAt(?\DateTimeImmutable$createdAt): self
     {
         $this->createdAt = $createdAt;
 
         return $this;
+    }
+
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->getId(),
+            'name' => $this->getName(),
+            'slug' => $this->getSlug(),
+            'illustration' => $this->getIllustration(),
+            'price' => $this->getPrice(),
+            'oldPrice' => $this->getOldPrice(),
+            'category' => [
+                'id' => $this->getCategory()->getId(),
+                'name' => $this->getCategory()->getName(),
+            ],
+        ];
     }
 
 }

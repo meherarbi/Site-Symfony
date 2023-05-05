@@ -117,7 +117,7 @@
 								{% for product in products  %}
 									<div class="col-6 col-md-3">
 										<div class="product pink">
-											<a class="product-img" href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}"></a>
+											<a class="product-img" href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration|replace({'.jpg': '.webp'}) }}" alt="{{ product.name }}"></a>
 											<h5 class="product-type">{{product.category.name}}</h5>
 											{% if product.name|length > 10 %}
 												<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
@@ -171,7 +171,7 @@
 												<div class="mini-product border">
 													<div class="mini-product_img">
 														<a class="product-img" href="{{ path('product',{'slug':product.slug}) }}">
-															<img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}">
+															<img src="/uploads/{{ product.illustration|replace({'.jpg': '.webp'}) }}" alt="{{ product.name }}">
 														</a>
 													</div>
 													<div class="mini-product_info">
