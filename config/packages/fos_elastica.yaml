@@ -5,10 +5,9 @@ fos_elastica:
         products:
             index_name: products
             properties:
-                id: ~
-                name: ~
-                description: ~
-                category: ~
+                name:
+                    type: text
+                
             persistence:
                 driver: orm
                 model: App\Entity\Product

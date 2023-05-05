@@ -75,10 +75,12 @@ public function index(PaginatorInterface $paginator, Request $request, ProductRe
     /**
      * @Route("/search", name="search")
      */
-    public function searchProducts(Request $request, PaginatorInterface $paginator)
+    public function searchProducts(Request $request)
     {
         $searchTerm = $request->query->get('q', '');
+        
         $searchResults = $this->elasticsearchService->searchProducts($searchTerm);
+      
 
         if (empty($searchResults)) {
             return $this->render('error_custom.html.twig');

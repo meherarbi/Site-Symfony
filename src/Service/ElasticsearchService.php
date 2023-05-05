@@ -9,6 +9,7 @@ use FOS\ElasticaBundle\Elastica\Client;
 use FOS\ElasticaBundle\Finder\PaginatedFinderInterface;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
+use Elastica\Query\MultiMatch;
 
 class ElasticsearchService
 {
@@ -78,15 +79,21 @@ class ElasticsearchService
      * @return array
      */
 
-    public function searchProducts(string $query, int $page = 1, int $limit = 8): PaginationInterface
-    {
-        $searchQuery = new QueryString($query);
-        $search = new Query();
-        $search->setQuery($searchQuery);
+     
 
-        $paginatorAdapter = $this->productFinder->createPaginatorAdapter($search);
-
-        return $this->paginator->paginate($paginatorAdapter, $page, $limit);
-    }
+     public function searchProducts(string $query, int $page = 1, int $limit = 8): PaginationInterface
+     {
+         $searchQuery = new MultiMatch();
+         $searchQuery->setQuery($query);
+         $searchQuery->setFields(['name']); // Ajoutez d'autres champs si nécessaire
+     
+         $search = new Query();
+         $search->setQuery($searchQuery);
+     
+         $paginatorAdapter = $this->productFinder->createPaginatorAdapter($search);
+     
+         return $this->paginator->paginate($paginatorAdapter, $page, $limit);
+     }
+     
 
 }

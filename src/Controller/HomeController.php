@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -21,27 +22,33 @@ class HomeController extends AbstractController
     public function index(Request $request)
     {
         /* if ($request->request->has('Id')) {
-            $productId = $request->request->get('Id');
-            
-            $productGroup = $this->productRepository->findProductsGroupByCategory($productId);
+        $productId = $request->request->get('Id');
 
-            return $this->render('home/index.html.twig', [
-                'products' => $productGroup,
-                'categories' => $this->categoryRepository->findAll(),
-            ]);
+        $productGroup = $this->productRepository->findProductsGroupByCategory($productId);
+
+        return $this->render('home/index.html.twig', [
+        'products' => $productGroup,
+        'categories' => $this->categoryRepository->findAll(),
+        ]);
         } */
 
         $products = $this->productRepository->findAll();
         $latestProducts = $this->productRepository->findProduct();
-        $latestProductsCategory = $this->productRepository->LatestProductCategory();
+        /* $latestProductsCategory = $this->productRepository->LatestProductCategory(); */
         $productsOneByCategory = $this->productRepository->findProductByCategory();
         $productsMin = $this->productRepository->findProductMin();
         $promotedProducts = $this->productRepository->findPromotedProducts();
         $categories = $this->categoryRepository->findAll();
         $promotedProductsByCategory = [];
-    
+
         foreach ($categories as $category) {
             $promotedProductsByCategory[$category->getId()] = $this->productRepository->findPromotedProductsByCategory($category->getId());
+        }
+
+        $latestProductsCategory = [];
+
+        foreach ($categories as $category) {
+            $latestProductsCategory[$category->getId()] = $this->productRepository->findLatestProductsByCategory($category->getId(), 3);
         }
 
         $icons = [
@@ -51,30 +58,22 @@ class HomeController extends AbstractController
             'Accessoire' => 'fas fa-mobile-alt',
             'Jouets et enfants' => 'fas fa-baby-carriage',
             'Beauté et santé' => 'fas fa-leaf',
-            'Outils et bricolage' => 'fas fa-wrench'
+            'Outils et bricolage' => 'fas fa-wrench',
         ];
-        
-        
-        
-        
-        
-        
-        
-        
 
         $response = $this->render('home/index.html.twig', [
             'products' => $products,
-            'latestProducts'=>$latestProducts,
-            'latestProductsCategory'=>$latestProductsCategory,
-            'productsOneByCategory'=>$productsOneByCategory,
-            'productsMin'=>$productsMin,
+            'latestProducts' => $latestProducts,
+             'latestProductsCategory'=>$latestProductsCategory,
+            'productsOneByCategory' => $productsOneByCategory,
+            'productsMin' => $productsMin,
             'promoted_products' => $promotedProducts,
             'promotedProductsByCategory' => $promotedProductsByCategory,
             'categorie' => $this->categoryRepository->findAll(),
-            'icons' => $icons
+            'icons' => $icons,
         ]);
         $response->headers->remove('X-Robots-Tag');
-        
+
         return $response;
     }
 
@@ -113,7 +112,14 @@ return $this->render('home/index.html.twig', [
 
     }
 
-    
-
+    /**
+     * @Route("/category/{id}/products", name="category_products")
+     */
+    public function getCategoryProducts(int $id)
+    {
+        $products = $this->productRepository->findLatestProductsByCategory($id);
+        $productsArray = array_map(fn($product) => $product->toArray(), $products);
+        return new JsonResponse($productsArray);
+    }
 
 }

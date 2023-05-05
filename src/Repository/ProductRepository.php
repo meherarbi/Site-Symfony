@@ -37,33 +37,16 @@ class ProductRepository extends ServiceEntityRepository
         ;
     }
 
-    public function LatestProductCategory()
+    public function findLatestProductsByCategory($categoryId, $limit = 3)
     {
-        // Sous-requête pour récupérer les 6 derniers ID de produit de chaque catégorie
-        $qbSub = $this->createQueryBuilder('p2')
-            ->select('p2.id')
-            ->where('p2.category = p.category')
-            ->orderBy('p2.id', 'DESC')
-            ->setMaxResults(6);
-    
-        // Requête principale pour récupérer les produits correspondant aux ID obtenus dans la sous-requête
-        $qb = $this->createQueryBuilder('p')
-            ->leftJoin('p.category', 'c')
-            ->andWhere('p.id IN (
-                SELECT p3.id
-                FROM App\Entity\Product p3
-                WHERE p3.category = p.category
-                AND p3.id IN (' . $qbSub->getDQL() . ')
-            )')
-            ->orderBy('p.category', 'ASC')
-            ->addOrderBy('p.id', 'DESC');
-    
-        $qb->setParameters($qbSub->getParameters());
-        
-    
-        return $qb->getQuery()->getResult();
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.category = :categoryId')
+            ->setParameter('categoryId', $categoryId)
+            ->setMaxResults($limit)
+            ->orderBy('p.id', 'DESC')
+            ->getQuery()
+            ->getResult();
     }
-    
 
     public function findByPriceRangeQueryBuilder($minPrice, $maxPrice)
     {
