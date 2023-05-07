@@ -13,6 +13,8 @@ services:
 
     App\Twig\AppExtension:
         tags: ["twig.extension"]
+    
+        
 
     App\Service\FileUploader:
         arguments:
