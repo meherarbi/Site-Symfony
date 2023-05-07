@@ -64,7 +64,7 @@ class HomeController extends AbstractController
         $response = $this->render('home/index.html.twig', [
             'products' => $products,
             'latestProducts' => $latestProducts,
-             'latestProductsCategory'=>$latestProductsCategory,
+            'latestProductsCategory'=>$latestProductsCategory,
             'productsOneByCategory' => $productsOneByCategory,
             'productsMin' => $productsMin,
             'promoted_products' => $promotedProducts,

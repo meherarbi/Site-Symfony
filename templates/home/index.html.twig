@@ -140,6 +140,7 @@
 									<h2 class="title">Deal of the week</h2>
 									<div class="week-deal_control"></div>
 								</div>
+								
 								<div class="week-deal_bottom">
 
 									{% for product in products %}
@@ -262,6 +263,7 @@
 											{% endif %}
 										{% endfor %}
 									</div>
+									
 								</div>
 							</div>
 							<div class="customer-satisfied text-center">
@@ -551,8 +553,6 @@
 															<a class="product-img" href="{{ path('product',{'slug':latestProduct.slug}) }}">
 																<img src="/uploads/{{ latestProduct.illustration|replace({'.jpg': '.webp'}) }}" alt="{{ latestProduct.name }} produit foryoumer.com produit " loading="lazy">
 															</a>
-
-489098
 															<h5 class="product-type" data-category-id="{{ category.id }}">{{ latestProduct.category.name }}</h5>
 															{% if latestProduct.name|length > 10 %}
 																<h3 class="product-name">{{ latestProduct.name|slice(0, 10) }}...</h3>
@@ -585,71 +585,71 @@
 									{% endfor %}
 								</div>
 							</div>
-							<script type="text/javascript">
-								$(document).ready(function () {
-$('a[href^="#tab"]').on('click', function (e) {
-e.preventDefault(); // Ajoutez cette ligne pour désactiver le comportement par défaut du lien
-var targetTab = $(this).attr('href');
-var tabNumber = targetTab.replace('#tab', '');
-var categoryId = tabNumber;
+														<script type="text/javascript">
+															$(document).ready(function () {
+							$('a[href^="#tab"]').on('click', function (e) {
+							e.preventDefault(); // Ajoutez cette ligne pour désactiver le comportement par défaut du lien
+							var targetTab = $(this).attr('href');
+							var tabNumber = targetTab.replace('#tab', '');
+							var categoryId = tabNumber;
 
-$.ajax({
-url: '/category/' + categoryId + '/products',
-method: 'GET',
-dataType: 'json',
-success: function (data) {
-var productsContainer = $('div[data-category-id="' + categoryId + '"] #ajax-products-container');
-console.log(productsContainer);
-productsContainer.empty();
+							$.ajax({
+							url: '/category/' + categoryId + '/products',
+							method: 'GET',
+							dataType: 'json',
+							success: function (data) {
+							var productsContainer = $('div[data-category-id="' + categoryId + '"] #ajax-products-container');
+							console.log(productsContainer);
+							productsContainer.empty();
 
-for (var i = 0; i < data.length; i++) {
-var product = data[i];
-var productHtml = `
-            <div class="col-6 col-md-4">
-              <div class="product pink rounded rounded-lg rounded-xl border ">
-                <a class="product-img" href="/products/${
-product.slug
-}"><img src="/uploads/${
-product.illustration.replace('.jpg', '.webp')
-}" alt="${
-product.name
-} produit foryoumer.com produit "></a>
-                <h5 class="product-type">${
-product.category.name
-}</h5>
-                <h3 class="product-name">${
-product.name.length > 10 ? product.name.slice(0, 10) + '...' : product.name
-}</h3>
-                <h3 class="product-price">${
-(product.price / 100).toFixed(2)
-}
-                  <del>${
-(product.oldPrice / 100).toFixed(2)
-}</del>
-                </h3>
-                <div class="product-select">
-                  <button class="add-to-wishlist round-icon-btn pink">
-                    <i class="icon_heart_alt"></i>
-                  </button>
-                  <button class="add-to-cart round-icon-btn pink">
-                    <i class="icon_bag_alt"></i>
-                  </button>
-                  <button class="add-to-compare round-icon-btn pink">
-                    <i class="fas fa-random"></i>
-                  </button>
-                  <button class="quickview round-icon-btn pink">
-                    <i class="far fa-eye"></i>
-                  </button>
-                </div>
-              </div>
-            </div>`;
-console.log(productHtml);
-productsContainer.append(productHtml);
-}
-}
-});
-});
-});
+							for (var i = 0; i < data.length; i++) {
+							var product = data[i];
+							var productHtml = `
+										<div class="col-6 col-md-4">
+										<div class="product pink rounded rounded-lg rounded-xl border ">
+											<a class="product-img" href="/products/${
+							product.slug
+							}"><img src="/uploads/${
+							product.illustration.replace('.jpg', '.webp')
+							}" alt="${
+							product.name
+							} produit foryoumer.com produit "></a>
+											<h5 class="product-type">${
+							product.category.name
+							}</h5>
+											<h3 class="product-name">${
+							product.name.length > 10 ? product.name.slice(0, 10) + '...' : product.name
+							}</h3>
+											<h3 class="product-price">${
+							(product.price / 100).toFixed(2)
+							}
+											<del>${
+							(product.oldPrice / 100).toFixed(2)
+							}</del>
+											</h3>
+											<div class="product-select">
+											<button class="add-to-wishlist round-icon-btn pink">
+												<i class="icon_heart_alt"></i>
+											</button>
+											<button class="add-to-cart round-icon-btn pink">
+												<i class="icon_bag_alt"></i>
+											</button>
+											<button class="add-to-compare round-icon-btn pink">
+												<i class="fas fa-random"></i>
+											</button>
+											<button class="quickview round-icon-btn pink">
+												<i class="far fa-eye"></i>
+											</button>
+											</div>
+										</div>
+										</div>`;
+							console.log(productHtml);
+							productsContainer.append(productHtml);
+							}
+							}
+							});
+							});
+							});
 							</script>
 							<div class="row">
 								<div class="col-12 col-md-6">
@@ -696,14 +696,16 @@ productsContainer.append(productHtml);
 					</div>
 				</div>
 			</div>
-		</body>
-	</body>
-</html>
+		
+	
+
 <!-- End product block-->
 <div class="partner">
 	<div class="container">
 		<div class="partner_block d-flex justify-content-between" data-slick="{&quot;slidesToShow&quot;: 6}">
 			{% for product in products %}
+			{# {{ dump(products) }} #}
+
 			<div class="partner--logo">
 				<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration|replace({'.jpg': '.webp'}) }}" alt="{{ product.name }}" loading="lazy"></a>
 			</div>
@@ -796,7 +798,9 @@ productsContainer.append(productHtml);
 				<p class="author">Copyright © 2023 Foryoumer - All Rights Reserved.</p><img class="payment-method" src="assets/images/payment.png" alt="Produits artisanaux tunisiens" loading="lazy"></div>
 		</div>
 	</div>
-</footer></div><!-- End footer--><script>
+</footer><!-- End footer-->
+</body>
+</html><script>
 const departmentMenu = document.getElementById('department-menu');
 const departmentMenuBlock = document.getElementById('department-menu_block');
 const departmentDropdownMenu = document.getElementById('department-dropdown-menu');
