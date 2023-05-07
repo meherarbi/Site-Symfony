@@ -3,4 +3,5 @@ twig:
   form_themes: ["bootstrap_4_layout.html.twig"]
   globals:
     cat: '@App\Twig\CatExtension'
+    global_products: '@App\Repository\ProductRepository'
     

@@ -22,14 +22,14 @@
 		<link rel="stylesheet" href="{{ asset('assets/css/jquery.fancybox.min.css') }}"/>
 		<link rel="shortcut icon" href="{{ asset('assets/images/shortcut_logo.png') }}"/>
 		<link rel="stylesheet" href="{{ asset('assets/css/mystore.css') }}"/>
-		
 
 
 		<meta
 		name="google-site-verification" content="NcMDVxMcuILOFYdEdjV4rnQ7xngn52ddBq0nkzkG1ZA"/>
 		{# <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self';"> #}
 		{% set hostname = app.request.host %}
-		<meta http-equiv="Content-Security-Policy" content="default-src 'none'; font-src 'self'; img-src 'self' https://{{ hostname }}/uploads/ https://{{ hostname }}/assets/images/ https://*.stripe.com; connect-src 'self' https://{{ hostname }}/ https://checkout.stripe.com https://api.stripe.com https://js.stripe.com/v3/; script-src 'self' 'unsafe-inline' https://code.jquery.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://{{ hostname }} https://js.stripe.com/v3/; frame-src https://js.stripe.com/; style-src 'self' 'unsafe-inline' https://{{ hostname }};"> {% block seo %}{% endblock %}		</head>
+		<meta http-equiv="Content-Security-Policy" content="default-src 'none'; font-src 'self'; img-src 'self' https://{{ hostname }}/uploads/ https://{{ hostname }}/assets/images/ https://*.stripe.com; connect-src 'self' https://{{ hostname }}/ https://checkout.stripe.com https://api.stripe.com https://js.stripe.com/v3/; script-src 'self' 'unsafe-inline' https://code.jquery.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://{{ hostname }} https://js.stripe.com/v3/; frame-src https://js.stripe.com/; style-src 'self' 'unsafe-inline' https://{{ hostname }};"> {% block seo %}{% endblock %}
+		</head>
 		<body>
 
 
@@ -174,11 +174,13 @@
 </br><hr><div class="partner">
 	<div class="container">
 		<div class="partner_block d-flex justify-content-between" data-slick="{&quot;slidesToShow&quot;: 6}">
-			{# {% for product in products %}
-			<div class="partner--logo">
-				<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration|replace({'.jpg': '.webp'}) }}" alt="{{ product.name }}" loading="lazy"></a>
-			</div>
-			{% endfor %} #}
+			{% for product in global_products.findAll() %}
+				<div class="partner--logo">
+					<a href="{{ path('product', {'slug': product.slug}) }}"><img src="/uploads/{{ product.illustration|replace({'.jpg': '.webp'}) }}" alt="{{ product.name }}" loading="lazy"></a>
+				</div>
+			{% endfor %}
+
+
 		</div>
 	</div>
 </div>
@@ -205,11 +207,11 @@
 						<i class="fab fa-instagram"></i>
 					</a>
 					{# 	<a class="round-icon-btn pink" href="">
-																<i class="fab fa-twitter"></i>
-															</a>
-															<a class="round-icon-btn pink" href="">
-																<i class="fab fa-pinterest-p"></i>
-															</a> #}
+																										<i class="fab fa-twitter"></i>
+																									</a>
+																									<a class="round-icon-btn pink" href="">
+																										<i class="fab fa-pinterest-p"></i>
+																									</a> #}
 				</div>
 			</div>
 			<div class="col-md-8">
@@ -275,13 +277,7 @@
 			</div>
 		</div>
 	</div>
-</footer></div>
-
-<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
-		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" integrity="sha384-/Wx1NuqlgALfa1Do1U6Mer7quEDHOo8REf/0izoIrV8Y3Z/gtEHQc01STCEMM1LZ" crossorigin="anonymous"></script>
-		<script src="https://js.stripe.com/v3" async></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/imagesloaded/4.1.4/imagesloaded.pkgd.min.js"></script>
-</body></body></html></div><!-- End footer--><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script><script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script><script src="{{ asset('assets/js/jquery.countdown.min.js') }}" defer></script><script src="{{ asset('assets/js/slick.min.js') }}" defer></script><script src="{{ asset('assets/js/jquery.scrollUp.min.js') }} " defer></script><script src="{{ asset('assets/js/jquery.zoom.min.js') }}" defer></script><script src="assets/js/vanilla-tilt.min.js"></script><script src="{{ asset('assets/js/main.js') }}" defer></script><script>var input = document.querySelector("#inputPhone");
+</footer></div><script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" integrity="sha384-/Wx1NuqlgALfa1Do1U6Mer7quEDHOo8REf/0izoIrV8Y3Z/gtEHQc01STCEMM1LZ" crossorigin="anonymous"></script><script src="https://js.stripe.com/v3" async></script><script src="https://cdnjs.cloudflare.com/ajax/libs/imagesloaded/4.1.4/imagesloaded.pkgd.min.js"></script></body></body></html></div><!-- End footer--><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script><script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script><script src="{{ asset('assets/js/jquery.countdown.min.js') }}" defer></script><script src="{{ asset('assets/js/slick.min.js') }}" defer></script><script src="{{ asset('assets/js/jquery.scrollUp.min.js') }} " defer></script><script src="{{ asset('assets/js/jquery.zoom.min.js') }}" defer></script><script src="assets/js/vanilla-tilt.min.js"></script><script src="{{ asset('assets/js/main.js') }}" defer></script><script>var input = document.querySelector("#inputPhone");
 window.intlTelInput(input, {
 // allowDropdown: false,
 // autoHideDialCode: false,
@@ -304,5 +300,4 @@ window.intlTelInput(input, {
 // preferredCountries: ['cn', 'jp'],
 // separateDialCode: true,
 utilsScript: "build/js/utils.js"
-});</script></body>{% block script %}<script nonce="x0R+vBbFqaYdc4DEdUCJ8g==" src="{{ asset('assets/js/cart.js') }}"></script>
-{% endblock %}</html>
+});</script></body>{% block script %}<script nonce="x0R+vBbFqaYdc4DEdUCJ8g==" src="{{ asset('assets/js/cart.js') }}"></script>{% endblock %}</html>
