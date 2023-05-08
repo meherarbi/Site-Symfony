@@ -16,13 +16,14 @@
 				<header id="header">
 					<div id="banner">
 						<img src="/assets/images/foryoumer.png" alt="Logo foryoumer.com" width="auto" height="60px">
-						<h1>Bienvenue sur foryoumer.com !</h1>
+						<h1 class="welcome-heading">Bienvenue sur foryoumer.com !</h1>
+
 					</div>
 				</header>
 
 				<section id="about">
 					<div class="container">
-						<h2>À propos de nous</h2>
+						<h2 class="propos-heading">À propos de nous</h2>
 						<div class="row">
 							<div class="col-sm-12 col-md-6">
 								<div class="about-text">
@@ -42,7 +43,62 @@
 
 		</body>
 		<style>
-	
+			/* Styles de base pour les petits écrans (mobiles) */
+	.welcome-heading {
+		padding-left: 1rem;
+		margin-bottom: 1rem;
+	}
+	h1.welcome-heading {
+		padding-left: 5rem;
+	}
+
+	.propos-heading {
+		padding-left: 1rem;
+		margin-bottom: 1rem;
+	}
+	h2.propos-heading {
+		padding-left: 0rem;
+		
+	}
+
+	.about-text {
+		font-size: 1.1rem;
+		line-height: 1.6;
+		max-width: 100%;
+		margin: 0 auto;
+	}
+
+	.about-text p {
+		margin-bottom: 1rem;
+	}
+
+/* Styles pour les grands écrans (tablettes, ordinateurs) */
+@media screen and (min-width: 768px) {
+    .welcome-heading {
+        padding-left: 5rem;
+        margin-bottom: 2rem;
+    }
+	h1.welcome-heading {
+		padding-left: 10rem;
+	}
+    .propos-heading {
+        padding-left: 0rem;
+        margin-bottom: 1rem;
+    }
+	h2.propos-heading {
+		padding-left: 4rem;
+		
+	}	
+
+    .about-text {
+        max-width: 80%;
+    }
+
+    .about-text p {
+        margin-bottom: 1.5rem;
+    }
+}
+
 		</style>
 	</html>
 {% endblock %}

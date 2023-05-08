@@ -9,19 +9,49 @@
 		<meta name="keywords" content="vente en ligne chez foryoumer.com, vente de produits en Tunisie, livraison en Tunisie, livraison rapide, site commerce en ligne, montres en Tunisie ,vente produits de beauté en Tunisie, Vente vetements Homme en Tunisie">
 		<meta name="author" content="MARTECH | Deer Creative Theme">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" defer>
-		<link rel="stylesheet" href="{{ asset('assets/css/custom_bootstrap.css') }}" defer>
-		<link rel="stylesheet" href="{{ asset('assets/css/normalize.css') }}" defer>
-		<link rel="stylesheet" href="{{ asset('assets/css/fontawesome.css') }}" defer>
-		<link rel="stylesheet" href="{{ asset('assets/css/elegant.css') }}" defer>
-		<link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}" defer>
-		<link rel="stylesheet" href="{{ asset('assets/css/slick.css') }}" defer>
-		<link rel="stylesheet" href="{{ asset('assets/css/scroll.css') }}" defer>
-		<link rel="stylesheet" href="{{ asset('assets/css/icomoon.css') }}" defer>
-		<link rel="stylesheet" href="{{ asset('assets/css/jquery.fancybox.min.css') }}" defer>
-		<link rel="shortcut icon" href="{{ asset('assets/images/shortcut_logo.png') }}" defer>
-		<link rel="stylesheet" href="{{ asset('assets/css/mystore.css') }}" defer>
-		<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous" ></script>
+
+		<link rel="preload" href="{{ asset('assets/css/style.css') }}" as="style">
+		<link rel="preload" href="{{ asset('assets/css/custom_bootstrap.css') }}" as="style">
+		<link rel="preload" href="{{ asset('assets/css/normalize.css') }}" as="style">
+		<link rel="preload" href="{{ asset('assets/css/fontawesome.css') }}" as="style">
+		<link rel="preload" href="{{ asset('assets/css/elegant.css') }}" as="style">
+		<link rel="preload" href="{{ asset('assets/css/animate.css') }}" as="style">
+		<link rel="preload" href="{{ asset('assets/css/slick.css') }}" as="style">
+		<link rel="preload" href="{{ asset('assets/css/scroll.css') }}" as="style">
+		<link rel="preload" href="{{ asset('assets/css/icomoon.css') }}" as="style">
+		<link rel="preload" href="{{ asset('assets/css/jquery.fancybox.min.css') }}" as="style">
+		<link rel="preload" href="{{ asset('assets/css/mystore.css') }}" as="style">
+
+		<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" onload="this.onload=null;this.rel='stylesheet'">
+		<link rel="stylesheet" href="{{ asset('assets/css/custom_bootstrap.css') }}" onload="this.onload=null;this.rel='stylesheet'">
+		<link rel="stylesheet" href="{{ asset('assets/css/normalize.css') }}" onload="this.onload=null;this.rel='stylesheet'">
+		<link rel="stylesheet" href="{{ asset('assets/css/fontawesome.css') }}" onload="this.onload=null;this.rel='stylesheet'">
+		<link rel="stylesheet" href="{{ asset('assets/css/elegant.css') }}" onload="this.onload=null;this.rel='stylesheet'">
+		<link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}" onload="this.onload=null;this.rel='stylesheet'">
+		<link rel="stylesheet" href="{{ asset('assets/css/slick.css') }}" onload="this.onload=null;this.rel='stylesheet'">
+		<link rel="stylesheet" href="{{ asset('assets/css/scroll.css') }}" onload="this.onload=null;this.rel='stylesheet'">
+		<link rel="stylesheet" href="{{ asset('assets/css/icomoon.css') }}" onload="this.onload=null;this.rel='stylesheet'">
+		<link rel="stylesheet" href="{{ asset('assets/css/jquery.fancybox.min.css') }}" onload="this.onload=null;this.rel='stylesheet'">
+		<link rel="stylesheet" href="{{ asset('assets/css/mystore.css') }}" onload="this.onload=null;this.rel='stylesheet'">
+
+		<noscript>
+        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/custom_bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/normalize.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/fontawesome.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/elegant.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/slick.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/scroll.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/icomoon.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/jquery.fancybox.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/mystore.css') }}">
+    	</noscript>
+		<script src="{{ asset('assets/js/jquery-3.6.4.js') }}" ></script>
+		<link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}">
+		
+
+
 	</head>
 	<body>
 		<div id="main">
@@ -704,8 +734,6 @@
 	<div class="container">
 		<div class="partner_block d-flex justify-content-between" data-slick="{&quot;slidesToShow&quot;: 6}">
 			{% for product in products %}
-			{# {{ dump(products) }} #}
-
 			<div class="partner--logo">
 				<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration|replace({'.jpg': '.webp'}) }}" alt="{{ product.name }}" loading="lazy"></a>
 			</div>
