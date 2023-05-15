@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block seo %}
-    {{ parent() }}
+	{{ parent() }}
 {% endblock %}
 {% block title %}
 	{{ product.name }}
@@ -46,22 +46,22 @@
 						</div>
 					</div>
 					{# <div class="shop-sidebar_tag">
-																																					<div class="tag_top mini-tab-title underline">
-																																						<h2 class="title">Product tag</h2>
-																																					</div>
-																																					<div class="tag_bottom">
-																																						<a class="tag-btn" href="shop_grid+list_3col.html">organic</a>
-																																						<a class="tag-btn" href="shop_grid+list_3col.html">vegatable</a>
-																																						<a class="tag-btn" href="shop_grid+list_3col.html">fruits</a>
-																																						<a class="tag-btn" href="shop_grid+list_3col.html">fresh meat</a>
-																																						<a class="tag-btn" href="shop_grid+list_3col.html">fastfood</a>
-																																						<a class="tag-btn" href="shop_grid+list_3col.html">natural</a>
-																																					</div>
-																																				</div> #}
+																																																														<div class="tag_top mini-tab-title underline">
+																																																															<h2 class="title">Product tag</h2>
+																																																														</div>
+																																																														<div class="tag_bottom">
+																																																															<a class="tag-btn" href="shop_grid+list_3col.html">organic</a>
+																																																															<a class="tag-btn" href="shop_grid+list_3col.html">vegatable</a>
+																																																															<a class="tag-btn" href="shop_grid+list_3col.html">fruits</a>
+																																																															<a class="tag-btn" href="shop_grid+list_3col.html">fresh meat</a>
+																																																															<a class="tag-btn" href="shop_grid+list_3col.html">fastfood</a>
+																																																															<a class="tag-btn" href="shop_grid+list_3col.html">natural</a>
+																																																														</div>
+																																																													</div> #}
 				</div>
 				<div class="filter-sidebar--background" style="display: none"></div>
 			</div>
-			
+
 			<div class="col-xl-9">
 				<div class="shop-detail">
 					<div class="row">
@@ -79,31 +79,27 @@
 								<div
 									class="big-img">
 									{# Afficher l'image principale (illustration) #}
-									<div class="big-img_block"><img src="/uploads/{{ product.illustration|replace({'.jpg': '.webp'}) }}" alt="{{ product.name }} produit foryoumer.com  " class="img-fluid"></div>
+									<div class="big-img_block"><img src="/uploads/{{ product.illustration|replace({'.jpg': '.webp'}) }}" alt="{{ product.name }} produit foryoumer.com " class="img-fluid"></div>
 
 									{# Afficher les images supplémentaires si elles existent #}
-									
 
-									
-									
-										
-											<div class="big-img_block"><img src="/uploads/{{ product.imageFile|replace({'.jpg': '.webp'}) }}" alt="{{ product.name }} produit foryoumer.com  " class="img-fluid"></div>
-											<div class="big-img_block"><img src="/uploads/{{ product.img|replace({'.jpg': '.webp'}) }}" alt="{{ product.name }} produit foryoumer.com  " class="img-fluid"></div>
-										
-									
+
+									<div class="big-img_block"><img src="/uploads/{{ product.imageFile|replace({'.jpg': '.webp'}) }}" alt="{{ product.name }} produit foryoumer.com " class="img-fluid"></div>
+									<div class="big-img_block"><img src="/uploads/{{ product.img|replace({'.jpg': '.webp'}) }}" alt="{{ product.name }} produit foryoumer.com " class="img-fluid"></div>
+
+
 								</div>
 								<div
 									class="slide-img">
 									{# Afficher l'image principale (illustration) #}
-									<div class="slide-img_block"><img src="/uploads/{{ product.illustration|replace({'.jpg': '.webp'}) }}" alt="{{ product.name }} produit foryoumer.com  "></div>
+									<div class="slide-img_block"><img src="/uploads/{{ product.illustration|replace({'.jpg': '.webp'}) }}" alt="{{ product.name }} produit foryoumer.com "></div>
 
 									{# Afficher les images supplémentaires si elles existent #}
 									{% if product.imageFile and product.img %}
-											<div class="big-img_block"><img src="/uploads/{{ product.imageFile|replace({'.jpg': '.webp'}) }}" alt="{{ product.name }} produit foryoumer.com  " class="img-fluid"></div>
-											<div class="big-img_block"><img src="/uploads/{{ product.img|replace({'.jpg': '.webp'}) }}" alt="{{ product.name }} produit foryoumer.com  " class="img-fluid"></div>
-									{% endif %}		
+										<div class="big-img_block"><img src="/uploads/{{ product.imageFile|replace({'.jpg': '.webp'}) }}" alt="{{ product.name }} produit foryoumer.com " class="img-fluid"></div>
+										<div class="big-img_block"><img src="/uploads/{{ product.img|replace({'.jpg': '.webp'}) }}" alt="{{ product.name }} produit foryoumer.com " class="img-fluid"></div>
+									{% endif %}
 
-								
 
 								</div>
 
@@ -121,7 +117,8 @@
 								<div class="price-rate">
 									<h3 class="product-price">
 										<del>{{ (product.oldPrice/100)|number_format(2) }}
-										$ </del>
+											$
+										</del>
 										{{ (product.price/100)|number_format(2) }}
 										$
 									</h3>
@@ -171,17 +168,17 @@
 										<li>
 											<a href="#tab-2">SPECIFICATIONS</a>
 										</li>
-										<li>
-											<a href="#tab-3">Customer Reviews (02)</a>
-										</li>
+										{# <li>
+																																									<a href="#tab-3">Customer Reviews  (02)</a>
+																																								</li> #}
 									</ul>
 									<div id="tab-1">
 										<div class="description-block">
 											<div class="description-item_block">
 												<div class="row align-items-center">
 													<div class="col-12 col-md-6">
-													{% if product.descriptionImage %}
-														<div class="description-item_img"><img class="img-fluid" src="/uploads/{{ product.descriptionImage|replace({'.jpg': '.webp'}) }}" alt="{{ product.name }} produit foryoumer.com  " ></div>
+														{% if product.descriptionImage %}
+															<div class="description-item_img"><img class="img-fluid" src="/uploads/{{ product.descriptionImage|replace({'.jpg': '.webp'}) }}" alt="{{ product.name }} produit foryoumer.com "></div>
 														{% endif %}
 													</div>
 													<div class="col-12 col-md-6">
@@ -192,20 +189,7 @@
 													</div>
 												</div>
 											</div>
-											{# <div class="description-item_block">
-												<div class="row align-items-center">
-													<div class="col-md-6">
-														<div class="description-item_img"><img class="img-fluid" src="assets/images/shop/shop_detail_img_2.png" alt="description image"></div>
-													</div>
-													<div class="col-md-6">
-														<div class="description-item_text">
-															<h2>An incredible view</h2>
-															<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-															</p>
-														</div>
-													</div>
-												</div>
-											</div> #}
+
 										</div>
 									</div>
 									<div id="tab-2">
@@ -224,101 +208,200 @@
 														<th>Color</th>
 														<td class="product_color">Black, Blue, Gray, Green</td>
 													</tr>
-													<tr>
-														<th>Size</th>
-														<td class="product_size">L, M, S, XL</td>
-													</tr>
+													{% if sizes is not empty %}
+														<tr>
+															<th>Size</th>
+															<td class="product_size">
+																{% for size in sizes %}
+																	{% if size.name is not null %}
+																		<span class="size-option" data-size="{{ size.name }}">{{ size.name }}</span>
+																		{% if not loop.last %},
+																		{% endif %}
+																	{% endif %}
+																{% endfor %}
+															</td>
+														</tr>
+													{% endif %}
+
 												</tbody>
 											</table>
 										</div>
 									</div>
-									<div id="tab-3">
-										<div class="customer-reviews_block">
-											<div class="customer-review">
-												<div class="row">
-													<div class="col-12 col-sm-3 col-lg-2">
-														<div class="customer-review_left">
-															<div class="customer-review_img text-center"><img class="img-fluid" src="assets/images/shop/reviewer_01.png" alt="customer image"></div>
-															<div class="customer-rate">
-																<i class="icon_star"></i>
-																<i class="icon_star"></i>
-																<i class="icon_star"></i>
-																<i class="icon_star"></i>
-																<i class="icon_star-half"></i>
-															</div>
-														</div>
-													</div>
-													<div class="col-12 col-sm-9 col-lg-10">
-														<div class="customer-comment">
-															<h5 class="comment-date">27 Aug 2016</h5>
-															<h3 class="customer-name">Jenney Kelley</h3>
-															<p class="customer-commented">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna alation uidem dolore eu fugiat nulla pariatur.
-															</p>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="customer-review">
-												<div class="row">
-													<div class="col-12 col-sm-3 col-lg-2">
-														<div class="customer-review_left">
-															<div class="customer-review_img text-center"><img class="img-fluid" src="assets/images/shop/reviewer_02.png" alt="customer image"></div>
-															<div class="customer-rate">
-																<i class="icon_star"></i>
-																<i class="icon_star"></i>
-																<i class="icon_star"></i>
-																<i class="icon_star"></i>
-																<i class="icon_star-half"></i>
-															</div>
-														</div>
-													</div>
-													<div class="col-12 col-sm-9 col-lg-10">
-														<div class="customer-comment">
-															<h5 class="comment-date">27 Aug 2016</h5>
-															<h3 class="customer-name">Jenney Kelley</h3>
-															<p class="customer-commented">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna alation uidem dolore eu fugiat nulla pariatur.
-															</p>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="add-review">
-												<div class="add-review_top">
-													<h2>Add Review</h2>
-												</div>
-												<div class="add-review_bottom">
-													<form action="" method="post">
-														<div class="row">
-															<div class="col-12 col-md-6">
-																<input class="no-round-input" type="text" placeholder="Name*">
-															</div>
-															<div class="col-12 col-md-6">
-																<input class="no-round-input" type="text" placeholder="Email*">
-															</div>
-															<div class="col-12">
-																<div class="rating">
-																	<h5>Your rating:</h5>
-																	<span>
-																		<i class="icon_star"></i>
-																		<i class="icon_star"></i>
-																		<i class="icon_star"></i>
-																		<i class="icon_star"></i>
-																		<i class="icon_star"></i>
-																	</span>
-																</div>
-															</div>
-															<div class="col-12">
-																<textarea class="textarea-form" id="review" name="" cols="30" rows="4" placeholder="Message"></textarea>
-															</div>
-															<div class="col-12">
-																<button class="normal-btn">Submit Review</button>
-															</div>
-														</div>
-													</form>
-												</div>
-											</div>
-										</div>
-									</div>
+
+
+									<!-- Ajoutez ce code dans le fichier CSS de votre choix -->
+									<style>
+										.size-option {
+											cursor: pointer;
+											padding: 3px 5px;
+											border: 1px solid #ccc;
+											border-radius: 3px;
+											display: inline-block;
+											margin-right: 5px;
+										}
+
+										.size-option:hover {
+											background-color: #f5f5f5;
+										}
+
+										.size-option.selected {
+											background-color: #f5f5f5;
+										}
+									</style>
+
+									{# Ajoutez ce code dans un fichier JavaScript ou dans un bloc <script> dans votre template #}
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+const sizeOptions = document.querySelectorAll('.size-option');
+
+sizeOptions.forEach(function (sizeOption) {
+sizeOption.addEventListener('click', function () {
+sizeOptions.forEach(function (option) {
+option.classList.remove('selected');
+});
+
+this.classList.add('selected');
+const selectedSize = this.getAttribute('data-size');
+
+// Mettez à jour le panier avec la taille sélectionnée
+// Par exemple, en utilisant AJAX pour envoyer la taille au serveur
+console.log('La taille sélectionnée est : ' + selectedSize);
+});
+});
+});
+
+$(document).ready(function () {
+  $('.add-to-cart').click(function (event) {
+    event.preventDefault();
+
+    const productSlug = $(this).parent().attr('href').split('/').pop();
+    const sizeOptions = $('.size-option');
+    let selectedSize;
+ // Cachez le message d'erreur à chaque fois que le bouton est cliqué
+  $('#notification').css('display', 'none');
+    if (sizeOptions.length > 0) {
+      // Si le produit a des options de taille
+      selectedSize = $('.size-option.selected').data('size');
+
+      if (!selectedSize) {
+        // Si aucune taille n'est sélectionnée, afficher le message d'erreur et retourner
+        $('#notification').text('Veuillez sélectionner une taille avant d\'ajouter au panier.').css('display', 'block');
+        return;
+      }
+    }
+
+    $.ajax({
+      url: '/my-cart/cart/add/' + productSlug,
+      type: 'POST',
+      data: {
+        selectedSize: selectedSize
+      },
+      success: function (response) {
+        console.log('Produit ajouté au panier');
+        $('#notification').text('Produit ajouté au panier').css('display', 'block');
+
+        setTimeout(function() {
+          window.location.href = '/my-cart/';
+        }, 2000);
+      },
+      error: function (response) {
+        console.log('Erreur lors de l\'ajout du produit au panier');
+        $('#notification').text('Erreur lors de l\'ajout du produit au panier').css('display', 'block');
+      }
+    });
+  });
+});
+
+</script>
+
+
+									{# <div id="tab-3">
+																																					<div class="customer-reviews_block">
+																																						<div class="customer-review">
+																																							<div class="row">
+																																								<div class="col-12 col-sm-3 col-lg-2">
+																																									<div class="customer-review_left">
+																																										<div class="customer-review_img text-center"><img class="img-fluid" src="assets/images/shop/reviewer_01.png" alt="customer image"></div>
+																																										<div class="customer-rate">
+																																											<i class="icon_star"></i>
+																																											<i class="icon_star"></i>
+																																											<i class="icon_star"></i>
+																																											<i class="icon_star"></i>
+																																											<i class="icon_star-half"></i>
+																																										</div>
+																																									</div>
+																																								</div>
+																																								<div class="col-12 col-sm-9 col-lg-10">
+																																									<div class="customer-comment">
+																																										<h5 class="comment-date">27 Aug 2016</h5>
+																																										<h3 class="customer-name">Jenney Kelley</h3>
+																																										<p class="customer-commented">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna alation uidem dolore eu fugiat nulla pariatur.
+																																										</p>
+																																									</div>
+																																								</div>
+																																							</div>
+																																						</div>
+																																						<div class="customer-review">
+																																							<div class="row">
+																																								<div class="col-12 col-sm-3 col-lg-2">
+																																									<div class="customer-review_left">
+																																										<div class="customer-review_img text-center"><img class="img-fluid" src="assets/images/shop/reviewer_02.png" alt="customer image"></div>
+																																										<div class="customer-rate">
+																																											<i class="icon_star"></i>
+																																											<i class="icon_star"></i>
+																																											<i class="icon_star"></i>
+																																											<i class="icon_star"></i>
+																																											<i class="icon_star-half"></i>
+																																										</div>
+																																									</div>
+																																								</div>
+																																								<div class="col-12 col-sm-9 col-lg-10">
+																																									<div class="customer-comment">
+																																										<h5 class="comment-date">27 Aug 2016</h5>
+																																										<h3 class="customer-name">Jenney Kelley</h3>
+																																										<p class="customer-commented">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna alation uidem dolore eu fugiat nulla pariatur.
+																																										</p>
+																																									</div>
+																																								</div>
+																																							</div>
+																																						</div>
+																																						<div class="add-review">
+																																							<div class="add-review_top">
+																																								<h2>Add Review</h2>
+																																							</div>
+																																							<div class="add-review_bottom">
+																																								<form action="" method="post">
+																																									<div class="row">
+																																										<div class="col-12 col-md-6">
+																																											<input class="no-round-input" type="text" placeholder="Name*">
+																																										</div>
+																																										<div class="col-12 col-md-6">
+																																											<input class="no-round-input" type="text" placeholder="Email*">
+																																										</div>
+																																										<div class="col-12">
+																																											<div class="rating">
+																																												<h5>Your rating:</h5>
+																																												<span>
+																																													<i class="icon_star"></i>
+																																													<i class="icon_star"></i>
+																																													<i class="icon_star"></i>
+																																													<i class="icon_star"></i>
+																																													<i class="icon_star"></i>
+																																												</span>
+																																											</div>
+																																										</div>
+																																										<div class="col-12">
+																																											<textarea class="textarea-form" id="review" name="" cols="30" rows="4" placeholder="Message"></textarea>
+																																										</div>
+																																										<div class="col-12">
+																																											<button class="normal-btn">Submit Review</button>
+																																										</div>
+																																									</div>
+																																								</form>
+																																							</div>
+																																						</div>
+																																					</div>
+																																				</div> #}
 								</div>
 							</div>
 						</div>
@@ -328,57 +411,57 @@
 		</div>
 	</div>
 	{# <script>
-					function showNotification(event) {
-					    event.preventDefault(); // Empêche la navigation vers la page du lien
-					    var url = event.currentTarget.href; // Récupère l'URL du lien
+										function showNotification(event) {
+										    event.preventDefault(); // Empêche la navigation vers la page du lien
+										    var url = event.currentTarget.href; // Récupère l'URL du lien
+										
+										    // Affiche la notification
+										    $('#notification').fadeIn(500).delay(2000).fadeOut(500);
+										
+										    // Ajoute le produit au panier en utilisant une requête AJAX
+										    fetch(url)
+										        .then(function(response) {
+										            if (response.ok) {
+										                // Redirige vers la page du panier après un délai
+										                setTimeout(function() {
+										                    window.location.href = "{{ path('cart') }}"; // Remplacez 'cart' par la route correcte vers la page du panier
+										                }, 3000); // Redirige après 3000 millisecondes (3 secondes)
+										            } else {
+										                console.error('Erreur lors de l\'ajout du produit au panier.');
+										            }
+										        })
+										        .catch(function(error) {
+										            console.error('Erreur lors de l\'ajout du produit au panier:', error);
+										        });
+										}
+										
+										
+										{{ path('cart_add_to_cart',{'id':product.id}) }}
+										</script> #}
+
+	{# 
+						<script>
+							function addToCart(event, url) {
+					event.preventDefault();
+					// Empêche la navigation vers la page du lien
 					
-					    // Affiche la notification
-					    $('#notification').fadeIn(500).delay(2000).fadeOut(500);
+					// Ajoute le produit au panier en utilisant une requête AJAX
+					$.ajax({
+					url: url,
+					method: 'GET',
+					success: function () { // Met à jour le nombre d'articles dans le panier
+					var cartItemCount = $('#cartItemCount');
+					cartItemCount.text(parseInt(cartItemCount.text()) + 1);
 					
-					    // Ajoute le produit au panier en utilisant une requête AJAX
-					    fetch(url)
-					        .then(function(response) {
-					            if (response.ok) {
-					                // Redirige vers la page du panier après un délai
-					                setTimeout(function() {
-					                    window.location.href = "{{ path('cart') }}"; // Remplacez 'cart' par la route correcte vers la page du panier
-					                }, 3000); // Redirige après 3000 millisecondes (3 secondes)
-					            } else {
-					                console.error('Erreur lors de l\'ajout du produit au panier.');
-					            }
-					        })
-					        .catch(function(error) {
-					            console.error('Erreur lors de l\'ajout du produit au panier:', error);
-					        });
+					// Affiche la notification pendant 2 secondes
+					cartItemCount.fadeIn(500).delay(2000).fadeOut(500);
+					},
+					error: function () {
+					console.error('Erreur lors de l\'ajout du produit au panier.');
 					}
-					
-					
-					{{ path('cart_add_to_cart',{'id':product.id}) }}
-					</script> #}
-
-{# 
-	<script>
-		function addToCart(event, url) {
-event.preventDefault();
-// Empêche la navigation vers la page du lien
-
-// Ajoute le produit au panier en utilisant une requête AJAX
-$.ajax({
-url: url,
-method: 'GET',
-success: function () { // Met à jour le nombre d'articles dans le panier
-var cartItemCount = $('#cartItemCount');
-cartItemCount.text(parseInt(cartItemCount.text()) + 1);
-
-// Affiche la notification pendant 2 secondes
-cartItemCount.fadeIn(500).delay(2000).fadeOut(500);
-},
-error: function () {
-console.error('Erreur lors de l\'ajout du produit au panier.');
-}
-});
-}
-	</script>
- #}
+					});
+					}
+						</script>
+					 #}
 
 {% endblock %}

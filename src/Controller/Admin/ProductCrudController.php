@@ -51,6 +51,13 @@ class ProductCrudController extends AbstractCrudController
         BooleanField::new('onPromotion', 'En promotion')->setFormTypeOptions(['attr' => ['class' => 'col-md-4']]),
         BooleanField::new('isDeal', 'Deal of the week')->setFormTypeOptions(['attr' => ['class' => 'col-md-4']]),
         BooleanField::new('isOnSale', 'Sale Products')->setFormTypeOptions(['attr' => ['class' => 'col-md-4']]),
+        AssociationField::new('sizes', 'Tailles')
+            ->setFormTypeOptions([
+                'attr' => ['class' => 'col-md-6'],
+                'multiple' => true,
+                'by_reference' => false
+            ])
+            ->setRequired(true),
         FormField::addPanel('Images')->setIcon('fas fa-image'),
         ImageField::new('illustration')
                     ->setBasePath('uploads/')

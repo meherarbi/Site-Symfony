@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Order;
 use App\Entity\OrderDetails;
 use App\Form\OrderType;
+use App\Repository\SizeRepository;
 use App\Service\Cart;
 use Doctrine\ORM\EntityManagerInterface;
 use Stripe\Price;
@@ -43,7 +44,7 @@ class OrderController extends AbstractController
     /**
      * @Route("/commande/recap", name="order_recap" )
      */
-    public function recap(Cart $cart, Request $request)
+    public function recap(Cart $cart, Request $request , SizeRepository $sizeRepository)
     {
         $form = $this->createForm(OrderType::class, null, [
             'method' => 'POST',
@@ -88,15 +89,22 @@ class OrderController extends AbstractController
             $order->setIllustration($illustrationsArray);
             
             $this->entityManager->persist($order);
-
+            /* dd($cart->getFull()); */
             // Enregistre les détails de produits
             foreach ($cart->getFull() as $product) {
+
+                
+                $size = $sizeRepository->findOneBy(['name' => $product['quantity']['size']]);
+
+
+
                 $orderDetails = new OrderDetails();
                 $orderDetails->setMyOrder($order);
                 $orderDetails->setProduct($product['product']);
-                $orderDetails->setQuantity($product['quantity']);
+                $orderDetails->setQuantity($product['quantity']['quantity']);
                 $orderDetails->setPrice($product['product']->getPrice());
-                $orderDetails->setTotal($product['product']->getPrice() * $product['quantity']);
+                $orderDetails->setTotal($product['product']->getPrice() * $product['quantity']['quantity']);
+                $orderDetails->setSizes($size);
                 $illustration = $product['product']->getIllustration();
                 $orderDetails->setIllustration($illustration); 
                 $this->entityManager->persist($orderDetails);

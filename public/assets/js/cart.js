@@ -223,6 +223,8 @@ function clearCart() {
   });
 }
 
+
+
 function showNotification() {
   const notification = document.getElementById("notification");
   

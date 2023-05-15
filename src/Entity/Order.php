@@ -121,9 +121,10 @@ class Order
     }
 
     public function __toString()
-    {
-        return (string) $this->getUser();
-    }
+{
+    return (string) $this->getUser()->getId();
+}
+
 
     public function getTotal()
     {
