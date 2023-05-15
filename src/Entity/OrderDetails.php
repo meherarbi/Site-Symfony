@@ -49,6 +49,16 @@ class OrderDetails
      */
     private $illustration;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Size::class, inversedBy="orderDetails")
+     */
+    private $sizes;
+
+    /**
+     * @ORM\Column(type="datetime_immutable", nullable=true)
+     */
+    private $createdAt;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -123,6 +133,30 @@ class OrderDetails
     public function setIllustration(?string $illustration): self
     {
         $this->illustration = $illustration;
+
+        return $this;
+    }
+
+    public function getSizes(): ?Size
+    {
+        return $this->sizes;
+    }
+
+    public function setSizes(?Size $sizes): self
+    {
+        $this->sizes = $sizes;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(?\DateTimeImmutable $createdAt): self
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }

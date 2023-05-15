@@ -113,10 +113,18 @@ class Product
      */
     private $createdAt;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Size::class, inversedBy="products")
+     */
+    private $sizes;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
+        $this->sizes = new ArrayCollection();
     }
+
+    
 
     public function getId(): ?int
     {
@@ -417,6 +425,30 @@ return $this;
                 'name' => $this->getCategory()->getName(),
             ],
         ];
+    }
+
+    /**
+     * @return Collection<int, Size>
+     */
+    public function getSizes(): Collection
+    {
+        return $this->sizes;
+    }
+
+    public function addSize(Size $size): self
+    {
+        if (!$this->sizes->contains($size)) {
+            $this->sizes[] = $size;
+        }
+
+        return $this;
+    }
+
+    public function removeSize(Size $size): self
+    {
+        $this->sizes->removeElement($size);
+
+        return $this;
     }
 
 }

@@ -10,6 +10,7 @@ use App\Form\SearchProductsType;
 use App\Repository\ProductRepository;
 use App\Repository\RecentlyViewedProductRepository;
 use App\Service\ElasticsearchService;
+use App\Service\SizeSorter;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Query;
@@ -95,10 +96,13 @@ public function index(PaginatorInterface $paginator, Request $request, ProductRe
 /**
  * @Route("/products/{slug}", name="product")
  */
-    public function show($slug): Response
+    public function show($slug , SizeSorter $sizeSorter): Response
     {
+    
         $user = $this->getUser();
         $product = $this->entityManager->getRepository(Product::class)->findOneBy(['slug' => $slug]);
+        $sortedSizes = $sizeSorter->sortSizes($product->getSizes());
+        
 
         if (!$product) {
             return $this->redirectToRoute('products');
@@ -117,6 +121,8 @@ public function index(PaginatorInterface $paginator, Request $request, ProductRe
 
         return $this->render('product/show.html.twig', [
             'product' => $product,
+            'product' => $product,
+            'sizes' => $sortedSizes,
         ]);
     }
 

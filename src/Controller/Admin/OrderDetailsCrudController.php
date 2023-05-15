@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\OrderDetails;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
@@ -35,9 +36,11 @@ class OrderDetailsCrudController extends AbstractCrudController
             MoneyField::new ('price')->setCurrency('EUR'),
             IntegerField::new ('myOrder.id')->setLabel('Order ID'),
             TextField::new ('myOrder.user.email')->setLabel('User Email'),
-            TextField::new ('myOrder.user.firstname')->setLabel('User Firstname'),
-            TextField::new ('myOrder.user.lastname')->setLabel('User Lastname'),
-          
+            DateTimeField::new ('myOrder.createdAt', 'Passer le'),
+            TextField::new ('myOrder.delivery')->setLabel('Adresse')->formatValue(function ($value) {
+                return strip_tags($value);
+            }),
+            TextField::new ('sizes.name')->setLabel('Sizes'),
 
         ];
 

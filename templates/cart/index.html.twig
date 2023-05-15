@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block seo %}
-    {{ parent() }}
+	{{ parent() }}
 {% endblock %}
 {% block title %}My Cart
 {% endblock %}
@@ -71,34 +71,26 @@
 								</colgroup>
 								<thead>
 									<tr>
-
-
 										<th class="product-iamge" scope="col">Image</th>
 										<th class="product-name" scope="col">Name</th>
 										<th class="product-price" scope="col">Price</th>
-										<th class="product-quantity" scope="col">Quantity</th>
+										<th class="product-quantity" scope="col">QUANTITY</th>
+										{# <th class="product-name" scope="col">Size</th> #}
 										<th class="product-total" scope="col">Total</th>
 										<th class="product-clear" scope="col">
-											<button id="clear-cart-btn" class="no-round-btn"><img src="{{asset('assets/images/trash.png')}}" height="25px" alt="delete">
-											</button>
-
+											<button id="clear-cart-btn" class="no-round-btn"><img src="{{asset('assets/images/trash.png')}}" height="25px" alt="delete"></button>
 										</th>
-
 									</tr>
 								</thead>
 								<tbody>
-
-									{% set total=null %}
+									{% set total = 0 %}
 									{% for product in cart %}
 										{% if product.product is not null %}
-
 											<tr>
 												<td class="product-iamge">
-
 													<div class="img-wrapper">
 														<img src="/uploads/{{ product.product.illustration }}" alt="{{ product.product.name }}" class="img-fluid">
 													</div>
-
 												</td>
 												<td class="product-name">{{ product.product.name }}</td>
 												<td class="product-price" data-product-slug="{{ product.product.slug }}">{{ (product.product.price/100)|number_format(2) }}
@@ -109,32 +101,27 @@
 													</button>
 													<input class="quantity no-round-input" data-product-slug="{{ product.product.slug }}" min="1" value="{{ product.quantity }}">
 													<button class="btn btn-secondary" onclick="incrementProduct('{{ product.product.slug }}')">
-
 														<img src="{{ asset('assets/images/add.png') }}" alt="plus" height="11px">
 													</button>
 												</td>
+												{# <td class="product-size">{{ product.size is not null ? product.size : '' }}</td> #}
 												<td class="product-total cart-total" data-product-slug="{{ product.product.slug }}">{{ ((product.product.price*product.quantity)/100)|number_format(2) }}
 													$</td>
-
 												<td class="product-clear">
 													<a class="remove-from-cart" href="#" data-id="{{ product.product.id }}">
 														<button class="btn btn-outline-danger">
 															<img src="{{asset('assets/images/trash.png')}}" alt="supprimer" height="25px">
 														</button>
 													</a>
-
 												</td>
-
-
 											</tr>
-											{% set total=total+(product.product.price*product.quantity) %}
+											{% set total = total + (product.product.price * product.quantity) %}
 										{% endif %}
 									{% endfor %}
-
 								</tbody>
-
 							</table>
 						</div>
+
 					</div>
 					<div class="col-12 col-sm-8">
 						<div class="coupon">
@@ -145,8 +132,8 @@
 						</div>
 					</div>
 					{# <div class="col-12 col-sm-4 text-right">
-																					<button class="no-round-btn black cart-update">Upadate cart</button>
-																				</div> #}
+																										<button class="no-round-btn black cart-update">Upadate cart</button>
+																									</div> #}
 				</div>
 				<div class="row justify-content-end">
 					<div class="col-12 col-md-6 col-lg-4">
@@ -181,7 +168,7 @@
 									<button class="normal-btn">Proceed to Checkout</button>
 								</a>
 								{# <span>- or -</span>
-																																<a href="shop_checkout.html">Check out with PayPal</a> #}
+																																								<a href="shop_checkout.html">Check out with PayPal</a> #}
 							</div>
 						</div>
 					</div>
@@ -196,33 +183,33 @@
 
 	{% endif %}
 	{# <script type="text/javascript">
-					
-					function removeProduct(event) {
-					  event.preventDefault();
-					  const productId = event.target.closest(".remove-from-cart").dataset.id;
-					  fetch(`/my-cart/cart/delete/${productId}`, { method: "GET" })
-					    .then((response) => {
-					      if (response.ok) {
-					        // Supprimer le produit du DOM
-					        const row = event.target.closest("tr");
-					        row.parentNode.removeChild(row);
-					
-					        // Mettre à jour la notification
-					        updateNotification(-1);
-					
-					        // Mettre à jour le total du panier
-					        updateCartTotal();
-					      }
-					    })
-					    .catch((error) => {
-					      console.error("Erreur lors de la suppression du produit :", error);
-					    });
-					}
-					
-					function updateNotification(change) {
-					  const cartQuantity = document.querySelector(".cart-quantity");
-					  const currentCount = parseInt(cartQuantity.textContent, 10);
-					  cartQuantity.textContent = currentCount + change;
-					}
-					</script> #}
+						
+						function removeProduct(event) {
+						  event.preventDefault();
+						  const productId = event.target.closest(".remove-from-cart").dataset.id;
+						  fetch(`/my-cart/cart/delete/${productId}`, { method: "GET" })
+						    .then((response) => {
+						      if (response.ok) {
+						        // Supprimer le produit du DOM
+						        const row = event.target.closest("tr");
+						        row.parentNode.removeChild(row);
+						
+						        // Mettre à jour la notification
+						        updateNotification(-1);
+						
+						        // Mettre à jour le total du panier
+						        updateCartTotal();
+						      }
+						    })
+						    .catch((error) => {
+						      console.error("Erreur lors de la suppression du produit :", error);
+						    });
+						}
+						
+						function updateNotification(change) {
+						  const cartQuantity = document.querySelector(".cart-quantity");
+						  const currentCount = parseInt(cartQuantity.textContent, 10);
+						  cartQuantity.textContent = currentCount + change;
+						}
+						</script> #}
 {% endblock %}
