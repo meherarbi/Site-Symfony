@@ -179,4 +179,8 @@ public function index(PaginatorInterface $paginator, Request $request, ProductRe
         ]);
     }
 
+
+
+    
+
 }

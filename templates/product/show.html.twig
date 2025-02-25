@@ -1,11 +1,19 @@
 {% extends 'base.html.twig' %}
 
 {% block seo %}
-	{{ parent() }}
+    {% if product.name == "Protéine Naturelle Bio & Riche en BCAA" %}
+        <title>Protéine Naturelle Bio & BCAA - Idéale pour Musculation et Fitness</title>
+        <meta name="description" content="Boostez votre performance avec notre Protéine Naturelle Bio & Riche en BCAA. 100% naturelle, sans additifs, idéale pour la musculation et la récupération. Commandez maintenant !">
+        <meta name="keywords" content="protéine naturelle, whey bio, complément alimentaire, musculation, fitness, BCAA, nutrition sportive, protéines végan, alimentation sportive">
+        <meta name="author" content="Foryoumer - Spécialiste en Nutrition Sportive">
+    {% endif %}
+    {{ parent() }}
 {% endblock %}
+
 {% block title %}
 	{{ product.name }}
 {% endblock %}
+
 
 
 {% block content %}
@@ -79,25 +87,25 @@
 								<div
 									class="big-img">
 									{# Afficher l'image principale (illustration) #}
-									<div class="big-img_block"><img src="/uploads/{{ product.illustration|replace({'.jpg': '.webp'}) }}" alt="{{ product.name }} produit foryoumer.com " class="img-fluid"></div>
+    <img src="{{ asset('uploads/' ~ product.illustration) }}" alt="{{ product.name }} produit foryoumer.com proteine naturelle " class="img-fluid">
 
 									{# Afficher les images supplémentaires si elles existent #}
 
 
-									<div class="big-img_block"><img src="/uploads/{{ product.imageFile|replace({'.jpg': '.webp'}) }}" alt="{{ product.name }} produit foryoumer.com " class="img-fluid"></div>
-									<div class="big-img_block"><img src="/uploads/{{ product.img|replace({'.jpg': '.webp'}) }}" alt="{{ product.name }} produit foryoumer.com " class="img-fluid"></div>
+									<div class="big-img_block"><img src="/uploads/{{ product.imageFile }}" alt="{{ product.name }} produit foryoumer.com " class="img-fluid"></div>
+									<div class="big-img_block"><img src="/uploads/{{ product.img }}" alt="{{ product.name }} produit foryoumer.com proteine naturelle " class="img-fluid"></div>
 
 
 								</div>
 								<div
 									class="slide-img">
 									{# Afficher l'image principale (illustration) #}
-									<div class="slide-img_block"><img src="/uploads/{{ product.illustration|replace({'.jpg': '.webp'}) }}" alt="{{ product.name }} produit foryoumer.com "></div>
+									<div class="slide-img_block"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }} produit foryoumer.com "></div>
 
 									{# Afficher les images supplémentaires si elles existent #}
 									{% if product.imageFile and product.img %}
-										<div class="big-img_block"><img src="/uploads/{{ product.imageFile|replace({'.jpg': '.webp'}) }}" alt="{{ product.name }} produit foryoumer.com " class="img-fluid"></div>
-										<div class="big-img_block"><img src="/uploads/{{ product.img|replace({'.jpg': '.webp'}) }}" alt="{{ product.name }} produit foryoumer.com " class="img-fluid"></div>
+										<div class="big-img_block"><img src="/uploads/{{ product.imageFile}}" alt="{{ product.name }} produit foryoumer.com " class="img-fluid"></div>
+										<div class="big-img_block"><img src="/uploads/{{ product.img }}" alt="{{ product.name }} produit foryoumer.com " class="img-fluid"></div>
 									{% endif %}
 
 
@@ -111,16 +119,38 @@
 
 								<h5 class="product-type color-type">{{ product.subtitle }}</h5>
 								<h2 class="product-name">{{ product.name }}</h2>
-								<p class="product-describe">{{ product.description }}
+								<p class="product-describe">{% if product.name == "Protéine Naturelle Bio & Riche en BCAA" %}
 								</p>
+
+<div id="short-description">
+   <div class="product-describe">
+    <p>
+        Boostez votre performance avec <strong>Naturo Boost</strong>, la 
+        <strong>protéine naturelle idéale</strong> pour la musculation et la nutrition saine. 
+        Riche en <strong>BCAA et protéines bio</strong>, sans additifs, digestion rapide.
+    </p>
+</div>
+
+
+
+</div>
+
+
+
+
+{% else %}
+<p>{{product.description}}</p>
+{% endif %}
+
+
 
 								<div class="price-rate">
 									<h3 class="product-price">
 										<del>{{ (product.oldPrice/100)|number_format(2) }}
-											$
+											€
 										</del>
 										{{ (product.price/100)|number_format(2) }}
-										$
+										€
 									</h3>
 									<h5 class="product-rated">
 										<i class="icon_star"></i>
@@ -167,10 +197,14 @@
 										</li>
 										<li>
 											<a href="#tab-2">SPECIFICATIONS</a>
-										</li>
-										{# <li>
-																																									<a href="#tab-3">Customer Reviews  (02)</a>
-																																								</li> #}
+										</li> 
+										
+										{% if product.name == "Protéine Naturelle Bio & Riche en BCAA" %}
+										<li>
+                                            <a href="#tab-3">Customer Reviews (04)</a>
+                                        </li>
+                                        {% endif %}
+                                        
 									</ul>
 									<div id="tab-1">
 										<div class="description-block">
@@ -178,13 +212,14 @@
 												<div class="row align-items-center">
 													<div class="col-12 col-md-6">
 														{% if product.descriptionImage %}
-															<div class="description-item_img"><img class="img-fluid" src="/uploads/{{ product.descriptionImage|replace({'.jpg': '.webp'}) }}" alt="{{ product.name }} produit foryoumer.com "></div>
+															<div class="description-item_img"><img class="img-fluid" src="/uploads/{{ product.descriptionImage }}" alt="{{ product.name }} produit foryoumer.com "></div>
 														{% endif %}
 													</div>
 													<div class="col-12 col-md-6">
 														<div class="description-item_text">
 															<h2>Product information</h2>
 															<p>{{product.description}}</p>
+															
 														</div>
 													</div>
 												</div>
@@ -192,45 +227,59 @@
 
 										</div>
 									</div>
-									<div id="tab-2">
-										<div class="specifications_block">
-											<table class="shop_attributes table-bordered">
-												<tbody>
-													<tr>
-														<th>Weight</th>
-														<td class="product_weight">10 oz</td>
-													</tr>
-													<tr>
-														<th>Dimensions</th>
-														<td class="product_dimensions">15 × 12 × 20 in</td>
-													</tr>
-													<tr>
-														<th>Color</th>
-														<td class="product_color">Black, Blue, Gray, Green</td>
-													</tr>
-													{% if sizes is not empty %}
-														<tr>
-															<th>Size</th>
-															<td class="product_size">
-																{% for size in sizes %}
-																	{% if size.name is not null %}
-																		<span class="size-option" data-size="{{ size.name }}">{{ size.name }}</span>
-																		{% if not loop.last %},
-																		{% endif %}
-																	{% endif %}
-																{% endfor %}
-															</td>
-														</tr>
-													{% endif %}
+									{% if product.name == "Protéine Naturelle Bio & Riche en BCAA" %}
+<div id="tab-2">
+    <div class="specifications_block">
+        <h2 class="product-title">Pourquoi choisir la Protéine Naturelle Bio & Riche en BCAA ?</h2>
+        <p class="product-description">
+            Découvrez la <strong>Protéine Naturelle Bio & Riche en BCAA</strong>, un complément alimentaire de haute qualité conçu pour les amateurs de **fitness et musculation**. 
+            Formulée à partir d'ingrédients naturels, elle garantit une <strong>meilleure récupération</strong> et une **croissance musculaire optimale**.
+        </p>
 
-												</tbody>
-											</table>
-										</div>
-									</div>
+        <h3 class="product-subtitle">Les avantages de notre Protéine Naturelle</h3>
+        <ul class="product-advantages">
+            <li>🌿 **100% naturelle**, sans additifs ni conservateurs.</li>
+            <li>💪 **Idéale pour la musculation et le fitness**.</li>
+            <li>🥛 Se mélange parfaitement avec de l'eau, du lait ou un smoothie.</li>
+            <li>🔥 **Riche en BCAA** pour une meilleure récupération musculaire.</li>
+            <li>🚀 **Absorption rapide** pour une efficacité maximale après l'entraînement.</li>
+        </ul>
+
+        <h3 class="product-subtitle">Comment consommer cette Protéine Naturelle ?</h3>
+        <p class="product-description">
+            Mélangez **30g de protéine** avec **250 ml d'eau ou de lait**. À consommer **après l'entraînement** ou au **petit-déjeuner** pour un apport optimal en protéines.
+        </p>
+
+        <h3 class="product-subtitle">Pourquoi notre Protéine est-elle meilleure ?</h3>
+        <ul class="product-advantages">
+            <li>🌱 **100% bio**, issue de sources durables.</li>
+            <li>🚫 Sans sucre ajouté ni édulcorants artificiels.</li>
+            <li>💯 Convient aux **régimes végan, keto et sans gluten**.</li>
+            <li>🧪 Testée en laboratoire pour garantir une **qualité premium**.</li>
+        </ul>
+
+        <h3 class="product-subtitle">Commandez Dès Maintenant</h3>
+        <p class="product-description">
+            Ne manquez pas cette opportunité ! **Commandez aujourd'hui** et profitez de **la livraison rapide** et d'une **réduction exclusive** pour les nouveaux clients.
+        </p>
+    </div>
+</div>
+
+
+{% endif %}									
+									
 
 
 									<!-- Ajoutez ce code dans le fichier CSS de votre choix -->
 									<style>
+									
+									.product-describe {
+    font-size: 16px;
+    line-height: 1.6; /* Espacement entre les lignes */
+    margin-bottom: 15px; /* Ajoute un espace sous le paragraphe */
+    color: #333; /* Améliore la lisibilité */
+}
+									
 										.size-option {
 											cursor: pointer;
 											padding: 3px 5px;
@@ -247,6 +296,65 @@
 										.size-option.selected {
 											background-color: #f5f5f5;
 										}
+										
+										
+										
+										.specifications_block {
+    margin-bottom: 30px; /* Ajoute un espace en bas */
+}
+
+.product-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px; /* Ajoute un espace sous le titre */
+}
+
+.product-subtitle {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.product-description {
+    font-size: 16px;
+    line-height: 1.6; /* Ajoute de l'espace entre les lignes */
+    margin-bottom: 15px;
+}
+
+.product-advantages {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Crée des colonnes flexibles */
+    gap: 15px; /* Ajoute de l’espace entre les éléments */
+    padding: 10px;
+}
+
+.product-advantages li {
+    background: #f8f8f8; /* Légère coloration pour mieux distinguer */
+    padding: 15px;
+    border-radius: 8px; /* Arrondit les bords */
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.product-advantages li::before {
+    content: "✔️"; /* Ajoute une icône par défaut */
+    font-size: 18px;
+}
+
+
+#tab-2 {
+    display: none;
+}
+
+#tab-so3 ul li.active a {
+    font-weight: bold;
+    color: #007bff; /* Couleur active */
+}
+
+
 									</style>
 
 									{# Ajoutez ce code dans un fichier JavaScript ou dans un bloc <script> dans votre template #}
@@ -313,95 +421,142 @@ $(document).ready(function () {
 });
 
 </script>
+	{% if product.name == "Protéine Naturelle Bio & Riche en BCAA" %}
+<div id="tab-3">
+    <div class="customer-reviews_block">
 
+        <!-- Avis 1 -->
+        <div class="customer-review">
+            <div class="row">
+                <div class="col-12 col-sm-3 col-lg-2">
+                    <div class="customer-review_left">
+                        {#
+                        <div class="customer-review_img text-center">
+                            <img class="img-fluid" src="assets/images/shop/reviewer_01.png" alt="Avis client 1">
+                        </div>
+                        #}
+                        <div class="customer-rate">
+                            <i class="icon_star"></i>
+                            <i class="icon_star"></i>
+                            <i class="icon_star"></i>
+                            <i class="icon_star"></i>
+                            <i class="icon_star-half"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-9 col-lg-10">
+                    <div class="customer-comment">
+                        <h5 class="comment-date">15 Février 2025</h5>
+                        <h3 class="customer-name">Marie Reevls</h3>
+                        <p class="customer-commented">
+                            Super produit ! J’ai ressenti une vraie amélioration de ma récupération musculaire. 
+                            Très digeste et agréable à consommer après l’entraînement !
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-									{# <div id="tab-3">
-																																					<div class="customer-reviews_block">
-																																						<div class="customer-review">
-																																							<div class="row">
-																																								<div class="col-12 col-sm-3 col-lg-2">
-																																									<div class="customer-review_left">
-																																										<div class="customer-review_img text-center"><img class="img-fluid" src="assets/images/shop/reviewer_01.png" alt="customer image"></div>
-																																										<div class="customer-rate">
-																																											<i class="icon_star"></i>
-																																											<i class="icon_star"></i>
-																																											<i class="icon_star"></i>
-																																											<i class="icon_star"></i>
-																																											<i class="icon_star-half"></i>
-																																										</div>
-																																									</div>
-																																								</div>
-																																								<div class="col-12 col-sm-9 col-lg-10">
-																																									<div class="customer-comment">
-																																										<h5 class="comment-date">27 Aug 2016</h5>
-																																										<h3 class="customer-name">Jenney Kelley</h3>
-																																										<p class="customer-commented">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna alation uidem dolore eu fugiat nulla pariatur.
-																																										</p>
-																																									</div>
-																																								</div>
-																																							</div>
-																																						</div>
-																																						<div class="customer-review">
-																																							<div class="row">
-																																								<div class="col-12 col-sm-3 col-lg-2">
-																																									<div class="customer-review_left">
-																																										<div class="customer-review_img text-center"><img class="img-fluid" src="assets/images/shop/reviewer_02.png" alt="customer image"></div>
-																																										<div class="customer-rate">
-																																											<i class="icon_star"></i>
-																																											<i class="icon_star"></i>
-																																											<i class="icon_star"></i>
-																																											<i class="icon_star"></i>
-																																											<i class="icon_star-half"></i>
-																																										</div>
-																																									</div>
-																																								</div>
-																																								<div class="col-12 col-sm-9 col-lg-10">
-																																									<div class="customer-comment">
-																																										<h5 class="comment-date">27 Aug 2016</h5>
-																																										<h3 class="customer-name">Jenney Kelley</h3>
-																																										<p class="customer-commented">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna alation uidem dolore eu fugiat nulla pariatur.
-																																										</p>
-																																									</div>
-																																								</div>
-																																							</div>
-																																						</div>
-																																						<div class="add-review">
-																																							<div class="add-review_top">
-																																								<h2>Add Review</h2>
-																																							</div>
-																																							<div class="add-review_bottom">
-																																								<form action="" method="post">
-																																									<div class="row">
-																																										<div class="col-12 col-md-6">
-																																											<input class="no-round-input" type="text" placeholder="Name*">
-																																										</div>
-																																										<div class="col-12 col-md-6">
-																																											<input class="no-round-input" type="text" placeholder="Email*">
-																																										</div>
-																																										<div class="col-12">
-																																											<div class="rating">
-																																												<h5>Your rating:</h5>
-																																												<span>
-																																													<i class="icon_star"></i>
-																																													<i class="icon_star"></i>
-																																													<i class="icon_star"></i>
-																																													<i class="icon_star"></i>
-																																													<i class="icon_star"></i>
-																																												</span>
-																																											</div>
-																																										</div>
-																																										<div class="col-12">
-																																											<textarea class="textarea-form" id="review" name="" cols="30" rows="4" placeholder="Message"></textarea>
-																																										</div>
-																																										<div class="col-12">
-																																											<button class="normal-btn">Submit Review</button>
-																																										</div>
-																																									</div>
-																																								</form>
-																																							</div>
-																																						</div>
-																																					</div>
-																																				</div> #}
+        <!-- Avis 2 -->
+        <div class="customer-review">
+            <div class="row">
+                <div class="col-12 col-sm-3 col-lg-2">
+                    <div class="customer-review_left">
+                         {#
+                        <div class="customer-review_img text-center">
+                            <img class="img-fluid" src="assets/images/shop/reviewer_02.png" alt="Avis client 2">
+                        </div>
+                        #}
+                        <div class="customer-rate">
+                            <i class="icon_star"></i>
+                            <i class="icon_star"></i>
+                            <i class="icon_star"></i>
+                            <i class="icon_star"></i>
+                            <i class="icon_star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-9 col-lg-10">
+                    <div class="customer-comment">
+                        <h5 class="comment-date">13 Février 2025</h5>
+                        <h3 class="customer-name">Jean Hovart</h3>
+                        <p class="customer-commented">
+                            Excellente protéine naturelle ! Pas d’additifs, goût agréable, et efficace pour la prise de masse musculaire.
+                            Je recommande à 100% !
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+         <!-- Avis 3 -->
+        <div class="customer-review">
+            <div class="row">
+                <div class="col-12 col-sm-3 col-lg-2">
+                    <div class="customer-review_left">
+                         {#
+                        <div class="customer-review_img text-center">
+                            <img class="img-fluid" src="assets/images/shop/reviewer_03.png" alt="Avis client 3">
+                        </div>
+                        #}
+                        <div class="customer-rate">
+                            <i class="icon_star"></i>
+                            <i class="icon_star"></i>
+                            <i class="icon_star"></i>
+                            <i class="icon_star"></i>
+                            <i class="icon_star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-9 col-lg-10">
+                    <div class="customer-comment">
+                        <h5 class="comment-date">8 Février 2025</h5>
+                        <h3 class="customer-name">Lucas Bernard</h3>
+                        <p class="customer-commented">
+                            J'ai essayé plusieurs protéines, mais celle-ci est la meilleure ! 
+                            Facile à digérer, sans arrière-goût chimique et très efficace pour la récupération.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Avis 4 -->
+        <div class="customer-review">
+            <div class="row">
+                <div class="col-12 col-sm-3 col-lg-2">
+                    <div class="customer-review_left">
+                        {#
+                        <div class="customer-review_img text-center">
+                            <img class="img-fluid" src="assets/images/shop/reviewer_04.png" alt="Avis client 4">
+                        </div>
+                        #}
+                        <div class="customer-rate">
+                            <i class="icon_star"></i>
+                            <i class="icon_star"></i>
+                            <i class="icon_star"></i>
+                            <i class="icon_star"></i>
+                            <i class="icon_star-half"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-9 col-lg-10">
+                    <div class="customer-comment">
+                        <h5 class="comment-date">1 Février 2025</h5>
+                        <h3 class="customer-name">Sophie Lambert</h3>
+                        <p class="customer-commented">
+                            Très bon rapport qualité-prix. La texture est agréable et elle se mélange très bien avec du lait ou un smoothie.
+                            Idéale pour les entraînements intensifs !
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endif %}
 								</div>
 							</div>
 						</div>
@@ -463,5 +618,6 @@ $(document).ready(function () {
 					}
 						</script>
 					 #}
+
 
 {% endblock %}

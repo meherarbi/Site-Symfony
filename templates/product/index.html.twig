@@ -181,7 +181,7 @@
 													<div class="col-6 col-md-4">
 														<div class="product" id="product-{{ loop.index }}">
 															<div class="product-img_block">
-																<a class="product-img" href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration|replace({'.jpg': '.webp'}) }}" alt="{{ product.name }}"></a>
+																<a class="product-img" href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}"></a>
 															</div>
 															<div class="product-info_block">
 																<h5 class="product-type">{{ product.category.name }}</h5>

@@ -79,9 +79,12 @@ class Cart
     public function getFull()
     {
         $cartComplete = [];
+        
         if ($this->get()) {
             foreach ($this->get() as $id => $quantity) {
+               
                 $product_object = $this->entityManager->getRepository(Product::class)->findOneById($id);
+                
                 if (!$product_object) {
                     $this->delete($id);
                     continue;
@@ -90,6 +93,7 @@ class Cart
                     'product' => $product_object,
                     'quantity' => $quantity,
                 ];
+               /*  dd($cartComplete); */
             }}
         return $cartComplete;
     }

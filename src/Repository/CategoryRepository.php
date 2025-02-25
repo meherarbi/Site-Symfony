@@ -5,6 +5,8 @@ namespace App\Repository;
 use App\Entity\Category;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Contracts\Cache\CacheInterface;
+use Symfony\Contracts\Cache\ItemInterface;
 
 /**
  * @method Category|null find($id, $lockMode = null, $lockVersion = null)
@@ -14,10 +16,25 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class CategoryRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    private $cache;
+
+    public function __construct(ManagerRegistry $registry, CacheInterface $cache)
     {
         parent::__construct($registry, Category::class);
+        $this->cache = $cache;
     }
+
+  /*   public function findAllCached(): array
+    {
+        $cacheKey = 'all_categories';
+        $cacheDuration = new \DateInterval('P1M'); // Durée d'un mois
+
+        return $this->cache->get($cacheKey, function (ItemInterface $item) use ($cacheDuration) {
+            $item->expiresAfter($cacheDuration); // Cache pendant une durée très longue
+
+            return $this->findAll();
+        });
+    } */
 
     // /**
     //  * @return Category[] Returns an array of Category objects

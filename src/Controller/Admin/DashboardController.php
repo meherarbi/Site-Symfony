@@ -19,7 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class DashboardController extends AbstractDashboardController
 {
     /**
-     * @Route("/admin", name="admin")
+     * @Route("/admin_meher", name="admin")
      */
     public function index(): Response
 {

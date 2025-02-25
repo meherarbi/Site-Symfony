@@ -60,67 +60,228 @@
 				<div class="row">
 					<div class="col-12">
 						<div class="product-table">
-							<table class="table table-responsive">
-								<colgroup>
-									<col span="1" style="width: 15%">
-									<col span="1" style="width: 30%">
-									<col span="1" style="width: 15%">
-									<col span="1" style="width: 15%">
-									<col span="1" style="width: 15%">
-									<col span="1" style="width: 10%">
-								</colgroup>
-								<thead>
-									<tr>
-										<th class="product-iamge" scope="col">Image</th>
-										<th class="product-name" scope="col">Name</th>
-										<th class="product-price" scope="col">Price</th>
-										<th class="product-quantity" scope="col">QUANTITY</th>
-										{# <th class="product-name" scope="col">Size</th> #}
-										<th class="product-total" scope="col">Total</th>
-										<th class="product-clear" scope="col">
-											<button id="clear-cart-btn" class="no-round-btn"><img src="{{asset('assets/images/trash.png')}}" height="25px" alt="delete"></button>
-										</th>
-									</tr>
-								</thead>
-								<tbody>
-									{% set total = 0 %}
-									{% for product in cart %}
-										{% if product.product is not null %}
-											<tr>
-												<td class="product-iamge">
-													<div class="img-wrapper">
-														<img src="/uploads/{{ product.product.illustration }}" alt="{{ product.product.name }}" class="img-fluid">
-													</div>
-												</td>
-												<td class="product-name">{{ product.product.name }}</td>
-												<td class="product-price" data-product-slug="{{ product.product.slug }}">{{ (product.product.price/100)|number_format(2) }}
-													$</td>
-												<td class="product-quantity">
-													<button class="btn btn-secondary" onclick="decrementProduct('{{ product.product.slug }}')">
-														<img src="{{ asset('assets/images/minus.png') }}" alt="moins" height="11px">
-													</button>
-													<input class="quantity no-round-input" data-product-slug="{{ product.product.slug }}" min="1" value="{{ product.quantity }}">
-													<button class="btn btn-secondary" onclick="incrementProduct('{{ product.product.slug }}')">
-														<img src="{{ asset('assets/images/add.png') }}" alt="plus" height="11px">
-													</button>
-												</td>
-												{# <td class="product-size">{{ product.size is not null ? product.size : '' }}</td> #}
-												<td class="product-total cart-total" data-product-slug="{{ product.product.slug }}">{{ ((product.product.price*product.quantity)/100)|number_format(2) }}
-													$</td>
-												<td class="product-clear">
-													<a class="remove-from-cart" href="#" data-id="{{ product.product.id }}">
-														<button class="btn btn-outline-danger">
-															<img src="{{asset('assets/images/trash.png')}}" alt="supprimer" height="25px">
-														</button>
-													</a>
-												</td>
-											</tr>
-											{% set total = total + (product.product.price * product.quantity) %}
-										{% endif %}
-									{% endfor %}
-								</tbody>
-							</table>
-						</div>
+    <table class="table table-responsive">
+        <tbody>
+    {% set total = 0 %} {# Initialisation de la variable total #}
+    {% for product in cart %}
+        {% if product.product is not null %}
+            <tr>
+                <td class="product-image">
+                    <div class="img-wrapper">
+    <img src="/uploads/{{ product.product.illustration }}" alt="{{ product.product.name }}" class="img-fluid img-thumbnail">
+</div>
+
+                </td>
+                <td class="product-name">
+    {% if product.product.name|length > 38 %}
+        {{ product.product.name|slice(0, 38) ~ '...' }}
+    {% else %}
+        {{ product.product.name }}
+    {% endif %}
+</td>
+                <td class="product-price" data-product-slug="{{ product.product.slug }}">
+                    {{ (product.product.price/100)|number_format(2) }} €
+                </td>
+                <td class="product-quantity">
+                    <button class="btn btn-secondary" onclick="decrementProduct('{{ product.product.slug }}')">
+                        <img src="{{ asset('assets/images/minus.png') }}" alt="moins" height="11px">
+                    </button>
+                    <input class="quantity no-round-input" data-product-slug="{{ product.product.slug }}" min="1" value="{{ product.quantity }}">
+                    <button class="btn btn-secondary" onclick="incrementProduct('{{ product.product.slug }}')">
+                        <img src="{{ asset('assets/images/add.png') }}" alt="plus" height="11px">
+                    </button>
+                </td>
+                <td class="product-total cart-total" data-product-slug="{{ product.product.slug }}">
+                    {{ ((product.product.price * product.quantity)/100)|number_format(2) }} €
+                </td>
+                <td class="product-clear">
+                    <a class="remove-from-cart" href="#" data-id="{{ product.product.id }}">
+                        <button class="btn btn-outline-danger">
+                            <img src="{{ asset('assets/images/trash.png') }}" alt="supprimer" height="25px">
+                        </button>
+                    </a>
+                </td>
+            </tr>
+            {% set total = total + (product.product.price * product.quantity) %} {# Ajout du total #}
+        {% endif %}
+    {% endfor %}
+</tbody>
+
+    </table>
+</div>
+<style>
+/* =========================== */
+/* ✅ STYLE PC (NE CHANGE PAS) */
+/* =========================== */
+
+.img-wrapper img {
+    width: 200px; /* Taille de l'image */
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+.product-quantity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 85px; /* Alignement correct sur PC */
+}
+
+.product-quantity button {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #f8f8f8;
+    cursor: pointer;
+}
+
+
+.product-price {
+    display: none !important;
+}
+
+table.table-responsive .product-price {
+    display: none !important;
+}
+
+.img-thumbnail {
+    padding: .25rem;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: .25rem;
+    max-width: 62px;
+    height: auto;
+}
+
+/* =========================== */
+/* 🎯 STYLE MOBILE (< 768px) */
+/* =========================== */
+
+
+
+
+
+@media (max-width: 768px) {
+.shopping-cart .product-table .table tbody .product-quantity input {
+    height: 40px;
+    width: 43px;
+    border-radius: 5px;
+    padding: 0 10px;
+}
+
+
+
+@media (max-width: 768px) {
+    /* Conteneur du produit */
+    .product-row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    /* Image centrée en haut */
+    .product-image {
+        max-width: 120px;
+        height: auto;
+        margin-bottom: 5px;
+    }
+
+    /* Nom du produit centré sous l'image */
+    .product-name {
+        font-size: 12px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    /* Conteneur des infos (prix, quantité, poubelle) */
+    .product-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        margin-top: 10px;
+    }
+
+    /* Style du prix */
+    .product-price {
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    /* Boutons de quantité en ligne */
+    .product-quantity {
+        display: flex;
+        flex-direction: row; /* Garder les boutons en ligne */
+        justify-content: center;
+        gap: 5px;
+        margin-top: 19px;
+    }
+
+    .product-quantity button {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        background-color: #f8f8f8;
+        cursor: pointer;
+    }
+
+    .product-quantity input {
+        width: 45px;
+        text-align: center;
+        font-size: 16px;
+    }
+
+    /* Icône poubelle sous les boutons */
+    .product-clear {
+        text-align: center;
+        margin-top: 5px;
+    }
+
+    .product-clear img {
+        width: 20px;
+        height: auto;
+        cursor: pointer;
+    }
+}
+
+
+td.product-total.cart-total {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px; /* Ajuste selon ton besoin */
+    white-space: nowrap; /* Évite le retour à la ligne */
+}
+
+
+/* ✅ Ajustement spécifique pour mobile */
+@media (max-width: 768px) {
+    td.product-total.cart-total {
+        justify-content: flex-start;
+        padding-left: 10px; /* Ajuste selon l'affichage */
+    }
+}
+
+
+
+
+
+
+
+</style>
 
 					</div>
 					<div class="col-12 col-sm-8">
