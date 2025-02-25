@@ -15,7 +15,7 @@ nelmio_security:
             level1_fallback: false
             browser_adaptive:
                 enabled: false
-            report-uri: '%router.request_context.base_url%/nelmio/csp/report'
+            report-uri: ~
             default-src:
                 - 'none' 
             object-src:
@@ -50,8 +50,9 @@ nelmio_security:
                 
             style-src: ["'self'", "'unsafe-inline'", "https://foryoumer.tn"]
             block-all-mixed-content: true # defaults to false, blocks HTTP content over HTTPS transport
+     
             # upgrade-insecure-requests: true # defaults to false, upgrades HTTP requests to HTTPS transport
-
+    
         
     
     # forces Microsoft's XSS-Protection with

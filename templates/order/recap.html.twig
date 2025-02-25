@@ -32,7 +32,7 @@
 				<div class="form-check mt-4">
 					{{ carrier.name }}<br/>
 					{{ carrier.description }}<br/>
-					{{ carrier.price |number_format(2,',','.') }}$<br/>
+					{{ carrier.price |number_format(2,',','.') }}€<br/>
 				</div>
 			</div>
 			<div class="col-md-6">
@@ -49,10 +49,10 @@
 							<div class="col-8 my-auto">
 								{{ item.product.name }}<br/>
 								<small>{{ item.product.subtitle }}<br/>
-                                {% if  item.quantity.size is not null %}
-								Taille :
-									{{ item.quantity.size}}<br/>
-                                {% endif %}
+                               {% if item.quantity.size is defined and item.quantity.size is not empty %}
+    Taille : {{ item.quantity.size }}<br/>
+{% endif %}
+
 									
                                 Quantité :  {{ item.quantity.quantity }}</small>   
 									
@@ -60,7 +60,7 @@
 							</div>
 							<div class="col-2 my-auto">
 								{{ ((item.product.price*item.quantity.quantity)/100)|number_format(2) }}
-								$
+								€
 								<!-- Et ici -->
 							</div>
 						</div>
@@ -78,19 +78,19 @@
 				<strong>Livraison:
 				</strong>
 				{{ (carrier.price)|number_format(2,',','.') }}
-				$
+				€
 				<hr>
 				<strong>Total:
 				</strong>
 				{{ ((total/100)+carrier.price)|number_format(2,',','.') }}
-				$
+				€
 				<br>
 
 				<hr>
 
-				<a class="btn btn-success btn-block" id="checkout-button" color="white">Payer |
-					{{ ((total/100)+carrier.price)|number_format(2,',','.') }}
-					$</a>
+				
+					<a href="{{ path('order_payment') }}" class="btn btn-success btn-block" id="checkout-button" color="white">Payer </a>
+
 			</div>
 		</div>
 	</div>

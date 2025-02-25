@@ -7,7 +7,7 @@ use App\Form\RegisterType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Constraints\Email;
@@ -17,64 +17,65 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class RegisterController extends AbstractController
 {
-    private $entityManager;
-    private $encoder;
+    private EntityManagerInterface $entityManager;
+    private UserPasswordHasherInterface $passwordHasher;
 
-    public function __construct(EntityManagerInterface $entityManager, UserPasswordHasherInterface $encoder)
+    public function __construct(EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher)
     {
         $this->entityManager = $entityManager;
-        $this->encoder = $encoder;
+        $this->passwordHasher = $passwordHasher;
     }
 
-    /**
-     * @Route("/inscription", name="register")
-     */
-    public function index(Request $request, ValidatorInterface $validator)
+    #[Route('/inscription', name: 'register')]
+    public function index(Request $request, ValidatorInterface $validator): Response
     {
         $user = new User();
         $form = $this->createForm(RegisterType::class, $user);
 
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $email = $user->getEmail();
             $existingUser = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $email]);
 
             if ($existingUser) {
-                $this->addFlash('danger', 'This email address is already registered.');
-
+                $this->addFlash('danger', 'Cette adresse e-mail est déjà utilisée.');
                 return $this->redirectToRoute('register');
             }
 
-            $emailConstraint = new Email([
-                'message' => 'The email address "{{ value }}" is not valid.',
+            // Validation de l'email
+            $emailErrors = $validator->validate($email, [
+                new NotBlank(['message' => 'Veuillez entrer une adresse e-mail']),
+                new Email(['message' => 'L\'adresse e-mail "{{ value }}" n\'est pas valide.'])
             ]);
 
-            $errors = $validator->validate($email, $emailConstraint);
-
+            // Validation du mot de passe
             $password = $user->getPassword();
-
-            $errors = $validator->validate($password, [
-                new NotBlank([
-                    'message' => 'Please enter a password'
-                ]),
+            $passwordErrors = $validator->validate($password, [
+                new NotBlank(['message' => 'Veuillez entrer un mot de passe']),
                 new Regex([
-                    'pattern' => '/^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[!@#$%^&()-_=+{};:,<.>§~?])[a-zA-Z\d!@#$%^&()-_=+{};:,<.>§~?]{8,}$/',
-                    'message' => 'The password must contain at least 8 characters including at least one lowercase letter, one uppercase letter, and one digit.'
+                    'pattern' => '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()-_=+{};:,<.>§~?]).{8,}$/',
+                    'message' => 'Le mot de passe doit contenir au moins 8 caractères, avec une majuscule, une minuscule, un chiffre et un caractère spécial.'
                 ])
             ]);
 
-            if (count($errors) > 0) {
-                $this->addFlash('danger', 'The email address is not valid.');
-
+            if (count($emailErrors) > 0 || count($passwordErrors) > 0) {
+                foreach (array_merge(iterator_to_array($emailErrors), iterator_to_array($passwordErrors)) as $error) {
+                    $this->addFlash('danger', $error->getMessage());
+                }
                 return $this->redirectToRoute('register');
             }
 
-            $password = $this->encoder->hashPassword($user, $user->getPassword());
-            $user->setPassword($password);
+            // Hachage du mot de passe
+            $hashedPassword = $this->passwordHasher->hashPassword($user, $password);
+            $user->setPassword($hashedPassword);
+
+            // Sauvegarde en base de données
             $this->entityManager->persist($user);
             $this->entityManager->flush();
 
-            $this->addFlash('success', 'Your account has been created successfully.');
+            // Redirection vers la page de connexion
+            $this->addFlash('success', 'Votre compte a été créé avec succès.');
             return $this->redirectToRoute('app_login');
         }
 
@@ -82,5 +83,4 @@ class RegisterController extends AbstractController
             'form' => $form->createView()
         ]);
     }
-
 }

@@ -30,7 +30,7 @@
 							</div>
 							<div class="social-link d-flex menu-item">
 								<a href="{{ path('cart_index') }}">
-									<img src="{{ asset('assets/images/panier.png') }}" height="25px" alt="vente en ligne en Tunisie foryoumer">
+									<img src="{{ asset('assets/images/panier.png') }}" height="25px" alt=" foryoumer">
 									{% set cart_quantity = app.session.get('uniqueProductsCount') %}
 									{% if cart_quantity is not empty and cart_quantity != 0 %}
 										<span class="cart-quantity small-text">{{ cart_quantity }}</span>

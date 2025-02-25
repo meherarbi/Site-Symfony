@@ -1,19 +1,39 @@
+
+<div class="topimg">
+    <img src="{{ asset('assets/images/homepage03/as7.webp') }}" id="mk" alt="" loading="lazy">
+    <img src="{{ asset('assets/images/foryoumer.png') }}" id="logo" alt="ForYoumer">
+</div>
+
+<style>
+.topimg {
+    position: relative; /* Assure que le logo soit positionné correctement */
+    display: inline-block;
+}
+
+#logo {
+    position: absolute;
+    left: 30px; /* Ajuste la position horizontale */
+    top: 50%; /* Centre verticalement */
+    transform: translateY(-50%); /* Ajuste pour un parfait centrage */
+    width: 150px; /* Taille ajustée du logo */
+}
+</style>
 <div class="header-block d-flex align-items-center">
 	<div class="container">
 		<div class="row">
 			<div class="col-12 col-md-6">
 				<div class="header-left d-flex flex-column flex-md-row align-items-center">
-					<div class="logo mx-4">
+					{# <div class="logo mx-4">
 						<img src="assets/images/foryoumer.png" alt="foryoumer.com Tunisie" height="50px" width="auto">
-					</div>
+					</div> #}
 					<p class="d-flex align-items-center">
 						<i class="fas fa-envelope"></i>
-						meher@foryoumer.com
+						contact@foryoumer.com
 					</p>
-					<p class="d-flex align-items-center">
+					{# <p class="d-flex align-items-center">
 						<i class="fas fa-phone"></i>
 						+21658588358
-					</p>
+					</p> #}
 				</div>
 			</div>
 			<div class="col-12 col-md-6">

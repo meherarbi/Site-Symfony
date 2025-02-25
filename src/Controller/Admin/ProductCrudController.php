@@ -57,7 +57,7 @@ class ProductCrudController extends AbstractCrudController
                 'multiple' => true,
                 'by_reference' => false
             ])
-            ->setRequired(true),
+            ->setRequired(false),
         FormField::addPanel('Images')->setIcon('fas fa-image'),
         ImageField::new('illustration')
                     ->setBasePath('uploads/')
