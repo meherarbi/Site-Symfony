@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@babel/core": "^7.20.12",
+    "@babel/core": "^7.26.10",
     "@babel/preset-env": "^7.20.2",
     "@symfony/webpack-encore": "^4.2.0",
     "bootstrap-icons": "^1.7.2",
