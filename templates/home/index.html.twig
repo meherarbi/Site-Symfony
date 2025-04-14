@@ -1,14 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
-		<title>Vente en ligne en Tunisie
-		</title>
-		<meta charset="UTF-8">
-		<meta name="google-site-verification" content="NcMDVxMcuILOFYdEdjV4rnQ7xngn52ddBq0nkzkG1ZA"/>
-		<meta name="description" content="Découvrez notre large sélection de produits en ligne en Tunisie. Commandez en toute sécurité et profitez de la livraison rapide. Trouvez tout ce dont vous avez besoin, des vêtements aux produits électroniques, en passant par les articles de maison et les produits de beauté. Faites vos achats en ligne dès maintenant sur notre site de vente en ligne de confiance en Tunisie">
-		<meta name="keywords" content="vente en ligne chez foryoumer.com, vente de produits en Tunisie, livraison en Tunisie, livraison rapide, site commerce en ligne, montres en Tunisie ,vente produits de beauté en Tunisie, Vente vetements Homme en Tunisie">
-		<meta name="author" content="MARTECH | Deer Creative Theme">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		{% block seo %}
+                {% include 'blocks/seo.html.twig' %}
+        {% endblock %}
+
 
 		<link rel="preload" href="{{ asset('assets/css/style.css') }}" as="style">
 		<link rel="preload" href="{{ asset('assets/css/custom_bootstrap.css') }}" as="style">
@@ -57,8 +53,8 @@
 		<div id="main">
 
 			<header class="pink">
-				<div class="topimg"><img src="{{ asset('assets/images/homepage03/as7.webp') }}" id="mk" alt="" loading="lazy"></div>
 				{% include "header.html.twig" %}
+				
 				{% include "header_mobile.html.twig" %}
 				<div class="navigation-filter">
 					<div class="container">
@@ -104,7 +100,7 @@
 														</div>
 													</div>
 												</div>
-												<form action="{{ path('search') }}" method="GET" class="row no-gutters">
+											{# <form action="{{ path('search') }}" method="GET" class="row no-gutters">
 													<div class="col-12 col-md-12 col-lg-8 col-xl-8">
 														<div class="search-input">
 															<input class="no-round-input no-border" type="text" name="q" placeholder="What do you need" style="width: 100%;">
@@ -115,17 +111,17 @@
 															<i class="icon_search"></i>
 														</button>
 													</div>
-												</form>
+												</form> #}
 											</div>
 										</div>
 									</div>
 									<div class="col-0 col-xl-4">
-										<div class="phone-number">
+										{# <div class="phone-number">
 											<div class="phone-number_icon">
 												<i class="icon_phone"></i>
 											</div>
 											<h2>+216 58 58 83 58</h2>
-										</div>
+										</div> #}
 									</div>
 								</div>
 							</div>
@@ -151,7 +147,7 @@
 									</div>
 									<div class="col-12 col-md-5 col-xl-5">
 										<div class="banner-img">
-											<div class="img-block text-center"><img class="mymove" src="{{ asset('assets/images/homepage03/m.webp') }}" alt="vente divers produits en Tunisie" loading="lazy"></div>
+											<div class="img-block text-center"><img class="mymove" src="{{ asset('assets/images/homepage03/m.webp') }}" alt="proteine naturelle" loading="lazy"></div>
 										</div>
 									</div>
 								</div>
@@ -181,7 +177,7 @@
 
 													<div class="deal-img">
 														<a class="product-img" href="{{ path('product',{'slug':product.slug}) }}">
-															<img src="/uploads/{{ product.illustration|replace({'.jpg': '.webp'}) }}" alt="{{ product.name }} produit foryoumer.com produit " loading="lazy">
+															<img src="/uploads/{{ product.illustration }}" alt="{{ product.name }} produit foryoumer.com produit " loading="lazy">
 														</a>
 
 													</div>
@@ -276,7 +272,7 @@
 												<div class="col-12">
 													<div class="mini-product column">
 														<div class="mini-product_img">
-															<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration|replace({'.jpg': '.webp'}) }}" alt="{{ product.name }} produit foryoumer.com produit " loading="lazy"></a>
+															<a href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration}}" alt="{{ product.name }} produit foryoumer.com produit " loading="lazy"></a>
 														</div>
 														<div class="mini-product_info">
 															{% if product.name|length > 10 %}
@@ -536,13 +532,14 @@
 										</div>
 									</div>
 								</div>
+
 								<div class="best-seller_bottom">
 									<div id="tab0">
 										<div class="row no-gutters-sm">
 											{% for product in latestProducts|slice(0, 3) %}
 												<div class="col-6 col-md-4">
 													<div class="product pink rounded rounded-lg rounded-xl border ">
-														<a class="product-img" href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration|replace({'.jpg': '.webp'}) }}" alt="{{ product.name }} produit foryoumer.com produit " class="product-img"  loading="lazy"></a>
+														<a class="product-img" href="{{ path('product',{'slug':product.slug}) }}"><img src="/uploads/{{ product.illustration }}" alt="{{ product.name }} proteine naturelle produit foryoumer.com produit " class="product-img"  loading="lazy"></a>
 														<h5 class="product-type">{{product.category.name}}</h5>
 														{% if product.name|length > 10 %}
 															<h3 class="product-name">{{ product.name|slice(0, 10) }}...</h3>
@@ -746,13 +743,13 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-12 col-sm-12 col-md-4 text-sm-center text-md-left">
-				<div class="footer-logo">
+				{# <div class="footer-logo">
 					<img src="assets/images/foryoumer.png" alt="foryoumer.com Tunisie" height="60px" width="auto" loading="lazy">
-				</div>
+				</div> #}
 				<div class="footer-contact">
-					<p>Address: 123 cite ikbel 7032 Tinja</p>
-					<p>Phone: +216 58 58 83 43</p>
-					<p>Email: meher@foryoumer.com</p>
+					{# <p>Address: 123 cite ikbel 7032 Tinja</p>
+					<p>Phone: +216 58 58 83 43</p> #}
+					<p>Email: support@foryoumer.com</p>
 				</div>
 				<div class="footer-social">
 					<a class="round-icon-btn pink" href="https://www.facebook.com/foryoumer">

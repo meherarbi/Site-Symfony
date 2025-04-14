@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Cache\CacheInterface;
 
 class HomeController extends AbstractController
 {
@@ -19,7 +20,7 @@ class HomeController extends AbstractController
 /**
  * @Route("/", name="home", methods={"GET", "POST"})
  */
-    public function index(Request $request)
+    public function index()
     {
         /* if ($request->request->has('Id')) {
         $productId = $request->request->get('Id');
@@ -31,6 +32,7 @@ class HomeController extends AbstractController
         'categories' => $this->categoryRepository->findAll(),
         ]);
         } */
+        
 
         $products = $this->productRepository->findAll();
         $latestProducts = $this->productRepository->findProduct();
@@ -38,6 +40,7 @@ class HomeController extends AbstractController
         $productsOneByCategory = $this->productRepository->findProductByCategory();
         $productsMin = $this->productRepository->findProductMin();
         $promotedProducts = $this->productRepository->findPromotedProducts();
+        /* $categories = $this->categoryRepository->findAllCached(); */
         $categories = $this->categoryRepository->findAll();
         $promotedProductsByCategory = [];
 
@@ -59,6 +62,7 @@ class HomeController extends AbstractController
             'Jouets et enfants' => 'fas fa-baby-carriage',
             'Beauté et santé' => 'fas fa-leaf',
             'Outils et bricolage' => 'fas fa-wrench',
+            'Protéines & Compléments' => 'fas fa-dumbbell',
         ];
 
         $response = $this->render('home/index.html.twig', [

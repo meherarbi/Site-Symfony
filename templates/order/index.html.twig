@@ -69,25 +69,40 @@
 			</div>
 			<div class="col-md-6">
 				<div class="text-center form-label">
-					<b>Récap de ma commande</b><br/></div>
+					<b>Récap de ma commande</b><br/>
+				</div>
 				<div class="order-summary">
 					{% for key, product in cart %}
 						<div class="row{% if key > 0 %} mt-2{% endif %}">
-							<div class="col-2 my-auto"><img src="/uploads/{{ product.product.illustration }}" alt="{{ product.product.name }}" class="img-fluid"></div>
-							<div class="col-8 my-auto">{{ product.product.name }}<br/>
-								<small>{{ product.product.subtitle }}</small><br/>
-                {% if product.quantity.size is not null %}
-								<small>Taille :
-									{{ product.quantity.size }}</small>
-                  {% endif %}
+							<div class="col-2 my-auto">
+								<img src="/uploads/{{ product.product.illustration }}" alt="{{ product.product.name }}" class="img-fluid">
 							</div>
-							<div class="col-2">x
-								{{ product.quantity.quantity }}</div>
-						</div>
+							<div class="col-8 my-auto">
+								{{ product.product.name }}<br/>
+								<small>{{ product.product.subtitle }}</small><br/>
+								{% if item.quantity.size is defined and item.quantity.size is not empty %}
+    Taille : {{ item.quantity.size }}<br/>
+{% endif %}
 
+							</div>
+							<div class="col-2">
+								{% if product.quantity is iterable %}
+									{% if product.quantity.quantity is defined %}
+										x
+										{{ product.quantity.quantity }}
+									{% endif %}
+								{% else %}
+									x
+									{{ product.quantity }}
+								{% endif %}
+							</div>
+
+						</div>
 					{% endfor %}
 				</div>
 			</div>
+
+
 		</div>
 	</div>
 

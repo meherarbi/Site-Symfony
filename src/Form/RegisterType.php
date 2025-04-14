@@ -76,16 +76,7 @@ class RegisterType extends AbstractType
                     ])
                 ]
             ])
-            ->add('termsAccepted', CheckboxType::class, [
-                'mapped' => false,
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'You must accept the terms and conditions to register'
-                    ])
-                ],
-                'label' => 'I accept the terms and conditions'
-            ])
-            ->add('submit', SubmitType::class, ['label' => 'Register']);
+            ;
     }
 
     public function configureOptions(OptionsResolver $resolver)

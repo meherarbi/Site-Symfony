@@ -16,7 +16,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="`user`")
  * #[UniqueEntity('email')]
  */
-class User implements UserInterface, PasswordAuthenticatedUserInterface
+class User implements UserInterface
 {
     /**
      * @ORM\Id
@@ -116,9 +116,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @see UserInterface
      */
     public function getUsername(): string
-    {
-        return (string) $this->email;
-    }
+{
+    return $this->getUserIdentifier(); // Compatibilité avec Symfony 4.x
+}
+
+public function getUserIdentifier(): string
+{
+    return $this->email;
+}
 
     /**
      * @see UserInterface
