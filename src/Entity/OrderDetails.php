@@ -59,6 +59,11 @@ class OrderDetails
      */
     private $createdAt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Color::class, inversedBy="orderDetails")
+     */
+    private $color;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -157,6 +162,18 @@ class OrderDetails
     public function setCreatedAt(?\DateTimeImmutable $createdAt): self
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getColor(): ?Color
+    {
+        return $this->color;
+    }
+
+    public function setColor(?Color $color): self
+    {
+        $this->color = $color;
 
         return $this;
     }
